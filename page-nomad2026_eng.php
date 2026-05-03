@@ -80,7 +80,7 @@ get_header();
                     <div class="absolute inset-0 rounded-3xl bg-white/60 blur-3xl"></div>
                     <div class="relative rounded-3xl border border-slate-200 shadow-2xl bg-slate-900 px-2 py-2">
                         <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-amber-500/20 blur-3xl opacity-40"></div>
-                        <img src="https://animatek.net/wp-content/uploads/2026/04/Nomad2026.webp"
+                        <img src="https://animatek.net/wp-content/uploads/2026/05/Nomad2026.webp"
                              alt="Nomad2026 – Nord Modular G1 Editor"
                              class="w-full aspect-video object-cover object-top relative z-10 rounded-3xl">
                     </div>
