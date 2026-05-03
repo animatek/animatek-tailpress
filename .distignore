@@ -1,5 +1,11 @@
 /resources
 /node_modules
+/docs
+/error_log
+/skills-lock.json
+/CLAUDE.md
+/.superpowers
+/.claude
 /webpack.mix.js
 /vite.config.mjs
 /package.json

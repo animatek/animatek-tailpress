@@ -192,3 +192,46 @@ add_action('wp_footer', function () {
     </script>
     <?php
 }, 30);
+
+/**
+ * AJAX: registrar "like" en posts de la librería sonora.
+ * Endpoint usado por page-libreria-sonora.php (action=animatek_like).
+ */
+function animatek_handle_like(): void {
+    check_ajax_referer( 'animatek_like_nonce', 'nonce' );
+
+    if ( ! is_user_logged_in() ) {
+        wp_send_json_error( [ 'message' => __( 'Debes iniciar sesión para dar like.', 'animatek' ) ], 401 );
+    }
+
+    $post_id = isset( $_POST['post_id'] ) ? absint( $_POST['post_id'] ) : 0;
+    $post    = $post_id ? get_post( $post_id ) : null;
+
+    if ( ! $post || 'publish' !== $post->post_status ) {
+        wp_send_json_error( [ 'message' => __( 'Recurso no válido.', 'animatek' ) ], 400 );
+    }
+
+    $user_id   = get_current_user_id();
+    $user_key  = '_animatek_liked_posts';
+    $count_key = '_animatek_like_count';
+
+    $liked_by_user = (array) get_user_meta( $user_id, $user_key, true );
+
+    if ( in_array( $post_id, $liked_by_user, true ) ) {
+        $count = (int) get_post_meta( $post_id, $count_key, true );
+        wp_send_json_error( [
+            'message' => __( 'Ya diste like a este recurso.', 'animatek' ),
+            'count'   => $count,
+        ], 409 );
+    }
+
+    $liked_by_user[] = $post_id;
+    update_user_meta( $user_id, $user_key, array_values( array_unique( array_map( 'absint', $liked_by_user ) ) ) );
+
+    $count = (int) get_post_meta( $post_id, $count_key, true ) + 1;
+    update_post_meta( $post_id, $count_key, $count );
+
+    wp_send_json_success( [ 'count' => $count ] );
+}
+add_action( 'wp_ajax_animatek_like', 'animatek_handle_like' );
+add_action( 'wp_ajax_nopriv_animatek_like', 'animatek_handle_like' );

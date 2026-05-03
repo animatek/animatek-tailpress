@@ -7,6 +7,11 @@
 /.vscode
 /.zed
 
+# Logs y artefactos locales
+error_log
+*.log
+skills-lock.json
+
 # Superpowers
 .superpowers/
 docs/superpowers/

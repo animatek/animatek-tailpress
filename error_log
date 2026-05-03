@@ -1,4 +1,0 @@
-[24-Dec-2025 20:06:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/zbztaztx/animatek.net/wp-content/themes/animatek-tailpress/index.php:8
-Stack trace:
-#0 {main}
-  thrown in /home/zbztaztx/animatek.net/wp-content/themes/animatek-tailpress/index.php on line 8
