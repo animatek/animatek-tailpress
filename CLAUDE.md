@@ -44,7 +44,7 @@ Two config layers coexist during the v3→v4 migration:
 
 ### PHP Structure
 
-- **`functions.php`** — Theme setup via TailPress fluent API (`tailpress()`), font enqueuing (Inter from Google Fonts), "Cuenta" menu item → account icon replacement, "Contacto" menu item → email icon replacement (in `header.php`), inline fallback mobile menu toggle script
+- **`functions.php`** — Theme setup via TailPress fluent API (`tailpress()`), Vite manifest fallback enqueue, "Cuenta" menu item → account icon replacement, "Contacto" menu item → email icon replacement (in `header.php`), AJAX handler for `animatek_like`
 - **`src/`** — PSR-4 autoloaded under `TailPress\` namespace:
   - `Pagination.php` — Custom numbered pagination with SVG prev/next icons
   - `Walkers/CommentWalker.php` — Custom comment HTML5 rendering
@@ -66,5 +66,5 @@ GitHub Actions (`.github/workflows/release.yml`): On release → `composer insta
 - **Language:** UI strings are in Spanish with text domain `'animatek'` and `__()` / `esc_html_e()` calls
 - **Menu IDs:** `primary-navigation` (nav element), `primary-menu-toggle` (hamburger button). Mobile breakpoint at `md` (782px per `theme.css`)
 - **Font:** Inter (weights 400, 500, 600, 700, 800) loaded from Google Fonts with handle `animatek-inter`
-- **Inline JS fallback:** Mobile menu toggle has both a compiled version in `app.js` and an inline fallback in `functions.php` (priority 30 in `wp_footer`). The fallback clones the toggle button to strip existing listeners. Both use `data-menu-bound` to prevent double-binding
+- **Mobile menu toggle:** handled by `resources/js/app.js` (`initPrimaryMenuToggle`). Uses `data-menu-bound` to prevent double-binding
 - **Button classes:** `.btn-primary` and `.btn-secondary` are defined as inline CSS in `header.php`, not as Tailwind utilities. Page templates use these classes extensively
