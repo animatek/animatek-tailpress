@@ -43,6 +43,25 @@ Este es el tema oficial de WordPress para **[Animatek.net](https://animatek.net)
 
 ## 📝 Changelog (Registro de Cambios)
 
+### v5.2.0 (Mayo 2026) - Auditoría, refactor y rendimiento
+- **Seguridad**:
+  - Handler AJAX `animatek_like` con `check_ajax_referer` y validación (cierra el nonce huérfano de la librería sonora).
+  - `searchform.php` escapa `get_search_query()` con `esc_attr()`.
+  - JSON-LD del curso sin `JSON_UNESCAPED_SLASHES` (previene inyección de `</script>`).
+  - `error_log`, `*.log` y `skills-lock.json` fuera del repo y del paquete de release; `.distignore` ampliado.
+- **Rendimiento**:
+  - Self-host de Inter via `@fontsource-variable/inter`. Eliminados `preconnect` a Google Fonts y enqueue remoto. Solo se descargan los subsets que la página usa (~48 KB latín).
+- **Diseño**:
+  - Paleta primaria unificada a `#2C7FFF` en `theme.json`, `theme.css`, `app.css`, `custom.css` y todas las plantillas (excepto `page-test-colores.php`, que documenta el azul antiguo).
+- **Refactor**:
+  - `page-glosario.php`: 1223 → 542 líneas. Datos a `inc/glosario-data.php`, modal a `template-parts/glosario-modal.php`, helper sin `global`.
+  - `page-vcvrack-lab.php` y `page-bitwig-lab.php`: locker Brevo extraído a `template-parts/brevo-locker.php` parametrizable (-217 y -155 líneas respectivamente).
+  - Eliminado fallback inline del menú móvil en `functions.php` (sobrescribía a `app.js`).
+- **Tailwind**:
+  - Eliminada la capa v3 vestigial: borrados `tailwind.config.js` y `safelist.txt`, removidas las directivas `@tailwind base/components/utilities` redundantes en `app.css`. `--color-accent` añadido al `@theme`.
+- **Fix**:
+  - URL de `Nomad2026.webp` actualizada tras re-subida en `2026/05/`.
+
 ### v5.1.0 (Abril 2026) - Rediseño Editorial
 - **Hero Editorial B1**: Nueva estructura de cabecera para posts con imagen a la izquierda y metadatos a la derecha.
 - **Navegación entre Posts**: Implementación de navegación fluida sin sombras, alineada con la columna de contenido.
