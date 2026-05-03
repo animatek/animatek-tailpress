@@ -34,7 +34,49 @@ $has_video = apply_filters( 'tutor_course_has_video', tutor_utils()->has_video_i
 
 $is_enabled_wishlist = tutor_utils()->get_option( 'enable_wishlist', true );
 
+// JSON-LD Course structured data
+$course_title       = get_the_title( $course_id );
+$course_description = wp_trim_words( wp_strip_all_tags( get_the_content( null, false, $course_id ) ), 50 );
+$course_image       = get_the_post_thumbnail_url( $course_id, 'large' );
+$course_permalink   = get_permalink( $course_id );
+$instructors        = tutor_utils()->get_course_instructors( $course_id );
+$instructor_name    = ! empty( $instructors ) ? $instructors[0]->display_name : get_bloginfo( 'name' );
+$rating_avg         = isset( $course_rating->rating_avg ) ? round( floatval( $course_rating->rating_avg ), 1 ) : 0;
+$rating_count       = isset( $course_rating->rating_count ) ? intval( $course_rating->rating_count ) : 0;
+
+$schema = [
+    '@context'    => 'https://schema.org',
+    '@type'       => 'Course',
+    'name'        => $course_title,
+    'description' => $course_description,
+    'url'         => $course_permalink,
+    'provider'    => [
+        '@type' => 'Organization',
+        'name'  => get_bloginfo( 'name' ),
+        'url'   => home_url( '/' ),
+    ],
+    'instructor'  => [
+        '@type' => 'Person',
+        'name'  => $instructor_name,
+    ],
+];
+
+if ( $course_image ) {
+    $schema['image'] = $course_image;
+}
+
+if ( $rating_avg > 0 && $rating_count > 0 ) {
+    $schema['aggregateRating'] = [
+        '@type'       => 'AggregateRating',
+        'ratingValue' => $rating_avg,
+        'reviewCount' => $rating_count,
+    ];
+}
+
 ?>
+<script type="application/ld+json">
+<?php echo wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); ?>
+</script>
 
 <main id="primary" class="bg-slate-50 dark:bg-slate-800/40 text-slate-950 dark:text-slate-200 container mx-auto rounded-3xl px-8 mt-12 mb-12 shadow-xl border border-slate-200 dark:border-slate-700/50" style="padding-top:3%;padding-bottom:5%;">
 <?php do_action( 'tutor_course/single/before/wrap' ); ?>
