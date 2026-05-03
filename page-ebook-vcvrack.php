@@ -279,10 +279,10 @@ get_header();
                             width: 100%;
                             justify-content: center;
                             font-weight: 700 !important;
-                            background: #2170F5 !important;
-                            border-color: #2170F5 !important;
+                            background: #2C7FFF !important;
+                            border-color: #2C7FFF !important;
                             color: #ffffff !important;
-                            box-shadow: 0 12px 30px -18px rgba(33, 112, 245, 0.6);
+                            box-shadow: 0 12px 30px -18px rgba(44, 127, 255, 0.6);
                         }
                         .ebook-form #sib-container .sib-form-block__button:hover {
                             background: #1c63d9 !important;
@@ -292,7 +292,7 @@ get_header();
                             margin: auto;
                         }
                         .ebook-form #sib-container a {
-                            color: #2170F5;
+                            color: #2C7FFF;
                             text-decoration: underline;
                         }
                     </style>

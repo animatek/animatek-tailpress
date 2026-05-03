@@ -873,13 +873,13 @@ endforeach; ?>
     }
 
     .glosario-pill:hover {
-        border-color: #2170F5;
+        border-color: #2C7FFF;
         color: #e2e8f0;
     }
 
     .glosario-pill.active {
-        background-color: #2170F5;
-        border-color: #2170F5;
+        background-color: #2C7FFF;
+        border-color: #2C7FFF;
         color: #ffffff;
     }
 
@@ -920,13 +920,13 @@ endforeach; ?>
     }
 
     .glosario-light .glosario-pill:hover {
-        border-color: #2170F5;
+        border-color: #2C7FFF;
         color: #334155;
     }
 
     .glosario-light .glosario-pill.active {
-        background-color: #2170F5;
-        border-color: #2170F5;
+        background-color: #2C7FFF;
+        border-color: #2C7FFF;
         color: #ffffff;
     }
 
@@ -951,7 +951,7 @@ endforeach; ?>
 
     /* Letter headings */
     .glosario-light .glosario-group h2 {
-        color: #2170F5;
+        color: #2C7FFF;
     }
 
     /* Term cards */
@@ -970,7 +970,7 @@ endforeach; ?>
     }
 
     .glosario-light .glosario-term:hover .glosario-card-name {
-        color: #2170F5;
+        color: #2C7FFF;
     }
 
     /* Category badges — light mode tints */

@@ -21,7 +21,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: '#2170F5',
+                primary: '#2C7FFF',
                 accent: '#24B979',
             },
             fontFamily: {

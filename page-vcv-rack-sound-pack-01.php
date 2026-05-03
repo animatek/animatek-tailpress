@@ -252,10 +252,10 @@ get_header();
                             width: 100%;
                             justify-content: center;
                             font-weight: 700 !important;
-                            background: #2170F5 !important;
-                            border-color: #2170F5 !important;
+                            background: #2C7FFF !important;
+                            border-color: #2C7FFF !important;
                             color: #ffffff !important;
-                            box-shadow: 0 12px 30px -18px rgba(33, 112, 245, 0.6);
+                            box-shadow: 0 12px 30px -18px rgba(44, 127, 255, 0.6);
                         }
                         .soundpack-form #sib-container .sib-form-block__button:hover {
                             background: #1c63d9 !important;
@@ -265,7 +265,7 @@ get_header();
                             margin: auto;
                         }
                         .soundpack-form #sib-container a {
-                            color: #2170F5;
+                            color: #2C7FFF;
                             text-decoration: underline;
                         }
                     </style>
@@ -390,7 +390,7 @@ get_header();
         </div>
         <div style="padding: 8px 0;">
           <div class="sib-form-block" style="text-align: left">
-            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#2170f5; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#2c7fff; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
               <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="">
                 <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
               </svg>

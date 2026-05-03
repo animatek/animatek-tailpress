@@ -325,10 +325,10 @@ $cta_lista  = '#lista-interesados';
                         padding: 1rem 2rem !important;
                         font-weight: 700 !important;
                         border-radius: 0.75rem !important;
-                        border: 1px solid #2170F5 !important;
-                        background-color: #2170F5 !important;
+                        border: 1px solid #2C7FFF !important;
+                        background-color: #2C7FFF !important;
                         color: #ffffff !important;
-                        box-shadow: 0 12px 30px -18px rgba(33, 112, 245, 0.6) !important;
+                        box-shadow: 0 12px 30px -18px rgba(44, 127, 255, 0.6) !important;
                         text-decoration: none !important;
                     }
 
