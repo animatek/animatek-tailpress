@@ -1,3 +1,4 @@
+@import '@fontsource-variable/inter';
 @import 'tailwindcss';
 @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -77,5 +78,48 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--color-zinc-200, currentColor);
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        font-weight: 700;
+        border-radius: 0.75rem;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .btn-primary {
+        background-color: #2170F5;
+        color: #ffffff;
+        border-color: #2170F5;
+        box-shadow: 0 12px 30px -18px rgba(33, 112, 245, 0.6);
+    }
+    .btn-primary:hover {
+        background-color: #1c63d9;
+        border-color: #1c63d9;
+    }
+    .btn-secondary {
+        background-color: #ffffff;
+        color: #334155;
+        border-color: #e2e8f0;
+    }
+    .btn-secondary:hover {
+        border-color: #2170F5;
+        color: #2170F5;
+    }
+    .btn-primary svg,
+    .btn-secondary svg {
+        width: 1.1rem;
+        height: 1.1rem;
+        transition: transform 0.3s ease;
+    }
+    .btn-primary:hover svg,
+    .btn-secondary:hover svg {
+        transform: translateX(4px);
     }
 }

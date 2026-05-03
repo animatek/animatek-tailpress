@@ -25,7 +25,7 @@ module.exports = {
                 accent: '#24B979',
             },
             fontFamily: {
-                sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                sans: ['"Inter Variable"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             },
         },
     },

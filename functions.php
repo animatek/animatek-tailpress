@@ -9,7 +9,7 @@ function tailpress(): TailPress\Framework\Theme
     return TailPress\Framework\Theme::instance()
         ->assets(fn($manager) => $manager
             ->withCompiler(new TailPress\Framework\Assets\ViteCompiler, fn($compiler) => $compiler
-                ->registerAsset('resources/css/app.css', ['animatek-inter'])
+                ->registerAsset('resources/css/app.css')
                 ->registerAsset('resources/js/app.js')
                 ->editorStyleFile('resources/css/editor-style.css')
             )
@@ -55,11 +55,6 @@ add_action( 'wp_enqueue_scripts', function() {
 
 function animatek_enqueue_assets(): void
 {
-    $font_handle = 'animatek-inter';
-    $font_url = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
-
-    wp_enqueue_style($font_handle, $font_url, [], null);
-
     // Evita cargar el JS/CSS dos veces si TailPress ya los encoló.
     $tailpress_handle = 'tailpress-app';
     if (
@@ -78,7 +73,7 @@ function animatek_enqueue_assets(): void
         $js_file  = $manifest['resources/js/app.js']['file'] ?? null;
 
         if ($css_file && !wp_style_is('tailpress-app', 'enqueued')) {
-            wp_enqueue_style('animatek-main', get_theme_file_uri('dist/'.$css_file), [$font_handle], null);
+            wp_enqueue_style('animatek-main', get_theme_file_uri('dist/'.$css_file), [], null);
         }
 
         if ($js_file && !wp_script_is('tailpress-app', 'enqueued')) {

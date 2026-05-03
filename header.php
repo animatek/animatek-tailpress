@@ -12,53 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style id="animatek-buttons">
-        .btn-primary,
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            font-weight: 700;
-            border-radius: 0.75rem;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        .btn-primary {
-            background-color: #2170F5;
-            color: #ffffff;
-            border-color: #2170F5;
-            box-shadow: 0 12px 30px -18px rgba(33, 112, 245, 0.6);
-        }
-        .btn-primary:hover {
-            background-color: #1c63d9;
-            border-color: #1c63d9;
-        }
-        .btn-secondary {
-            background-color: #ffffff;
-            color: #334155;
-            border-color: #e2e8f0;
-        }
-        .btn-secondary:hover {
-            border-color: #2170F5;
-            color: #2170F5;
-        }
-        .btn-primary svg,
-        .btn-secondary svg {
-            width: 1.1rem;
-            height: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-        .btn-primary:hover svg,
-        .btn-secondary:hover svg {
-            transform: translateX(4px);
-        }
-    </style>
     <script>
     (function() {
         var t = null;
@@ -133,10 +86,6 @@
                         echo $menu_markup;
                         ?>
                     <?php endif; ?>
-
-                  
-
-      <!--            <div class="hidden lg:inline-block"><?php get_search_form(); ?></div> -->
                 </nav>
 
                 <!-- Dark mode toggle -->
@@ -159,6 +108,12 @@
 
 
     </header>
+
+    <?php if (function_exists('rank_math_the_breadcrumbs')) : ?>
+        <div class="max-w-7xl mx-auto px-6 py-2 text-sm text-slate-600 dark:text-slate-400">
+            <?php rank_math_the_breadcrumbs(); ?>
+        </div>
+    <?php endif; ?>
 
     <div id="content" class="site-content grow">
         <?php do_action('tailpress_content_start'); ?>
