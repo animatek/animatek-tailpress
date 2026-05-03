@@ -32,15 +32,14 @@ No test suite or linter is configured.
 - `resources/css/custom.css` — `.entry-content` and `.block-editor-block-list__layout` typography rules (headings, lists, links, figures)
 - `resources/css/utilities.css` — WordPress alignment utilities (`container`, `alignfull`, `alignwide`, `alignnone`, `aligncenter`)
 - `resources/css/editor-style.css` — Block editor styling
-- `header.php` — Inline `<style id="animatek-buttons">` defines `.btn-primary` and `.btn-secondary` classes (used across page templates)
+- `.btn-primary` and `.btn-secondary` classes are defined in `resources/css/app.css` (light) and `resources/css/dark.css` (dark mode overrides), used across page templates
 
 ### Tailwind Configuration
 
-Two config layers coexist during the v3→v4 migration:
-- `tailwind.config.js` — v3-style config with content paths, custom colors (`primary: #2170F5`, `accent: #24B979`), Inter font family, and safelist loaded from `safelist.txt`
-- `@source` directives in `app.css` + `@theme` block in `theme.css` — v4-style content scanning and variable mappings
-
-**Note:** Color values differ slightly across config files (e.g. `primary` is `#2170F5` in tailwind.config.js, `#2C7FFF` in theme.json, `#2B68F0` for h2 in CSS). The Tailwind v4 `@theme` block in `theme.css` reads from `theme.json` via WordPress CSS custom properties, so `theme.json` is the canonical source for the block editor palette.
+Pure Tailwind v4: no `tailwind.config.js`. Configuration lives in CSS:
+- `@source` directives in `app.css` declare content paths for JIT scanning
+- `@theme` block in `theme.css` defines design tokens (breakpoints, colors, fonts). `--color-primary` and `--color-accent` are read here; `bg-accent`/`text-accent`/`bg-primary` etc. are generated from these tokens.
+- Brand color is unified to `#2C7FFF` (matching `theme.json`)
 
 ### PHP Structure
 
