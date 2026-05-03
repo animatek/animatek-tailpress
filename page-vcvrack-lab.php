@@ -150,12 +150,12 @@ get_header();
     <!-- LOCKER GATE -->
     <div id="locker-gate" class="max-w-4xl mx-auto px-6 mb-12 text-center relative z-20">
         <div
-            class="bg-white p-8 rounded-2xl border border-slate-200 shadow-xl ring-4 ring-slate-50 relative overflow-hidden">
+            class="bg-white p-8 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-xl ring-4 ring-slate-50 relative overflow-hidden">
 
             <!-- Icon & Title -->
             <div class="mb-6">
                 <span
-                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4 animate-bounce">
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 mb-4 animate-bounce">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -313,7 +313,7 @@ get_header();
 
         <!-- 1. Introducción y Ecosistema -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
-            <div class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden relative p-8 sm:p-12">
+            <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden relative p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3">
                     <span
                         class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center">1</span>
@@ -333,9 +333,9 @@ get_header();
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
                         <a href="https://www.youtube.com/user/animatek" target="_blank"
-                            class="flex items-center p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-red-500 hover:bg-white transition-all group shadow-sm">
+                            class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-800/60 transition-all group shadow-sm">
                             <span
-                                class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center mr-4 group-hover:bg-red-600 group-hover:text-white transition-all">
+                                class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 flex items-center justify-center mr-4 group-hover:bg-red-600 group-hover:text-white transition-all">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
@@ -347,9 +347,9 @@ get_header();
                             </div>
                         </a>
                         <a href="https://discord.gg/emUkHRrvtk" target="_blank"
-                            class="flex items-center p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-500 hover:bg-white transition-all group shadow-sm">
+                            class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-800/60 transition-all group shadow-sm">
                             <span
-                                class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-4 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                                class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 flex items-center justify-center mr-4 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z" />
@@ -361,9 +361,9 @@ get_header();
                             </div>
                         </a>
                         <a href="https://www.facebook.com/groups/spainvcvrackusers" target="_blank"
-                            class="flex items-center p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-500 hover:bg-white transition-all group shadow-sm">
+                            class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-800/60 transition-all group shadow-sm">
                             <span
-                                class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-4 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 flex items-center justify-center mr-4 group-hover:bg-blue-600 group-hover:text-white transition-all">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -376,9 +376,9 @@ get_header();
                         </a>
                         <a href="https://patchstorage.com/explore/?search_query=&tax_platform%5B%5D=vcv-rack&tax_post_tag=&orderby=modified&wpas_id=search_form&wpas_submit=1"
                             target="_blank"
-                            class="flex items-center p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-500 hover:bg-white transition-all group shadow-sm">
+                            class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-800/60 transition-all group shadow-sm">
                             <span
-                                class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mr-4 group-hover:bg-amber-600 group-hover:text-white transition-all">
+                                class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 flex items-center justify-center mr-4 group-hover:bg-amber-600 group-hover:text-white transition-all">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 19V5h14v14H5zm3-12h8v2H8zm0 4h8v2H8zm0 4h5v2H8z" />
@@ -389,10 +389,24 @@ get_header();
                                 <div class="text-sm text-slate-500">Librería de patches</div>
                             </div>
                         </a>
-                        <a href="https://www.reddit.com/r/vcvrack/" target="_blank"
-                            class="flex items-center p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-500 hover:bg-white transition-all group shadow-sm">
+                        <a href="<?php echo esc_url(home_url('/glosario/')); ?>"
+                            class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-800/60 transition-all group shadow-sm">
                             <span
-                                class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-4 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                                class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 flex items-center justify-center mr-4 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                                </svg>
+                            </span>
+                            <div>
+                                <div class="font-bold text-slate-800">Glosario</div>
+                                <div class="text-sm text-slate-500">Términos de síntesis y VCV Rack</div>
+                            </div>
+                        </a>
+                        <a href="https://www.reddit.com/r/vcvrack/" target="_blank"
+                            class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-800/60 transition-all group shadow-sm">
+                            <span
+                                class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 flex items-center justify-center mr-4 group-hover:bg-orange-600 group-hover:text-white transition-all">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
@@ -404,9 +418,9 @@ get_header();
                             </div>
                         </a>
                         <a href="https://community.vcvrack.com/" target="_blank"
-                            class="flex items-center p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-teal-500 hover:bg-white transition-all group shadow-sm">
+                            class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-800/60 transition-all group shadow-sm">
                             <span
-                                class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mr-4 group-hover:bg-teal-600 group-hover:text-white transition-all">
+                                class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 flex items-center justify-center mr-4 group-hover:bg-teal-600 group-hover:text-white transition-all">
                                 <img src="https://animatek.net/wp-content/uploads/2025/11/logovcv.webp" alt="VCV Rack"
                                     class="w-6 h-6 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
                             </span>
@@ -417,7 +431,7 @@ get_header();
                         </a>
                     </div>
 
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 my-8">
+                    <div class="bg-slate-50 dark:bg-slate-800/40 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/50 my-8">
                         <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">🤔 ¿VCV Rack Free, Pro o
                             Cardinal?</h3>
                         <p class="text-sm text-slate-600 mb-6">
@@ -427,9 +441,9 @@ get_header();
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                             <!-- Free -->
                             <a href="https://vcvrack.com/Rack" target="_blank"
-                                class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-green-400 transition-colors block">
+                                class="bg-white p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors block">
                                 <span
-                                    class="inline-block px-2 py-1 rounded text-[10px] font-bold bg-green-100 text-green-700 mb-2">FREE</span>
+                                    class="inline-block px-2 py-1 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800/40 text-slate-700 mb-2">FREE</span>
                                 <strong class="block text-slate-900 mb-1">Standalone</strong>
                                 <p class="text-xs text-slate-500">App independiente. Ideal para aprender y directos.
                                     Gratuita.</p>
@@ -437,9 +451,9 @@ get_header();
 
                             <!-- Pro -->
                             <a href="https://vcvrack.com/Rack#get" target="_blank"
-                                class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-purple-400 transition-colors block">
+                                class="bg-white p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors block">
                                 <span
-                                    class="inline-block px-2 py-1 rounded text-[10px] font-bold bg-purple-100 text-purple-700 mb-2">PRO</span>
+                                    class="inline-block px-2 py-1 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800/40 text-slate-700 mb-2">PRO</span>
                                 <strong class="block text-slate-900 mb-1">VST Plugin</strong>
                                 <p class="text-xs text-slate-500">Úsalo DENTRO de Ableton/Logic. De pago. Soporte oficial.
                                 </p>
@@ -447,17 +461,17 @@ get_header();
 
                             <!-- Fork -->
                             <a href="https://cardinal.kx.studio/" target="_blank"
-                                class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-orange-400 transition-colors block">
+                                class="bg-white p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors block">
                                 <span
-                                    class="inline-block px-2 py-1 rounded text-[10px] font-bold bg-orange-100 text-orange-700 mb-2">FORK</span>
+                                    class="inline-block px-2 py-1 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800/40 text-slate-700 mb-2">FORK</span>
                                 <strong class="block text-slate-900 mb-1">Cardinal</strong>
                                 <p class="text-xs text-slate-500">Versión VST gratuita y Open Source. La alternativa
                                     inteligente.</p>
                             </a>
                         </div>
 
-                        <p class="text-slate-800 font-bold border-t border-slate-200 pt-4 text-center">
-                            🚀 Recomendación: Empieza con la versión <span class="text-green-600">Standalone
+                        <p class="text-slate-800 font-bold border-t border-slate-200 dark:border-slate-700/50 pt-4 text-center">
+                            🚀 Recomendación: Empieza con la versión <span class="text-slate-600">Standalone
                                 Gratuita</span>.
                         </p>
                     </div>
@@ -471,9 +485,9 @@ get_header();
         <!-- 2. Primeros Pasos: Interfaz y Cables -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
             <div
-                class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
+                class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-slate-100 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute top-0 right-0 w-64 h-64 bg-slate-100 dark:bg-slate-800/40 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 dark:opacity-5 group-hover:opacity-100 dark:group-hover:opacity-10 transition-opacity">
                 </div>
 
                 <h2 class="mb-8 flex items-center gap-3 relative z-10">
@@ -491,7 +505,7 @@ get_header();
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 relative z-10">
                     <!-- Module Mgmt -->
                     <div
-                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-primary/30 transition-colors">
+                        class="bg-white p-6 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-primary/30 transition-colors">
                         <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                             <span>📦</span> Gestión de Módulos
                         </h3>
@@ -499,22 +513,22 @@ get_header();
                             <li class="flex flex-col gap-1">
                                 <span class="font-semibold text-slate-900 flex items-center gap-2">➕ Añadir</span>
                                 <span><kbd
-                                        class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200">Click
+                                        class="bg-slate-100 dark:bg-slate-800/40 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200 dark:border-slate-700/50">Click
                                         Dcho</kbd> o pulsa <kbd
-                                        class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200">ENTER</kbd>
+                                        class="bg-slate-100 dark:bg-slate-800/40 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200 dark:border-slate-700/50">ENTER</kbd>
                                     en cualquier parte del patch.</span>
                             </li>
                             <li class="flex flex-col gap-1">
                                 <span class="font-semibold text-slate-900 flex items-center gap-2">✋ Mover</span>
                                 <span>Arrastra con <kbd
-                                        class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200">Click
+                                        class="bg-slate-100 dark:bg-slate-800/40 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200 dark:border-slate-700/50">Click
                                         Izqd</kbd>. (Usa <kbd
-                                        class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200">Ctrl</kbd>
+                                        class="bg-slate-100 dark:bg-slate-800/40 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200 dark:border-slate-700/50">Ctrl</kbd>
                                     + Arrastrar para empujar varios).</span>
                             </li>
                             <li class="flex flex-col gap-1 pt-2 pb-1">
                                 <p
-                                    class="text-sm bg-yellow-50 text-slate-700 p-3 rounded-lg border border-yellow-100 italic">
+                                    class="text-sm bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 p-3 rounded-lg border border-slate-200 dark:border-slate-700 italic">
                                     "Puedes gestionar grupos de módulos seleccionandolos y puedes guardarlos y
                                     rellamarlos, esto es lo mas parecido a un preset que vas a encontrar en VCV."
                                 </p>
@@ -523,7 +537,7 @@ get_header();
                                 <span class="font-semibold text-slate-900 flex items-center gap-2">💾 Guardar
                                     Selección</span>
                                 <span>Selecciona varios módulos, <kbd
-                                        class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200">Click
+                                        class="bg-slate-100 dark:bg-slate-800/40 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200 dark:border-slate-700/50">Click
                                         Dcho</kbd> y elige "Save selection as...".</span>
                             </li>
                             <li class="flex flex-col gap-1">
@@ -536,7 +550,7 @@ get_header();
 
                     <!-- Cable Mgmt -->
                     <div
-                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-primary/30 transition-colors">
+                        class="bg-white p-6 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-primary/30 transition-colors">
                         <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                             <span>🔌</span> Gestión de Cables
                         </h3>
@@ -548,11 +562,11 @@ get_header();
                             <div class="flex flex-col gap-1">
                                 <span class="font-semibold text-slate-900">Apilar cables (Stack)</span>
                                 <p>Mantén <kbd
-                                        class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200">Ctrl</kbd>
+                                        class="bg-slate-100 dark:bg-slate-800/40 px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-200 dark:border-slate-700/50">Ctrl</kbd>
                                     al conectar para sacar múltiples cables de una sola salida (Mult).</p>
                             </div>
 
-                            <div class="mt-4 p-3 bg-slate-50 rounded-lg border border-slate-100 text-center">
+                            <div class="mt-4 p-3 bg-slate-50 dark:bg-slate-800/40 rounded-lg border border-slate-100 dark:border-slate-700/50 text-center">
                                 <img src="https://animatek.net/wp-content/uploads/2026/01/colores_Cables.webp"
                                     alt="Cable Menu" class="w-full h-auto rounded object-cover shadow-sm mb-2">
                                 <p class="text-xs italic">"Click derecho en el puerto para elegir color antes de sacar
@@ -564,8 +578,8 @@ get_header();
                 </div>
 
                 <!-- Visual Infographic for Cables -->
-                <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm relative z-10">
-                    <div class="px-6 py-4 border-b border-slate-200">
+                <div class="bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-700/50 overflow-hidden shadow-sm relative z-10">
+                    <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-700/50">
                         <h3 class="text-lg font-bold text-slate-800">Código de Colores (Método Animatek)</h3>
                         <p class="text-slate-500 text-sm">Estandariza tus parches para leer el flujo de señal de un
                             vistazo.
@@ -575,7 +589,7 @@ get_header();
                         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
 
                         <!-- AUDIO -->
-                        <div class="p-6 relative group overflow-hidden hover:bg-white transition-colors">
+                        <div class="p-6 relative group overflow-hidden hover:bg-white dark:hover:bg-slate-800/60 transition-colors">
                             <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                                 <!-- Icon reused -->
                             </div>
@@ -587,8 +601,8 @@ get_header();
                         </div>
 
                         <!-- TRIGGER -->
-                        <div class="p-6 relative group overflow-hidden hover:bg-slate-50 transition-colors">
-                            <div class="w-full h-2 bg-blue-500 rounded-full mb-4 shadow-sm"></div>
+                        <div class="p-6 relative group overflow-hidden hover:bg-slate-50 dark:bg-slate-800/40 dark:hover:bg-slate-800/60 transition-colors">
+                            <div class="w-full h-2 bg-cyan-400 rounded-full mb-4 shadow-sm"></div>
                             <h4 class="text-blue-600 font-bold mb-2 flex items-center gap-2"><span>⚡</span> CLCK / TRIG
                                 /
                                 GATE</h4>
@@ -596,7 +610,7 @@ get_header();
                         </div>
 
                         <!-- PITCH -->
-                        <div class="p-6 relative group overflow-hidden hover:bg-slate-50 transition-colors">
+                        <div class="p-6 relative group overflow-hidden hover:bg-slate-50 dark:bg-slate-800/40 dark:hover:bg-slate-800/60 transition-colors">
                             <div class="w-full h-2 bg-yellow-400 rounded-full mb-4 shadow-sm"></div>
                             <h4 class="text-yellow-600 font-bold mb-2 flex items-center gap-2"><span>🎹</span> V/OCT
                             </h4>
@@ -604,8 +618,8 @@ get_header();
                         </div>
 
                         <!-- MODULATION -->
-                        <div class="p-6 relative group overflow-hidden hover:bg-slate-50 transition-colors">
-                            <div class="w-full h-2 bg-green-500 rounded-full mb-4 shadow-sm"></div>
+                        <div class="p-6 relative group overflow-hidden hover:bg-slate-50 dark:bg-slate-800/40 dark:hover:bg-slate-800/60 transition-colors">
+                            <div class="w-full h-2 bg-green-400 rounded-full mb-4 shadow-sm"></div>
                             <h4 class="text-green-600 font-bold mb-2 flex items-center gap-2"><span>🌊</span>
                                 MODULACIONES
                             </h4>
@@ -619,7 +633,7 @@ get_header();
 
         <!-- 3. Configuración Audio & MIDI -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
-            <div class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12">
+            <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3 relative z-10">
                     <span
                         class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center">3</span>
@@ -645,36 +659,36 @@ get_header();
 
                             <div class="grid grid-cols-2 gap-4">
                                 <!-- Card 1 -->
-                                <div class="col-span-2 bg-indigo-50/50 rounded-xl p-4 border border-indigo-100">
-                                    <strong class="block text-indigo-900 mb-1 text-sm">📡 MIDI-CV (Entrada)</strong>
+                                <div class="col-span-2 bg-slate-50 dark:bg-slate-800/40/50 dark:bg-slate-800/40 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50">
+                                    <strong class="block text-slate-800 dark:text-slate-200 mb-1 text-sm">📡 MIDI-CV (Entrada)</strong>
                                     <p class="text-xs text-slate-600">Recibe notas de tu teclado y las convierte en
                                         voltaje
                                         para el rack.</p>
                                 </div>
 
                                 <!-- Outputs List -->
-                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 dark:border-slate-700/50">
                                     <strong class="text-primary text-sm block mb-1">V/OCT</strong>
                                     <span class="text-xs text-slate-500">¿Qué nota es?</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 dark:border-slate-700/50">
                                     <strong class="text-primary text-sm block mb-1">GATE</strong>
                                     <span class="text-xs text-slate-500">¿Tecla pulsada?</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 dark:border-slate-700/50">
                                     <strong class="text-primary text-sm block mb-1">VEL</strong>
                                     <span class="text-xs text-slate-500">¿Con qué fuerza?</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 dark:border-slate-700/50">
                                     <strong class="text-primary text-sm block mb-1">CLK</strong>
                                     <span class="text-xs text-slate-500">Sincronía BPM.</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 dark:border-slate-700/50">
                                     <strong class="text-primary text-sm block mb-1">CLK/N</strong>
                                     <span class="text-xs text-slate-500">Subdivisiones de reloj (Click Dcho >
                                         Opciones).</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 dark:border-slate-700/50">
                                     <strong class="text-primary text-sm block mb-1">RETR</strong>
                                     <span class="text-xs text-slate-500">Reinicia las envolventes (Retrigger).</span>
                                 </div>
@@ -684,15 +698,15 @@ get_header();
                         <!-- Image Content -->
                         <div class="w-full md:w-1/2 order-1 md:order-2">
                             <div
-                                class="group relative max-w-[380px] mx-auto rounded-2xl p-2 bg-white border border-slate-200 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1 md:-mt-18">
+                                class="group relative max-w-[380px] mx-auto rounded-2xl p-2 bg-white border border-slate-200 dark:border-slate-700/50 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1 md:-mt-18">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-tr from-slate-100 via-transparent to-slate-50 rounded-2xl -z-10">
                                 </div>
                                 <img src="https://animatek.net/wp-content/uploads/2026/01/ModulosMIDI.webp"
                                     alt="Módulos MIDI-CV y CV-MIDI en VCV Rack"
-                                    class="w-full h-auto rounded-xl shadow-sm">
+                                    class="w-full h-auto rounded-xl shadow-sm dark:shadow-none dark:ring-1 dark:ring-white/10">
                                 <div
-                                    class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-xs font-medium text-slate-600 border border-white/50 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+                                    class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm px-4 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 border border-white/50 dark:border-slate-700/50 shadow-sm text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     MIDI-CV (Izquierda) &bull; CV-MIDI (Derecha)
                                 </div>
                             </div>
@@ -707,14 +721,14 @@ get_header();
                         <!-- Image Content -->
                         <div class="w-full md:w-1/2">
                             <div
-                                class="group relative rounded-2xl p-2 bg-white border border-slate-200 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1">
+                                class="group relative rounded-2xl p-2 bg-white border border-slate-200 dark:border-slate-700/50 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-tl from-slate-100 via-transparent to-slate-50 rounded-2xl -z-10">
                                 </div>
                                 <img src="https://animatek.net/wp-content/uploads/2026/01/Audio_Decvices.webp"
-                                    alt="Módulos de Audio en VCV Rack" class="w-full h-auto rounded-xl shadow-sm">
+                                    alt="Módulos de Audio en VCV Rack" class="w-full h-auto rounded-xl shadow-sm dark:shadow-none dark:ring-1 dark:ring-white/10">
                                 <div
-                                    class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-xs font-medium text-slate-600 border border-white/50 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+                                    class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm px-4 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 border border-white/50 dark:border-slate-700/50 shadow-sm text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     Audio 8, Audio 2 & Audio 16
                                 </div>
                             </div>
@@ -728,23 +742,23 @@ get_header();
                                 El módulo <strong>Audio 8</strong> es tu tarjeta de sonido virtual.
                             </p>
 
-                            <div class="bg-indigo-50/50 rounded-xl p-5 border border-indigo-100 mb-6 space-y-3">
+                            <div class="bg-slate-50 dark:bg-slate-800/40/50 dark:bg-slate-800/40 rounded-xl p-5 border border-slate-200 dark:border-slate-700/50 mb-6 space-y-3">
                                 <div class="flex items-center gap-3">
                                     <span
-                                        class="h-6 w-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">1</span>
+                                        class="h-6 w-6 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-700 text-xs font-bold flex items-center justify-center">1</span>
                                     <span class="text-sm text-slate-700"><strong>Driver:</strong> ASIO / WASAPI /
                                         CoreAudio / ALSA / JACK / PulseAudio.</span>
                                 </div>
                                 <div class="flex items-center gap-3">
                                     <span
-                                        class="h-6 w-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">2</span>
+                                        class="h-6 w-6 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-700 text-xs font-bold flex items-center justify-center">2</span>
                                     <span class="text-sm text-slate-700"><strong>Device:</strong> Tu interfaz de audio
                                         (ej:
                                         Focusrite).</span>
                                 </div>
                                 <div class="flex items-center gap-3">
                                     <span
-                                        class="h-6 w-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">3</span>
+                                        class="h-6 w-6 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-700 text-xs font-bold flex items-center justify-center">3</span>
                                     <span class="text-sm text-slate-700"><strong>Buffer:</strong> Latencia vs
                                         Estabilidad.</span>
                                 </div>
@@ -778,19 +792,19 @@ get_header();
                         <!-- Image Content -->
                         <div class="w-full md:w-1/2 order-1 md:order-2">
                             <div
-                                class="group relative rounded-2xl p-2 bg-white border border-slate-200 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1">
+                                class="group relative rounded-2xl p-2 bg-white border border-slate-200 dark:border-slate-700/50 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-tr from-slate-100 via-transparent to-slate-50 rounded-2xl -z-10">
                                 </div>
                                 <img src="https://animatek.net/wp-content/uploads/2026/01/Modulos_de_mapeo.webp"
-                                    alt="Mapeo MIDI y Control" class="w-full h-auto rounded-xl shadow-sm">
+                                    alt="Mapeo MIDI y Control" class="w-full h-auto rounded-xl shadow-sm dark:shadow-none dark:ring-1 dark:ring-white/10">
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Pro Tip Box -->
                 <blockquote
-                    class="mt-8 border-l-4 border-slate-400 bg-slate-50 p-4 rounded-r-xl relative z-10 w-full col-span-2">
+                    class="mt-8 border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-r-xl relative z-10 w-full col-span-2">
                     <div class="flex items-center gap-2 mb-1 text-slate-700 font-bold text-xs uppercase tracking-wider">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -811,7 +825,7 @@ get_header();
 
         <!-- 4. Conceptos Básicos: VCO -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
-            <div class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12">
+            <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
 
                 <div class="flex flex-col md:flex-row gap-8 lg:gap-12 items-start">
 
@@ -837,26 +851,26 @@ get_header();
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                             <!-- Card 1: Outputs -->
                             <div
-                                class="bg-indigo-50/50 rounded-xl p-4 border border-indigo-100 hover:border-indigo-300 transition-colors">
+                                class="bg-slate-50 dark:bg-slate-800/40/50 dark:bg-slate-800/40 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 dark:hover:border-indigo-600 transition-colors">
                                 <h4
                                     class="text-primary font-bold mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
                                     <span>📤</span> Salidas
                                 </h4>
                                 <ul class="space-y-2 text-sm text-slate-700">
                                     <li
-                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-indigo-100">
+                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-slate-200 dark:border-slate-700/50">
                                         <span class="font-bold text-lg leading-none">~</span> Sinusoidal (Pura)
                                     </li>
                                     <li
-                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-indigo-100">
+                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-slate-200 dark:border-slate-700/50">
                                         <span class="font-bold text-lg leading-none">/\</span> Triangular (Suave)
                                     </li>
                                     <li
-                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-indigo-100">
+                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-slate-200 dark:border-slate-700/50">
                                         <span class="font-bold text-lg leading-none">N</span> Diente de Sierra (Rica)
                                     </li>
                                     <li
-                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-indigo-100">
+                                        class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-slate-200 dark:border-slate-700/50">
                                         <span class="font-bold text-lg leading-none">Π</span> Cuadrada (Digital)
                                     </li>
                                 </ul>
@@ -864,19 +878,19 @@ get_header();
 
                             <!-- Card 2: Inputs -->
                             <div
-                                class="bg-green-50/50 rounded-xl p-4 border border-green-100 hover:border-green-300 transition-colors">
+                                class="bg-slate-50 dark:bg-slate-800/40/50 dark:bg-slate-800/40 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50 hover:border-slate-400 dark:hover:border-green-600 transition-colors">
                                 <h4
-                                    class="text-green-600 font-bold mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
+                                    class="text-slate-600 font-bold mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
                                     <span>📥</span> Entradas
                                 </h4>
                                 <ul class="space-y-2 text-sm text-slate-700">
-                                    <li class="flex justify-between items-center border-b border-green-100 pb-1">
+                                    <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50 pb-1">
                                         <span>V/OCT</span> <span class="text-xs text-slate-400">Afinación</span>
                                     </li>
-                                    <li class="flex justify-between items-center border-b border-green-100 pb-1">
+                                    <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50 pb-1">
                                         <span>FM</span> <span class="text-xs text-slate-400">Vibrato</span>
                                     </li>
-                                    <li class="flex justify-between items-center border-b border-green-100 pb-1">
+                                    <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50 pb-1">
                                         <span>PWM</span> <span class="text-xs text-slate-400">Ancho Pulso</span>
                                     </li>
                                     <li class="flex justify-between items-center"><span>SYNC</span> <span
@@ -911,15 +925,15 @@ get_header();
                     <!-- Image Content (Right) -->
                     <div class="w-full md:w-1/2 order-1 md:order-2">
                         <div
-                            class="group relative max-w-[480x] mx-auto rounded-2xl p-2 bg-white border border-slate-200 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1 md:mt-4">
+                            class="group relative max-w-[480x] mx-auto rounded-2xl p-2 bg-white border border-slate-200 dark:border-slate-700/50 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 transform hover:-translate-y-1 md:mt-4">
                             <div
                                 class="absolute inset-0 bg-gradient-to-tl from-slate-100 via-transparent to-slate-50 rounded-2xl -z-10">
                             </div>
                             <img src="https://animatek.net/wp-content/uploads/2026/01/VCOS.webp"
                                 alt="Módulos VCO: VCV, Surge XT Classic y Befaco Even"
-                                class="w-full h-auto rounded-xl shadow-sm">
+                                class="w-full h-auto rounded-xl shadow-sm dark:shadow-none dark:ring-1 dark:ring-white/10">
                             <div
-                                class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-xs font-medium text-slate-600 border border-white/50 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+                                class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm px-4 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 border border-white/50 dark:border-slate-700/50 shadow-sm text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 VCV VCO &bull; Surge Classic &bull; Befaco Even
                             </div>
                         </div>
@@ -933,13 +947,13 @@ get_header();
         <!-- 5. Filters VCF -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
             <div
-                class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
+                class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute top-0 right-0 w-64 h-64 bg-slate-100 dark:bg-slate-800/40 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 dark:opacity-5 group-hover:opacity-100 dark:group-hover:opacity-10 transition-opacity">
                 </div>
                 <h2 class="mb-8 flex items-center gap-3 relative z-10">
                     <span
-                        class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm font-bold flex items-center justify-center">5</span>
+                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 text-sm font-bold flex items-center justify-center">5</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-8 h-8 text-indigo-500">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -951,8 +965,8 @@ get_header();
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                     <!-- Card 1 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 transition-colors">
-                        <strong class="block text-indigo-900 mb-2 font-bold text-lg">✂️ Síntesis Sustractiva</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">✂️ Síntesis Sustractiva</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             El filtro es el escultor. Comenzamos con un tono rico (onda de sierra) y <strong>eliminamos
                                 frecuencias</strong> para moldear el timbre final.
@@ -960,19 +974,19 @@ get_header();
                     </div>
                     <!-- Card 2 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 transition-colors">
-                        <strong class="block text-indigo-900 mb-2 font-bold text-lg">📉 Tipos de Corte</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">📉 Tipos de Corte</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            <span class="font-semibold text-indigo-700">LPF (Paso Bajo):</span> Corta agudos (sonido
+                            <span class="font-semibold text-slate-700">LPF (Paso Bajo):</span> Corta agudos (sonido
                             opaco).<br>
-                            <span class="font-semibold text-indigo-700">HPF (Paso Alto):</span> Corta graves (sonido
+                            <span class="font-semibold text-slate-700">HPF (Paso Alto):</span> Corta graves (sonido
                             fino).
                         </p>
                     </div>
                     <!-- Card 3 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 transition-colors">
-                        <strong class="block text-indigo-900 mb-2 font-bold text-lg">🎛️ Control por Voltaje</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">🎛️ Control por Voltaje</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Un <em>Voltage Controlled Filter (VCF)</em> permite mover el corte (Cutoff) automáticamente
                             usando <strong>envolventes o LFOs</strong>.
@@ -980,8 +994,8 @@ get_header();
                     </div>
                     <!-- Card 4 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-indigo-400 transition-colors">
-                        <strong class="block text-indigo-900 mb-2 font-bold text-lg">📦 Variantes</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">📦 Variantes</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Desde los clásicos analógicos hasta los <strong>Low Pass Gates (LPG)</strong> que controlan
                             tono y volumen simultáneamente (estilo Buchla).
@@ -990,9 +1004,9 @@ get_header();
                 </div>
 
                 <!-- Pro Tip Box -->
-                <blockquote class="mt-8 border-l-4 border-indigo-400 bg-indigo-50/50 p-4 rounded-r-xl relative z-10">
+                <blockquote class="mt-8 border-l-4 border-slate-400 dark:border-indigo-500 bg-slate-50 dark:bg-slate-800/40/50 dark:bg-slate-800/40 p-4 rounded-r-xl relative z-10">
                     <div
-                        class="flex items-center gap-2 mb-1 text-indigo-700 font-bold text-xs uppercase tracking-wider">
+                        class="flex items-center gap-2 mb-1 text-slate-700 font-bold text-xs uppercase tracking-wider">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1014,13 +1028,13 @@ get_header();
         <!-- 6. ADSR -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
             <div
-                class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
+                class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute top-0 right-0 w-64 h-64 bg-slate-100 dark:bg-slate-800/40 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 dark:opacity-5 group-hover:opacity-100 dark:group-hover:opacity-10 transition-opacity">
                 </div>
                 <h2 class="mb-8 flex items-center gap-3 relative z-10">
                     <span
-                        class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 text-sm font-bold flex items-center justify-center">6</span>
+                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 text-sm font-bold flex items-center justify-center">6</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                         stroke="currentColor" class="w-8 h-8 text-blue-500">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h4.5l3 7.5 6-15 3 7.5h4.5" />
@@ -1031,8 +1045,8 @@ get_header();
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                     <!-- Card 1 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 transition-colors">
-                        <strong class="block text-blue-900 mb-2 font-bold text-lg">🔄 Ciclo de Vida</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">🔄 Ciclo de Vida</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Cuatro etapas dan forma a la nota:<br>
                             <strong>Attack</strong> (Subida), <strong>Decay</strong> (Caída), <strong>Sustain</strong>
@@ -1041,8 +1055,8 @@ get_header();
                     </div>
                     <!-- Card 2 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 transition-colors">
-                        <strong class="block text-blue-900 mb-2 font-bold text-lg">⚡ Generación de CV</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">⚡ Generación de CV</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Convierte un disparo (Gate) en una <strong>curva de voltaje</strong> que dibuja la evolución
                             del
@@ -1051,8 +1065,8 @@ get_header();
                     </div>
                     <!-- Card 3 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 transition-colors">
-                        <strong class="block text-blue-900 mb-2 font-bold text-lg">🎯 Destinos Clave</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">🎯 Destinos Clave</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Se conecta al <strong>VCA</strong> (para el volumen) y al <strong>VCF</strong> (para el
                             brillo). Sin ADSR, el sonido sería un "beep" estático "on/off".
@@ -1060,8 +1074,8 @@ get_header();
                     </div>
                     <!-- Card 4 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-400 transition-colors">
-                        <strong class="block text-blue-900 mb-2 font-bold text-lg">🚪 Gate vs. Trigger</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">🚪 Gate vs. Trigger</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             El <strong>Gate</strong> sostiene la nota (fase Sustain). El <strong>Trigger</strong> solo
                             la
@@ -1071,8 +1085,8 @@ get_header();
                 </div>
 
                 <!-- Pro Tip Box -->
-                <blockquote class="mt-8 border-l-4 border-blue-400 bg-blue-50/50 p-4 rounded-r-xl relative z-10">
-                    <div class="flex items-center gap-2 mb-1 text-blue-700 font-bold text-xs uppercase tracking-wider">
+                <blockquote class="mt-8 border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-r-xl relative z-10">
+                    <div class="flex items-center gap-2 mb-1 text-slate-700 font-bold text-xs uppercase tracking-wider">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1091,13 +1105,13 @@ get_header();
         <!-- 7. Modulaciones -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
             <div
-                class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
+                class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-purple-100 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute top-0 right-0 w-64 h-64 bg-slate-100 dark:bg-slate-800/40 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 dark:opacity-5 group-hover:opacity-100 dark:group-hover:opacity-10 transition-opacity">
                 </div>
                 <h2 class="mb-8 flex items-center gap-3 relative z-10">
                     <span
-                        class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 text-sm font-bold flex items-center justify-center">7</span>
+                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 text-sm font-bold flex items-center justify-center">7</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-8 h-8 text-purple-500">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -1109,8 +1123,8 @@ get_header();
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                     <!-- Card 1 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-purple-400 transition-colors">
-                        <strong class="block text-purple-900 mb-2 font-bold text-lg">🌊 Fuentes de Movimiento</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">🌊 Fuentes de Movimiento</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Los moduladores son las "manos invisibles" que giran los knobs por ti. Generan voltaje para
                             <strong>alterar parámetros</strong> automáticamente.
@@ -1118,8 +1132,8 @@ get_header();
                     </div>
                     <!-- Card 2 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-purple-400 transition-colors">
-                        <strong class="block text-purple-900 mb-2 font-bold text-lg">🐌 LFOs</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">🐌 LFOs</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             <em>Low Frequency Oscillators</em>. Son osciladores tan lentos que no se oyen, pero se
                             "sienten"
@@ -1128,8 +1142,8 @@ get_header();
                     </div>
                     <!-- Card 3 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-purple-400 transition-colors">
-                        <strong class="block text-purple-900 mb-2 font-bold text-lg">🎸 Efectos Musicales</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">🎸 Efectos Musicales</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             LFO &rarr; VCA = <strong>Tremolo</strong> (volumen).<br>
                             LFO &rarr; VCO Pitch = <strong>Vibrato</strong> (afinación).
@@ -1137,8 +1151,8 @@ get_header();
                     </div>
                     <!-- Card 4 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-purple-400 transition-colors">
-                        <strong class="block text-purple-900 mb-2 font-bold text-lg">📻 Síntesis FM</strong>
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
+                        <strong class="block text-slate-800 dark:text-slate-200 mb-2 font-bold text-lg">📻 Síntesis FM</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Si aceleras un LFO hasta rango de audio, se convierte en modulador FM, creando timbres
                             <strong>metálicos y complejos</strong>.
@@ -1147,9 +1161,9 @@ get_header();
                 </div>
 
                 <!-- Pro Tip Box -->
-                <blockquote class="mt-8 border-l-4 border-purple-400 bg-purple-50/50 p-4 rounded-r-xl relative z-10">
+                <blockquote class="mt-8 border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-r-xl relative z-10">
                     <div
-                        class="flex items-center gap-2 mb-1 text-purple-700 font-bold text-xs uppercase tracking-wider">
+                        class="flex items-center gap-2 mb-1 text-slate-700 font-bold text-xs uppercase tracking-wider">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1168,14 +1182,14 @@ get_header();
         <!-- 8. Voltaje -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
             <div
-                class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
+                class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-amber-100 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute top-0 right-0 w-64 h-64 bg-slate-100 dark:bg-slate-800/40 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 dark:opacity-5 group-hover:opacity-100 dark:group-hover:opacity-10 transition-opacity">
                 </div>
 
                 <h2 class="mb-6 flex items-center gap-3 relative z-10 w-full">
                     <span
-                        class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 text-sm font-bold flex items-center justify-center shrink-0">8</span>
+                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-600 text-sm font-bold flex items-center justify-center shrink-0">8</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-8 h-8 text-amber-500 shrink-0">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -1197,46 +1211,46 @@ get_header();
 
                     <!-- Card 1: Unipolar -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors h-full flex flex-col">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors h-full flex flex-col">
                         <strong
-                            class="block text-amber-900 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
+                            class="block text-slate-800 dark:text-slate-200 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
                             <span>📈</span> Unipolares <span
-                                class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-normal">0V a
+                                class="text-xs bg-slate-100 dark:bg-slate-800/40 text-slate-500 px-2 py-0.5 rounded font-normal">0V a
                                 +10V</span>
                         </strong>
                         <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
                             Rango solo positivo. Como un pedal de acelerador: de cero al máximo.
                         </p>
-                        <ul class="text-xs text-slate-500 space-y-2 mt-auto bg-slate-50 p-3 rounded-lg">
+                        <ul class="text-xs text-slate-700 dark:text-slate-200 mt-auto bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
                             <li class="flex gap-2 items-start"><span
-                                    class="font-bold text-amber-700 whitespace-nowrap">Usos:</span> <span>Envolventes,
+                                    class="font-bold text-slate-700 dark:text-slate-400 whitespace-nowrap">Usos:</span> <span>Envolventes,
                                     Volúmenes (VCA).</span></li>
                         </ul>
                     </div>
 
                     <!-- Card 2: Bipolar -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors h-full flex flex-col">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors h-full flex flex-col">
                         <strong
-                            class="block text-amber-900 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
+                            class="block text-slate-800 dark:text-slate-200 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
                             <span>〰️</span> Bipolares <span
-                                class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-normal">±5V</span>
+                                class="text-xs bg-slate-100 dark:bg-slate-800/40 text-slate-500 px-2 py-0.5 rounded font-normal">±5V</span>
                         </strong>
                         <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
                             Oscilan sobre cero (positivo y negativo). Empujan y tiran.
                         </p>
-                        <ul class="text-xs text-slate-500 space-y-2 mt-auto bg-slate-50 p-3 rounded-lg">
+                        <ul class="text-xs text-slate-700 dark:text-slate-200 mt-auto bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
                             <li class="flex gap-2 items-start"><span
-                                    class="font-bold text-amber-700 whitespace-nowrap">Usos:</span> <span>Audio, LFOs
+                                    class="font-bold text-slate-700 dark:text-slate-400 whitespace-nowrap">Usos:</span> <span>Audio, LFOs
                                     (Vibrato).</span></li>
                         </ul>
                     </div>
 
                     <!-- Card 3: 1V/Oct -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors h-full flex flex-col">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors h-full flex flex-col">
                         <strong
-                            class="block text-amber-900 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
+                            class="block text-slate-800 dark:text-slate-200 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
                             <span>📏</span> Estándar 1V/Oct
                         </strong>
                         <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
@@ -1245,7 +1259,7 @@ get_header();
                         </p>
                         <div class="mt-auto">
                             <div
-                                class="flex items-center gap-2 p-2 bg-yellow-50 rounded border border-yellow-100 text-yellow-800 text-xs font-semibold justify-center">
+                                class="flex items-center gap-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold justify-center">
                                 🟡 Cable Amarillo
                             </div>
                         </div>
@@ -1253,20 +1267,20 @@ get_header();
 
                     <!-- Card 4: Logic Gates -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors h-full flex flex-col">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors h-full flex flex-col">
                         <strong
-                            class="block text-amber-900 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
+                            class="block text-slate-800 dark:text-slate-200 mb-3 font-bold text-lg leading-tight flex items-center gap-2">
                             <span>0️⃣1️⃣</span> Lógica / Gate
                         </strong>
                         <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
                             Lenguaje rítmico binario (On/Off).
                         </p>
-                        <ul class="text-xs text-slate-500 space-y-2 mb-3 mt-auto bg-slate-50 p-3 rounded-lg">
+                        <ul class="text-xs text-slate-700 dark:text-slate-200 mb-3 mt-auto bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
                             <li><strong>Gate:</strong> Duración (tecla pulsada).</li>
                             <li><strong>Trigger:</strong> Disparo instantáneo.</li>
                         </ul>
                         <div
-                            class="flex items-center gap-2 p-2 bg-blue-50 rounded border border-blue-100 text-blue-800 text-xs font-semibold justify-center">
+                            class="flex items-center gap-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold justify-center">
                             🔵 Cable Azul
                         </div>
                     </div>
@@ -1274,8 +1288,8 @@ get_header();
                 </div>
 
                 <!-- Pro Tip Box -->
-                <blockquote class="mt-8 border-l-4 border-amber-400 bg-amber-50/50 p-4 rounded-r-xl relative z-10">
-                    <div class="flex items-center gap-2 mb-1 text-amber-700 font-bold text-xs uppercase tracking-wider">
+                <blockquote class="mt-8 border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-r-xl relative z-10">
+                    <div class="flex items-center gap-2 mb-1 text-slate-700 dark:text-slate-400 font-bold text-xs uppercase tracking-wider">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1283,7 +1297,7 @@ get_header();
                         </svg>
                         Tip de Patcheo
                     </div>
-                    <p class="text-slate-700 italic text-sm">
+                    <p class="text-slate-700 dark:text-slate-300 italic text-sm">
                         "¡Mezcla, no solo conectes! Sumar una Envolvente + un LFO usando un Mixer antes de ir al filtro
                         te
                         dará una modulación compleja y evolutiva."
@@ -1294,7 +1308,7 @@ get_header();
 
         <!-- 9. Creación Musical -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
-            <div class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12">
+            <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3">
                     <span
                         class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center">9</span>
@@ -1320,7 +1334,7 @@ get_header();
 
                         <!-- Top: Image -->
                         <div
-                            class="group relative rounded-2xl overflow-hidden border border-slate-200 shadow-lg max-w-4xl mx-auto">
+                            class="group relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-lg max-w-4xl mx-auto">
                             <div
                                 class="absolute inset-0 bg-gradient-to-tr from-slate-100/50 via-transparent to-slate-50/50 -z-10">
                             </div>
@@ -1338,11 +1352,11 @@ get_header();
 
                             <!-- Card 1: SEQ3 -->
                             <div
-                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 shadow-sm hover:border-primary/50 transition-colors h-full">
+                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-primary/50 transition-colors h-full">
                                 <strong
                                     class="block text-slate-900 text-lg mb-2 font-bold flex items-center gap-2"><span>🎹</span>
                                     SEQ 3 <span
-                                        class="text-xs font-normal text-slate-400 bg-slate-100 px-2 rounded-full">VCV</span></strong>
+                                        class="text-xs font-normal text-slate-400 bg-slate-100 dark:bg-slate-800/40 px-2 rounded-full">VCV</span></strong>
                                 <p class="text-slate-600 text-sm leading-relaxed">El clásico. 3 pistas de 8 pasos.
                                     Simple
                                     pero potente para empezar a entender el concepto de paso a paso.</p>
@@ -1350,11 +1364,11 @@ get_header();
 
                             <!-- Card 2: ADDR-SEQ -->
                             <div
-                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 shadow-sm hover:border-primary/50 transition-colors h-full">
+                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-primary/50 transition-colors h-full">
                                 <strong
                                     class="block text-slate-900 text-lg mb-2 font-bold flex items-center gap-2"><span>📍</span>
                                     ADDR-SEQ <span
-                                        class="text-xs font-normal text-slate-400 bg-slate-100 px-2 rounded-full">Bogaudio</span></strong>
+                                        class="text-xs font-normal text-slate-400 bg-slate-100 dark:bg-slate-800/40 px-2 rounded-full">Bogaudio</span></strong>
                                 <p class="text-slate-600 text-sm leading-relaxed">Secuenciador direccionable. Puedes
                                     saltar
                                     a cualquier paso mediante voltaje. Hasta 16 pasos con expansor.</p>
@@ -1362,7 +1376,7 @@ get_header();
 
                             <!-- Card 3: Turing Machine -->
                             <div
-                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 shadow-sm hover:border-primary/50 transition-colors h-full">
+                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-primary/50 transition-colors h-full">
                                 <strong
                                     class="block text-slate-900 text-lg mb-2 font-bold flex items-center gap-2"><span>🎲</span>
                                     Turing Machine</strong>
@@ -1370,7 +1384,7 @@ get_header();
                                     aleatorias
                                     que se pueden bloquear en bucles repetitivos.</p>
                                 <a href="https://youtu.be/foCTfwMyZ8Q" target="_blank"
-                                    class="inline-flex items-center text-red-600 hover:text-red-700 font-bold text-xs bg-red-50 px-3 py-1.5 rounded-full border border-red-100">
+                                    class="inline-flex items-center text-slate-600 hover:text-slate-700 font-bold text-xs bg-slate-50 dark:bg-slate-800/40 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700/50">
                                     <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
@@ -1381,11 +1395,11 @@ get_header();
 
                             <!-- Card 4: Noteseq16 -->
                             <div
-                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 shadow-sm hover:border-primary/50 transition-colors h-full">
+                                class="bg-white p-5 rounded-xl text-slate-700 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-primary/50 transition-colors h-full">
                                 <strong
                                     class="block text-slate-900 text-lg mb-2 font-bold flex items-center gap-2"><span>🎼</span>
                                     Noteseq16 <span
-                                        class="text-xs font-normal text-slate-400 bg-slate-100 px-2 rounded-full">JW</span></strong>
+                                        class="text-xs font-normal text-slate-400 bg-slate-100 dark:bg-slate-800/40 px-2 rounded-full">JW</span></strong>
                                 <p class="text-slate-600 text-sm leading-relaxed">Secuenciador visual con cuantizador
                                     integrado. Dibuja tus melodías directamente.</p>
                             </div>
@@ -1394,7 +1408,7 @@ get_header();
 
                         <!-- Pro Tip Box -->
                         <blockquote
-                            class="mt-8 border-l-4 border-slate-400 bg-slate-50 p-4 rounded-r-xl relative z-10 w-full col-span-2">
+                            class="mt-8 border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-r-xl relative z-10 w-full col-span-2">
                             <div
                                 class="flex items-center gap-2 mb-1 text-slate-700 font-bold text-xs uppercase tracking-wider">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
@@ -1415,10 +1429,10 @@ get_header();
 
                     <!-- Featured: UZZ RACK (Full Width) -->
                     <div
-                        class="bg-white p-0 rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all group overflow-hidden">
+                        class="bg-white p-0 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-lg transition-all group overflow-hidden">
                         <div class="flex flex-col md:flex-row">
                             <!-- Image -->
-                            <div class="w-full md:w-2/5 relative overflow-hidden bg-slate-100 h-64 md:h-auto">
+                            <div class="w-full md:w-2/5 relative overflow-hidden bg-slate-100 dark:bg-slate-800/40 h-64 md:h-auto">
                                 <img src="https://animatek.net/wp-content/uploads/2025/11/UZZ_Curso.webp"
                                     alt="UZZ Rack VCV"
                                     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 absolute inset-0">
@@ -1456,13 +1470,13 @@ get_header();
         <!-- 10. Logic & Quantizers -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
             <div
-                class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
+                class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-slate-200 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute top-0 right-0 w-64 h-64 bg-slate-200 rounded-full blur-3xl -mr-20 -mt-20 opacity-50 dark:opacity-5 group-hover:opacity-100 dark:group-hover:opacity-10 transition-opacity">
                 </div>
                 <h2 class="mb-8 flex items-center gap-3 relative z-10">
                     <span
-                        class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 text-sm font-bold flex items-center justify-center">10</span>
+                        class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800/40 text-slate-700 text-sm font-bold flex items-center justify-center">10</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-8 h-8 text-slate-500">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -1474,7 +1488,7 @@ get_header();
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10 mb-12">
                     <!-- Card 1 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
                         <strong class="block text-slate-900 mb-2 font-bold text-lg">📸 Sample & Hold</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Como una cámara: al recibir un trigger, "congela" el voltaje de entrada hasta el próximo
@@ -1483,7 +1497,7 @@ get_header();
                     </div>
                     <!-- Card 2 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
                         <strong class="block text-slate-900 mb-2 font-bold text-lg">⏳ Clock Dividers</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Módulos esenciales para ritmos. Dividen el pulso principal (/2, /4, /8) para crear compases
@@ -1492,7 +1506,7 @@ get_header();
                     </div>
                     <!-- Card 3 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
                         <strong class="block text-slate-900 mb-2 font-bold text-lg">⚖️ Módulos Lógicos</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             Comparadores y Puertas (AND, OR). Toman decisiones musicales: "¿Si A es mayor que B,
@@ -1502,7 +1516,7 @@ get_header();
                     </div>
                     <!-- Card 4 -->
                     <div
-                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-slate-400 transition-colors">
+                        class="bg-white p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm hover:border-slate-400 transition-colors">
                         <strong class="block text-slate-900 mb-2 font-bold text-lg">🎹 Cuantización</strong>
                         <p class="text-sm text-slate-600 leading-relaxed">
                             El "Auto-Tune" modular. Fuerza los voltajes "desafinados" a entrar en la escala musical que
@@ -1512,7 +1526,7 @@ get_header();
                 </div>
 
                 <!-- Pro Tip Box -->
-                <blockquote class="mb-12 border-l-4 border-slate-400 bg-slate-50 p-4 rounded-r-xl relative z-10">
+                <blockquote class="mb-12 border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-r-xl relative z-10">
                     <div class="flex items-center gap-2 mb-1 text-slate-700 font-bold text-xs uppercase tracking-wider">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -1531,9 +1545,9 @@ get_header();
                 <!-- Quantizers Block Merged -->
                 <div class="relative z-10">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-2xl font-bold text-yellow-600">Cuantizadores</h3>
+                        <h3 class="text-2xl font-bold text-slate-600">Cuantizadores</h3>
                         <a href="https://library.vcvrack.com/?query=&brand=&tag=Quantizer" target="_blank"
-                            class="text-xs font-bold text-yellow-600 bg-yellow-50 px-3 py-1.5 rounded-full border border-yellow-100 hover:bg-yellow-100 transition-colors">
+                            class="text-xs font-bold text-slate-600 bg-slate-50 dark:bg-slate-800/40 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700/50 hover:bg-slate-100 dark:bg-slate-800/40 transition-colors">
                             Ver todos en Library
                         </a>
                     </div>
@@ -1545,14 +1559,14 @@ get_header();
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- Card 1: cQuantizer -->
                         <div
-                            class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 hover:border-yellow-400 hover:shadow-md transition-all group relative overflow-hidden">
+                            class="bg-white rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm p-5 hover:border-slate-400 hover:shadow-md transition-all group relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 w-16 h-16 bg-yellow-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
+                                class="absolute top-0 right-0 w-16 h-16 bg-slate-50 dark:bg-slate-800/40 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
                             </div>
                             <div class="relative z-10 flex flex-col h-full">
                                 <div class="flex items-center gap-3 mb-4">
                                     <span
-                                        class="w-10 h-10 rounded-lg bg-orange-100/50 flex items-center justify-center text-orange-600">
+                                        class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/40 flex items-center justify-center text-slate-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1561,12 +1575,12 @@ get_header();
                                     </span>
                                     <div>
                                         <h4
-                                            class="font-bold text-slate-900 group-hover:text-yellow-600 transition-colors">
+                                            class="font-bold text-slate-900 group-hover:text-slate-600 transition-colors">
                                             <a href="https://library.vcvrack.com/JW-Modules/Quantizer" target="_blank"
-                                                class="hover:text-yellow-600">Quantizer</a>
+                                                class="hover:text-slate-600">Quantizer</a>
                                         </h4>
                                         <span
-                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full mt-1">JW
+                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 dark:bg-slate-800/40 px-2 py-0.5 rounded-full mt-1">JW
                                             Modules</span>
                                     </div>
                                 </div>
@@ -1578,14 +1592,14 @@ get_header();
 
                         <!-- Card 2: Quantizer (VCV) -->
                         <div
-                            class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 hover:border-yellow-400 hover:shadow-md transition-all group relative overflow-hidden">
+                            class="bg-white rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm p-5 hover:border-slate-400 hover:shadow-md transition-all group relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 w-16 h-16 bg-blue-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
+                                class="absolute top-0 right-0 w-16 h-16 bg-slate-50 dark:bg-slate-800/40 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
                             </div>
                             <div class="relative z-10 flex flex-col h-full">
                                 <div class="flex items-center gap-3 mb-4">
                                     <span
-                                        class="w-10 h-10 rounded-lg bg-blue-100/50 flex items-center justify-center text-blue-600">
+                                        class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/40 flex items-center justify-center text-slate-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1594,12 +1608,12 @@ get_header();
                                     </span>
                                     <div>
                                         <h4
-                                            class="font-bold text-slate-900 group-hover:text-yellow-600 transition-colors">
+                                            class="font-bold text-slate-900 group-hover:text-slate-600 transition-colors">
                                             <a href="https://library.vcvrack.com/Fundamental/Quantizer" target="_blank"
-                                                class="hover:text-yellow-600">Quantizer</a>
+                                                class="hover:text-slate-600">Quantizer</a>
                                         </h4>
                                         <span
-                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full mt-1">Fundamental</span>
+                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 dark:bg-slate-800/40 px-2 py-0.5 rounded-full mt-1">Fundamental</span>
                                     </div>
                                 </div>
                                 <p class="text-sm text-slate-600 flex-grow mt-2">
@@ -1610,14 +1624,14 @@ get_header();
 
                         <!-- Card 3: Quantum -->
                         <div
-                            class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 hover:border-yellow-400 hover:shadow-md transition-all group relative overflow-hidden">
+                            class="bg-white rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm p-5 hover:border-slate-400 hover:shadow-md transition-all group relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
+                                class="absolute top-0 right-0 w-16 h-16 bg-slate-50 dark:bg-slate-800/40 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
                             </div>
                             <div class="relative z-10 flex flex-col h-full">
                                 <div class="flex items-center gap-3 mb-4">
                                     <span
-                                        class="w-10 h-10 rounded-lg bg-purple-100/50 flex items-center justify-center text-purple-600">
+                                        class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/40 flex items-center justify-center text-slate-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1626,12 +1640,12 @@ get_header();
                                     </span>
                                     <div>
                                         <h4
-                                            class="font-bold text-slate-900 group-hover:text-yellow-600 transition-colors">
+                                            class="font-bold text-slate-900 group-hover:text-slate-600 transition-colors">
                                             <a href="https://library.vcvrack.com/ML_modules/Quantum" target="_blank"
-                                                class="hover:text-yellow-600">Quantum</a>
+                                                class="hover:text-slate-600">Quantum</a>
                                         </h4>
                                         <span
-                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full mt-1">ML
+                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 dark:bg-slate-800/40 px-2 py-0.5 rounded-full mt-1">ML
                                             Modules</span>
                                     </div>
                                 </div>
@@ -1644,9 +1658,9 @@ get_header();
 
                         <!-- Card 4: Harmonàig -->
                         <div
-                            class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 hover:border-yellow-400 hover:shadow-md transition-all group relative overflow-hidden">
+                            class="bg-white rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm p-5 hover:border-slate-400 hover:shadow-md transition-all group relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 w-16 h-16 bg-slate-100 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
+                                class="absolute top-0 right-0 w-16 h-16 bg-slate-100 dark:bg-slate-800/40 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110">
                             </div>
                             <div class="relative z-10 flex flex-col h-full">
                                 <div class="flex items-center gap-3 mb-4">
@@ -1660,12 +1674,12 @@ get_header();
                                     </span>
                                     <div>
                                         <h4
-                                            class="font-bold text-slate-900 group-hover:text-yellow-600 transition-colors">
+                                            class="font-bold text-slate-900 group-hover:text-slate-600 transition-colors">
                                             <a href="https://library.vcvrack.com/Instruo/harmonaig" target="_blank"
-                                                class="hover:text-yellow-600">Harmonàig</a>
+                                                class="hover:text-slate-600">Harmonàig</a>
                                         </h4>
                                         <span
-                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full mt-1">Instruō</span>
+                                            class="inline-block text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 dark:bg-slate-800/40 px-2 py-0.5 rounded-full mt-1">Instruō</span>
                                     </div>
                                 </div>
                                 <p class="text-sm text-slate-600 flex-grow mt-2">
@@ -1680,7 +1694,7 @@ get_header();
 
         <!-- 11. Tutoriales Recomendados -->
         <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
-            <div class="bg-white rounded-[1.75rem] border border-slate-200 shadow-sm overflow-hidden p-8 sm:p-12">
+            <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3">
                     <span
                         class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center">11</span>
@@ -1701,8 +1715,8 @@ get_header();
                             Tu Primera Secuencia
                         </h3>
                         <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200">
-                            <div class="aspect-video relative bg-slate-100">
+                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
+                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/MD2Cd_zOnn4"
                                     srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/MD2Cd_zOnn4?autoplay=1><img src=https://img.youtube.com/vi/MD2Cd_zOnn4/maxresdefault.jpg alt='VCV Rack Tutorial 1'><span>▶</span></a>"
                                     title="Tu Primera Secuencia" frameborder="0"
@@ -1720,8 +1734,8 @@ get_header();
                             VCV Rack desde Cero
                         </h3>
                         <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200">
-                            <div class="aspect-video relative bg-slate-100">
+                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
+                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/rhl2ecDW0SY"
                                     srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/rhl2ecDW0SY?autoplay=1><img src=https://img.youtube.com/vi/rhl2ecDW0SY/maxresdefault.jpg alt='Tutorial VCV Rack Cero'><span>▶</span></a>"
                                     title="VCV Rack desde Cero" frameborder="0"
@@ -1739,8 +1753,8 @@ get_header();
                             Guía Completa MixMaster
                         </h3>
                         <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200">
-                            <div class="aspect-video relative bg-slate-100">
+                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
+                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/zsey6XzKDNA"
                                     srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/zsey6XzKDNA?autoplay=1><img src=https://img.youtube.com/vi/zsey6XzKDNA/maxresdefault.jpg alt='MixMaster VCV Rack'><span>▶</span></a>"
                                     title="Guía Completa MixMaster" frameborder="0"
@@ -1758,8 +1772,8 @@ get_header();
                             Primeros Pasos con Cardinal
                         </h3>
                         <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200">
-                            <div class="aspect-video relative bg-slate-100">
+                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
+                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/tFrtnotI6AU"
                                     srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/tFrtnotI6AU?autoplay=1><img src=https://img.youtube.com/vi/tFrtnotI6AU/maxresdefault.jpg alt='Cardinal VST Tutorial'><span>▶</span></a>"
                                     title="Primeros Pasos con Cardinal" frameborder="0"
@@ -1777,8 +1791,8 @@ get_header();
                             Automatización en el DAW
                         </h3>
                         <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200">
-                            <div class="aspect-video relative bg-slate-100">
+                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
+                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/KJKx-im6D3I"
                                     srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/KJKx-im6D3I?autoplay=1><img src=https://img.youtube.com/vi/KJKx-im6D3I/maxresdefault.jpg alt='Automatizar Cardinal'><span>▶</span></a>"
                                     title="Automatización en el DAW" frameborder="0"
@@ -1796,8 +1810,8 @@ get_header();
                             Sintetizador de 3 Osciladores
                         </h3>
                         <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200">
-                            <div class="aspect-video relative bg-slate-100">
+                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
+                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/VQBSR6qAL_k"
                                     srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/VQBSR6qAL_k?autoplay=1><img src=https://img.youtube.com/vi/VQBSR6qAL_k/maxresdefault.jpg alt='Sintetizador 3 Osciladores'><span>▶</span></a>"
                                     title="Sintetizador 3 Osciladores" frameborder="0"
@@ -1813,7 +1827,7 @@ get_header();
                 <!-- Course Playlist -->
                 <div class="mt-12">
                     <div
-                        class="bg-white rounded-2xl p-8 text-slate-900 border border-slate-200 shadow-sm relative overflow-hidden group">
+                        class="bg-white rounded-2xl p-8 text-slate-900 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden group">
                         <!-- Background decoration -->
                         <div
                             class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(33,112,245,0.15),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(56,189,248,0.12),transparent_30%),radial-gradient(circle_at_50%_80%,rgba(99,102,241,0.12),transparent_30%)]">
@@ -1839,7 +1853,7 @@ get_header();
                                 </a>
                             </div>
                             <div
-                                class="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 group-hover:shadow-xl transition-all relative bg-slate-100">
+                                class="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700/50 group-hover:shadow-xl transition-all relative bg-slate-100 dark:bg-slate-800/40">
                                 <iframe class="w-full h-full"
                                     src="https://www.youtube.com/embed/videoseries?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo"
                                     srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/videoseries?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo&autoplay=1><img src=https://img.youtube.com/vi/QPkYPGQTJz8/maxresdefault.jpg alt='Curso UZZ Rack'><span>▶</span></a>"

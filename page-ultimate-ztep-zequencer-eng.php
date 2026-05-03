@@ -16,12 +16,18 @@ get_header();
 
         <div class="max-w-7xl mx-auto space-y-6 lg:space-y-8 relative z-10">
             <div class="flex flex-wrap items-center gap-3">
-                <div class="inline-flex items-center gap-1 p-1 rounded-full bg-white border border-slate-200 shadow-sm">
-                    <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        UZZ · Max for Live
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-vcv')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                <div class="inline-flex flex-wrap items-center gap-1 p-1 rounded-full bg-white border border-slate-200 shadow-sm">
+                    <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-vcvrack-eng')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
                         UZZ · VCV Rack
+                    </a>
+                    <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-sm" aria-current="page">
+                        UZZ · Max for Live
+                    </span>
+                    <a href="<?php echo esc_url(home_url('/oxi-cv')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                        OXI-CV
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/nomad2026')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                        Nomad2026
                     </a>
                 </div>
                 <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer')); ?>" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-primary hover:text-primary transition shadow-sm">
@@ -52,7 +58,7 @@ get_header();
                         <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-primary/10 via-transparent to-transparent pointer-events-none"></div>
                         <img src="https://animatek.net/wp-content/uploads/2017/08/screenshot.png"
                              alt="UZZ Max for Live Interface"
-                             class="w-full h-auto">
+                             class="w-full aspect-video object-cover object-top">
                     </div>
                 </div>
             </div>

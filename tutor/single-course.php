@@ -36,7 +36,7 @@ $is_enabled_wishlist = tutor_utils()->get_option( 'enable_wishlist', true );
 
 ?>
 
-<main id="primary" class="bg-white text-slate-950 container mx-auto rounded-3xl px-8 mt-12 mb-12 shadow-xl" style="padding-top:3%;padding-bottom:5%;">
+<main id="primary" class="bg-slate-50 dark:bg-slate-800/40 text-slate-950 dark:text-slate-200 container mx-auto rounded-3xl px-8 mt-12 mb-12 shadow-xl border border-slate-200 dark:border-slate-700/50" style="padding-top:3%;padding-bottom:5%;">
 <?php do_action( 'tutor_course/single/before/wrap' ); ?>
 
 

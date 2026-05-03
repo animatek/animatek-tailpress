@@ -22,7 +22,7 @@ $cat_palette = [
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('relative'); ?>>
-    <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 mb-8">
+    <div class="bg-slate-50 dark:bg-slate-800/40 rounded-3xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700/50 mb-8">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <!-- Columna izquierda: imagen -->
             <div class="relative bg-slate-900 h-[300px] lg:h-auto min-h-[300px]">
@@ -89,7 +89,9 @@ $cat_palette = [
                 </div>
 
                 <div class="flex items-center gap-3 pt-5 border-t border-slate-100">
-                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-emerald-400 flex-shrink-0"></div>
+                    <img src="https://animatek.net/wp-content/uploads/2025/04/Javier_Melgar_animatek.webp" 
+                         alt="<?php the_author(); ?>" 
+                         class="w-9 h-9 rounded-full object-cover flex-shrink-0 shadow-sm border border-slate-200 dark:border-slate-700/50">
                     <div>
                         <p class="text-sm font-bold text-slate-900 leading-tight"><?php the_author(); ?></p>
                         <p class="text-xs text-slate-500 leading-tight">Productor · Animatek</p>
@@ -116,13 +118,13 @@ $cat_palette = [
 
     <nav class="mt-8 pb-8">
         <div class="grid gap-3 md:grid-cols-2">
-            <div class="bg-white border border-slate-200 rounded-2xl p-4 hover:-translate-y-0.5 transition">
+            <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-4 hover:-translate-y-0.5 transition">
                 <?php previous_post_link(
                     '<span class="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1">← Anterior</span><span class="block text-sm font-semibold text-slate-700 hover:text-primary transition">%link</span>',
                     '%title'
                 ); ?>
             </div>
-            <div class="bg-white border border-slate-200 rounded-2xl p-4 hover:-translate-y-0.5 transition text-left md:text-right">
+            <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-4 hover:-translate-y-0.5 transition text-left md:text-right">
                 <?php next_post_link(
                     '<span class="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1">Siguiente →</span><span class="block text-sm font-semibold text-slate-700 hover:text-primary transition">%link</span>',
                     '%title'

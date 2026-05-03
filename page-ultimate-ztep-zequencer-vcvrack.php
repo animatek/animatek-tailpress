@@ -15,32 +15,50 @@ get_header();
         </div>
 
         <div class="max-w-7xl mx-auto space-y-6 relative z-10">
-            <div class="inline-flex items-center gap-1 p-1 rounded-full bg-white border border-slate-200 shadow-sm">
-                <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                    UZZ · Max for Live
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="inline-flex flex-wrap items-center gap-1 p-1 rounded-full bg-white border border-slate-200 shadow-sm">
+                    <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-sm" aria-current="page">
+                        UZZ · VCV Rack
+                    </span>
+                    <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                        UZZ · Max for Live
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/oxi-cv')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                        OXI-CV
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/nomad2026')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                        Nomad2026
+                    </a>
+                </div>
+                <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-vcvrack-eng')); ?>" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-primary hover:text-primary transition shadow-sm">
+                    <span>EN</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 12h18" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3c2.5 3.5 2.5 14 0 18" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 5c1.5 2 1.5 12 0 14" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 5c-1.5 2-1.5 12 0 14" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </a>
-                <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-sm" aria-current="page">
-                    UZZ · VCV Rack
-                </span>
             </div>
 
             <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-center">
                 <div class="space-y-5">
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-slate-900">
-                        UZZ <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-600">Rack</span>
+                        UZZ - <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-600">VCV Rack</span>
                     </h1>
                     <p class="text-lg sm:text-xl text-slate-700 leading-relaxed max-w-2xl">
-                        Secuenciador de 16 pasos diseñado específicamente para VCV Rack. Ofrece funciones aleatorias controladas y una matriz de modulación interna capaz de mover cualquier parámetro dentro del patch. Está orientado al directo: permite improvisar, mutar patrones y generar secuencias en evolución directamente en el entorno modular.
+                        Secuenciador de 16 pasos para VCV Rack 2.x. Temporización precisa, improvisación estructurada y flexibilidad modular. Cada paso tiene Pitch, Octava, Duración, Mod1/Mod2 y Prob/Pulse. Diez modos de dirección, acumulador de semitonos y probabilidad global multiplicativa.
                     </p>
                 </div>
 
                 <div class="relative">
                     <div class="absolute inset-0 rounded-3xl bg-white/60 blur-3xl"></div>
-                    <div class="relative overflow-hidden rounded-3xl border border-slate-200 shadow-2xl bg-slate-900">
+                    <div class="relative rounded-3xl border border-slate-200 shadow-2xl bg-slate-900 px-2 py-2">
                         <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-red-500/20 blur-3xl opacity-40"></div>
-                        <img src="https://animatek.net/wp-content/uploads/2025/11/UZZ_EN_VCV230.webp"
+                        <img src="https://animatek.net/wp-content/uploads/2026/04/UZZ_2_5.webp"
                              alt="Interfaz UZZ VCV Rack"
-                             class="w-full h-auto relative z-10">
+                             class="w-full aspect-video object-cover object-top relative z-10 rounded-3xl">
                     </div>
                 </div>
             </div>
@@ -50,8 +68,9 @@ get_header();
     <section class="max-w-7xl mx-auto px-6 pb-20">
         <div class="grid lg:grid-cols-[1.4fr_0.9fr] gap-8 items-start">
             <div class="space-y-10">
+
                 <div class="space-y-4">
-                    <div class="flex items-center gap-2 sm:gap-3 text-left text-slate-900 justify-start">
+                    <div class="flex items-center gap-2 sm:gap-3 text-left text-slate-900">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1"/>
                             <path d="M19 15V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V9"/>
@@ -62,66 +81,45 @@ get_header();
                         <p class="text-lg sm:text-xl font-semibold leading-tight mb-0 text-left">De Max for Live a VCV Rack</p>
                     </div>
                     <div class="space-y-3 text-slate-700 leading-relaxed">
-                        <p class="text-base">UZZ nació como un dispositivo de Max for Live. Este port a VCV Rack mantiene su esencia: secuenciación clara, controles directos y modulación de reloj para grooves vivos. Pensado para directo y estudio, prioriza la velocidad para esbozar ideas.</p>
-                        <p class="text-base"><strong>¿Qué es UZZ?</strong> Un secuenciador por pasos enfocado en el flujo performativo: edición inmediata, DIV/MULT de reloj por fila para crear shuffle y polirritmias controladas. Funciona en Rack Free/Pro e integra con DAWs con estabilidad por delante.</p>
+                        <p class="text-base">UZZ nació como un dispositivo de Max for Live. Este port a VCV Rack 2.x preserva la filosofía original: temporización precisa, improvisación estructurada y flexibilidad modular total. Pensado para directo y estudio, prioriza la velocidad de edición y la musicalidad inmediata.</p>
+                        <p class="text-base">Cada paso tiene su propio <strong>Pitch, Octava, Duración relativa al tempo, Mod1, Mod2 y un knob bipolar Prob/Pulse</strong>. La ventana activa es configurable (Start + número de pasos) con wrap-around. Accumulator de semitonos, probabilidad global multiplicativa y salida de gate polifónica completan el módulo.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">Características clave</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="flex gap-3 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-                            <div class="p-2 bg-blue-50 text-primary rounded-lg shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="m13 2-8 12h6l-1 8 8-12h-6l1-8Z" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-sm text-slate-800 mb-1">Edición inmediata</h5>
-                                <p class="text-xs text-slate-600">16 pasos pensados para resultados musicales rápidos.</p>
-                            </div>
+                    <h4 class="font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">Modos de paso</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Play</div>
+                            <p class="text-xs text-slate-600">Dispara el paso normalmente.</p>
                         </div>
-                        <div class="flex gap-3 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-                            <div class="p-2 bg-blue-50 text-primary rounded-lg shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-sm text-slate-800 mb-1">Grooves vivos</h5>
-                                <p class="text-xs text-slate-600">DIV/MULT de reloj por fila para polirritmias y shuffle.</p>
-                            </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Mute</div>
+                            <p class="text-xs text-slate-600">Avanza pero no genera gate ni pitch.</p>
                         </div>
-                        <div class="flex gap-3 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-                            <div class="p-2 bg-blue-50 text-primary rounded-lg shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 12a9 9 0 0 1 15.3-6.3L21 8" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M21 12a9 9 0 0 1-15.3 6.3L3 16" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M3 8v4h4" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M21 16v-4h-4" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-sm text-slate-800 mb-1">Sincronía y reset</h5>
-                                <p class="text-xs text-slate-600">Utilidades para alinear el ciclo con precisión.</p>
-                            </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Skip</div>
+                            <p class="text-xs text-slate-600">Salta el paso sin consumir tiempo de reloj.</p>
                         </div>
-                        <div class="flex gap-3 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-                            <div class="p-2 bg-blue-50 text-primary rounded-lg shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 21v-7m0-4V3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M4 14a2 2 0 1 0 0-4" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 21V12m0-4V3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 12a2 2 0 1 0 0-4" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M20 21v-7m0-4V3" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M20 14a2 2 0 1 0 0-4" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-sm text-slate-800 mb-1">Microajustes</h5>
-                                <p class="text-xs text-slate-600">Flechas ↑/↓ y aleatorización por control.</p>
-                            </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Accum Up</div>
+                            <p class="text-xs text-slate-600">Suma semitonos al acumulador de pitch.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Accum Down</div>
+                            <p class="text-xs text-slate-600">Resta semitonos al acumulador de pitch.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Pulse</div>
+                            <p class="text-xs text-slate-600">Multiplica el gate según el knob Prob/Pulse.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Gated</div>
+                            <p class="text-xs text-slate-600">Gate activo mientras llega pulso de reloj.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1">Hold</div>
+                            <p class="text-xs text-slate-600">Mantiene el pitch y gate del paso anterior.</p>
                         </div>
                     </div>
                 </div>
@@ -134,22 +132,21 @@ get_header();
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 4v16M6 8h4m-4 6h7m5-10v16m0-12h-6m6 8h-3"/>
                                 </svg>
-                                Modo y tono
+                                Pitch & Octava
                             </div>
-                            <p class="text-sm text-slate-600 font-sans">Activa/desactiva pasos, Skip (&gt;). Tono 0-12 (una octava).</p>
+                            <p class="text-sm text-slate-600 font-sans">Tono 0–12 semitonos. Desplazamiento de octava −2 a +2.</p>
                         </div>
                         <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
                             <div class="flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase mb-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 5.5c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2Z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 5.5V18m8-6.5c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2Z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11.5V21m-9 1h10"/>
+                                    <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                Octava y duración
+                                Duración
                             </div>
-                            <p class="text-sm text-slate-600 font-sans">Rango de octava -2 a +2. Duración para la articulación.</p>
+                            <p class="text-sm text-slate-600 font-sans">Relativa al tempo. Controla la articulación de cada nota.</p>
                         </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm sm:col-span-2">
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
                             <div class="flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase mb-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="8" cy="12" r="3"/>
@@ -158,8 +155,42 @@ get_header();
                                 </svg>
                                 MOD 1 / MOD 2
                             </div>
-                            <p class="text-sm text-slate-600 font-sans">Dos controles de CV. El menú contextual permite seleccionar rango: unipolar (0-10V) o bipolar (±5V).</p>
+                            <p class="text-sm text-slate-600 font-sans">Dos salidas CV independientes. Menú contextual: unipolar (0–10 V) o bipolar (±5 V).</p>
                         </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M2 12h20"/>
+                                </svg>
+                                Prob / Pulse
+                            </div>
+                            <p class="text-sm text-slate-600 font-sans">Knob bipolar: lado izquierdo = probabilidad de gate; lado derecho = multiplicador de pulso.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">10 modos de dirección</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        <?php
+                        $directions = [
+                            ['Forward',   'Avanza paso a paso.'],
+                            ['Backward',  'Retrocede paso a paso.'],
+                            ['Pendulum',  'Ida y vuelta sin repetir extremos.'],
+                            ['Ping-Pong', 'Ida y vuelta repitiendo extremos.'],
+                            ['Random',    'Paso aleatorio en cada pulso.'],
+                            ['Drunk',     'Deambula sin perder el pulso.'],
+                            ['Odd/Even',  'Alterna pasos pares e impares.'],
+                            ['Jump',      'Saltos definidos entre pasos.'],
+                            ['Converge',  'Avanza desde extremos hacia el centro.'],
+                            ['Diverge',   'Avanza desde el centro hacia los extremos.'],
+                        ];
+                        foreach ($directions as $dir): ?>
+                        <div class="bg-white px-3 py-3 rounded-xl border border-slate-100 shadow-sm">
+                            <div class="font-mono text-xs font-bold text-primary mb-1"><?php echo esc_html($dir[0]); ?></div>
+                            <p class="text-[11px] text-slate-500"><?php echo esc_html($dir[1]); ?></p>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
@@ -177,47 +208,59 @@ get_header();
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-4 text-sm text-slate-700 font-sans">
                             <div>
-                                <strong class="flex items-center gap-2 text-slate-800 mb-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m7 7 5-5 5 5M7 17l5 5 5-5M7 12h10"/>
-                                    </svg>
-                                    Dirección
-                                </strong>
-                                Forward (adelante), Backward (atrás), Random y <span class="italic">Drunk</span> (deambula sin perder el pulso).
+                                <strong class="block text-slate-800 mb-1">Clock ratios</strong>
+                                ÷8 a ×8 y más allá, con swing integrado para groove y polirritmias controladas.
                             </div>
                             <div>
-                                <strong class="flex items-center gap-2 text-slate-800 mb-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="4" y="4" width="6" height="6" rx="1"/>
-                                        <rect x="14" y="4" width="6" height="6" rx="1"/>
-                                        <rect x="4" y="14" width="6" height="6" rx="1"/>
-                                        <rect x="14" y="14" width="6" height="6" rx="1"/>
-                                    </svg>
-                                    Pasos
-                                </strong>
-                                Número total de pasos (1–16).
+                                <strong class="block text-slate-800 mb-1">Active Window</strong>
+                                Start configurable + número de pasos activos con wrap-around. Desplaza el patrón sin tocar los valores.
+                            </div>
+                            <div>
+                                <strong class="block text-slate-800 mb-1">Swing</strong>
+                                Cantidad de shuffle ajustable. Un 5–10 % humaniza sin destruir la rejilla.
                             </div>
                         </div>
                         <div class="space-y-4 text-sm text-slate-700 font-sans">
                             <div>
-                                <strong class="flex items-center gap-2 text-slate-800 mb-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 15c3-4 6-4 9 0s6 4 9 0"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9c3 4 6 4 9 0s6-4 9 0"/>
-                                    </svg>
-                                    Swing
-                                </strong>
-                                Cantidad de shuffle (5-10% para humanizar).
+                                <strong class="block text-slate-800 mb-1">Global Probability</strong>
+                                Knob multiplicativo sobre el disparo de gate de todos los pasos a la vez.
                             </div>
                             <div>
-                                <strong class="flex items-center gap-2 text-slate-800 mb-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m6 4 6 6-4 2-2 4-2-12Z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m13 13 5 5"/>
-                                    </svg>
-                                    Select
-                                </strong>
-                                Fija el paso de inicio. Desplaza el patrón sin cambiar valores.
+                                <strong class="block text-slate-800 mb-1">Accumulator</strong>
+                                Offset en semitonos que se acumula en pasos ACCUM UP/DOWN. Wrap configurable para contener el rango.
+                            </div>
+                            <div>
+                                <strong class="block text-slate-800 mb-1">Global Glide</strong>
+                                Slew en la salida V/Oct (portamento de 0 a 2 s) aplicado globalmente a todas las notas.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">Randomize & Shift por fila</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex gap-3 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                            <div class="p-2 bg-blue-50 text-primary rounded-lg shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 15c3-4 6-4 9 0s6 4 9 0" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 9c3 4 6 4 9 0s6-4 9 0" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm text-slate-800 mb-1">Randomize por fila</h5>
+                                <p class="text-xs text-slate-600">Botón y entrada CV para re-aleatorizar cada fila: Pitch, Oct, Mode, Dur, Mod1, Mod2, Prob.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                            <div class="p-2 bg-blue-50 text-primary rounded-lg shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m7 7 5-5 5 5M7 17l5 5 5-5M7 12h10"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm text-slate-800 mb-1">Shift ↑/↓ por fila</h5>
+                                <p class="text-xs text-slate-600">Flechas para desplazar todos los valores de cada fila, incluida la fila Prob/Pulse.</p>
                             </div>
                         </div>
                     </div>
@@ -245,10 +288,10 @@ get_header();
                                     Entradas
                                 </div>
                                 <ul class="space-y-3 text-sm font-mono text-slate-700">
-                                    <li><span class="text-slate-900 font-bold">CLOCK IN:</span> Recibe pulsos y avanza un paso.</li>
+                                    <li><span class="text-slate-900 font-bold">CLOCK IN:</span> Pulso de avance de paso.</li>
                                     <li><span class="text-slate-900 font-bold">RESET IN:</span> Vuelve al inicio (Select).</li>
                                     <li><span class="text-slate-900 font-bold">XPOSE IN:</span> Transposición global 1 V/oct.</li>
-                                    <li><span class="text-slate-900 font-bold">RAND IN:</span> Disparos para re-aleatorizar filas específicas.</li>
+                                    <li><span class="text-slate-900 font-bold">RAND IN ×7:</span> Triggers por fila — Pitch, Oct, Mode, Dur, Mod1, Mod2, Prob.</li>
                                 </ul>
                             </div>
                             <div>
@@ -260,9 +303,9 @@ get_header();
                                     Salidas
                                 </div>
                                 <ul class="space-y-3 text-sm font-mono text-slate-700">
-                                    <li><span class="text-slate-900 font-bold">V/OCT + Glide:</span> Tono con portamento 0–2s.</li>
+                                    <li><span class="text-slate-900 font-bold">V/OCT + Glide:</span> Pitch con slew 0–2 s.</li>
                                     <li><span class="text-slate-900 font-bold">GATE OUT:</span> Conmutable Gate/Trigger.</li>
-                                    <li><span class="text-slate-900 font-bold">POLY GATE:</span> 16 canales (uno por paso).</li>
+                                    <li><span class="text-slate-900 font-bold">POLY GATE:</span> Un canal por paso activo.</li>
                                     <li><span class="text-slate-900 font-bold">MOD 1/2 OUT:</span> CV con step-lock.</li>
                                     <li><span class="text-slate-900 font-bold">EOC OUT:</span> Pulso de fin de ciclo.</li>
                                 </ul>
@@ -270,6 +313,7 @@ get_header();
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <aside class="space-y-8">

@@ -29,7 +29,7 @@ get_header();
                         </div>
 
                         <div class="grid gap-4 sm:grid-cols-2">
-                            <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                            <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-5 shadow-sm">
                                 <div class="flex items-center gap-3 mb-3">
                                     <h3 class="font-bold text-slate-900 flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -47,7 +47,7 @@ get_header();
                                     </svg>
                                 </a>
                             </div>
-                            <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                            <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-5 shadow-sm">
                                 <div class="flex items-center gap-3 mb-3">
                                     <h3 class="font-bold text-slate-900 flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cyan-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -71,7 +71,7 @@ get_header();
                         </div>
                     </div>
 
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg shadow-primary/5 p-6 sm:p-8">
+                    <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 rounded-2xl shadow-lg shadow-primary/5 p-6 sm:p-8">
                         <div class="space-y-2 mb-6">
                             <p class="text-xs font-semibold uppercase tracking-[0.12em] text-primary">Formulario</p>
                             <h2>Envíame un mensaje</h2>

@@ -69,7 +69,7 @@ do_action( 'tutor_dashboard/before/wrap' );
 
 <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <main id="primary"
-        class="bg-white rounded-3xl shadow-xl border border-slate-300 p-8">
+        class="bg-slate-50 dark:bg-slate-800/40 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700/50 p-8">
 
 
 
