@@ -74,4 +74,48 @@
             </div>
         </details>
     </div>
+
+    <?php
+    $faq_schema = [
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => [
+            [
+                '@type'          => 'Question',
+                'name'           => '¿Por dónde empiezo?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text'  => 'Tienes 3 formas claras de empezar, según tu punto actual: Curso UZZ (gratis) para probar la metodología con práctica guiada. VCV Rack desde cero si necesitas construir base (señal, modulación, control). Mentoría 1:1 si quieres asesoramiento directo: revisamos tu caso y sales con un plan personalizado y tareas concretas. Si no sabes cuál elegir, reserva la consulta gratuita de 15 minutos y lo definimos juntos.',
+                ],
+            ],
+            [
+                '@type'          => 'Question',
+                'name'           => '¿La consulta es gratis de verdad?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text'  => 'Sí, 100%. Es una videollamada de 15 minutos donde hablamos de tu situación, tu nivel y tus objetivos. Sin compromiso, sin presión. Si después de hablar ves que te encaja, genial. Si no, te llevas igualmente una orientación clara.',
+                ],
+            ],
+            [
+                '@type'          => 'Question',
+                'name'           => '¿Cada cuánto son las clases?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text'  => 'Normalmente trabajamos a 1 sesión por semana, para que puedas practicar, asentar lo visto y llegar a la siguiente con material real. Si necesitas otro ritmo, se ajusta.',
+                ],
+            ],
+            [
+                '@type'          => 'Question',
+                'name'           => '¿Qué diferencia hay entre sesión suelta y packs?',
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text'  => 'Sesión suelta: desbloqueo + diagnóstico + plan de siguientes pasos. Ideal para una consulta puntual. Packs 5h/10h: acompañamiento por semanas: plan, revisión, práctica y entregables. Para un proceso más completo. En ambos casos, la idea es la misma: avanzar con criterio, no a base de trucos sueltos.',
+                ],
+            ],
+        ],
+    ];
+    ?>
+    <script type="application/ld+json">
+    <?php echo wp_json_encode( $faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); ?>
+    </script>
 </section>

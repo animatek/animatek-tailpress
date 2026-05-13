@@ -164,24 +164,49 @@ get_header();
                                 </div>
                             </div>
 
-                            <div class="grid gap-4 lg:grid-cols-3 mt-6">
-                                <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900">
-                                    <p class="text-xs font-bold uppercase tracking-[0.14em] text-primary mb-2">EUR 99</p>
-                                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Bitwig Studio Essentials</h3>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-8 mb-5">Ediciones y precios</h3>
+
+                            <div class="grid gap-5 lg:grid-cols-3">
+                                <!-- Essentials -->
+                                <div class="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md dark:border-white/10 dark:bg-slate-900">
+                                    <div class="mb-4">
+                                        <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-600 dark:bg-white/10 dark:text-slate-300">Essentials</span>
+                                    </div>
+                                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1">99€</p>
+                                    <p class="text-xs text-slate-400 dark:text-slate-500 mb-4">Pago único</p>
+                                    <h4 class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-3">Bitwig Studio Essentials</h4>
                                     <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                                         Entrada al ecosistema Bitwig: pistas ilimitadas, VST/CLAP, herramientas de edicion, libreria esencial, Polymer, Sampler, Delay+ y un sistema inicial de modulacion.
                                     </p>
                                 </div>
-                                <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900">
-                                    <p class="text-xs font-bold uppercase tracking-[0.14em] text-primary mb-2">EUR 199</p>
-                                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Bitwig Studio Producer</h3>
+
+                                <!-- Producer -->
+                                <div class="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md dark:border-white/10 dark:bg-slate-900">
+                                    <div class="mb-4">
+                                        <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-primary dark:bg-primary/20">Producer</span>
+                                    </div>
+                                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1">199€</p>
+                                    <p class="text-xs text-slate-400 dark:text-slate-500 mb-4">Pago único</p>
+                                    <h4 class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-3">Bitwig Studio Producer</h4>
                                     <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                                         Pensada para produccion mas completa: mas dispositivos, moduladores avanzados, libreria ampliada, audio comping, edicion por capas, multi-out y mas opciones de stretching.
                                     </p>
                                 </div>
-                                <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900">
-                                    <p class="text-xs font-bold uppercase tracking-[0.14em] text-primary mb-2">EUR 399</p>
-                                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Bitwig Studio</h3>
+
+                                <!-- Studio (Recomendado) -->
+                                <div class="group relative rounded-2xl border-2 border-primary bg-white p-6 shadow-lg shadow-primary/10 transition hover:shadow-xl hover:shadow-primary/15 dark:border-primary/60 dark:bg-slate-900">
+                                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                                        <span class="inline-flex items-center gap-1 rounded-full bg-primary px-3.5 py-1 text-xs font-bold uppercase tracking-[0.1em] text-white shadow-md shadow-primary/25">
+                                            <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                            Recomendado
+                                        </span>
+                                    </div>
+                                    <div class="mb-4 mt-1">
+                                        <span class="inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white dark:bg-white dark:text-slate-900">Studio</span>
+                                    </div>
+                                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1">399€</p>
+                                    <p class="text-xs text-slate-400 dark:text-slate-500 mb-4">Pago único</p>
+                                    <h4 class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-3">Bitwig Studio</h4>
                                     <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                                         La version completa: todos los dispositivos principales, modulacion completa, libreria completa, Bitwig Circle y The Grid para crear instrumentos, efectos de audio y efectos de notas.
                                     </p>
@@ -282,10 +307,33 @@ get_header();
                             </div>
                         </div>
 
-                        <div class="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm dark:border-white/10 dark:bg-slate-950/60">
-                            <p class="text-xs font-bold uppercase tracking-[0.16em] text-primary mb-2">Preventa fundadora</p>
-                            <p class="text-5xl font-extrabold text-slate-900 dark:text-white mb-1">29€</p>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Precio Early Access</p>
+                        <div class="rounded-2xl border border-emerald-200 bg-gradient-to-b from-white to-emerald-50/80 p-6 text-center shadow-xl shadow-emerald-500/10 dark:border-emerald-400/20 dark:from-slate-900 dark:to-emerald-950/20 dark:shadow-emerald-500/5">
+                            <!-- Badge Fundador -->
+                            <div class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-lg shadow-amber-400/25 mb-4">
+                                <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                Fundador
+                            </div>
+
+                            <p class="text-xs font-bold uppercase tracking-[0.16em] text-primary mb-3">Preventa fundadora</p>
+                            <p class="text-6xl font-extrabold text-slate-900 dark:text-white mb-1">29€</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Precio Early Access · Pago único</p>
+
+                            <!-- Mini progresión de precios -->
+                            <div class="grid grid-cols-3 gap-2 mb-6">
+                                <div class="rounded-lg bg-emerald-100/70 border border-emerald-300/60 p-2 dark:bg-emerald-400/10 dark:border-emerald-400/20">
+                                    <p class="text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-300 font-semibold mb-0.5">Ahora</p>
+                                    <p class="text-sm font-bold text-slate-900 dark:text-white">29€</p>
+                                </div>
+                                <div class="rounded-lg bg-slate-50 border border-slate-200 p-2 dark:bg-white/5 dark:border-white/10">
+                                    <p class="text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold mb-0.5">Después</p>
+                                    <p class="text-sm font-bold text-slate-400 dark:text-slate-500">39€</p>
+                                </div>
+                                <div class="rounded-lg bg-slate-50 border border-slate-200 p-2 dark:bg-white/5 dark:border-white/10">
+                                    <p class="text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold mb-0.5">Final</p>
+                                    <p class="text-sm font-bold text-slate-400 dark:text-slate-500">50€</p>
+                                </div>
+                            </div>
+
                             <a href="<?php echo esc_url(home_url('/curso-bitwig-studio/')); ?>" class="btn-primary w-full justify-center">
                                 Ver curso Bitwig
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -376,6 +424,37 @@ get_header();
                                                 Descarga
                                             </a>
                                             <a href="https://youtube.com/shorts/XtD6ISnL8NM?feature=share" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full bg-slate-900 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-primary dark:bg-white dark:text-slate-950 dark:hover:bg-primary dark:hover:text-white">
+                                                Ver video
+                                            </a>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="group overflow-hidden rounded-xl border border-slate-200 bg-slate-50 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 dark:border-white/10 dark:bg-slate-950/70">
+                                    <a href="https://www.youtube.com/watch?v=AycelroMoEQ" target="_blank" rel="noopener" class="block">
+                                        <div class="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-800">
+                                            <img src="https://animatek.net/wp-content/uploads/2026/05/Macros.webp"
+                                                alt="Preset Primer Sinte con Macros en Bitwig"
+                                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                                            <span class="absolute left-3 top-3 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur">#thegrid</span>
+                                        </div>
+                                    </a>
+                                    <div class="p-4">
+                                        <div class="flex items-center justify-between gap-3 mb-2">
+                                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Macros</h3>
+                                            <span class="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">Preset 03</span>
+                                        </div>
+                                        <p class="text-sm font-semibold leading-snug text-slate-700 dark:text-slate-200 mb-2">
+                                            Macros y Moduladores de Bitwig para encontrar tu sonido
+                                        </p>
+                                        <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                                            Con moduladores, una sola Macro puede mover varios parámetros con rangos independientes.
+                                        </p>
+                                        <div class="mt-4 flex flex-wrap gap-2">
+                                            <a href="https://animatekcursos.s3.us-east-2.amazonaws.com/Preset+y+Recursos/Primer+Sinte+con+Macros.bwpreset.zip" class="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary hover:text-white" download>
+                                                Descarga
+                                            </a>
+                                            <a href="https://www.youtube.com/watch?v=AycelroMoEQ" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full bg-slate-900 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-primary dark:bg-white dark:text-slate-950 dark:hover:bg-primary dark:hover:text-white">
                                                 Ver video
                                             </a>
                                         </div>

@@ -109,12 +109,6 @@
 
     </header>
 
-    <?php if (function_exists('rank_math_the_breadcrumbs')) : ?>
-        <div class="max-w-7xl mx-auto px-6 py-2 text-sm text-slate-600 dark:text-slate-400">
-            <?php rank_math_the_breadcrumbs(); ?>
-        </div>
-    <?php endif; ?>
-
     <div id="content" class="site-content grow">
         <?php do_action('tailpress_content_start'); ?>
         <main>

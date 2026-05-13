@@ -8,7 +8,7 @@
         </div>
         <h3 class="text-3xl font-bold text-slate-900">Lanzamientos y colaboraciones</h3>
         <p class="text-slate-600 text-lg leading-relaxed">Consulta mis lanzamientos, remixes y ediciones físicas.</p>
-        <a href="https://www.discogs.com/artist/365686-Animatek?superFilter=Appearances" target="_blank" rel="noreferrer" class="btn-secondary">
+        <a href="https://www.discogs.com/artist/365686-Animatek?superFilter=Appearances" target="_blank" rel="noopener noreferrer" class="btn-secondary">
             Ver mi Discogs
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>

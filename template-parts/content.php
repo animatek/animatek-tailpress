@@ -1,8 +1,8 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Article">
     <div class="relative pt-16 before:absolute before:top-0 before:left-0 before:h-px before:w-6 before:bg-zinc-950 after:absolute after:top-0 after:right-0 after:left-8 after:h-px after:bg-zinc-950/10">
         <div class="relative lg:-mx-4 lg:flex lg:justify-end">
             <div class="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
-            <h2><a href="<?php the_permalink(); ?>" class="!no-underline"><?php the_title(); ?></a></h2>
+            <h2 itemprop="headline"><a href="<?php the_permalink(); ?>" class="!no-underline" itemprop="url"><?php the_title(); ?></a></h2>
             <dl class="lg:absolute lg:top-0 lg:left-0 lg:w-1/3 lg:px-4">
                 <dt class="sr-only"><?php _e('Published', 'animatek'); ?></dt>
                 <dd class="absolute top-0 left-0 text-sm text-zinc-950 lg:static">
@@ -18,12 +18,12 @@
                             ]);
                         ?>
                     </div>
-                    <div class="text-sm text-zinc-950">
-                        <div class="font-semibold"><?php the_author(); ?></div>
+                    <div class="text-sm text-zinc-950" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <div class="font-semibold" itemprop="name"><?php the_author(); ?></div>
                     </div>
                 </dd>
             </dl>
-            <div class="mt-6 max-w-2xl text-base text-zinc-600">
+            <div class="mt-6 max-w-2xl text-base text-zinc-600" itemprop="description">
                 <?php the_excerpt(); ?>
                 
             </div>
@@ -32,4 +32,5 @@
             </a>
         </div>
     </div>
+    <meta itemprop="publisher" content="<?php bloginfo('name'); ?>">
 </article>

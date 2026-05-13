@@ -36,6 +36,22 @@ class Pagination
         $max = (int) $wp_query->max_num_pages;
         $links = self::generate_pagination_links($paged, $max);
 
+        // Emitir <link rel="prev/next"> en <head> para SEO de paginación
+        add_action('wp_head', static function () use ($paged, $max) {
+            if ($paged > 1) {
+                printf(
+                    '<link rel="prev" href="%s">' . "\n",
+                    esc_url(get_pagenum_link($paged - 1))
+                );
+            }
+            if ($paged < $max) {
+                printf(
+                    '<link rel="next" href="%s">' . "\n",
+                    esc_url(get_pagenum_link($paged + 1))
+                );
+            }
+        });
+
         echo '<nav aria-label="Page navigation"><ul class="mt-12 border-t border-light py-6 flex items-center justify-center gap-2">';
 
         self::render_previous_link($paged, $links);

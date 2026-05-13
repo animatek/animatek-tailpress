@@ -87,21 +87,21 @@ get_header();
                     <p class="font-semibold">Todo lo que enseño son herramientas que uso yo mismo. No enseño desde fuera, sino desde dentro.</p>
                 </div>
                 <div class="flex flex-wrap gap-3">
-                    <a href="https://www.bitwig.com/certified/javier-melgar-39/" target="_blank" rel="noreferrer" class="btn-primary !bg-[#4F46E5] !border-[#4F46E5] hover:!bg-[#4338CA] hover:!border-[#4338CA]">
+                    <a href="https://www.bitwig.com/certified/javier-melgar-39/" target="_blank" rel="noopener noreferrer" class="btn-primary !bg-[#4F46E5] !border-[#4F46E5] hover:!bg-[#4338CA] hover:!border-[#4338CA]">
                         Bitwig Certified Trainer
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                             <path stroke-linecap="round" stroke-linejoin="round" d="m15 3 6 6m0 0h-6m6 0V3"/>
                         </svg>
                     </a>
-                    <a href="https://www.juntadeandalucia.es/cultura/aaiicc/formacion-y-residencias/cursos/produccion-sonora-con-ableton-live-con-javier-melgar" target="_blank" rel="noreferrer" class="btn-primary !bg-[#4F46E5] !border-[#4F46E5] hover:!bg-[#4338CA] hover:!border-[#4338CA]">
+                    <a href="https://www.juntadeandalucia.es/cultura/aaiicc/formacion-y-residencias/cursos/produccion-sonora-con-ableton-live-con-javier-melgar" target="_blank" rel="noopener noreferrer" class="btn-primary !bg-[#4F46E5] !border-[#4F46E5] hover:!bg-[#4338CA] hover:!border-[#4338CA]">
                         Producción sonora — Junta de Andalucía
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                             <path stroke-linecap="round" stroke-linejoin="round" d="m15 3 6 6m0 0h-6m6 0V3"/>
                         </svg>
                     </a>
-                    <a href="https://www.juntadeandalucia.es/cultura/aaiicc/formacion-y-residencias/cursos/dj-tecnica-y-oficio-artistico" target="_blank" rel="noreferrer" class="btn-primary !bg-[#4F46E5] !border-[#4F46E5] hover:!bg-[#4338CA] hover:!border-[#4338CA]">
+                    <a href="https://www.juntadeandalucia.es/cultura/aaiicc/formacion-y-residencias/cursos/dj-tecnica-y-oficio-artistico" target="_blank" rel="noopener noreferrer" class="btn-primary !bg-[#4F46E5] !border-[#4F46E5] hover:!bg-[#4338CA] hover:!border-[#4338CA]">
                         DJ Técnica y Oficio — Junta de Andalucía
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -191,7 +191,7 @@ get_header();
                             Y desde hace años llevo un canal donde publico tutoriales de Bitwig y VCV Rack en español, jams modulares en directo y el podcast "Viernes Sonoros" con entrevistas a creadores sonoros. Patches descargables, flujos híbridos y síntesis sin rodeos.
                         </p>
                         <div class="mt-auto pt-1">
-                            <a href="https://www.youtube.com/@animatek" target="_blank" rel="noreferrer" class="btn-primary inline-flex items-center gap-2">
+                            <a href="https://www.youtube.com/@animatek" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2">
                                 Ver canal
                                 <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -233,11 +233,11 @@ get_header();
                         ],
                         [
                             'question' => '¿Tengo soporte si me quedo atascado entre sesiones?',
-                            'answer'   => 'Sí. Mis cursos incluyen soporte y acceso al <a href="https://discord.com/invite/emUkHRrvtk" target="_blank" rel="noreferrer" class="text-primary font-semibold hover:text-primary/80">Discord</a> de la comunidad. En las clases privadas también puedes escribirme si surge una duda puntual.',
+                            'answer'   => 'Sí. Mis cursos incluyen soporte y acceso al <a href="https://discord.com/invite/emUkHRrvtk" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:text-primary/80">Discord</a> de la comunidad. En las clases privadas también puedes escribirme si surge una duda puntual.',
                         ],
                         [
                             'question' => '¿Haces formación presencial?',
-                            'answer'   => 'Puntualmente, en talleres y masterclasses. El grueso de la formación es online. Si te interesa algo presencial, <a href="https://animatek.net/contacto/" target="_blank" rel="noreferrer" class="text-primary font-semibold hover:text-primary/80">escríbeme</a> y vemos opciones.',
+                            'answer'   => 'Puntualmente, en talleres y masterclasses. El grueso de la formación es online. Si te interesa algo presencial, <a href="https://animatek.net/contacto/" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:text-primary/80">escríbeme</a> y vemos opciones.',
                         ],
                     ];
                     $faq_allowed_tags = [
