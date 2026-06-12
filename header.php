@@ -109,6 +109,8 @@
 
     </header>
 
+    <?php get_template_part( 'template-parts/banner-labs' ); ?>
+
     <div id="content" class="site-content grow">
         <?php do_action('tailpress_content_start'); ?>
         <main>

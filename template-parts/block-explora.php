@@ -7,10 +7,55 @@
 
         <!-- Título de la Sección -->
         <div class="text-center mb-12">
-            <h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
                 Aprende y explora más en <span class="text-[#2C7FFF]">Animatek</span>
             </h2>
             <div class="w-24 h-1 bg-[#2C7FFF] mx-auto mt-4 rounded-full opacity-80"></div>
+        </div>
+
+        <!-- Labs: guías gratuitas desbloqueables -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+            <a href="<?php echo esc_url( home_url( '/vcvrack-lab/' ) ); ?>" class="group relative flex flex-col items-start p-6 bg-white rounded-2xl border-2 border-[#2C7FFF]/30 shadow-sm hover:shadow-xl hover:shadow-[#2C7FFF]/20 hover:border-[#2C7FFF] transition-all duration-300 hover:-translate-y-1 h-full">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-primary/10 p-4 rounded-xl group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300 text-primary">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M10 2v6.5L4.5 18A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-3L14 8.5V2"/>
+                            <path d="M8.5 2h7"/>
+                            <path d="M7 15h10"/>
+                        </svg>
+                    </div>
+                    <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-bold uppercase tracking-widest text-green-700">Gratis</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#2C7FFF] transition-colors">
+                    VCV Rack Lab
+                </h3>
+                <p class="text-sm text-gray-600 mt-auto leading-relaxed">
+                    Starter Pack v2.0: la guía esencial de síntesis modular, de la primera conexión a patches complejos.
+                </p>
+                <span class="mt-3 text-sm font-bold text-[#2C7FFF]">Entrar al Lab &rarr;</span>
+            </a>
+
+            <a href="<?php echo esc_url( home_url( '/bitwig-lab/' ) ); ?>" class="group relative flex flex-col items-start p-6 bg-white rounded-2xl border-2 border-amber-400/40 shadow-sm hover:shadow-xl hover:shadow-amber-500/20 hover:border-amber-500 transition-all duration-300 hover:-translate-y-1 h-full">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-amber-50 p-4 rounded-xl group-hover:bg-amber-100 group-hover:scale-110 transition-all duration-300 text-amber-600">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M10 2v6.5L4.5 18A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-3L14 8.5V2"/>
+                            <path d="M8.5 2h7"/>
+                            <path d="M7 15h10"/>
+                        </svg>
+                    </div>
+                    <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-bold uppercase tracking-widest text-green-700">Gratis</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-amber-600 transition-colors">
+                    Bitwig Lab
+                </h3>
+                <p class="text-sm text-gray-600 mt-auto leading-relaxed">
+                    Bitwig Starter Pack: empieza de cero con The Grid, la ventana principal y los módulos básicos.
+                </p>
+                <span class="mt-3 text-sm font-bold text-amber-600">Entrar al Lab &rarr;</span>
+            </a>
+
         </div>
 
         <!-- Grid de Tarjetas de Recursos -->
@@ -100,7 +145,7 @@
                         Únete a la Comunidad de Producción Musical
                     </h3>
                     <p class="text-gray-600 text-lg leading-relaxed max-w-2xl">
-                        La conversación continúa en nuestras plataformas de <span class="text-[#2C7FFF] font-bold">Discord y Matrix</span>. Únete para resolver tus dudas sobre <strong>VCV Rack</strong> y síntesis modular, compartir tus patches y conectar con otros productores.
+                        La conversación continúa en nuestras plataformas de <span class="text-[#2C7FFF] font-bold">Discord y Matrix</span>. Únete para resolver tus dudas sobre <strong>VCV Rack, Bitwig</strong> y síntesis modular, compartir tus patches y conectar con otros productores.
                     </p>
                 </div>
                 
@@ -112,7 +157,7 @@
                         Servidor Animatek
                     </a>
 
-                    <a href="<?php echo esc_url('https://matrix.to/#/#animatek-academy:matrix.org'); ?>" class="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold w-full md:w-auto" target="_blank" rel="noopener noreferrer">
+                    <a href="<?php echo esc_url('https://matrix.to/#/#animatek-academy:matrix.org'); ?>" class="btn-secondary inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold w-full md:w-auto" target="_blank" rel="noopener noreferrer">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.036.107 1.49.325.453.218.793.576 1.018 1.073.275-.373.63-.696 1.065-.971.434-.275.962-.412 1.582-.412.467 0 .896.058 1.285.174.389.117.72.304.989.559.27.256.477.583.626.981.148.399.222.878.222 1.435v5.949h-1.98v-5.15c0-.321-.014-.616-.04-.882a1.783 1.783 0 0 0-.195-.673.986.986 0 0 0-.439-.43c-.19-.1-.446-.149-.766-.149-.32 0-.58.064-.782.196a1.333 1.333 0 0 0-.464.503 2.087 2.087 0 0 0-.222.706 5.018 5.018 0 0 0-.055.756v5.123h-1.98v-5.107c0-.271-.004-.547-.012-.824a2.485 2.485 0 0 0-.136-.744.993.993 0 0 0-.398-.53c-.182-.133-.449-.2-.801-.2-.111 0-.257.024-.439.074a1.47 1.47 0 0 0-.503.248 1.478 1.478 0 0 0-.419.504c-.113.207-.169.479-.169.816v5.763h-1.98V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z"/>
                         </svg>
