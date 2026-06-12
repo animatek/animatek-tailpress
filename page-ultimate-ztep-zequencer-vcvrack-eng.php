@@ -26,8 +26,8 @@ get_header();
                     <a href="<?php echo esc_url(home_url('/oxi-cv')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
                         OXI-CV
                     </a>
-                    <a href="<?php echo esc_url(home_url('/nomad2026')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        Nomad2026
+                    <a href="<?php echo esc_url(home_url('/animatek-nme-eng/')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                        Animatek NME
                     </a>
                 </div>
                 <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-vcvrack')); ?>" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-primary hover:text-primary transition shadow-sm">

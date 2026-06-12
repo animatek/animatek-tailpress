@@ -25,8 +25,8 @@ get_header();
                 <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-sm" aria-current="page">
                     OXI-CV
                 </span>
-                <a href="<?php echo esc_url(home_url('/nomad2026')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                    Nomad2026
+                <a href="<?php echo esc_url(home_url('/animatek-nme/')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
+                    Animatek NME
                 </a>
             </div>
 

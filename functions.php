@@ -155,3 +155,68 @@ function animatek_handle_like(): void {
 }
 add_action( 'wp_ajax_animatek_like', 'animatek_handle_like' );
 add_action( 'wp_ajax_nopriv_animatek_like', 'animatek_handle_like' );
+
+function animatek_current_request_path(): string {
+    return trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+}
+
+function animatek_redirect_legacy_nme_urls(): void {
+    if ( is_admin() || wp_doing_ajax() ) {
+        return;
+    }
+
+    $redirects = [
+        'nomad2026'     => home_url( '/animatek-nme/' ),
+        'nomad2026_eng' => home_url( '/animatek-nme-eng/' ),
+    ];
+
+    $request_path = animatek_current_request_path();
+
+    if ( isset( $redirects[ $request_path ] ) ) {
+        wp_safe_redirect( $redirects[ $request_path ], 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'animatek_redirect_legacy_nme_urls', 0 );
+
+function animatek_render_virtual_nme_pages(): void {
+    if ( is_admin() || wp_doing_ajax() ) {
+        return;
+    }
+
+    $locales      = [
+        'animatek-nme'     => 'es',
+        'animatek-nme-eng' => 'en',
+    ];
+    $request_path = animatek_current_request_path();
+
+    if ( ! isset( $locales[ $request_path ] ) ) {
+        return;
+    }
+
+    global $wp_query;
+    if ( $wp_query instanceof WP_Query ) {
+        $wp_query->is_404  = false;
+        $wp_query->is_page = true;
+    }
+
+    status_header( 200 );
+    get_header();
+    require_once get_theme_file_path( 'inc/animatek-nme-template.php' );
+    animatek_nme_render_page( $locales[ $request_path ] );
+    get_footer();
+    exit;
+}
+add_action( 'template_redirect', 'animatek_render_virtual_nme_pages', 1 );
+
+function animatek_nme_document_title_parts( array $title ): array {
+    $request_path = animatek_current_request_path();
+
+    if ( is_page( 'animatek-nme' ) || 'animatek-nme' === $request_path ) {
+        $title['title'] = 'Animatek NME - Nord Modular Editor G1';
+    } elseif ( is_page( 'animatek-nme-eng' ) || 'animatek-nme-eng' === $request_path ) {
+        $title['title'] = 'Animatek NME - Nord Modular Editor G1';
+    }
+
+    return $title;
+}
