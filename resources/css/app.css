@@ -8,6 +8,7 @@
 @import './dark.css';
 
 @source '../../*.php';
+@source '../../inc/**/*.php';
 @source '../../template-parts/**/*.php';
 @source '../../src/**/*.php';
 @source '../**/*.{js,jsx,ts,tsx,vue,php}';

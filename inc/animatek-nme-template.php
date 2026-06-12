@@ -1,11 +1,15 @@
 <?php
 
 function animatek_nme_render_page( string $locale = 'es' ): void {
+    if ( ! function_exists( 'animatek_vcv_modules_nav' ) ) {
+        require_once get_theme_file_path( 'inc/animatek-vcv-module-template.php' );
+    }
+
     $is_en = 'en' === $locale;
 
     $patreon_url = 'https://www.patreon.com/c/animatek';
     $github_url  = 'https://github.com/animatek/Animatek-NME';
-    $image_url   = 'https://animatek.net/wp-content/uploads/2026/06/Editor_animatek.png';
+    $image_url   = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME.png';
 
     $copy = $is_en ? [
         'template_badge' => 'BETA IN DEVELOPMENT · PATREON',
@@ -194,53 +198,64 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'Fixes hardware - Error 5, índices Pedal/Aftertouch/On-Off y carga de patch al cambiar slot.',
         'Snippets mejorados - importación preserva dirección de conectores y filtra módulos singleton.',
     ];
+
+    $button_base      = 'inline-flex min-h-11 items-center justify-center rounded-lg px-5 py-3 text-sm font-extrabold leading-none transition duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2';
+    $button_primary   = $button_base . ' bg-[#FF424D] text-white shadow-lg hover:bg-[#e63844] focus:ring-[#FF424D] focus:ring-offset-white';
+    $button_secondary = $button_base . ' border border-slate-300 bg-white text-slate-900 shadow-sm hover:bg-slate-100 focus:ring-slate-400 focus:ring-offset-white';
+    $button_dark      = $button_base . ' border border-zinc-300 bg-zinc-950 text-white shadow-sm hover:bg-zinc-800 focus:ring-zinc-950 focus:ring-offset-white';
+    $button_lang      = 'inline-flex min-h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold leading-none text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/40';
     ?>
 
     <main id="primary" class="bg-zinc-100 text-zinc-950">
-        <section class="relative overflow-hidden bg-[#101114] text-white">
-            <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image:linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);background-size:28px 28px;"></div>
+        <section class="relative overflow-hidden bg-slate-50 text-slate-900">
+            <div class="absolute inset-0 pointer-events-none opacity-60 dark:hidden" style="background-image:linear-gradient(rgba(15,23,42,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(15,23,42,.06) 1px, transparent 1px);background-size:28px 28px;"></div>
+            <div class="absolute inset-0 pointer-events-none opacity-40 hidden dark:block" style="background-image:linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);background-size:28px 28px;"></div>
             <div class="relative mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:py-20">
                 <div class="mb-8 flex flex-wrap items-center gap-3">
-                    <nav class="inline-flex flex-wrap items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-1 shadow-sm" aria-label="Software">
-                        <a href="<?php echo esc_url( home_url( '/ultimate-ztep-zequencer-vcvrack/' ) ); ?>" class="rounded-md px-3 py-1.5 text-xs font-semibold text-zinc-200 transition hover:bg-white/10 hover:text-white">UZZ · VCV Rack</a>
-                        <a href="<?php echo esc_url( home_url( '/ultimate-ztep-zequencer/' ) ); ?>" class="rounded-md px-3 py-1.5 text-xs font-semibold text-zinc-200 transition hover:bg-white/10 hover:text-white">UZZ · Max for Live</a>
-                        <a href="<?php echo esc_url( home_url( '/oxi-cv/' ) ); ?>" class="rounded-md px-3 py-1.5 text-xs font-semibold text-zinc-200 transition hover:bg-white/10 hover:text-white">OXI-CV</a>
-                        <span class="rounded-md bg-[#F4D35E] px-3 py-1.5 text-xs font-bold text-zinc-950" aria-current="page">Animatek NME</span>
-                    </nav>
-                    <a href="<?php echo esc_url( $copy['lang_url'] ); ?>" class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-white transition hover:bg-white/10">
-                        <?php echo esc_html( $copy['lang_label'] ); ?>
+                    <div class="animatek-nme-software-nav">
+                        <?php animatek_vcv_modules_nav( $is_en ? 'animatek-nme-eng' : 'animatek-nme', $is_en ? 'en' : 'es' ); ?>
+                    </div>
+                    <a href="<?php echo esc_url( $copy['lang_url'] ); ?>" class="<?php echo esc_attr( $button_lang ); ?>">
+                        <span><?php echo esc_html( $copy['lang_label'] ); ?></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 12h18" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 3c2.5 3.5 2.5 14 0 18" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 5c1.5 2 1.5 12 0 14" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 5c-1.5 2-1.5 12 0 14" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                 </div>
 
                 <div class="grid items-center gap-10 lg:grid-cols-[0.88fr_1.12fr]">
                     <div class="space-y-6">
-                        <div class="inline-flex items-center rounded-md border border-[#F4D35E]/40 bg-[#F4D35E]/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-[#F4D35E]">
+                        <div class="inline-flex items-center rounded-md border border-yellow-400/50 bg-yellow-50 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-yellow-700 dark:border-[#F4D35E]/40 dark:bg-[#F4D35E]/10 dark:text-[#F4D35E]">
                             <?php echo esc_html( $copy['template_badge'] ); ?>
                         </div>
                         <div class="space-y-3">
-                            <h1 class="max-w-3xl text-5xl font-black leading-none text-white sm:text-6xl lg:text-7xl">
+                            <h1 class="max-w-3xl text-5xl font-black leading-none text-slate-900 sm:text-6xl lg:text-7xl">
                                 Animatek NME
                             </h1>
-                            <p class="text-xl font-semibold text-[#F4D35E] sm:text-2xl">Nord Modular Editor G1</p>
+                            <p class="text-xl font-semibold text-yellow-700 sm:text-2xl dark:text-[#F4D35E]">Nord Modular Editor G1</p>
                         </div>
-                        <p class="max-w-2xl text-lg leading-relaxed text-zinc-200">
+                        <p class="max-w-2xl text-lg leading-relaxed text-slate-600">
                             <?php echo esc_html( $copy['hero_text'] ); ?>
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-[#FF424D] px-5 py-3 text-sm font-extrabold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#e63844]">
+                            <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_primary ); ?>">
                                 <?php echo esc_html( $copy['patreon'] ); ?>
                             </a>
-                            <a href="<?php echo esc_url( $github_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg border border-white/15 bg-white px-5 py-3 text-sm font-extrabold text-zinc-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-zinc-100">
+                            <a href="<?php echo esc_url( $github_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_secondary ); ?>">
                                 <?php echo esc_html( $copy['github'] ); ?>
                             </a>
                         </div>
-                        <p class="max-w-2xl border-l-4 border-[#F4D35E] pl-4 text-sm leading-relaxed text-zinc-300">
+                        <p class="max-w-2xl border-l-4 border-yellow-400 pl-4 text-sm leading-relaxed text-slate-500 dark:border-[#F4D35E]">
                             <?php echo esc_html( $copy['disclaimer'] ); ?>
                         </p>
                     </div>
 
                     <figure class="relative">
-                        <div class="overflow-hidden rounded-lg border border-white/15 bg-zinc-950 shadow-2xl">
+                        <div class="overflow-hidden rounded-lg border border-slate-200 bg-zinc-950 shadow-2xl">
                             <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $copy['image_alt'] ); ?>" class="aspect-video w-full object-cover object-top">
                         </div>
                     </figure>
@@ -249,18 +264,21 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         </section>
 
         <section class="mx-auto max-w-7xl px-6 py-16 sm:px-10">
-            <div class="grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
-                <div class="space-y-8">
-                    <div class="space-y-4">
-                        <h2 class="text-3xl font-black tracking-tight text-zinc-950 sm:text-4xl"><?php echo esc_html( $copy['intro_title'] ); ?></h2>
-                        <div class="space-y-4 text-base leading-relaxed text-zinc-700">
-                            <?php foreach ( $copy['intro'] as $paragraph ) : ?>
-                                <p><?php echo wp_kses_post( $paragraph ); ?></p>
-                            <?php endforeach; ?>
-                        </div>
+            <div class="space-y-10">
+                <div class="grid gap-6 border-b border-zinc-300 pb-10 lg:grid-cols-[0.72fr_1.28fr]">
+                    <h2 class="max-w-xl text-3xl font-black tracking-tight text-zinc-950 sm:text-4xl">
+                        <?php echo esc_html( $copy['intro_title'] ); ?>
+                    </h2>
+                    <div class="grid gap-4 text-base leading-relaxed text-zinc-700 md:grid-cols-3">
+                        <?php foreach ( $copy['intro'] as $paragraph ) : ?>
+                            <p><?php echo wp_kses_post( $paragraph ); ?></p>
+                        <?php endforeach; ?>
                     </div>
+                </div>
 
-                    <div class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm">
+                <div class="grid gap-8 lg:grid-cols-[20rem_minmax(0,1fr)]">
+                    <aside class="lg:sticky lg:top-8 lg:self-start">
+                        <div class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm">
                         <h3 class="mb-4 text-lg font-black text-zinc-950"><?php echo esc_html( $copy['stack_title'] ); ?></h3>
                         <dl class="space-y-4">
                             <?php foreach ( $stack as $term => $description ) : ?>
@@ -270,20 +288,21 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
                                 </div>
                             <?php endforeach; ?>
                         </dl>
-                    </div>
-                </div>
+                        </div>
+                    </aside>
 
-                <div class="grid gap-5">
-                    <?php foreach ( $copy['sections'] as $heading => $items ) : ?>
-                        <section class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm">
-                            <h3 class="mb-4 text-xl font-black text-zinc-950"><?php echo esc_html( $heading ); ?></h3>
-                            <ul class="grid gap-3 text-sm leading-relaxed text-zinc-700 sm:grid-cols-2">
-                                <?php foreach ( $items as $item ) : ?>
-                                    <li class="border-t border-zinc-200 pt-3"><?php echo esc_html( $item ); ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </section>
-                    <?php endforeach; ?>
+                    <div class="grid gap-5">
+                        <?php foreach ( $copy['sections'] as $heading => $items ) : ?>
+                            <section class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm">
+                                <h3 class="mb-4 text-xl font-black text-zinc-950"><?php echo esc_html( $heading ); ?></h3>
+                                <ul class="grid gap-3 text-sm leading-relaxed text-zinc-700 md:grid-cols-2">
+                                    <?php foreach ( $items as $item ) : ?>
+                                        <li class="border-t border-zinc-200 pt-3"><?php echo esc_html( $item ); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </section>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </section>
@@ -325,10 +344,10 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
                     <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-700"><?php echo esc_html( $copy['cta_body'] ); ?></p>
                 </div>
                 <div class="flex flex-wrap gap-3">
-                    <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-[#FF424D] px-5 py-3 text-sm font-extrabold text-white transition hover:bg-[#e63844]">
+                    <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_primary ); ?>">
                         <?php echo esc_html( $copy['cta_patreon'] ); ?>
                     </a>
-                    <a href="<?php echo esc_url( $github_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-zinc-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-zinc-800">
+                    <a href="<?php echo esc_url( $github_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_dark ); ?>">
                         <?php echo esc_html( $copy['github'] ); ?>
                     </a>
                 </div>

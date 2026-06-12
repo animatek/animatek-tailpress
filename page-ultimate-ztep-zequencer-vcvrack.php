@@ -4,6 +4,8 @@
  */
 
 get_header();
+
+require_once get_theme_file_path( 'inc/animatek-vcv-module-template.php' );
 ?>
 
 <main id="primary" class="bg-slate-200 text-slate-900">
@@ -16,20 +18,7 @@ get_header();
 
         <div class="max-w-7xl mx-auto space-y-6 relative z-10">
             <div class="flex flex-wrap items-center gap-3">
-                <div class="inline-flex flex-wrap items-center gap-1 p-1 rounded-full bg-white border border-slate-200 shadow-sm">
-                    <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-sm" aria-current="page">
-                        UZZ · VCV Rack
-                    </span>
-                    <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        UZZ · Max for Live
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/oxi-cv')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        OXI-CV
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/animatek-nme/')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        Animatek NME
-                    </a>
-                </div>
+                <?php animatek_vcv_modules_nav( 'ultimate-ztep-zequencer-vcvrack' ); ?>
                 <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-vcvrack-eng')); ?>" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-primary hover:text-primary transition shadow-sm">
                     <span>EN</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -314,6 +303,88 @@ get_header();
                     </div>
                 </div>
 
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-6">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 text-[11px] font-bold tracking-widest uppercase bg-primary/10 text-primary rounded-full mb-3">
+                                VCV Library · Animatek
+                            </div>
+                            <h4 class="text-2xl font-extrabold text-slate-900">Nuevos módulos y versión 2.5.x</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2 max-w-2xl">
+                                La colección Animatek en VCV Rack ya no es solo UZZ: incluye generadores, controladores MIDI, utilidades y el ecosistema OXI-CV/MULTI.
+                            </p>
+                        </div>
+                        <a href="https://library.vcvrack.com/Animatek"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-bold text-slate-800 hover:border-primary hover:text-primary transition">
+                            Ver colección
+                        </a>
+                    </div>
+
+                    <?php
+                    $animatek_modules = [
+                        [
+                            'name' => 'UNIT-D',
+                            'version' => '2.5.4',
+                            'tag' => 'Nuevo · Generativo',
+                            'url' => home_url('/unit-d/'),
+                            'description' => 'Secuenciador generativo determinista basado en recorridos por grafos de distancia unidad. Nodes 2D, transiciones de grafo, pitch cuantizado, gate, accent, X CV e Y CV.',
+                        ],
+                        [
+                            'name' => 'UZZ',
+                            'version' => '2.5.0',
+                            'tag' => 'Secuenciador',
+                            'url' => home_url('/ultimate-ztep-zequencer-vcvrack/'),
+                            'description' => 'Secuenciador de pasos para improvisación estructurada, probabilidad, modos de dirección, acumulador de semitonos y modulación por paso.',
+                        ],
+                        [
+                            'name' => 'OXI-CV',
+                            'version' => '2.5.0',
+                            'tag' => 'MIDI · CV',
+                            'url' => home_url('/oxi-cv/'),
+                            'description' => 'Conversor MIDI-to-CV de 6 HP para Oxi One: V/Oct, Gate, Velocity, 8 CC, Clock, CLK/n y Run en modos Mono, Poly, Chord, Multitrack y Matriceal.',
+                        ],
+                        [
+                            'name' => 'MULTI',
+                            'version' => '2.5.4',
+                            'tag' => 'Expander de OXI-CV',
+                            'url' => home_url('/oxi-cv/#multi'),
+                            'description' => 'Expander de 10 HP integrado en la página de OXI-CV, con 8 tracks configurables y salidas V/Oct, Gate y Velocity.',
+                        ],
+                        [
+                            'name' => 'APC40 CTRL',
+                            'version' => '2.5.4',
+                            'tag' => 'Controller',
+                            'url' => home_url('/apc40-ctrl/'),
+                            'description' => 'Puente MIDI-to-CV para Akai APC40: Track Control, Device Control, Cue, Crossfader y 8 faders de canal.',
+                        ],
+                        [
+                            'name' => 'BLANK 3',
+                            'version' => '2.5.4',
+                            'tag' => 'Utility',
+                            'url' => home_url('/blank-3/'),
+                            'description' => 'Panel blank de 3 HP con logo Animatek para organizar visualmente tus patches.',
+                        ],
+                    ];
+                    ?>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <?php foreach ($animatek_modules as $module): ?>
+                            <a href="<?php echo esc_url($module['url']); ?>"
+                               class="group block rounded-xl border border-slate-200 bg-slate-50 p-5 transition hover:-translate-y-0.5 hover:border-primary hover:bg-white hover:shadow-md">
+                                <div class="flex items-start justify-between gap-4 mb-3">
+                                    <div>
+                                        <h5 class="text-lg font-extrabold text-slate-900 group-hover:text-primary transition"><?php echo esc_html($module['name']); ?></h5>
+                                        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-500"><?php echo esc_html($module['tag']); ?></p>
+                                    </div>
+                                    <span class="shrink-0 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">v<?php echo esc_html($module['version']); ?></span>
+                                </div>
+                                <p class="text-sm leading-relaxed text-slate-600"><?php echo esc_html($module['description']); ?></p>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
             </div>
 
             <aside class="space-y-8">
@@ -331,6 +402,12 @@ get_header();
                     <p class="text-xs text-slate-500 text-center mt-4 font-sans leading-relaxed">
                         Disponible para VCV Rack Free & Pro.<br>Compatible con Windows, Mac y Linux.
                     </p>
+                    <a href="https://github.com/animatek/UZZ-VCV-RACK"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="mt-3 block w-full text-center border border-slate-200 bg-slate-50 hover:border-primary hover:text-primary text-slate-700 font-bold py-3 px-4 rounded-xl transition">
+                        Código fuente
+                    </a>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">

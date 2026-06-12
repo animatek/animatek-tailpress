@@ -4,6 +4,8 @@
  */
 
 get_header();
+
+require_once get_theme_file_path( 'inc/animatek-vcv-module-template.php' );
 ?>
 
 <main id="primary" class="bg-slate-200 text-slate-900">
@@ -16,20 +18,7 @@ get_header();
 
         <div class="max-w-7xl mx-auto space-y-6 lg:space-y-8 relative z-10">
             <div class="flex flex-wrap items-center gap-3">
-                <div class="inline-flex flex-wrap items-center gap-1 p-1 rounded-full bg-white border border-slate-200 shadow-sm">
-                    <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-vcvrack')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        UZZ · VCV Rack
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-sm" aria-current="page">
-                        UZZ · Max for Live
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/oxi-cv')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        OXI-CV
-                    </a>
-                    <a href="<?php echo esc_url(home_url('/animatek-nme/')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                        Animatek NME
-                    </a>
-                </div>
+                <?php animatek_vcv_modules_nav( 'ultimate-ztep-zequencer' ); ?>
                 <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-eng')); ?>" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-primary hover:text-primary transition shadow-sm">
                     <span>EN</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
