@@ -13,7 +13,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
     $vcv_library_url = 'https://library.vcvrack.com/Animatek';
     $vcv_image       = 'https://animatek.net/wp-content/uploads/2026/04/UZZ_2_5.webp';
     $uzz_max_image   = 'https://animatek.net/wp-content/uploads/2017/08/screenshot.png';
-    $nme_image       = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME.png';
+    $nme_image       = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME_imagen.png';
 
     $modules      = animatek_vcv_modules_data();
     $module_count = count( $modules );

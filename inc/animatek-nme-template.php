@@ -9,7 +9,7 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
 
     $patreon_url = 'https://www.patreon.com/c/animatek';
     $github_url  = 'https://github.com/animatek/Animatek-NME';
-    $image_url   = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME.png';
+    $image_url   = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME_imagen.png';
 
     $copy = $is_en ? [
         'template_badge' => 'BETA IN DEVELOPMENT · PATREON',

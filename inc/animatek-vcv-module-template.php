@@ -28,7 +28,7 @@ function animatek_vcv_modules_data(): array {
             'library_url' => 'https://library.vcvrack.com/Animatek/UnitDistanceSeq',
             'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/UNIT-D_Manual_EN.md',
             'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
-            'image' => 'https://animatek.net/wp-content/uploads/2026/06/Unit-d.webp',
+            'image' => 'https://animatek.net/wp-content/uploads/2026/06/Unit-d_imagen.webp',
             'alt' => 'UNIT-D module for VCV Rack',
             'intro' => 'UNIT-D convierte una estructura geométrica en música: genera una nube 2D de nodos, conecta puntos según una regla de distancia y transforma el recorrido por ese grafo en pitch, gates, accents y modulación X/Y.',
             'lead' => [
