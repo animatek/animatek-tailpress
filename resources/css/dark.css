@@ -1,12 +1,19 @@
 /* ============================================================
-   ANIMATEK DARK MODE
-   Interruptor: <html data-theme="dark">
+   ANIMATEK DARK (único modo del sitio)
+   <html data-theme="dark"> es estático: se fija en header.php
+   y no existe toggle. Este archivo remapea las utilidades
+   claras de las plantillas a la paleta oscura slate:
 
-   Este archivo se importa sin @layer (unlayered) de forma
-   intencional. Los estilos unlayered tienen mayor prioridad
-   que cualquier @layer de Tailwind, lo que garantiza que
-   los overrides de dark mode (marcados con !important) ganen
-   siempre la cascada sin conflictos.
+     base    #0f172a   (slate-900)
+     sutil   #172033
+     card    #1e293b   (slate-800)
+     borde   #334155   (slate-700)
+     hondo   #020617   (slate-950: header, footer, heros)
+
+   Se importa sin @layer (unlayered) de forma intencional.
+   Los estilos unlayered tienen mayor prioridad que cualquier
+   @layer de Tailwind, lo que garantiza que estos overrides
+   (marcados con !important) ganen siempre la cascada.
    ============================================================ */
 
 /* === BASE === */
@@ -16,30 +23,21 @@
 }
 
 [data-theme="dark"] body {
-    background-color: #1e1e2e !important;
+    background-color: #0f172a !important;
     color: #e2e8f0 !important;
 }
 
 /* Fondos blancos y claros → superficie oscura */
-[data-theme="dark"] .bg-white { background-color: #2a2a3e !important; }
-[data-theme="dark"] .bg-slate-50 { background-color: #1e1e2e !important; }
-[data-theme="dark"] .bg-slate-100 { background-color: #252538 !important; }
-[data-theme="dark"] .bg-slate-200 { background-color: #1e1e2e !important; }
-[data-theme="dark"] .bg-zinc-50 { background-color: #1e1e2e !important; }
-[data-theme="dark"] .bg-zinc-100 { background-color: #252538 !important; }
-[data-theme="dark"] .bg-gray-50 { background-color: #1e1e2e !important; }
-[data-theme="dark"] .bg-gray-100 { background-color: #252538 !important; }
-[data-theme="dark"] .bg-gray-200 { background-color: #1e1e2e !important; }
-[data-theme="dark"] .bg-slate-50\/80 { background-color: #252538cc !important; }
-[data-theme="dark"] .bg-slate-50\/50 { background-color: #25253880 !important; }
-[data-theme="dark"] .bg-slate-100\/50 { background-color: #25253880 !important; }
-[data-theme="dark"] .bg-white\/80 { background-color: #2a2a3ecc !important; }
-[data-theme="dark"] .bg-white\/50 { background-color: #2a2a3e80 !important; }
+[data-theme="dark"] .bg-white { background-color: #1e293b !important; }
+[data-theme="dark"] .bg-slate-50 { background-color: #0f172a !important; }
+[data-theme="dark"] .bg-slate-100 { background-color: #172033 !important; }
+[data-theme="dark"] .bg-slate-200 { background-color: #0f172a !important; }
+[data-theme="dark"] .bg-zinc-100 { background-color: #172033 !important; }
+[data-theme="dark"] .bg-gray-50 { background-color: #0f172a !important; }
+[data-theme="dark"] .bg-slate-50\/80 { background-color: #172033cc !important; }
+[data-theme="dark"] .bg-slate-50\/50 { background-color: #17203380 !important; }
 
 /* Card CTA testimonios "El siguiente eres tú" */
-.testimonios-cta-card {
-    background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 100%);
-}
 [data-theme="dark"] .testimonios-cta-card {
     background: linear-gradient(135deg, #1e1e35 0%, #22183a 100%) !important;
 }
@@ -76,50 +74,46 @@
 [data-theme="dark"] .text-rose-600 { color: #fb7185 !important; }
 [data-theme="dark"] .text-blue-600 { color: #60a5fa !important; }
 [data-theme="dark"] .text-green-600 { color: #4ade80 !important; }
-[data-theme="dark"] .border-indigo-100 { border-color: #312e6e !important; }
-[data-theme="dark"] .border-cyan-100 { border-color: #0f3040 !important; }
-[data-theme="dark"] .border-purple-100 { border-color: #3b1f5a !important; }
 [data-theme="dark"] .border-emerald-100 { border-color: #0f3828 !important; }
-[data-theme="dark"] .border-amber-100 { border-color: #3d2e0f !important; }
 
 /* Step cards "Cómo funcionan las clases" (page-clases-privadas)
    Forzamos fondo neutro en la tarjeta exterior con borde azul sutil. El ícono
    interior conserva su tinte primary porque no lleva la clase .step-card. */
 [data-theme="dark"] .step-card {
-    background-color: #2a2a3e !important;
+    background-color: #1e293b !important;
     border-color: #1e3a5f !important;
 }
 
 /* Gradientes claros → gradientes oscuros (override directo de background-image) */
 [data-theme="dark"] .bg-gradient-to-br.from-slate-50,
 [data-theme="dark"] .bg-gradient-to-br.from-slate-100 {
-    background-image: linear-gradient(to bottom right, #1e1e2e, #252538) !important;
+    background-image: linear-gradient(to bottom right, #0f172a, #172033) !important;
 }
 [data-theme="dark"] .bg-gradient-to-b.from-slate-50,
 [data-theme="dark"] .bg-gradient-to-b.from-slate-100 {
-    background-image: linear-gradient(to bottom, #1e1e2e, #252538) !important;
+    background-image: linear-gradient(to bottom, #0f172a, #172033) !important;
 }
 [data-theme="dark"] .bg-gradient-to-r.from-slate-50,
 [data-theme="dark"] .bg-gradient-to-r.from-slate-100 {
-    background-image: linear-gradient(to right, #1e1e2e, #252538) !important;
+    background-image: linear-gradient(to right, #0f172a, #172033) !important;
 }
 /* Fallback para cualquier gradiente con from-slate-* */
 [data-theme="dark"] [class*="bg-gradient"].from-slate-50,
 [data-theme="dark"] [class*="bg-gradient"].from-slate-100,
 [data-theme="dark"] [class*="bg-gradient"].from-white {
-    background-image: linear-gradient(to bottom right, #1e1e2e, #252538) !important;
+    background-image: linear-gradient(to bottom right, #0f172a, #172033) !important;
 }
 
 /* Textos claros → texto oscuro */
+[data-theme="dark"] .text-slate-950,
+[data-theme="dark"] .text-zinc-950 { color: #f8fafc !important; }
 [data-theme="dark"] .text-slate-900,
 [data-theme="dark"] .text-zinc-900,
 [data-theme="dark"] .text-gray-900 { color: #e2e8f0 !important; }
 [data-theme="dark"] .text-slate-800,
-[data-theme="dark"] .text-zinc-800,
-[data-theme="dark"] .text-gray-800 { color: #cbd5e1 !important; }
+[data-theme="dark"] .text-zinc-800 { color: #cbd5e1 !important; }
 [data-theme="dark"] .text-slate-700,
-[data-theme="dark"] .text-zinc-700,
-[data-theme="dark"] .text-gray-700 { color: #94a3b8 !important; }
+[data-theme="dark"] .text-zinc-700 { color: #94a3b8 !important; }
 [data-theme="dark"] .text-slate-600,
 [data-theme="dark"] .text-zinc-600,
 [data-theme="dark"] .text-gray-600 { color: #94a3b8 !important; }
@@ -128,12 +122,13 @@
 [data-theme="dark"] .text-black { color: #e2e8f0 !important; }
 
 /* Bordes */
+[data-theme="dark"] .border-slate-300,
+[data-theme="dark"] .border-zinc-300 { border-color: #475569 !important; }
+[data-theme="dark"] .hover\:border-slate-300:hover { border-color: #475569 !important; }
 [data-theme="dark"] .border-slate-200,
 [data-theme="dark"] .border-zinc-200,
-[data-theme="dark"] .border-gray-200 { border-color: #3a3a52 !important; }
-[data-theme="dark"] .border-slate-100,
-[data-theme="dark"] .border-zinc-100,
-[data-theme="dark"] .border-gray-100 { border-color: #2a2a3e !important; }
+[data-theme="dark"] .border-gray-200 { border-color: #334155 !important; }
+[data-theme="dark"] .border-slate-100 { border-color: #1e293b !important; }
 
 /* Headings */
 [data-theme="dark"] h1,
@@ -147,16 +142,16 @@
 [data-theme="dark"] input:not([type="submit"]):not([type="button"]):not([type="reset"]),
 [data-theme="dark"] textarea,
 [data-theme="dark"] select {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
     color: #e2e8f0 !important;
 }
 
 /* btn-secondary (definido inline en header.php) */
 [data-theme="dark"] .btn-secondary {
-    background-color: #2a2a3e !important;
+    background-color: #1e293b !important;
     color: #e2e8f0 !important;
-    border-color: #3a3a52 !important;
+    border-color: #334155 !important;
 }
 [data-theme="dark"] .btn-secondary:hover {
     border-color: #2C7FFF !important;
@@ -165,19 +160,19 @@
 
 /* === FAQ ACORDEÓN === */
 [data-theme="dark"] details.group {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
 }
 [data-theme="dark"] details.group summary {
     color: #e2e8f0 !important;
-    background-color: #2a2a3e !important;
+    background-color: #1e293b !important;
 }
 [data-theme="dark"] details.group summary span {
     color: #94a3b8 !important;
 }
 [data-theme="dark"] details.group > div {
-    background-color: #252538 !important;
-    border-color: #3a3a52 !important;
+    background-color: #172033 !important;
+    border-color: #334155 !important;
     color: #cbd5e1 !important;
 }
 [data-theme="dark"] details.group > div p,
@@ -189,8 +184,8 @@
 /* === HEADER / NAV === */
 
 [data-theme="dark"] header {
-    background-color: rgba(22, 22, 42, 0.95) !important;
-    border-color: #3a3a52 !important;
+    background-color: rgba(2, 6, 23, 0.92) !important;
+    border-color: #334155 !important;
 }
 
 /* Logo text */
@@ -200,8 +195,8 @@
 
 /* Nav mobile dropdown */
 [data-theme="dark"] #primary-navigation {
-    background-color: #16162a !important;
-    border-color: #3a3a52 !important;
+    background-color: #020617 !important;
+    border-color: #334155 !important;
 }
 
 /* Nav links */
@@ -214,350 +209,32 @@
 
 /* Hamburger button */
 [data-theme="dark"] #primary-menu-toggle {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
     color: #e2e8f0 !important;
-}
-
-/* === TOGGLE BUTTON === */
-
-[data-theme="dark"] #dark-mode-toggle {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] #dark-mode-toggle:hover {
-    border-color: #2C7FFF !important;
-    color: #2C7FFF !important;
 }
 
 /* === TUTOR LMS === */
 
-/* Override de las variables CSS de Tutor LMS para que cualquier
-   borde/divisor del plugin herede colores acordes al dark mode,
-   incluso en elementos que no tenemos reglas específicas para ellos. */
-[data-theme="dark"] .tutor-wrap,
-[data-theme="dark"] .tutor-dashboard,
-[data-theme="dark"] body {
-    --tutor-border-color: #3a3a52;
-    --tutor-color-black: #e2e8f0;
-    --tutor-color-subdued: #94a3b8;
-    --tutor-color-muted: #94a3b8;
-    --tutor-color-gray-10: #2a2a3e;
-    --tutor-color-gray-20: #3a3a52;
-    --tutor-color-gray-30: #475063;
-    --tutor-color-gray-40: #64748b;
-    --tutor-body-bg: #1e1e2e;
-    --tutor-body-color: #e2e8f0;
-    --tutor-tooltip-bg: #2a2a3e;
-    --tutor-tooltip-color: #f1f5f9;
-}
-
-/* Dashboard y layout general */
-[data-theme="dark"] .tutor-wrap,
-[data-theme="dark"] .tutor-dashboard,
-[data-theme="dark"] .tutor-dashboard-content,
-[data-theme="dark"] .tutor-dashboard-sidebar {
-    background-color: transparent !important;
-    color: #e2e8f0 !important;
-}
-
-/* Catch-all de bordes claros en cualquier descendiente del dashboard.
-   Tutor usa muchas combinaciones .tutor-border-*, #fff directo, etc.
-   Forzamos el tono del dark mode. */
-[data-theme="dark"] .tutor-dashboard [style*="border"],
-[data-theme="dark"] .tutor-dashboard [class*="tutor-border"],
-[data-theme="dark"] .tutor-dashboard hr,
-[data-theme="dark"] .tutor-dashboard-header,
-[data-theme="dark"] .tutor-dashboard-content-header {
-    border-color: #3a3a52 !important;
-}
-
-/* Sidebar nav */
-[data-theme="dark"] .tutor-dashboard-sidebar-nav a {
-    color: #cbd5e1 !important;
-}
-[data-theme="dark"] .tutor-dashboard-sidebar-nav a:hover,
-[data-theme="dark"] .tutor-dashboard-sidebar-nav .tutor-is-active a {
-    color: #2C7FFF !important;
-}
-
-/* Menú izquierdo del dashboard: bordes y divisores demasiado claros */
-[data-theme="dark"] .tutor-dashboard-left-menu,
-[data-theme="dark"] .tutor-dashboard-left-menu * {
-    border-color: #3a3a52 !important;
-}
-[data-theme="dark"] .tutor-dashboard-left-menu a,
-[data-theme="dark"] .tutor-dashboard-left-menu li {
-    color: #cbd5e1 !important;
-}
-[data-theme="dark"] .tutor-dashboard-left-menu a:hover,
-[data-theme="dark"] .tutor-dashboard-left-menu .active a,
-[data-theme="dark"] .tutor-dashboard-left-menu .tutor-is-active a {
-    color: #2C7FFF !important;
-    background-color: #2a2a3e !important;
-}
-
-/* Cards de cursos */
-[data-theme="dark"] .tutor-card,
-[data-theme="dark"] .tutor-course-card,
-[data-theme="dark"] .tutor-course-card-body,
-[data-theme="dark"] .tutor-course-card-header {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Textos secundarios */
-[data-theme="dark"] .tutor-color-muted,
-[data-theme="dark"] .tutor-fs-7,
-[data-theme="dark"] .tutor-color-secondary {
-    color: #94a3b8 !important;
-}
-
-/* Textos que usan --tutor-body-color (gris oscuro → blanco en dark mode) */
-[data-theme="dark"] {
-    --tutor-body-color: #e2e8f0;
-}
-[data-theme="dark"] .tutor-color-black {
-    color: #e2e8f0 !important;
-}
-
-/* Tablas y listas */
-[data-theme="dark"] .tutor-table th,
-[data-theme="dark"] .tutor-table td {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-table thead th {
-    background-color: #16162a !important;
-}
-
-/* Progress bar background */
-[data-theme="dark"] .tutor-progress-bar {
-    background-color: #3a3a52 !important;
-}
-
-/* Botones Tutor */
-[data-theme="dark"] .tutor-btn-outline-primary {
-    color: #2C7FFF !important;
-    border-color: #2C7FFF !important;
-    background-color: transparent !important;
-}
-
-/* Single course */
-[data-theme="dark"] .tutor-course-sidebar,
-[data-theme="dark"] .tutor-lead-info {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-}
-[data-theme="dark"] .tutor-course-topic {
-    background-color: #252538 !important;
-    border-color: #3a3a52 !important;
-}
-[data-theme="dark"] .tutor-course-topic-title {
-    color: #e2e8f0 !important;
-}
-
-/* Tabs de curso (Información / Anuncios) */
-[data-theme="dark"] .tutor-course-spotlight-tab,
-[data-theme="dark"] .tutor-course-spotlight-wrapper {
-    background-color: transparent !important;
-    border-color: #3a3a52 !important;
-}
-[data-theme="dark"] .tutor-course-details-header {
-    background-color: transparent !important;
-}
-[data-theme="dark"] .tutor-course-spotlight-tab .tutor-nav-link,
-[data-theme="dark"] .tutor-course-spotlight-tab li a {
-    color: #94a3b8 !important;
-    background-color: transparent !important;
-    border-color: transparent !important;
-}
-[data-theme="dark"] .tutor-course-spotlight-tab .tutor-is-active .tutor-nav-link,
-[data-theme="dark"] .tutor-course-spotlight-tab .tutor-is-active a,
-[data-theme="dark"] .tutor-course-spotlight-tab li.active a {
-    color: #2C7FFF !important;
-    border-color: #2C7FFF !important;
-    background-color: transparent !important;
-}
-
-/* Contenido del curso (acordeón de lecciones) */
-[data-theme="dark"] .tutor-course-single-content-wrapper,
-[data-theme="dark"] .tutor-course-topics-contents,
-[data-theme="dark"] .tutor-entry-content {
-    background-color: transparent !important;
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-accordion-item-header {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-accordion-item-body,
-[data-theme="dark"] .tutor-accordion-item .tutor-accordion-item-body,
-[data-theme="dark"] .tutor-single-course-sidebar-more .tutor-accordion-item-body,
-[data-theme="dark"] .tutor-course-single-sidebar-wrapper .tutor-accordion-item-body {
-    background-color: #252538 !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-course-single-sidebar-wrapper .tutor-accordion-item-body * {
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-course-single-sidebar-wrapper .tutor-course-topic-item.is-active a {
-    background-color: #2C7FFF22 !important;
-    color: #60a5fa !important;
-}
-[data-theme="dark"] .tutor-course-topic-item {
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-course-topic-item:hover {
-    background-color: #2a2a3e !important;
-}
-[data-theme="dark"] .tutor-course-topic-item-title {
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-course-topics-header {
-    background-color: #16162a !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Fondo blanco Tutor genérico */
-[data-theme="dark"] .tutor-bg-white {
-    background-color: #2a2a3e !important;
-}
-
-/* Título del sidebar */
-[data-theme="dark"] .tutor-course-single-sidebar-title {
-    background-color: #16162a !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Sidebar del curso (Progreso, Un curso de, etc.) */
-[data-theme="dark"] .tutor-single-course-sidebar,
-[data-theme="dark"] .tutor-single-course-sidebar-more,
-[data-theme="dark"] .tutor-course-single-sidebar-wrapper,
-[data-theme="dark"] .tutor-course-single-info-card,
-[data-theme="dark"] .tutor-icard-content,
-[data-theme="dark"] .tutor-course-details-instructors,
-[data-theme="dark"] .tutor-course-details-widget {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Nav bar de Tutor (tabs Información / Anuncios) */
-[data-theme="dark"] .tutor-nav:not(.tutor-nav-pills):not(.tutor-nav-tabs) {
-    background-color: transparent !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-nav:not(.tutor-nav-pills):not(.tutor-nav-tabs) a,
-[data-theme="dark"] .tutor-nav:not(.tutor-nav-pills):not(.tutor-nav-tabs) li,
-[data-theme="dark"] .tutor-nav:not(.tutor-nav-pills):not(.tutor-nav-tabs) span {
-    color: #94a3b8 !important;
-}
-[data-theme="dark"] .tutor-nav:not(.tutor-nav-pills):not(.tutor-nav-tabs) .is-active a,
-[data-theme="dark"] .tutor-nav:not(.tutor-nav-pills):not(.tutor-nav-tabs) .tutor-is-active a {
-    color: #2C7FFF !important;
-}
-
-/* Items de lecciones en el sidebar */
-[data-theme="dark"] .tutor-course-content-list-item {
-    background-color: #252538 !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-[data-theme="dark"] .tutor-course-content-list-item:hover {
-    background-color: #2a2a3e !important;
-}
-
-/* Último div del sidebar-more (wrapper de acordeón instructor) */
-[data-theme="dark"] .tutor-single-course-sidebar-more > div:last-child {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Acordeón del sidebar (Un curso de, instructor, etc.) */
-[data-theme="dark"] .tutor-accordion-item,
-[data-theme="dark"] .tutor-single-course-sidebar-more .tutor-accordion-item {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Cards genéricas de Tutor */
-[data-theme="dark"] .tutor-card-body,
-[data-theme="dark"] .tutor-card {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Modales de Tutor */
-[data-theme="dark"] .tutor-modal-content,
-[data-theme="dark"] .tutor-modal-header,
-[data-theme="dark"] .tutor-modal-body,
-[data-theme="dark"] .tutor-modal-footer {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Textos dentro de las cards del sidebar */
-[data-theme="dark"] .tutor-single-course-sidebar p,
-[data-theme="dark"] .tutor-single-course-sidebar span,
-[data-theme="dark"] .tutor-single-course-sidebar-more p,
-[data-theme="dark"] .tutor-single-course-sidebar-more span,
-[data-theme="dark"] .tutor-course-details-instructors p,
-[data-theme="dark"] .tutor-course-details-instructors span,
-[data-theme="dark"] .tutor-course-details-widget p,
-[data-theme="dark"] .tutor-course-details-widget span {
-    color: #e2e8f0 !important;
-}
-
-/* Barra de progreso del curso */
-[data-theme="dark"] .tutor-progress-bar {
-    background-color: #3a3a52 !important;
-}
-[data-theme="dark"] .tutor-progress-filled {
-    background-color: #2C7FFF !important;
-}
-
-/* Author / instructor card */
-[data-theme="dark"] .tutor-course-author,
-[data-theme="dark"] .tutor-instructor-card {
-    background-color: #2a2a3e !important;
-    color: #e2e8f0 !important;
-}
-
-/* Wrapper general del single course */
-[data-theme="dark"] .tutor-single-course-wrapper,
-[data-theme="dark"] .tutor-course-details-page {
-    background-color: transparent !important;
-    color: #e2e8f0 !important;
-}
+/* Tutor LMS 4 trae dark mode nativo: functions.php fuerza
+   data-tutor-theme="dark" en <html> y el plugin aplica sus propios
+   tokens oscuros ([data-tutor-theme=dark] en tutor-core.css).
+   Las ~140 reglas .tutor-* que había aquí eran para la v3 (clases
+   que ya no existen) y se eliminaron. */
 
 /* === FLUENT FORM === */
 
 /* Contenedor del formulario */
 [data-theme="dark"] .fluentform,
 [data-theme="dark"] .ff-default {
-    background-color: #1e1e2e !important;
+    background-color: #0f172a !important;
     color: #e2e8f0 !important;
 }
 
 /* Inputs, textarea, select */
 [data-theme="dark"] .ff-el-form-control {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
     color: #e2e8f0 !important;
 }
 [data-theme="dark"] .ff-el-form-control:focus {
@@ -578,8 +255,8 @@
 
 /* Step indicators */
 [data-theme="dark"] .ff-step-container .step-header {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
 }
 
 /* Mensajes de error */
@@ -602,16 +279,16 @@
 [data-theme="dark"] .wp-block-ssa-booking,
 [data-theme="dark"] .ssa-block-container,
 [data-theme="dark"] .ssa-booking-app {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
     color: #e2e8f0 !important;
 }
 
 /* Tabs de navegación del booking flow (fuera del iframe) */
 [data-theme="dark"] .ssa-bookingflow-tab-panel button {
-    background-color: #2a2a3e !important;
+    background-color: #1e293b !important;
     color: #e2e8f0 !important;
-    border-color: #3a3a52 !important;
+    border-color: #334155 !important;
 }
 [data-theme="dark"] .ssa-bookingflow-tab-panel button[aria-selected="true"] {
     color: #2C7FFF !important;
@@ -623,102 +300,15 @@
     color: #e2e8f0 !important;
 }
 
-/* Fix genérico para Navs y Listas de reseñas  */
-[data-theme="dark"] .tutor-nav,
-[data-theme="dark"] .tutor-nav-item,
-[data-theme="dark"] .tutor-nav-link {
-    background-color: transparent !important;
-    color: #cbd5e1 !important;
-}
-[data-theme="dark"] .tutor-is-sticky {
-    background-color: #2a2a3e !important;
-    z-index: 10;
-}
-[data-theme="dark"] .tutor-nav-item.is-active .tutor-nav-link,
-[data-theme="dark"] .tutor-nav-link.is-active {
-    color: #2C7FFF !important;
-    background-color: transparent !important;
-}
-[data-theme="dark"] .tutor-review-list-item,
-[data-theme="dark"] .tutor-card-list-item {
-    background-color: transparent !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-/* Degradado superpuesto del botón de "Leer más" / Mostrar contenido */
-[data-theme="dark"] .tutor-toggle-more-collapsed::before,
-[data-theme="dark"] .tutor-toggle-more-collapsed::after {
-    background: linear-gradient(to top, #2a2a3e 0%, transparent 100%) !important;
-}
-
-/* Fix para tooltips y popups reportados en Cursos (Tutor LMS) */
-[data-theme="dark"] .tooltip-wrap,
-[data-theme="dark"] .tooltip-icon,
-[data-theme="dark"] .tooltip-wrap span,
-[data-theme="dark"] .tooltip-icon + span,
-[data-theme="dark"] .tooltip-wrap .tooltip-content,
-[data-theme="dark"] .tutor-tooltip,
-[data-theme="dark"] .tutor-tooltip-wrap,
-[data-theme="dark"] .tutor-tooltip-text {
-    background-color: #2a2a3e !important;
-    color: #f1f5f9 !important;
-    border: 1px solid #334155 !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4) !important;
-}
-
-[data-theme="dark"] .tooltip-wrap::after,
-[data-theme="dark"] .tooltip-wrap span::after,
-[data-theme="dark"] .tutor-tooltip::after {
-    border-top-color: #2a2a3e !important;
-    border-right-color: #2a2a3e !important;
-    border-left-color: #2a2a3e !important;
-    border-bottom-color: #2a2a3e !important;
-}
-
-/* Fix extra para elementos blancos reportados */
-[data-theme="dark"] .tutor-course-single-sidebar-title,
-[data-theme="dark"] .tutor-accordion-item-header.is-active,
-[data-theme="dark"] .tutor-accordion-item-header,
-[data-theme="dark"] .tutor-course-topic-item,
-[data-theme="dark"] .tutor-course-single-sidebar-wrapper,
-[data-theme="dark"] .tutor-lesson-sidebar,
-[data-theme="dark"] .tutor-course-spotlight-nav,
-[data-theme="dark"] .tutor-tab {
-    background-color: transparent !important;
-}
-
 /* Fix para formulario de Sendinblue (Brevo) con estilos en línea */
 [data-theme="dark"] #sib-container,
 [data-theme="dark"] .sib-container {
     background-color: transparent !important;
-    border-color: #3a3a52 !important;
+    border-color: #334155 !important;
     color: #e2e8f0 !important;
 }
 [data-theme="dark"] #sib-container * {
     color: #e2e8f0 !important;
-}
-
-/* Fix extra para Tutor LMS Desktop / Dashboard reportado */
-[data-theme="dark"] .tutor-form-control,
-[data-theme="dark"] .tutor-form-select,
-[data-theme="dark"] .tutor-js-form-select,
-[data-theme="dark"] .tutor-calendar-wrapper,
-[data-theme="dark"] .tutor-empty-state,
-[data-theme="dark"] .tutor-py-24.tutor-px-32,
-[data-theme="dark"] #wp-tutor_profile_bio-editor-container,
-[data-theme="dark"] .thumbnail-preview,
-[data-theme="dark"] .image-previewer,
-[data-theme="dark"] .thumbnail-wrapper,
-[data-theme="dark"] .tutor-is-borderless {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
-    color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .tutor-nav-link.is-active {
-    background-color: #2a2c42 !important;
-    color: #2C7FFF !important;
 }
 
 /* Editor TinyMCE fixes (A prueba de balas para iframes) */
@@ -726,8 +316,8 @@
 [data-theme="dark"] .mce-panel, 
 [data-theme="dark"] .mce-btn,
 [data-theme="dark"] .wp-editor-container {
-    background-color: #1e1e2e !important;
-    border-color: #3a3a52 !important;
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
 }
 
 /* El truco del almendruco: Invertimos el iframe del editor visual */
@@ -742,6 +332,6 @@
 }
 
 [data-theme="dark"] .wp-switch-editor {
-    background-color: #2a2a3e !important;
-    border-color: #3a3a52 !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
 }

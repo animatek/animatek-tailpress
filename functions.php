@@ -37,16 +37,21 @@ function tailpress(): TailPress\Framework\Theme
 tailpress();
 
 
-//Tutorlms
-/*
-add_action( 'wp_enqueue_scripts', function() {
-    wp_dequeue_style('tutor'); 
-    wp_dequeue_style('tutor-frontend'); 
-    wp_dequeue_style('tutor-course'); 
-    wp_dequeue_style('tutor-dashboard'); 
-    wp_dequeue_style('tutor-woocommerce'); 
-}, 20);
-*/
+// Tutor LMS 4: la web es dark-only, forzamos su tema oscuro nativo.
+// Tutor estampa data-tutor-theme en <html> según la preferencia del usuario
+// (UserPreference::add_theme_attribute, prioridad 10); aquí lo fijamos a dark
+// en todas las páginas para que sus componentes usen los tokens oscuros.
+add_filter( 'language_attributes', function ( $output ) {
+    if ( false !== strpos( $output, 'data-tutor-theme=' ) ) {
+        return preg_replace( '/data-tutor-theme="[^"]*"/', 'data-tutor-theme="dark"', $output );
+    }
+    return $output . ' data-tutor-theme="dark"';
+}, 20 );
+
+add_filter( 'tutor_user_preference_defaults', function ( $defaults ) {
+    $defaults['theme'] = 'dark';
+    return $defaults;
+} );
 
 
 
