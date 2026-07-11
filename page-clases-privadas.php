@@ -21,7 +21,7 @@ get_header();
 
         <div class="relative z-10 container mx-auto px-6 text-center max-w-5xl">
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight">
-                Clases privadas de producción con <span class="text-primary">Bitwig</span> y <span class="text-primary">VCV Rack</span>
+                Clases y asesoramiento <span class="text-primary">personalizado</span>
             </h1>
 
             <p class="text-lg md:text-xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
@@ -137,18 +137,22 @@ get_header();
             <div class="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col hover:border-primary/30 transition-all shadow-sm hover:shadow-lg">
                 <div class="mb-6">
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Sesi&oacute;n puntual</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Tienes una duda concreta o quieres probar las clases antes de comprometerte.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">Para quien necesita resolver una duda concreta, desbloquear un problema o recibir asesoramiento personalizado.</p>
                 </div>
                 <div class="mb-6">
                     <span class="text-4xl font-bold text-slate-900">40 &euro;</span>
                     <span class="text-slate-500 text-sm">/hora</span>
                 </div>
-                <ul class="mb-8 space-y-3 text-slate-700 text-sm flex-1">
+                <ul class="mb-6 space-y-3 text-slate-700 text-sm flex-1">
                     <?php
                     $plan1 = [
-                        'Resolución de problemas en VCV Rack, Bitwig o Reaktor',
-                        'Revisión de patches, proyectos o flujo de trabajo',
-                        'Ajustes de configuración (audio, routing, directo híbrido)',
+                        'Asesoramiento para comprar un ordenador o equipo musical',
+                        'Configuración de Linux, Windows y audio',
+                        'Problemas con Bitwig, VCV Rack, MIDI o sintetizadores',
+                        'Diseño y optimización del estudio',
+                        'Revisión de patches y proyectos',
+                        'Elección de software, plugins o hardware',
+                        'Clases particulares sobre un tema específico',
                     ];
                     foreach ($plan1 as $item): ?>
                         <li class="flex items-start gap-2">
@@ -159,6 +163,9 @@ get_header();
                         </li>
                     <?php endforeach; ?>
                 </ul>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8 border-l-2 border-primary/40 pl-3">
+                    Cu&eacute;ntame tu problema antes de la sesi&oacute;n y dedicaremos la hora a encontrar una soluci&oacute;n pr&aacute;ctica. No necesitas seguir un curso ni contratar m&aacute;s sesiones.
+                </p>
                 <a href="https://animatek.net/pago/?line_items%5B0%5D%5Bprice_id%5D=c5b923cb-2139-4cde-a7b5-e96370391c0e&line_items%5B0%5D%5Bquantity%5D=1" target="_blank"
                     class="w-full block text-center bg-slate-100 border border-slate-200 hover:bg-primary hover:text-white hover:border-primary text-slate-700 font-semibold py-3 px-4 rounded-xl transition-all">
                     Reservar sesi&oacute;n
