@@ -53,6 +53,24 @@ add_filter( 'tutor_user_preference_defaults', function ( $defaults ) {
     return $defaults;
 } );
 
+// Tutor (el editor de P y R, con Pro activo) configura TinyMCE con el
+// plugin "codesample", que WordPress no incluye de serie: TinyMCE lanza el
+// aviso "Failed to initialize plugin: codesample" (y sin su CSS se pinta
+// como una columna roja glitcheada). Sin el plugin, el botón nunca puede
+// funcionar, así que lo quitamos de cualquier editor del frontend.
+add_filter( 'tiny_mce_before_init', function ( $mce ) {
+    if ( is_admin() ) {
+        return $mce;
+    }
+    foreach ( [ 'plugins', 'toolbar1', 'toolbar2' ] as $key ) {
+        if ( ! empty( $mce[ $key ] ) && is_string( $mce[ $key ] ) ) {
+            $items       = array_map( 'trim', explode( ',', $mce[ $key ] ) );
+            $mce[ $key ] = implode( ',', array_diff( $items, [ 'codesample' ] ) );
+        }
+    }
+    return $mce;
+}, 20 );
+
 // Modal "Compartir" de los cursos: Tutor solo trae Facebook, X y LinkedIn.
 // Su librería SocialShare también soporta whatsapp, email, reddit y pinterest
 // (class_prefix "s_" + nombre de la plantilla). El modal sanea icon_html con

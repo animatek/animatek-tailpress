@@ -311,6 +311,27 @@
     background-color: #172033 !important;
 }
 
+/* Fundido del "Mostrar más" en la descripción del curso: gradiente a
+   blanco hardcodeado en tutor.css → a color de fondo del sitio. */
+[data-theme="dark"] .tutor-toggle-more-collapsed:before {
+    background: linear-gradient(rgba(15, 23, 42, 0) 1.31%, rgba(15, 23, 42, .72) 15.41%, #0f172a 100%) !important;
+}
+
+/* Mismos fundidos blancos en la vista de tareas (assignments) */
+[data-theme="dark"] #tutor-assignment-wrap .tutor-to-assignment:before,
+[data-theme="dark"] #tutor-assignment-wrap .tutor-ad-body:before {
+    background: linear-gradient(rgba(15, 23, 42, 0) 1.31%, rgba(15, 23, 42, 0) 15.41%, #0f172a 100%) !important;
+}
+
+/* Aviso de TinyMCE sin hoja de estilos (columna roja "glitcheada",
+   p. ej. "Failed to initialize plugin: codesample" del editor de P y R).
+   functions.php quita la causa; esto es la red de seguridad para que
+   ningún aviso del editor se pinte roto en el frontend. */
+[data-theme="dark"] .mce-notification,
+[data-theme="dark"] .tox-notifications-container {
+    display: none !important;
+}
+
 /* Utilidades de fondo claras */
 [data-theme="dark"] .tutor-bg-white { background-color: #1e293b !important; }
 [data-theme="dark"] .tutor-bg-light,
