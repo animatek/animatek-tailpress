@@ -253,7 +253,276 @@ function animatek_render_virtual_vcv_module_pages(): void {
 }
 add_action( 'template_redirect', 'animatek_render_virtual_vcv_module_pages', 1 );
 
+function animatek_software_seo_trim_description( string $description, int $max_length = 158 ): string {
+    $description = trim( wp_strip_all_tags( $description ) );
+
+    if ( function_exists( 'mb_strlen' ) && mb_strlen( $description ) <= $max_length ) {
+        return $description;
+    }
+
+    if ( ! function_exists( 'mb_strlen' ) && strlen( $description ) <= $max_length ) {
+        return $description;
+    }
+
+    if ( function_exists( 'mb_substr' ) ) {
+        $short = mb_substr( $description, 0, $max_length - 1 );
+    } else {
+        $short = substr( $description, 0, $max_length - 1 );
+    }
+
+    $last_space = strrpos( $short, ' ' );
+    if ( false !== $last_space ) {
+        $short = substr( $short, 0, $last_space );
+    }
+
+    return rtrim( $short, ' .,;:-' ) . '.';
+}
+
+function animatek_software_seo_context(): ?array {
+    $request_path = animatek_current_request_path();
+    $site_name    = 'Animatek';
+
+    $software_image = 'https://animatek.net/wp-content/uploads/2026/04/UZZ_2_5.webp';
+    $nme_image      = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME_imagen.png';
+    $uzz_max_image  = 'https://animatek.net/wp-content/uploads/2017/08/screenshot.png';
+
+    $contexts = [
+        'software' => [
+            'title'       => 'Software musical: VCV Rack, Ableton y Nord Modular',
+            'description' => 'Secuenciadores, módulos y editores de Animatek para VCV Rack, Ableton Live y Clavia Nord Modular G1. Descubre software musical propio.',
+            'canonical'   => home_url( '/software/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => $software_image,
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/software/' ),
+                'en'        => home_url( '/software-eng/' ),
+                'x-default' => home_url( '/software/' ),
+            ],
+            'schema_type' => 'CollectionPage',
+        ],
+        'software-eng' => [
+            'title'       => 'Music Software: VCV Rack, Ableton and Nord Modular',
+            'description' => 'Sequencers, VCV Rack modules and editors by Animatek for VCV Rack, Ableton Live and the Clavia Nord Modular G1.',
+            'canonical'   => home_url( '/software-eng/' ),
+            'locale'      => 'en_US',
+            'lang'        => 'en',
+            'image'       => $software_image,
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/software/' ),
+                'en'        => home_url( '/software-eng/' ),
+                'x-default' => home_url( '/software/' ),
+            ],
+            'schema_type' => 'CollectionPage',
+        ],
+        'sample-packs' => [
+            'title'       => 'Sample Packs WAV para ambient, drone y sound design',
+            'description' => 'Sample packs de Animatek extraidos de directos y sesiones reales: loops, drones, glitches y texturas WAV para producir y remezclar.',
+            'canonical'   => home_url( '/sample-packs/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => home_url( '/wp-content/uploads/2026/06/positronicos-cover.png' ),
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/sample-packs/' ),
+                'x-default' => home_url( '/sample-packs/' ),
+            ],
+            'schema_type' => 'CollectionPage',
+        ],
+        'animatek-nme' => [
+            'title'       => 'Animatek NME - Editor moderno para Nord Modular G1',
+            'description' => 'Editor nativo y open-source para Clavia Nord Modular G1. Edita patches .pch, módulos, cables, morphs, MIDI y bancos sin Java antiguo.',
+            'canonical'   => home_url( '/animatek-nme/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => $nme_image,
+            'type'        => 'product',
+            'alternates'  => [
+                'es'        => home_url( '/animatek-nme/' ),
+                'en'        => home_url( '/animatek-nme-eng/' ),
+                'x-default' => home_url( '/animatek-nme/' ),
+            ],
+            'schema_type' => 'SoftwareApplication',
+            'app'         => [
+                'name' => 'Animatek NME',
+                'category' => 'MusicApplication',
+                'operatingSystem' => 'Windows, macOS, Linux',
+                'url' => home_url( '/animatek-nme/' ),
+            ],
+        ],
+        'animatek-nme-eng' => [
+            'title'       => 'Animatek NME - Modern Nord Modular G1 Editor',
+            'description' => 'Native open-source editor for the Clavia Nord Modular G1. Edit .pch patches, modules, cables, morphs, MIDI and banks without old Java.',
+            'canonical'   => home_url( '/animatek-nme-eng/' ),
+            'locale'      => 'en_US',
+            'lang'        => 'en',
+            'image'       => $nme_image,
+            'type'        => 'product',
+            'alternates'  => [
+                'es'        => home_url( '/animatek-nme/' ),
+                'en'        => home_url( '/animatek-nme-eng/' ),
+                'x-default' => home_url( '/animatek-nme/' ),
+            ],
+            'schema_type' => 'SoftwareApplication',
+            'app'         => [
+                'name' => 'Animatek NME',
+                'category' => 'MusicApplication',
+                'operatingSystem' => 'Windows, macOS, Linux',
+                'url' => home_url( '/animatek-nme-eng/' ),
+            ],
+        ],
+        'ultimate-ztep-zequencer' => [
+            'title'       => 'UZZ Max for Live - Secuenciador de 16 pasos para Ableton',
+            'description' => 'Secuenciador Max for Live de 16 pasos con funciones random y matriz de modulación para controlar parámetros de Ableton Live.',
+            'canonical'   => home_url( '/ultimate-ztep-zequencer/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => $uzz_max_image,
+            'type'        => 'product',
+            'alternates'  => [
+                'es'        => home_url( '/ultimate-ztep-zequencer/' ),
+                'en'        => home_url( '/ultimate-ztep-zequencer-eng/' ),
+                'x-default' => home_url( '/ultimate-ztep-zequencer/' ),
+            ],
+            'schema_type' => 'SoftwareApplication',
+            'app'         => [
+                'name' => 'UZZ Max for Live',
+                'category' => 'MusicApplication',
+                'operatingSystem' => 'Ableton Live with Max for Live',
+                'url' => home_url( '/ultimate-ztep-zequencer/' ),
+                'offers' => [
+                    '@type' => 'Offer',
+                    'price' => '10',
+                    'priceCurrency' => 'EUR',
+                    'availability' => 'https://schema.org/InStock',
+                    'url' => home_url( '/ultimate-ztep-zequencer/' ),
+                ],
+            ],
+        ],
+        'ultimate-ztep-zequencer-eng' => [
+            'title'       => 'UZZ Max for Live - 16-Step Sequencer for Ableton',
+            'description' => '16-step Max for Live sequencer with random functions and a modulation matrix for controlling Ableton Live parameters.',
+            'canonical'   => home_url( '/ultimate-ztep-zequencer-eng/' ),
+            'locale'      => 'en_US',
+            'lang'        => 'en',
+            'image'       => $uzz_max_image,
+            'type'        => 'product',
+            'alternates'  => [
+                'es'        => home_url( '/ultimate-ztep-zequencer/' ),
+                'en'        => home_url( '/ultimate-ztep-zequencer-eng/' ),
+                'x-default' => home_url( '/ultimate-ztep-zequencer/' ),
+            ],
+            'schema_type' => 'SoftwareApplication',
+            'app'         => [
+                'name' => 'UZZ Max for Live',
+                'category' => 'MusicApplication',
+                'operatingSystem' => 'Ableton Live with Max for Live',
+                'url' => home_url( '/ultimate-ztep-zequencer-eng/' ),
+                'offers' => [
+                    '@type' => 'Offer',
+                    'price' => '10',
+                    'priceCurrency' => 'EUR',
+                    'availability' => 'https://schema.org/InStock',
+                    'url' => home_url( '/ultimate-ztep-zequencer-eng/' ),
+                ],
+            ],
+        ],
+    ];
+
+    $module_routes = [
+        'ultimate-ztep-zequencer-vcvrack'     => [ 'uzz-vcv', 'es' ],
+        'ultimate-ztep-zequencer-vcvrack-eng' => [ 'uzz-vcv', 'en' ],
+        'unit-d'                              => [ 'unit-d', 'es' ],
+        'unit-d-eng'                          => [ 'unit-d', 'en' ],
+        'oxi-cv'                              => [ 'oxi-cv', 'es' ],
+        'oxi-cv-eng'                          => [ 'oxi-cv', 'en' ],
+        'apc40-ctrl'                          => [ 'apc40-ctrl', 'es' ],
+        'apc40-ctrl-eng'                      => [ 'apc40-ctrl', 'en' ],
+        'blank-3'                             => [ 'blank-3', 'es' ],
+        'blank-3-eng'                         => [ 'blank-3', 'en' ],
+        'blank3'                              => [ 'blank-3', 'es' ],
+        'blank3-eng'                          => [ 'blank-3', 'en' ],
+    ];
+
+    if ( isset( $module_routes[ $request_path ] ) ) {
+        if ( ! function_exists( 'animatek_vcv_modules_data' ) ) {
+            require_once get_theme_file_path( 'inc/animatek-vcv-module-template.php' );
+        }
+
+        [ $module_slug, $lang ] = $module_routes[ $request_path ];
+        $modules = animatek_vcv_modules_data();
+        $module  = $modules[ $module_slug ] ?? null;
+
+        if ( $module ) {
+            if ( 'en' === $lang ) {
+                $module = array_replace( $module, animatek_vcv_module_en_copy( $module_slug ) );
+            }
+
+            $base_path = 'uzz-vcv' === $module_slug ? 'ultimate-ztep-zequencer-vcvrack' : trim( $modules[ $module_slug ]['slug'], '/' );
+            $es_url    = home_url( '/' . $base_path . '/' );
+            $en_url    = home_url( '/' . $base_path . '-eng/' );
+            $url       = 'en' === $lang ? $en_url : $es_url;
+            $title     = sprintf( '%s - %s para VCV Rack', $module['title'], $module['subtitle'] );
+
+            if ( 'en' === $lang ) {
+                $title = sprintf( '%s - %s for VCV Rack', $module['title'], $module['subtitle'] );
+            }
+
+            $contexts[ $request_path ] = [
+                'title'       => $title,
+                'description' => animatek_software_seo_trim_description( $module['intro'] ),
+                'canonical'   => $url,
+                'locale'      => 'en' === $lang ? 'en_US' : 'es_ES',
+                'lang'        => $lang,
+                'image'       => $module['image'],
+                'type'        => 'product',
+                'alternates'  => [
+                    'es'        => $es_url,
+                    'en'        => $en_url,
+                    'x-default' => $es_url,
+                ],
+                'schema_type' => 'SoftwareApplication',
+                'app'         => [
+                    'name' => $module['title'] . ' VCV Rack',
+                    'category' => 'MusicApplication',
+                    'operatingSystem' => 'VCV Rack 2',
+                    'url' => $url,
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'EUR',
+                        'availability' => 'https://schema.org/InStock',
+                        'url' => $module['library_url'],
+                    ],
+                ],
+            ];
+        }
+    }
+
+    $context = $contexts[ $request_path ] ?? null;
+
+    if ( ! $context ) {
+        return null;
+    }
+
+    $context['site_name'] = $site_name;
+
+    return $context;
+}
+
 function animatek_nme_document_title_parts( array $title ): array {
+    $seo_context = animatek_software_seo_context();
+
+    if ( $seo_context ) {
+        $title['title'] = $seo_context['title'];
+        $title['site']  = 'Animatek';
+        unset( $title['tagline'] );
+
+        return $title;
+    }
+
     $request_path = animatek_current_request_path();
 
     if ( is_page( 'animatek-nme' ) || 'animatek-nme' === $request_path ) {
@@ -278,6 +547,214 @@ function animatek_nme_document_title_parts( array $title ): array {
     return $title;
 }
 add_filter( 'document_title_parts', 'animatek_nme_document_title_parts' );
+
+function animatek_software_schema_graph( array $context ): array {
+    $organization = [
+        '@type' => 'Organization',
+        '@id'   => home_url( '/#organization' ),
+        'name'  => 'Animatek',
+        'url'   => home_url( '/' ),
+        'logo'  => get_stylesheet_directory_uri() . '/screenshot.png',
+    ];
+
+    $web_page = [
+        '@type'       => $context['schema_type'] ?? 'WebPage',
+        '@id'         => trailingslashit( $context['canonical'] ) . '#webpage',
+        'url'         => $context['canonical'],
+        'name'        => $context['title'],
+        'description' => $context['description'],
+        'inLanguage'  => $context['lang'] ?? 'es',
+        'isPartOf'    => [
+            '@type' => 'WebSite',
+            '@id'   => home_url( '/#website' ),
+            'name'  => 'Animatek',
+            'url'   => home_url( '/' ),
+        ],
+        'publisher'   => [
+            '@id' => home_url( '/#organization' ),
+        ],
+        'image'       => [
+            '@type' => 'ImageObject',
+            'url'   => $context['image'],
+        ],
+    ];
+
+    if ( 'SoftwareApplication' === ( $context['schema_type'] ?? '' ) && ! empty( $context['app'] ) ) {
+        $web_page = array_merge(
+            $web_page,
+            [
+                '@type'               => 'SoftwareApplication',
+                'applicationCategory' => $context['app']['category'] ?? 'MusicApplication',
+                'operatingSystem'     => $context['app']['operatingSystem'] ?? '',
+                'softwareVersion'     => $context['app']['softwareVersion'] ?? null,
+                'downloadUrl'         => $context['app']['downloadUrl'] ?? null,
+                'offers'              => $context['app']['offers'] ?? null,
+                'author'              => [
+                    '@id' => home_url( '/#organization' ),
+                ],
+            ]
+        );
+
+        $web_page['name'] = $context['app']['name'] ?? $context['title'];
+    }
+
+    $web_page = array_filter(
+        $web_page,
+        static function ( $value ) {
+            return null !== $value && '' !== $value;
+        }
+    );
+
+    $software_url = 'en' === ( $context['lang'] ?? 'es' ) ? home_url( '/software-eng/' ) : home_url( '/software/' );
+    $breadcrumb = [
+        '@type'           => 'BreadcrumbList',
+        '@id'             => trailingslashit( $context['canonical'] ) . '#breadcrumb',
+        'itemListElement' => [
+            [
+                '@type'    => 'ListItem',
+                'position' => 1,
+                'name'     => 'Animatek',
+                'item'     => home_url( '/' ),
+            ],
+            [
+                '@type'    => 'ListItem',
+                'position' => 2,
+                'name'     => 'Software',
+                'item'     => $software_url,
+            ],
+        ],
+    ];
+
+    if ( ! in_array( animatek_current_request_path(), [ 'software', 'software-eng' ], true ) ) {
+        $breadcrumb['itemListElement'][] = [
+            '@type'    => 'ListItem',
+            'position' => 3,
+            'name'     => $context['title'],
+            'item'     => $context['canonical'],
+        ];
+    }
+
+    return [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
+            $organization,
+            $web_page,
+            $breadcrumb,
+        ],
+    ];
+}
+
+function animatek_render_software_seo_head(): void {
+    $context = animatek_software_seo_context();
+
+    if ( ! $context ) {
+        return;
+    }
+
+    $description = animatek_software_seo_trim_description( $context['description'] );
+    $title       = $context['title'] . ' | Animatek';
+    $canonical   = $context['canonical'];
+    $image       = $context['image'];
+    $og_type     = 'product' === ( $context['type'] ?? '' ) ? 'product' : 'website';
+    ?>
+    <meta name="description" content="<?php echo esc_attr( $description ); ?>">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="<?php echo esc_url( $canonical ); ?>">
+    <?php foreach ( $context['alternates'] ?? [] as $hreflang => $url ) : ?>
+        <link rel="alternate" hreflang="<?php echo esc_attr( $hreflang ); ?>" href="<?php echo esc_url( $url ); ?>">
+    <?php endforeach; ?>
+    <meta property="og:locale" content="<?php echo esc_attr( $context['locale'] ?? 'es_ES' ); ?>">
+    <meta property="og:type" content="<?php echo esc_attr( $og_type ); ?>">
+    <meta property="og:site_name" content="Animatek">
+    <meta property="og:title" content="<?php echo esc_attr( $title ); ?>">
+    <meta property="og:description" content="<?php echo esc_attr( $description ); ?>">
+    <meta property="og:url" content="<?php echo esc_url( $canonical ); ?>">
+    <meta property="og:image" content="<?php echo esc_url( $image ); ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr( $title ); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr( $description ); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url( $image ); ?>">
+    <script type="application/ld+json"><?php echo wp_json_encode( animatek_software_schema_graph( $context ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
+    <?php
+}
+add_action( 'wp_head', 'animatek_render_software_seo_head', 2 );
+
+function animatek_software_sitemap_urls(): array {
+    return [
+        home_url( '/software/' ),
+        home_url( '/software-eng/' ),
+        home_url( '/animatek-nme/' ),
+        home_url( '/animatek-nme-eng/' ),
+        home_url( '/ultimate-ztep-zequencer/' ),
+        home_url( '/ultimate-ztep-zequencer-eng/' ),
+        home_url( '/ultimate-ztep-zequencer-vcvrack/' ),
+        home_url( '/ultimate-ztep-zequencer-vcvrack-eng/' ),
+        home_url( '/unit-d/' ),
+        home_url( '/unit-d-eng/' ),
+        home_url( '/oxi-cv/' ),
+        home_url( '/oxi-cv-eng/' ),
+        home_url( '/apc40-ctrl/' ),
+        home_url( '/apc40-ctrl-eng/' ),
+        home_url( '/blank-3/' ),
+        home_url( '/blank-3-eng/' ),
+    ];
+}
+
+function animatek_render_software_sitemap(): void {
+    if ( 'animatek-software-sitemap.xml' !== animatek_current_request_path() ) {
+        return;
+    }
+
+    $lastmod_sources = [
+        __FILE__,
+        get_theme_file_path( 'inc/animatek-software-hub.php' ),
+        get_theme_file_path( 'inc/animatek-nme-template.php' ),
+        get_theme_file_path( 'inc/animatek-vcv-module-template.php' ),
+    ];
+    $lastmod = 0;
+
+    foreach ( $lastmod_sources as $source ) {
+        if ( file_exists( $source ) ) {
+            $lastmod = max( $lastmod, (int) filemtime( $source ) );
+        }
+    }
+
+    $lastmod = $lastmod ? gmdate( 'c', $lastmod ) : gmdate( 'c' );
+
+    status_header( 200 );
+    header( 'Content-Type: application/xml; charset=UTF-8' );
+
+    echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+
+    foreach ( animatek_software_sitemap_urls() as $url ) {
+        echo "\t<url>\n";
+        echo "\t\t<loc>" . esc_url( $url ) . "</loc>\n";
+        echo "\t\t<lastmod>" . esc_html( $lastmod ) . "</lastmod>\n";
+        echo "\t\t<changefreq>weekly</changefreq>\n";
+        echo "\t\t<priority>0.8</priority>\n";
+        echo "\t</url>\n";
+    }
+
+    echo '</urlset>';
+    exit;
+}
+add_action( 'template_redirect', 'animatek_render_software_sitemap', 0 );
+
+function animatek_add_software_sitemap_to_robots( string $output, bool $public ): string {
+    if ( ! $public ) {
+        return $output;
+    }
+
+    $sitemap = 'Sitemap: ' . home_url( '/animatek-software-sitemap.xml' );
+
+    if ( false === strpos( $output, $sitemap ) ) {
+        $output = rtrim( $output ) . "\n" . $sitemap . "\n";
+    }
+
+    return $output;
+}
+add_filter( 'robots_txt', 'animatek_add_software_sitemap_to_robots', 10, 2 );
 
 /**
  * Devuelve la mejor URL disponible para el panel de alumno.
@@ -379,3 +856,32 @@ function animatek_redirect_plain_wp_login(): void {
     exit;
 }
 add_action( 'login_init', 'animatek_redirect_plain_wp_login' );
+
+/**
+ * Página virtual /sample-packs/ para publicar sample packs sin depender de crear
+ * una página manual en WordPress. Si existe una página real con ese slug, esta
+ * ruta sigue renderizando el mismo diseño.
+ */
+function animatek_render_virtual_sample_packs_page(): void {
+    if ( is_admin() || wp_doing_ajax() ) {
+        return;
+    }
+
+    if ( 'sample-packs' !== animatek_current_request_path() ) {
+        return;
+    }
+
+    global $wp_query;
+    if ( $wp_query instanceof WP_Query ) {
+        $wp_query->is_404  = false;
+        $wp_query->is_page = true;
+    }
+
+    status_header( 200 );
+    get_header();
+    require_once get_theme_file_path( 'inc/animatek-sample-packs-template.php' );
+    animatek_sample_packs_render_page();
+    get_footer();
+    exit;
+}
+add_action( 'template_redirect', 'animatek_render_virtual_sample_packs_page', 1 );

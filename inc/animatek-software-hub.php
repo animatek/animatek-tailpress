@@ -96,7 +96,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
             'title'       => $copy['card_vcv_title'],
             'meta'        => $copy['card_vcv_meta'],
             'text'        => $copy['card_vcv_text'],
-            'badge_class' => 'border-green-400/40 bg-zinc-950 text-green-300',
+            'badge_class' => 'border-green-400/40 bg-slate-950 text-green-300',
         ],
         [
             'url'         => home_url( '/ultimate-ztep-zequencer' . $suffix . '/' ),
@@ -105,7 +105,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
             'title'       => $copy['card_max_title'],
             'meta'        => $copy['card_max_meta'],
             'text'        => $copy['card_max_text'],
-            'badge_class' => 'border-amber-400/40 bg-zinc-950 text-amber-300',
+            'badge_class' => 'border-slate-300 bg-white text-slate-600',
         ],
         [
             'url'         => home_url( '/animatek-nme' . $suffix . '/' ),
@@ -114,18 +114,16 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
             'title'       => $copy['card_nme_title'],
             'meta'        => $copy['card_nme_meta'],
             'text'        => $copy['card_nme_text'],
-            'badge_class' => 'border-[#F4D35E]/40 bg-zinc-950 text-[#F4D35E]',
+            'badge_class' => 'border-slate-300 bg-white text-slate-600',
         ],
     ];
 
-    $grid_light = 'background-image:linear-gradient(rgba(15,23,42,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(15,23,42,.06) 1px, transparent 1px);background-size:28px 28px;';
-    $grid_dark  = 'background-image:linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);background-size:28px 28px;';
+    $pill_neutral = 'inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-black uppercase tracking-widest text-slate-600 dark:border-slate-600 dark:text-slate-300';
     ?>
     <main id="primary" class="bg-slate-100 text-slate-900">
 
-        <section class="relative overflow-hidden bg-slate-50 text-slate-900">
-            <div class="absolute inset-0 pointer-events-none opacity-60 dark:hidden" style="<?php echo esc_attr( $grid_light ); ?>"></div>
-            <div class="absolute inset-0 pointer-events-none opacity-40 hidden dark:block" style="<?php echo esc_attr( $grid_dark ); ?>"></div>
+        <section class="relative overflow-hidden bg-slate-950">
+            <div class="absolute inset-0 pointer-events-none opacity-40 hero-grid"></div>
             <div class="absolute inset-0 pointer-events-none">
                 <div class="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-primary/15 blur-3xl"></div>
                 <div class="absolute right-0 top-1/3 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl"></div>
@@ -153,10 +151,10 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
                 <div class="grid gap-4 sm:grid-cols-3">
                     <?php foreach ( $hero_cards as $card ) : ?>
                         <a href="<?php echo esc_url( $card['url'] ); ?>" class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg">
-                            <div class="relative h-32 overflow-hidden bg-zinc-950 sm:h-36">
+                            <div class="relative h-32 overflow-hidden bg-slate-950 sm:h-36">
                                 <img src="<?php echo esc_url( $card['image'] ); ?>" alt="<?php echo esc_attr( $card['alt'] ); ?>" class="h-full w-full object-cover object-top transition duration-300 group-hover:scale-105" loading="lazy">
-                                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
-                                <span class="absolute left-3 top-3 inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider <?php echo esc_attr( $card['badge_class'] ); ?>"><?php echo esc_html( $card['meta'] ); ?></span>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div>
+                                <span class="absolute left-3 top-3 inline-flex items-center rounded-md border px-2.5 py-1 text-[10px] font-black uppercase tracking-wider <?php echo esc_attr( $card['badge_class'] ); ?>"><?php echo esc_html( $card['meta'] ); ?></span>
                             </div>
                             <div class="flex flex-1 flex-col gap-1.5 p-4">
                                 <h2 class="flex items-center justify-between gap-2 text-lg font-extrabold text-slate-900">
@@ -174,43 +172,45 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         <section class="mx-auto max-w-7xl px-6 py-16 sm:px-10">
             <div class="grid gap-6 lg:grid-cols-2">
 
-                <div id="max-for-live" class="flex scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div id="max-for-live" class="flex scroll-mt-24 flex-col overflow-hidden rounded-lg border border-slate-300 bg-white text-slate-950 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-white">
                     <a href="<?php echo esc_url( home_url( '/ultimate-ztep-zequencer' . $suffix . '/' ) ); ?>" class="block">
                         <img src="<?php echo esc_url( $uzz_max_image ); ?>" alt="<?php echo esc_attr( $copy['max_alt'] ); ?>" class="h-48 w-full object-cover object-top" loading="lazy">
                     </a>
                     <div class="flex flex-1 flex-col gap-4 p-6 sm:p-8">
-                        <span class="self-start rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-widest text-amber-700"><?php echo esc_html( $copy['max_badge'] ); ?></span>
-                        <h2 class="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl"><?php echo esc_html( $copy['max_title'] ); ?></h2>
-                        <p class="text-base leading-relaxed text-slate-600"><?php echo esc_html( $copy['max_text'] ); ?></p>
-                        <div class="mt-auto flex flex-wrap gap-3 pt-2">
-                            <a href="<?php echo esc_url( home_url( '/ultimate-ztep-zequencer' . $suffix . '/' ) ); ?>" class="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-primary/90">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="<?php echo esc_attr( $pill_neutral ); ?>"><?php echo esc_html( $copy['max_badge'] ); ?></span>
+                        </div>
+                        <h2 class="text-2xl font-black tracking-tight text-slate-950 dark:text-white sm:text-3xl"><?php echo esc_html( $copy['max_title'] ); ?></h2>
+                        <p class="text-base leading-relaxed text-slate-700 dark:text-slate-300"><?php echo esc_html( $copy['max_text'] ); ?></p>
+                        <div class="mt-auto flex flex-wrap gap-3 pt-4">
+                            <a href="<?php echo esc_url( home_url( '/ultimate-ztep-zequencer' . $suffix . '/' ) ); ?>" class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-primary/90">
                                 <?php echo esc_html( $copy['max_cta'] ); ?>
                             </a>
-                            <a href="<?php echo esc_url( $uzz_buy_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-primary hover:text-primary">
+                            <a href="<?php echo esc_url( $uzz_buy_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">
                                 <?php echo esc_html( $copy['max_buy'] ); ?>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div id="animatek-nme" class="relative flex scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm">
-                    <div class="absolute inset-0 pointer-events-none opacity-60 dark:hidden" style="<?php echo esc_attr( $grid_light ); ?>"></div>
-                    <div class="absolute inset-0 pointer-events-none opacity-40 hidden dark:block" style="<?php echo esc_attr( $grid_dark ); ?>"></div>
+                <div id="animatek-nme" class="relative flex scroll-mt-24 flex-col overflow-hidden rounded-lg border border-slate-300 bg-white text-slate-950 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-white">
                     <a href="<?php echo esc_url( home_url( '/animatek-nme' . $suffix . '/' ) ); ?>" class="relative block">
                         <img src="<?php echo esc_url( $nme_image ); ?>" alt="<?php echo esc_attr( $copy['nme_alt'] ); ?>" class="h-48 w-full object-cover object-top" loading="lazy">
                     </a>
                     <div class="relative flex flex-1 flex-col gap-4 p-6 sm:p-8">
-                        <span class="self-start rounded-md border border-yellow-400/50 bg-yellow-50 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-yellow-700 dark:border-[#F4D35E]/40 dark:bg-[#F4D35E]/10 dark:text-[#F4D35E]"><?php echo esc_html( $copy['nme_badge'] ); ?></span>
-                        <div>
-                            <h2 class="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl"><?php echo esc_html( $copy['nme_title'] ); ?></h2>
-                            <p class="text-base font-semibold text-yellow-700 dark:text-[#F4D35E]"><?php echo esc_html( $copy['nme_subtitle'] ); ?></p>
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="<?php echo esc_attr( $pill_neutral ); ?>"><?php echo esc_html( $copy['nme_badge'] ); ?></span>
                         </div>
-                        <p class="text-base leading-relaxed text-slate-600"><?php echo esc_html( $copy['nme_text'] ); ?></p>
-                        <div class="mt-auto flex flex-wrap gap-3 pt-2">
-                            <a href="<?php echo esc_url( home_url( '/animatek-nme' . $suffix . '/' ) ); ?>" class="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-primary/90">
+                        <div>
+                            <h2 class="text-2xl font-black tracking-tight text-slate-950 dark:text-white sm:text-3xl"><?php echo esc_html( $copy['nme_title'] ); ?></h2>
+                            <p class="text-base font-semibold text-slate-600 dark:text-slate-300"><?php echo esc_html( $copy['nme_subtitle'] ); ?></p>
+                        </div>
+                        <p class="text-base leading-relaxed text-slate-700 dark:text-slate-300"><?php echo esc_html( $copy['nme_text'] ); ?></p>
+                        <div class="mt-auto flex flex-wrap gap-3 pt-4">
+                            <a href="<?php echo esc_url( home_url( '/animatek-nme' . $suffix . '/' ) ); ?>" class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-primary/90">
                                 <?php echo esc_html( $copy['nme_cta'] ); ?>
                             </a>
-                            <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl bg-[#FF424D] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#e63844]">
+                            <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#FF424D] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#e63844]">
                                 <?php echo esc_html( $copy['nme_patreon'] ); ?>
                             </a>
                         </div>

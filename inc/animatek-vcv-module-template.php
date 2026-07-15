@@ -52,6 +52,10 @@ function animatek_vcv_modules_data(): array {
             ],
             'inputs' => ['CLK', 'RST', 'SEED CV', 'DENS CV'],
             'outputs' => ['V/O', 'GATE', 'ACC', 'X CV', 'Y CV'],
+            'video_url' => 'https://www.youtube.com/embed/6QuFSR8-g50',
+            'video_title' => 'UNIT-D en el resumen de módulos de Omri Cohen',
+            'video_quote' => 'Omri Cohen destacó UNIT-D en su resumen de módulos.',
+            'video_date' => 'Julio 2026',
         ],
         'multi' => [
             'title' => 'MULTI',
@@ -281,6 +285,9 @@ function animatek_vcv_module_en_copy( string $module_slug ): array {
                 ['Traversal', 'WALK, LOCK, GDEN and GLEN define how that geometry is played over time.'],
                 ['Musical reading', 'RNG, V/O, ACC, X and Y decide how traversal becomes sound.'],
             ],
+            'video_title' => 'UNIT-D in Omri Cohen\'s module roundup',
+            'video_quote' => 'Omri Cohen featured UNIT-D in his module roundup.',
+            'video_date' => 'July 2026',
         ],
         'apc40-ctrl' => [
             'intro' => 'APC40 CTRL converts the continuous controls of the Akai APC40 into CV outputs inside VCV Rack, without manually remapping every knob or fader.',
@@ -534,6 +541,23 @@ function animatek_vcv_module_render( string $module_slug, string $locale = 'es' 
                             </div>
                         </div>
                     </div>
+
+                    <?php if ( ! empty( $module['video_url'] ) ) : ?>
+                        <div class="bg-white p-1 rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="rounded-xl overflow-hidden">
+                                <iframe width="100%" height="200" src="<?php echo esc_url( $module['video_url'] ); ?>" title="<?php echo esc_attr( $module['video_title'] ); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" allowfullscreen></iframe>
+                            </div>
+                            <div class="p-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-red-50 p-2 rounded-full text-red-600"><i data-lucide="youtube" class="w-4 h-4"></i></div>
+                                    <div>
+                                        <p class="text-sm text-slate-800 font-medium italic mb-1 font-sans">&ldquo;<?php echo esc_html( $module['video_quote'] ); ?>&rdquo;</p>
+                                        <p class="text-xs text-slate-500 font-sans"><?php echo esc_html( $module['video_date'] ); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
 
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <h4 class="font-bold text-slate-900 mb-4"><?php echo esc_html( $ui['more_modules'] ); ?></h4>

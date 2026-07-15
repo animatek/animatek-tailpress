@@ -20,10 +20,12 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'github' => 'View on GitHub',
         'disclaimer' => 'Nord Modular is a trademark of Clavia DMI AB. This project is an independent, community-developed editor and is not affiliated with or endorsed by Clavia.',
         'intro_title' => 'What is Animatek NME?',
-        'intro' => [
-            '<strong>Animatek NME</strong> - formerly <strong>Nomad2026</strong> - is a new editor for the <strong>Clavia Nord Modular G1</strong> synthesizer.',
-            'It reimplements the original Nomad editor workflow as a modern, native, cross-platform desktop application based on <strong>JUCE/C++</strong>. The goal is to edit <code>.pch</code> patches, modules, cables, morphs, hardware knob assignments, MIDI controllers and full banks from current systems, without relying on old Java runtimes.',
-            'It is an <strong>open-source</strong> project led by Animatek, with beta builds available to Patreon supporters.',
+        'intro_kicker' => 'Native editor · G1 workflow · current systems',
+        'intro_lead' => 'A modern control room for the Nord Modular G1: patch editing, hardware communication and bank management rebuilt as one native desktop tool.',
+        'intro_points' => [
+            'Revives the original Nomad-style patch workflow without old Java runtimes.',
+            'Edits .pch patches, modules, cables, morphs, MIDI CCs and hardware knob assignments.',
+            'Keeps the project open-source while beta builds are distributed to Patreon supporters.',
         ],
         'stack_title' => 'Technical stack',
         'sections' => [
@@ -91,10 +93,12 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'github' => 'Ver en GitHub',
         'disclaimer' => 'Nord Modular es una marca registrada de Clavia DMI AB. Este proyecto es un editor independiente desarrollado por la comunidad y no está afiliado ni respaldado por Clavia.',
         'intro_title' => '¿Qué es Animatek NME?',
-        'intro' => [
-            '<strong>Animatek NME</strong> - antes <strong>Nomad2026</strong> - es un editor nuevo para el sintetizador <strong>Clavia Nord Modular G1</strong>.',
-            'El proyecto reimplementa la experiencia del editor Nomad original en una aplicación moderna, nativa y multiplataforma basada en <strong>JUCE/C++</strong>. La idea es poder editar patches <code>.pch</code>, módulos, cables, morphs, knobs de hardware, controladores MIDI y bancos completos desde sistemas actuales, sin depender de runtimes Java antiguos.',
-            'Es un proyecto <strong>open-source</strong> liderado por Animatek, con builds beta para supporters a través de Patreon.',
+        'intro_kicker' => 'Editor nativo · workflow G1 · sistemas actuales',
+        'intro_lead' => 'Una sala de control moderna para el Nord Modular G1: edición de patches, comunicación con el hardware y gestión de bancos reunidas en una app de escritorio nativa.',
+        'intro_points' => [
+            'Recupera el flujo de trabajo tipo Nomad sin depender de runtimes Java antiguos.',
+            'Edita patches .pch, módulos, cables, morphs, MIDI CCs y asignaciones de knobs físicos.',
+            'Mantiene el proyecto open-source mientras las builds beta se distribuyen a supporters de Patreon.',
         ],
         'stack_title' => 'Stack técnico',
         'sections' => [
@@ -199,14 +203,46 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'Snippets mejorados - importación preserva dirección de conectores y filtra módulos singleton.',
     ];
 
-    $button_base      = 'inline-flex min-h-11 items-center justify-center rounded-lg px-5 py-3 text-sm font-extrabold leading-none transition duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2';
+    $nme_icon = static function ( string $icon, string $class = 'h-5 w-5' ): string {
+        $icons = [
+            'workflow' => '<path d="M4 7h6"/><path d="M14 7h6"/><path d="M10 7a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/><path d="M4 17h10"/><path d="M18 17h2"/><path d="M14 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"/>',
+            'patch'    => '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h3v3H8z"/><path d="M13 13h3v3h-3z"/><path d="M11 9.5h2.5a2.5 2.5 0 0 1 0 5H11"/>',
+            'open'     => '<path d="M8 19c5.5-1.2 9-5.3 9-11V5h-3C8.3 5 4.2 8.5 3 14c2.7-.5 4.5.2 5 5Z"/><path d="M9 15 4 20"/><path d="M13 8h3v3"/>',
+            'code'     => '<path d="m9 18-6-6 6-6"/><path d="m15 6 6 6-6 6"/><path d="m14 4-4 16"/>',
+            'platform' => '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/>',
+            'midi'     => '<path d="M5 8v8"/><path d="M9 6v12"/><path d="M15 6v12"/><path d="M19 8v8"/><path d="M3 12h18"/>',
+            'github'   => '<path d="M9 19c-4 1.2-4-2-6-2"/><path d="M15 22v-3.9a3.4 3.4 0 0 0-1-2.6c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 4.7 5 5 0 0 0 18.9 1S17.7.6 15 2.5a13.4 13.4 0 0 0-6 0C6.3.6 5.1 1 5.1 1A5 5 0 0 0 5 4.7a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.5 7a3.4 3.4 0 0 0-1 2.6V22"/>',
+            'patreon'  => '<path d="M6 4v16"/><circle cx="15" cy="9" r="5"/>',
+            'canvas'   => '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h3v3H8z"/><path d="M14 12h2"/><path d="M11 10.5h3"/>',
+            'modules'  => '<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>',
+            'sliders'  => '<path d="M4 7h10"/><path d="M18 7h2"/><circle cx="16" cy="7" r="2"/><path d="M4 17h2"/><path d="M10 17h10"/><circle cx="8" cy="17" r="2"/>',
+            'release'  => '<path d="M12 3v6"/><path d="M15 6h-6"/><path d="M5 11a7 7 0 1 0 14 0"/><path d="M8 19h8"/>',
+            'knob'     => '<circle cx="12" cy="12" r="7"/><path d="M12 12 16 8"/><path d="M6 19 4 21"/><path d="m18 19 2 2"/>',
+            'keyboard' => '<rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 7v10"/><path d="M11 7v10"/><path d="M15 7v10"/><path d="M19 7v10"/>',
+            'notes'    => '<path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4"/><path d="M9 12h6"/><path d="M9 16h4"/>',
+            'window'   => '<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 9h16"/><path d="M8 13h4"/><path d="M14 13h2"/>',
+            'mutator'  => '<path d="M4 17c5 0 5-10 10-10h6"/><path d="m17 4 3 3-3 3"/><path d="M4 7c2.8 0 4.1 3.1 5.5 5.7"/><path d="M14 17h6"/><path d="m17 14 3 3-3 3"/>',
+        ];
+
+        $inner = $icons[ $icon ] ?? $icons['workflow'];
+
+        return '<svg xmlns="http://www.w3.org/2000/svg" class="' . esc_attr( $class ) . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $inner . '</svg>';
+    };
+
+    $intro_icons   = [ 'workflow', 'patch', 'open' ];
+    $stack_icons   = [ 'code', 'platform', 'midi', 'github', 'patreon' ];
+    $section_icons = [ 'canvas', 'modules', 'sliders', 'midi' ];
+    $floater_icons = [ 'knob', 'keyboard', 'notes', 'window' ];
+
+    $button_base      = 'inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-extrabold leading-none transition duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2';
     $button_primary   = $button_base . ' bg-[#FF424D] text-white shadow-lg hover:bg-[#e63844] focus:ring-[#FF424D] focus:ring-offset-white';
     $button_secondary = $button_base . ' border border-slate-300 bg-white text-slate-900 shadow-sm hover:bg-slate-100 focus:ring-slate-400 focus:ring-offset-white';
     $button_dark      = $button_base . ' border border-zinc-300 bg-zinc-950 text-white shadow-sm hover:bg-zinc-800 focus:ring-zinc-950 focus:ring-offset-white';
     $button_lang      = 'inline-flex min-h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold leading-none text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/40';
+    $pill_neutral     = 'inline-flex items-center rounded-md border border-zinc-300 px-3 py-1.5 text-xs font-black uppercase tracking-widest text-zinc-600 dark:border-zinc-600 dark:text-zinc-300';
     ?>
 
-    <main id="primary" class="bg-zinc-100 text-zinc-950">
+    <main id="primary" class="bg-zinc-100 text-zinc-950 dark:bg-zinc-950 dark:text-white">
         <section class="relative overflow-hidden bg-slate-50 text-slate-900">
             <div class="absolute inset-0 pointer-events-none opacity-60 dark:hidden" style="background-image:linear-gradient(rgba(15,23,42,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(15,23,42,.06) 1px, transparent 1px);background-size:28px 28px;"></div>
             <div class="absolute inset-0 pointer-events-none opacity-40 hidden dark:block" style="background-image:linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);background-size:28px 28px;"></div>
@@ -229,7 +265,7 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
 
                 <div class="grid items-center gap-10 lg:grid-cols-[0.88fr_1.12fr]">
                     <div class="space-y-6">
-                        <div class="inline-flex items-center rounded-md border border-yellow-400/50 bg-yellow-50 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-yellow-700 dark:border-[#F4D35E]/40 dark:bg-[#F4D35E]/10 dark:text-[#F4D35E]">
+                        <div class="<?php echo esc_attr( $pill_neutral ); ?>">
                             <?php echo esc_html( $copy['template_badge'] ); ?>
                         </div>
                         <div class="space-y-3">
@@ -265,83 +301,147 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
 
         <section class="mx-auto max-w-7xl px-6 py-16 sm:px-10">
             <div class="space-y-10">
-                <div class="grid gap-6 border-b border-zinc-300 pb-10 lg:grid-cols-[0.72fr_1.28fr]">
-                    <h2 class="max-w-xl text-3xl font-black tracking-tight text-zinc-950 sm:text-4xl">
-                        <?php echo esc_html( $copy['intro_title'] ); ?>
-                    </h2>
-                    <div class="grid gap-4 text-base leading-relaxed text-zinc-700 md:grid-cols-3">
-                        <?php foreach ( $copy['intro'] as $paragraph ) : ?>
-                            <p><?php echo wp_kses_post( $paragraph ); ?></p>
-                        <?php endforeach; ?>
+                <div class="border-b border-zinc-300 pb-12 dark:border-zinc-700">
+                    <div class="grid gap-8 lg:grid-cols-[0.66fr_1.34fr] lg:items-start">
+                        <div class="space-y-4">
+                            <p class="<?php echo esc_attr( $pill_neutral ); ?>">
+                                <?php echo esc_html( $copy['intro_kicker'] ); ?>
+                            </p>
+                            <h2 class="max-w-xl text-3xl font-black tracking-tight text-zinc-950 dark:text-white sm:text-5xl">
+                                <?php echo esc_html( $copy['intro_title'] ); ?>
+                            </h2>
+                        </div>
+
+                        <div class="space-y-8">
+                            <p class="max-w-4xl text-2xl font-extrabold leading-tight text-zinc-950 dark:text-white sm:text-3xl">
+                                <?php echo esc_html( $copy['intro_lead'] ); ?>
+                            </p>
+
+                            <div class="grid gap-4 md:grid-cols-3">
+                                <?php foreach ( $copy['intro_points'] as $index => $point ) : ?>
+                                    <div class="border-t-4 border-zinc-950 bg-white px-4 py-5 text-sm font-bold leading-relaxed text-zinc-800 shadow-sm dark:border-[#F4D35E] dark:bg-zinc-900 dark:text-zinc-100">
+                                        <div class="mb-5 flex items-center justify-between gap-3 text-[#d22f3a] dark:text-[#F4D35E]">
+                                            <span class="text-xs font-black"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
+                                            <?php echo $nme_icon( $intro_icons[ $index ] ?? 'workflow', 'h-6 w-6' ); ?>
+                                        </div>
+                                        <p><?php echo esc_html( $point ); ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="grid gap-8 lg:grid-cols-[20rem_minmax(0,1fr)]">
                     <aside class="lg:sticky lg:top-8 lg:self-start">
-                        <div class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm">
-                        <h3 class="mb-4 text-lg font-black text-zinc-950"><?php echo esc_html( $copy['stack_title'] ); ?></h3>
+                        <div class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                        <h3 class="mb-4 flex items-center gap-3 text-lg font-black text-zinc-950 dark:text-white">
+                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-zinc-100 text-[#d22f3a] dark:bg-zinc-950 dark:text-[#F4D35E]">
+                                <?php echo $nme_icon( 'code' ); ?>
+                            </span>
+                            <?php echo esc_html( $copy['stack_title'] ); ?>
+                        </h3>
                         <dl class="space-y-4">
+                            <?php $stack_index = 0; ?>
                             <?php foreach ( $stack as $term => $description ) : ?>
-                                <div>
-                                    <dt class="text-sm font-extrabold text-zinc-950"><?php echo esc_html( $term ); ?></dt>
-                                    <dd class="mt-1 text-sm leading-relaxed text-zinc-600"><?php echo esc_html( $description ); ?></dd>
+                                <div class="grid grid-cols-[1.75rem_minmax(0,1fr)] gap-3">
+                                    <dt class="flex h-7 w-7 items-center justify-center rounded-md bg-zinc-100 text-zinc-700 dark:bg-zinc-950 dark:text-zinc-300">
+                                        <?php echo $nme_icon( $stack_icons[ $stack_index ] ?? 'code', 'h-4 w-4' ); ?>
+                                        <span class="sr-only"><?php echo esc_html( $term ); ?></span>
+                                    </dt>
+                                    <dd>
+                                        <p class="text-sm font-extrabold text-zinc-950 dark:text-zinc-100"><?php echo esc_html( $term ); ?></p>
+                                        <p class="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"><?php echo esc_html( $description ); ?></p>
+                                    </dd>
                                 </div>
+                                <?php $stack_index++; ?>
                             <?php endforeach; ?>
                         </dl>
                         </div>
                     </aside>
 
                     <div class="grid gap-5">
+                        <?php $section_icon_index = 0; ?>
                         <?php foreach ( $copy['sections'] as $heading => $items ) : ?>
-                            <section class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm">
-                                <h3 class="mb-4 text-xl font-black text-zinc-950"><?php echo esc_html( $heading ); ?></h3>
-                                <ul class="grid gap-3 text-sm leading-relaxed text-zinc-700 md:grid-cols-2">
+                            <section class="rounded-lg border border-zinc-300 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                                <h3 class="mb-4 flex items-center gap-3 text-xl font-black text-zinc-950 dark:text-white">
+                                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-zinc-100 text-[#d22f3a] dark:bg-zinc-950 dark:text-[#F4D35E]">
+                                        <?php echo $nme_icon( $section_icons[ $section_icon_index ] ?? 'modules' ); ?>
+                                    </span>
+                                    <?php echo esc_html( $heading ); ?>
+                                </h3>
+                                <ul class="grid gap-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 md:grid-cols-2">
                                     <?php foreach ( $items as $item ) : ?>
-                                        <li class="border-t border-zinc-200 pt-3"><?php echo esc_html( $item ); ?></li>
+                                        <li class="border-t border-zinc-200 pt-3 dark:border-zinc-700"><?php echo esc_html( $item ); ?></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </section>
+                            <?php $section_icon_index++; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-white">
+        <section class="bg-white dark:bg-zinc-950">
             <div class="mx-auto grid max-w-7xl gap-8 px-6 py-16 sm:px-10 lg:grid-cols-[0.92fr_1.08fr]">
-                <div class="rounded-lg border border-zinc-300 bg-[#F4D35E] p-6 text-zinc-950 shadow-sm">
-                    <p class="text-sm font-black uppercase tracking-widest"><?php echo esc_html( $copy['beta_title'] ); ?></p>
-                    <h2 class="mt-2 text-3xl font-black"><?php echo esc_html( $copy['beta_date'] ); ?></h2>
-                    <ul class="mt-6 space-y-3 text-sm leading-relaxed">
+                <div class="rounded-lg border border-zinc-300 bg-white p-6 text-zinc-950 shadow-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <p class="<?php echo esc_attr( $pill_neutral ); ?>"><?php echo esc_html( $copy['beta_title'] ); ?></p>
+                            <h2 class="mt-4 text-3xl font-black"><?php echo esc_html( $copy['beta_date'] ); ?></h2>
+                        </div>
+                        <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-[#d22f3a] dark:bg-zinc-950 dark:text-[#F4D35E]">
+                            <?php echo $nme_icon( 'release', 'h-7 w-7' ); ?>
+                        </span>
+                    </div>
+                    <ul class="mt-6 space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                         <?php foreach ( $beta_items as $item ) : ?>
-                            <li class="border-t border-zinc-950/20 pt-3"><?php echo esc_html( $item ); ?></li>
+                            <li class="border-t border-zinc-200 pt-3 dark:border-zinc-700"><?php echo esc_html( $item ); ?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
                 <div class="space-y-5">
-                    <section class="rounded-lg border border-zinc-300 bg-zinc-100 p-6 shadow-sm">
-                        <h2 class="text-2xl font-black text-zinc-950"><?php echo esc_html( $copy['floaters_title'] ); ?></h2>
-                        <ul class="mt-5 grid gap-3 text-sm leading-relaxed text-zinc-700 sm:grid-cols-2">
-                            <?php foreach ( $copy['floaters'] as $item ) : ?>
-                                <li class="rounded-lg border border-zinc-300 bg-white p-4"><?php echo esc_html( $item ); ?></li>
+                    <section class="rounded-lg border border-zinc-300 bg-zinc-100 p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                        <h2 class="flex items-center gap-3 text-2xl font-black text-zinc-950 dark:text-white">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white text-[#d22f3a] dark:bg-zinc-950 dark:text-[#F4D35E]">
+                                <?php echo $nme_icon( 'window' ); ?>
+                            </span>
+                            <?php echo esc_html( $copy['floaters_title'] ); ?>
+                        </h2>
+                        <ul class="mt-5 grid gap-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 sm:grid-cols-2">
+                            <?php foreach ( $copy['floaters'] as $index => $item ) : ?>
+                                <li class="rounded-lg border border-zinc-300 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
+                                    <span class="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-zinc-100 text-[#d22f3a] dark:bg-zinc-900 dark:text-[#F4D35E]">
+                                        <?php echo $nme_icon( $floater_icons[ $index ] ?? 'window', 'h-4 w-4' ); ?>
+                                    </span>
+                                    <p><?php echo esc_html( $item ); ?></p>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     </section>
 
-                    <section class="rounded-lg border border-zinc-800 bg-[#101114] p-6 text-white shadow-sm">
-                        <p class="text-sm font-black uppercase tracking-widest text-[#F4D35E]"><?php echo esc_html( $copy['teaser_title'] ); ?></p>
-                        <p class="mt-3 text-base leading-relaxed text-zinc-200"><?php echo esc_html( $copy['teaser'] ); ?></p>
+                    <section class="rounded-lg border border-zinc-300 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                        <div class="flex items-start gap-4">
+                            <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-[#d22f3a] dark:bg-zinc-950 dark:text-[#F4D35E]">
+                                <?php echo $nme_icon( 'mutator', 'h-7 w-7' ); ?>
+                            </span>
+                            <div>
+                                <p class="<?php echo esc_attr( $pill_neutral ); ?>"><?php echo esc_html( $copy['teaser_title'] ); ?></p>
+                                <p class="mt-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300"><?php echo esc_html( $copy['teaser'] ); ?></p>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </div>
         </section>
 
         <section class="mx-auto max-w-7xl px-6 py-16 sm:px-10">
-            <div class="grid items-center gap-6 rounded-lg border border-zinc-300 bg-white p-6 shadow-sm lg:grid-cols-[1fr_auto]">
+            <div class="grid items-center gap-6 rounded-lg border border-zinc-300 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900 lg:grid-cols-[1fr_auto]">
                 <div>
-                    <h2 class="text-2xl font-black text-zinc-950"><?php echo esc_html( $copy['cta_title'] ); ?></h2>
-                    <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-700"><?php echo esc_html( $copy['cta_body'] ); ?></p>
+                    <h2 class="text-2xl font-black text-zinc-950 dark:text-white"><?php echo esc_html( $copy['cta_title'] ); ?></h2>
+                    <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-700 dark:text-zinc-300"><?php echo esc_html( $copy['cta_body'] ); ?></p>
                 </div>
                 <div class="flex flex-wrap gap-3">
                     <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_primary ); ?>">

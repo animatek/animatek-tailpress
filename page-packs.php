@@ -25,6 +25,11 @@ $pack_filters = [
         'description' => 'Proyectos, presets y dispositivos',
         'slugs' => ['pack-bitwig', 'packs-bitwig', 'bitwig', 'bitwig-studio'],
     ],
+    'samples' => [
+        'label' => 'Sample Packs',
+        'description' => 'Samples WAV, loops, drones y material para sound design',
+        'slugs' => ['sample-packs', 'samples', 'pack-samples', 'packs-samples', 'sound-design'],
+    ],
     'bundles' => [
         'label' => 'Bundles',
         'description' => 'Recopilaciones y packs grandes',
@@ -98,78 +103,79 @@ $animatek_category_badge_class = static function ($slug): string {
     $slug = (string) $slug;
 
     if (str_contains($slug, 'bitwig')) {
-        return 'bg-emerald-100 text-emerald-800 border-emerald-200';
+        return 'border-emerald-400/40 bg-emerald-500/15 text-emerald-300';
+    }
+
+    if (str_contains($slug, 'sample') || str_contains($slug, 'sound-design')) {
+        return 'border-cyan-400/40 bg-cyan-500/15 text-cyan-300';
     }
 
     if (str_contains($slug, 'vcv') || str_contains($slug, 'patch')) {
-        return 'bg-blue-100 text-blue-800 border-blue-200';
+        return 'border-blue-400/40 bg-blue-500/15 text-blue-300';
     }
 
     if (str_contains($slug, 'bundle')) {
-        return 'bg-amber-100 text-amber-800 border-amber-200';
+        return 'border-amber-400/40 bg-amber-500/15 text-amber-300';
     }
 
     if (str_contains($slug, 'project') || str_contains($slug, 'proyecto') || str_contains($slug, 'streaming')) {
-        return 'bg-purple-100 text-purple-800 border-purple-200';
+        return 'border-purple-400/40 bg-purple-500/15 text-purple-300';
     }
 
-    return 'bg-slate-100 text-slate-700 border-slate-200';
+    return 'border-slate-400/30 bg-slate-500/15 text-slate-300';
 };
+
 ?>
 
 <main id="primary" class="bg-slate-100 text-slate-900">
-    <section class="relative overflow-hidden px-6 py-8 lg:py-10 bg-slate-950 text-slate-50 isolate">
-        <div class="absolute -inset-4 bg-cover bg-center blur-[2px] scale-105 opacity-90" style="background-image: url('https://animatek.net/wp-content/uploads/2026/04/GRID_portada.webp');"></div>
-        <div class="absolute inset-0 bg-slate-950/45"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/55 to-slate-950/10"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto">
-            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-                <div class="space-y-4 max-w-4xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] rounded-full bg-white/10 border border-white/15 backdrop-blur">
-                        Packs Animatek
-                    </div>
-                    <div class="space-y-3">
-                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white">
-                            Recursos descargables para <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-300 to-emerald-300">abrir, estudiar y usar</span>
-                        </h1>
-                        <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl">
-                            Patches, proyectos, presets, samples y bundles creados en vídeos, directos y sesiones reales de Animatek.
-                        </p>
-                    </div>
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="relative overflow-hidden bg-slate-950">
+        <!-- Grid pattern -->
+        <div class="absolute inset-0 pointer-events-none opacity-40 hero-grid"></div>
+
+        <!-- Blobs decorativos -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-primary/15 blur-3xl"></div>
+            <div class="absolute right-0 top-1/3 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl"></div>
+            <div class="absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl"></div>
+        </div>
+
+        <div class="relative mx-auto max-w-7xl space-y-8 px-6 py-14 sm:px-10 lg:py-16">
+            <!-- Título + contador -->
+            <div class="flex flex-wrap items-end justify-between gap-6">
+                <div class="space-y-3">
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500">ANIMATEK · PACKS</p>
+                    <h1 class="text-4xl font-black leading-none text-slate-900 sm:text-5xl">Packs</h1>
+                    <p class="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                        Patches, proyectos, presets, samples y bundles creados en vídeos, directos y sesiones reales de Animatek.
+                    </p>
                 </div>
-                <div class="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur">
+                <div class="inline-flex min-h-9 items-center gap-1.5 justify-center rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold leading-none text-slate-700 shadow-sm">
                     <?php echo esc_html($packs_query->found_posts); ?> packs
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="packs" class="relative z-10 max-w-7xl mx-auto px-6 py-8 lg:py-10">
-        <div class="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-5 mb-6">
-            <div class="space-y-2 max-w-3xl">
-                <p class="text-[11px] uppercase tracking-[0.18em] font-semibold text-primary">Catálogo</p>
-                <h2 class="text-slate-900 text-3xl sm:text-4xl">Packs disponibles</h2>
-                <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-                    Todos los posts marcados con la categoría Packs. Usa los filtros para encontrar rápido recursos de VCV, Bitwig, bundles, proyectos o patches.
-                </p>
-            </div>
+            <!-- Filtros -->
             <div class="flex flex-wrap gap-2">
                 <?php foreach ($pack_filters as $filter_key => $filter):
                     $is_active = ($filter_key === $active_filter);
                     $filter_url = add_query_arg('tipo', $filter_key, get_permalink());
                 ?>
                     <a href="<?php echo esc_url($filter_url); ?>#packs"
-                        class="inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-bold transition <?php echo $is_active ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-slate-700 border-slate-200 hover:border-primary/40 hover:text-primary'; ?>"
+                        class="inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-bold transition <?php echo $is_active ? 'bg-primary text-white border-primary shadow-md shadow-primary/20' : 'bg-white text-slate-700 border-slate-200 hover:border-primary/40 hover:text-primary hover:-translate-y-0.5'; ?>"
                         title="<?php echo esc_attr($filter['description']); ?>">
                         <?php echo esc_html($filter['label']); ?>
                     </a>
                 <?php endforeach; ?>
             </div>
         </div>
+    </section>
 
+    <!-- ═══════════════ GRID DE PACKS ═══════════════ -->
+    <section id="packs" class="mx-auto max-w-7xl scroll-mt-24 px-6 py-12 sm:px-10 lg:py-16">
         <?php if ($packs_query->have_posts()): ?>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <?php while ($packs_query->have_posts()): $packs_query->the_post();
                     $categories = get_the_category();
                     $display_categories = array_values(array_filter($categories, static function ($category): bool {
@@ -179,11 +185,11 @@ $animatek_category_badge_class = static function ($slug): string {
                     $price = get_post_meta(get_the_ID(), 'pack_price', true);
                     $download_type = get_post_meta(get_the_ID(), 'pack_type', true);
                 ?>
-                    <article <?php post_class('group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col'); ?>>
-                        <a href="<?php the_permalink(); ?>" class="block relative aspect-[16/9] overflow-hidden bg-slate-100 !no-underline">
+                    <article <?php post_class('group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg'); ?>>
+                        <a href="<?php the_permalink(); ?>" class="relative block aspect-video overflow-hidden bg-slate-950 !no-underline">
                             <?php if (has_post_thumbnail()): ?>
                                 <?php the_post_thumbnail('medium_large', [
-                                    'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105',
+                                    'class' => 'h-full w-full object-cover object-top transition duration-300 group-hover:scale-105',
                                     'loading' => 'lazy',
                                 ]); ?>
                             <?php else: ?>
@@ -191,39 +197,45 @@ $animatek_category_badge_class = static function ($slug): string {
                                     <span class="text-4xl">📦</span>
                                 </div>
                             <?php endif; ?>
-                            <?php if (!empty($price)): ?>
-                                <span class="absolute top-3 right-3 rounded-full bg-slate-950/85 text-white text-xs font-bold px-3 py-1 shadow">
-                                    <?php echo esc_html($price); ?>
-                                </span>
-                            <?php endif; ?>
-                        </a>
 
-                        <div class="p-4 flex flex-col flex-1">
-                            <div class="flex flex-wrap gap-1.5 mb-2.5 min-h-7">
-                                <?php foreach (array_slice($display_categories, 0, 3) as $category): ?>
-                                    <span class="inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] <?php echo esc_attr($animatek_category_badge_class($category->slug)); ?>">
+                            <!-- Overlay gradiente -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+
+                            <!-- Badges sobre la imagen -->
+                            <div class="absolute left-3 top-3 flex flex-wrap gap-1.5">
+                                <?php foreach (array_slice($display_categories, 0, 2) as $category): ?>
+                                    <span class="inline-flex items-center rounded-md border px-2.5 py-1 text-[10px] font-black uppercase tracking-wider backdrop-blur-sm <?php echo esc_attr($animatek_category_badge_class($category->slug)); ?>">
                                         <?php echo esc_html($category->name); ?>
                                     </span>
                                 <?php endforeach; ?>
                             </div>
 
-                            <h3 class="text-base font-extrabold leading-tight text-slate-900 mb-2">
-                                <a href="<?php the_permalink(); ?>" class="!no-underline text-slate-900 hover:text-primary transition-colors">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h3>
+                            <?php if (!empty($price)): ?>
+                                <span class="absolute top-3 right-3 rounded-md bg-white/95 text-slate-900 text-[11px] font-black px-2.5 py-1 shadow-sm backdrop-blur-sm">
+                                    <?php echo esc_html($price); ?>
+                                </span>
+                            <?php endif; ?>
+                        </a>
 
-                            <p class="text-sm text-slate-600 leading-relaxed line-clamp-2 flex-1">
+                        <div class="flex flex-1 flex-col gap-3 p-5">
+                            <div>
+                                <h3 class="text-lg font-extrabold leading-tight text-slate-900">
+                                    <a href="<?php the_permalink(); ?>" class="!no-underline text-slate-900 transition hover:text-primary">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h3>
+                            </div>
+
+                            <p class="text-sm leading-relaxed text-slate-600 line-clamp-2 flex-1">
                                 <?php echo wp_kses_post(get_the_excerpt()); ?>
                             </p>
 
-                            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                            <div class="mt-auto flex items-center justify-between border-t border-slate-100 pt-3">
                                 <span class="text-[11px] uppercase tracking-[0.14em] font-semibold text-slate-400">
                                     <?php echo !empty($download_type) ? esc_html($download_type) : esc_html(get_the_date('d M Y')); ?>
                                 </span>
-                                <a href="<?php the_permalink(); ?>" class="text-primary text-sm font-bold inline-flex items-center gap-1 !no-underline">
-                                    Ver pack
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                <a href="<?php the_permalink(); ?>" class="text-sm font-bold text-primary hover:underline !no-underline">
+                                    Ver pack &rarr;
                                 </a>
                             </div>
                         </div>
@@ -231,12 +243,17 @@ $animatek_category_badge_class = static function ($slug): string {
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
         <?php else: ?>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 sm:p-10 text-center shadow-sm">
-                <div class="text-5xl mb-4">📦</div>
-                <h3 class="text-2xl font-bold text-slate-900 mb-3">Todavía no hay packs con este filtro</h3>
-                <p class="text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            <div class="rounded-2xl border border-slate-200 bg-white p-10 sm:p-14 text-center shadow-sm">
+                <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100">
+                    <span class="text-3xl">📦</span>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900 mb-3">Todavía no hay packs con este filtro</h3>
+                <p class="text-slate-600 max-w-xl mx-auto leading-relaxed">
                     Cuando publiques posts con la categoría Packs, aparecerán automáticamente aquí. Si quieres usar filtros, añade también categorías como Pack VCV, Pack Bitwig, Bundle, Proyecto o Patch.
                 </p>
+                <a href="<?php echo esc_url(get_permalink()); ?>" class="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-primary/90 !no-underline">
+                    Ver todos los packs
+                </a>
             </div>
         <?php endif; ?>
     </section>

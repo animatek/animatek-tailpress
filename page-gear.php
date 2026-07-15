@@ -465,342 +465,67 @@ function get_amazon_affiliate_url($query, $tag = '') {
     <!-- Eurorack Modular Section -->
     <section id="eurorack" class="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
         <div class="space-y-4 mb-12">
-            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
-                <i data-lucide="cable" class="w-8 h-8 text-yellow-500"></i>
-                Eurorack Modular Synth
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2C7FFF]/10 text-[#2C7FFF] dark:text-[#60a5fa] text-xs font-bold tracking-widest uppercase mb-2">
+                ⚡ Eurorack Modular Synth
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
+                Mi <span class="text-[#2C7FFF] dark:text-[#60a5fa]">Cocina Modular</span>
             </h2>
-            <p class="text-slate-600 dark:text-slate-400 text-lg">Mi sistema Eurorack físico actual. Desliza hacia los lados para explorar todos los módulos del rack.</p>
+            <p class="text-slate-600 dark:text-slate-350 text-lg leading-relaxed max-w-3xl">
+                Este es mi sistema modular físico de Eurorack actual. He configurado este rack personalizado para directo y diseño sonoro, integrándolo con hardware externo y software como Bitwig Studio.
+            </p>
         </div>
 
-        <!-- Simulated Eurorack Case Container -->
-        <div class="w-full relative bg-slate-950 rounded-2xl border-4 border-slate-800 shadow-2xl p-4 overflow-hidden mb-12">
-            
-            <!-- Metallic rails top and bottom -->
-            <div class="absolute left-0 right-0 top-3 h-2 bg-slate-700 border-y border-slate-600 opacity-60"></div>
-            <div class="absolute left-0 right-0 bottom-3 h-2 bg-slate-700 border-y border-slate-600 opacity-60"></div>
-            
-            <!-- Horizontal scrollable area for modules -->
-            <div class="overflow-x-auto whitespace-nowrap py-3 px-1 flex gap-0.5 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
-                
-                <!-- 1. TipTop Audio uZeus (4 HP) -->
-                <div class="flex-shrink-0 w-16 min-h-[380px] bg-slate-300 border-x border-slate-400 relative flex flex-col justify-between p-2 shadow-lg text-slate-800 font-mono text-[10px]">
-                    <div class="text-center font-bold">uZeus</div>
-                    
-                    <div class="flex flex-col items-center gap-4">
-                        <!-- Power Switch -->
-                        <div class="w-3 h-6 bg-slate-900 border border-slate-800 rounded relative cursor-pointer flex items-center justify-center">
-                            <span class="w-2.5 h-2.5 bg-slate-600 rounded-sm absolute top-0.5 shadow"></span>
-                        </div>
-                        <span class="text-[8px] font-bold text-red-600">POWER</span>
-                        
-                        <!-- LEDs -->
-                        <div class="flex flex-col gap-1 items-center">
-                            <span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
-                            <span class="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
+        <div class="relative group w-full mb-8">
+            <div class="absolute inset-0 rounded-3xl bg-[#2C7FFF]/10 dark:bg-[#2C7FFF]/5 blur-2xl group-hover:bg-[#2C7FFF]/15 transition-all duration-300"></div>
+            <div class="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl bg-slate-900">
+                <img src="https://animatek.net/wp-content/uploads/2026/06/Cocina-Modular.webp" alt="Cocina Modular de Animatek" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-all duration-500 ease-out">
+                <div class="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-800 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#2C7FFF] animate-pulse"></span>
+                    Estudio Animatek
+                </div>
+            </div>
+        </div>
+
+        <!-- Row with Oxi One and Bitwig Connect side-by-side -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Left: NordModularRack & OxiOne Stack -->
+            <div class="space-y-8">
+                <!-- NordModularRack -->
+                <div class="relative group">
+                    <div class="absolute inset-0 rounded-2xl bg-[#2C7FFF]/10 dark:bg-[#2C7FFF]/5 blur-xl group-hover:bg-[#2C7FFF]/15 transition-all duration-300"></div>
+                    <div class="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl bg-slate-900">
+                        <img src="https://animatek.net/wp-content/uploads/2026/06/NordModularRack.webp" alt="Nord Modular G1 Rack" class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-all duration-500 ease-out">
+                        <div class="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-md border border-slate-800 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#2C7FFF] animate-pulse"></span>
+                            Nord Modular Rack
                         </div>
                     </div>
-                    
-                    <div class="text-center font-bold text-[8px] text-slate-600">4 HP</div>
                 </div>
 
-                <!-- 2. Nano Modules ONA (8 HP) -->
-                <div class="flex-shrink-0 w-32 min-h-[380px] bg-slate-900 border-x border-slate-950 relative flex flex-col justify-between p-3 shadow-lg text-slate-100 font-sans text-xs">
-                    <div class="text-center font-extrabold tracking-widest text-[#24B979]">ONA</div>
-                    <div class="text-[9px] text-slate-400 text-center font-mono uppercase">VCO</div>
-                    
-                    <!-- Synthesizer controls (knobs) -->
-                    <div class="flex flex-col items-center gap-6 my-2">
-                        <!-- Pitch Knob -->
-                        <div class="flex flex-col items-center">
-                            <div class="w-10 h-10 rounded-full bg-slate-950 border-2 border-slate-700 flex items-center justify-center shadow-inner relative">
-                                <span class="absolute top-1 w-0.5 h-3 bg-[#24B979] rounded"></span>
-                            </div>
-                            <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Pitch</span>
-                        </div>
-                        
-                        <!-- Waveforms jacks -->
-                        <div class="grid grid-cols-2 gap-2 mt-2">
-                            <div class="flex flex-col items-center">
-                                <div class="w-6 h-6 rounded-full bg-zinc-800 border-2 border-zinc-600 flex items-center justify-center shadow-inner">
-                                    <div class="w-3 h-3 rounded-full bg-black"></div>
-                                </div>
-                                <span class="text-[8px] text-slate-500 font-mono">Sine</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <div class="w-6 h-6 rounded-full bg-zinc-800 border-2 border-zinc-600 flex items-center justify-center shadow-inner">
-                                    <div class="w-3 h-3 rounded-full bg-black"></div>
-                                </div>
-                                <span class="text-[8px] text-slate-500 font-mono">Saw</span>
-                            </div>
+                <!-- OxiOne -->
+                <div class="relative group">
+                    <div class="absolute inset-0 rounded-2xl bg-[#2C7FFF]/10 dark:bg-[#2C7FFF]/5 blur-xl group-hover:bg-[#2C7FFF]/15 transition-all duration-300"></div>
+                    <div class="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl bg-slate-900">
+                        <img src="https://animatek.net/wp-content/uploads/2026/06/OxiONE.webp" alt="Secuenciador Oxi One" class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-all duration-500 ease-out">
+                        <div class="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-md border border-slate-800 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#2C7FFF] animate-pulse"></span>
+                            OXI One
                         </div>
                     </div>
-
-                    <div class="text-center text-slate-500 text-[8px] font-mono">NANO · 8 HP</div>
                 </div>
+            </div>
 
-                <!-- 3. Nano Modules MAR (4 HP) -->
-                <div class="flex-shrink-0 w-16 min-h-[380px] bg-slate-900 border-x border-slate-950 relative flex flex-col justify-between p-2 shadow-lg text-slate-100 font-sans text-xs">
-                    <div class="text-center font-extrabold text-[#24B979]">MAR</div>
-                    <div class="text-[8px] text-slate-400 text-center font-mono uppercase">LFO</div>
-                    
-                    <div class="flex flex-col items-center gap-5 my-4">
-                        <!-- Tiny Knob -->
-                        <div class="w-7 h-7 rounded-full bg-slate-950 border-2 border-slate-700 flex items-center justify-center shadow-inner relative">
-                            <span class="absolute top-0.5 w-0.5.5 h-2 bg-slate-400 rounded"></span>
-                        </div>
-                        
-                        <!-- Jack -->
-                        <div class="w-6 h-6 rounded-full bg-zinc-800 border-2 border-zinc-600 flex items-center justify-center shadow-inner">
-                            <div class="w-3 h-3 rounded-full bg-black"></div>
-                        </div>
+            <!-- Right: Bitwig Connect -->
+            <div class="relative group h-fit">
+                <div class="absolute inset-0 rounded-2xl bg-[#2C7FFF]/10 dark:bg-[#2C7FFF]/5 blur-xl group-hover:bg-[#2C7FFF]/15 transition-all duration-300"></div>
+                <div class="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl bg-slate-900">
+                    <img src="https://animatek.net/wp-content/uploads/2026/06/Bitwig-Connect_2.webp" alt="Interfaz de audio Bitwig Connect" class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-all duration-500 ease-out">
+                    <div class="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-md border border-slate-800 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#2C7FFF] animate-pulse"></span>
+                        Bitwig Connect
                     </div>
-                    
-                    <div class="text-center text-slate-500 text-[8px] font-mono">4 HP</div>
                 </div>
-
-                <!-- 4. Nano Modules FONT (8 HP) -->
-                <div class="flex-shrink-0 w-32 min-h-[380px] bg-slate-900 border-x border-slate-950 relative flex flex-col justify-between p-3 shadow-lg text-slate-100 font-sans text-xs">
-                    <div class="text-center font-extrabold tracking-widest text-[#24B979]">FONT</div>
-                    <div class="text-[9px] text-slate-400 text-center font-mono uppercase">VCF</div>
-                    
-                    <div class="flex flex-col items-center gap-6 my-2">
-                        <!-- Cutoff Knob -->
-                        <div class="flex flex-col items-center">
-                            <div class="w-12 h-12 rounded-full bg-slate-950 border-2 border-slate-700 flex items-center justify-center shadow-inner relative">
-                                <span class="absolute top-1 w-0.5 h-3.5 bg-yellow-400 rounded"></span>
-                            </div>
-                            <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Cutoff</span>
-                        </div>
-                        
-                        <!-- Resonance -->
-                        <div class="flex flex-col items-center">
-                            <div class="w-8 h-8 rounded-full bg-slate-950 border-2 border-slate-700 flex items-center justify-center shadow-inner relative">
-                                <span class="absolute top-0.5 w-0.5 h-2 bg-slate-400 rounded"></span>
-                            </div>
-                            <span class="text-[8px] text-slate-400 mt-1 uppercase font-mono">Reso</span>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center text-slate-500 text-[8px] font-mono">NANO · 8 HP</div>
-                </div>
-
-                <!-- 5. OXI Coral (14 HP) -->
-                <div class="flex-shrink-0 w-56 min-h-[380px] bg-[#1a1a24] border-x border-slate-950 relative flex flex-col justify-between p-3 shadow-lg text-slate-100 font-sans text-xs">
-                    <div class="flex justify-between items-center px-1">
-                        <span class="font-extrabold text-orange-500 tracking-wider">CORAL</span>
-                        <span class="text-[9px] font-mono bg-orange-950/40 text-orange-400 px-1.5 py-0.5 rounded">OXI</span>
-                    </div>
-                    <div class="text-[9px] text-slate-400 text-center font-mono uppercase">Multi-engine Synth</div>
-
-                    <!-- OLED screen simulation -->
-                    <div class="mx-auto my-3 w-[80%] h-14 bg-blue-950/80 border border-blue-900 rounded p-2 font-mono text-[8px] text-cyan-400 flex flex-col justify-between">
-                        <div class="flex justify-between">
-                            <span>VCO: Acid</span>
-                            <span>Filter: Low</span>
-                        </div>
-                        <div class="h-4 flex items-end gap-0.5">
-                            <span class="h-2 w-1.5 bg-cyan-400"></span>
-                            <span class="h-3 w-1.5 bg-cyan-400"></span>
-                            <span class="h-1.5 w-1.5 bg-cyan-400"></span>
-                            <span class="h-4 w-1.5 bg-cyan-400"></span>
-                            <span class="h-2 w-1.5 bg-cyan-400"></span>
-                        </div>
-                    </div>
-
-                    <!-- Knobs and buttons -->
-                    <div class="grid grid-cols-2 gap-4 items-center px-3 my-2">
-                        <div class="flex flex-col items-center">
-                            <div class="w-9 h-9 rounded-full bg-slate-950 border-2 border-orange-500 flex items-center justify-center relative shadow-inner">
-                                <span class="absolute top-0.5 w-0.5 h-2.5 bg-orange-500 rounded"></span>
-                            </div>
-                            <span class="text-[8px] text-slate-400 mt-1 uppercase font-mono">Engine</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="w-9 h-9 rounded-full bg-slate-950 border-2 border-slate-700 flex items-center justify-center relative shadow-inner">
-                                <span class="absolute top-0.5 w-0.5 h-2.5 bg-slate-400 rounded"></span>
-                            </div>
-                            <span class="text-[8px] text-slate-400 mt-1 uppercase font-mono">Decay</span>
-                        </div>
-                    </div>
-
-                    <!-- Audio Outputs -->
-                    <div class="grid grid-cols-4 gap-1 px-2">
-                        <?php for($i=1; $i<=4; $i++): ?>
-                            <div class="flex flex-col items-center">
-                                <div class="w-6 h-6 rounded-full bg-zinc-900 border border-orange-500/50 flex items-center justify-center shadow-inner">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-black"></div>
-                                </div>
-                                <span class="text-[7px] text-slate-500 font-mono">OUT <?php echo $i; ?></span>
-                            </div>
-                        <?php endfor; ?>
-                    </div>
-
-                    <div class="text-center text-slate-500 text-[8px] font-mono">OXI INSTRUMENTS · 14 HP</div>
-                </div>
-
-                <!-- 6. Dreadbox Eudemonia (10 HP) -->
-                <div class="flex-shrink-0 w-40 min-h-[380px] bg-slate-800 border-x border-slate-900 relative flex flex-col justify-between p-3 shadow-lg text-slate-100 font-sans text-xs">
-                    <div class="text-center font-bold tracking-widest text-[#2C7FFF]">EUDEMONIA</div>
-                    <div class="text-[8px] text-slate-400 text-center font-mono uppercase">Filter · Mixer · VCA</div>
-                    
-                    <!-- Sliders & knobs -->
-                    <div class="my-4 space-y-4">
-                        <div class="flex justify-around">
-                            <!-- Cutoff knob -->
-                            <div class="flex flex-col items-center">
-                                <div class="w-10 h-10 rounded-full bg-slate-950 border-2 border-[#2C7FFF] flex items-center justify-center relative shadow-inner">
-                                    <span class="absolute top-1 w-0.5 h-3 bg-[#2C7FFF] rounded"></span>
-                                </div>
-                                <span class="text-[8px] text-slate-400 mt-1 uppercase font-mono">Cutoff</span>
-                            </div>
-                        </div>
-
-                        <!-- 3 vertical sliders -->
-                        <div class="flex justify-around items-center px-4 h-16 bg-slate-900/60 rounded p-2">
-                            <div class="w-1 h-12 bg-black rounded relative flex items-center justify-center">
-                                <span class="w-3 h-2 bg-[#2C7FFF] rounded absolute top-2 cursor-pointer shadow"></span>
-                            </div>
-                            <div class="w-1 h-12 bg-black rounded relative flex items-center justify-center">
-                                <span class="w-3 h-2 bg-[#24B979] rounded absolute top-5 cursor-pointer shadow"></span>
-                            </div>
-                            <div class="w-1 h-12 bg-black rounded relative flex items-center justify-center">
-                                <span class="w-3 h-2 bg-orange-500 rounded absolute top-8 cursor-pointer shadow"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center text-slate-500 text-[8px] font-mono">DREADBOX · 10 HP</div>
-                </div>
-
-                <!-- 7. Behringer 112 VCO (16 HP) -->
-                <div class="flex-shrink-0 w-64 min-h-[380px] bg-slate-200 border-x border-slate-350 relative flex flex-col justify-between p-3 shadow-lg text-slate-800 font-mono text-xs">
-                    <div class="text-center font-bold tracking-tight text-slate-950">112 DUAL VCO</div>
-                    <div class="text-[8px] text-slate-500 text-center font-mono uppercase">System 100 series</div>
-                    
-                    <!-- 2 identical sections -->
-                    <div class="grid grid-cols-2 gap-4 my-2 flex-1">
-                        <!-- VCO 1 -->
-                        <div class="border-r border-slate-300 pr-2 space-y-3 flex flex-col justify-between py-1">
-                            <div class="text-center font-bold text-[8px] text-slate-600">VCO 1</div>
-                            <div class="flex flex-col items-center">
-                                <div class="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center relative">
-                                    <span class="absolute top-0.5 w-0.5 h-2.5 bg-white rounded"></span>
-                                </div>
-                                <span class="text-[8px] text-slate-500 mt-1 uppercase">Freq</span>
-                            </div>
-                            <div class="flex justify-around">
-                                <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                    <div class="w-2 h-2 rounded-full bg-black"></div>
-                                </div>
-                                <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                    <div class="w-2 h-2 rounded-full bg-black"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- VCO 2 -->
-                        <div class="pl-2 space-y-3 flex flex-col justify-between py-1">
-                            <div class="text-center font-bold text-[8px] text-slate-600">VCO 2</div>
-                            <div class="flex flex-col items-center">
-                                <div class="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center relative">
-                                    <span class="absolute top-0.5 w-0.5 h-2.5 bg-white rounded"></span>
-                                </div>
-                                <span class="text-[8px] text-slate-500 mt-1">Freq</span>
-                            </div>
-                            <div class="flex justify-around">
-                                <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                    <div class="w-2 h-2 rounded-full bg-black"></div>
-                                </div>
-                                <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                    <div class="w-2 h-2 rounded-full bg-black"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center text-slate-400 text-[8px]">BEHRINGER · 16 HP</div>
-                </div>
-
-                <!-- 8. Behringer 130 VCA (16 HP) -->
-                <div class="flex-shrink-0 w-64 min-h-[380px] bg-slate-200 border-x border-slate-350 relative flex flex-col justify-between p-3 shadow-lg text-slate-800 font-mono text-xs">
-                    <div class="text-center font-bold tracking-tight text-slate-950">130 DUAL VCA</div>
-                    <div class="text-[8px] text-slate-500 text-center font-mono uppercase">System 100 series</div>
-                    
-                    <div class="grid grid-cols-2 gap-4 my-2 flex-1">
-                        <!-- VCA 1 -->
-                        <div class="border-r border-slate-300 pr-2 flex flex-col justify-between py-1">
-                            <div class="text-center font-bold text-[8px] text-slate-600">VCA 1</div>
-                            <!-- Slider -->
-                            <div class="h-20 w-3 bg-zinc-950 rounded mx-auto relative flex flex-col items-center">
-                                <div class="absolute left-0.5 right-0.5 top-0 bottom-0 flex flex-col justify-between opacity-35 text-[6px]">
-                                    <span>-</span><span>-</span><span>-</span><span>-</span>
-                                </div>
-                                <span class="w-5 h-2.5 bg-red-600 rounded absolute top-6 cursor-pointer shadow"></span>
-                            </div>
-                            <div class="flex justify-around">
-                                <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                    <div class="w-2 h-2 rounded-full bg-black"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- VCA 2 -->
-                        <div class="pl-2 flex flex-col justify-between py-1">
-                            <div class="text-center font-bold text-[8px] text-slate-600">VCA 2</div>
-                            <!-- Slider -->
-                            <div class="h-20 w-3 bg-zinc-950 rounded mx-auto relative flex flex-col items-center">
-                                <div class="absolute left-0.5 right-0.5 top-0 bottom-0 flex flex-col justify-between opacity-35 text-[6px]">
-                                    <span>-</span><span>-</span><span>-</span><span>-</span>
-                                </div>
-                                <span class="w-5 h-2.5 bg-red-600 rounded absolute top-12 cursor-pointer shadow"></span>
-                            </div>
-                            <div class="flex justify-around">
-                                <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                    <div class="w-2 h-2 rounded-full bg-black"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center text-slate-400 text-[8px]">BEHRINGER · 16 HP</div>
-                </div>
-
-                <!-- 9. Behringer 140 ADSR + LFO (8 HP) -->
-                <div class="flex-shrink-0 w-32 min-h-[380px] bg-slate-200 border-x border-slate-350 relative flex flex-col justify-between p-3 shadow-lg text-slate-800 font-mono text-xs">
-                    <div class="text-center font-bold tracking-tight text-slate-950">140 ADSR</div>
-                    <div class="text-[8px] text-slate-500 text-center font-mono uppercase">ENV / LFO</div>
-                    
-                    <div class="flex-1 flex flex-col justify-around py-3">
-                        <!-- Four sliders for ADSR -->
-                        <div class="flex justify-around items-center px-1 h-24 bg-slate-300/40 border border-slate-300 rounded p-1.5">
-                            <div class="w-1.5 h-20 bg-zinc-950 rounded relative flex items-center justify-center">
-                                <span class="w-3.5 h-2 bg-blue-600 rounded absolute top-2 cursor-pointer"></span>
-                            </div>
-                            <div class="w-1.5 h-20 bg-zinc-950 rounded relative flex items-center justify-center">
-                                <span class="w-3.5 h-2 bg-blue-600 rounded absolute top-8 cursor-pointer"></span>
-                            </div>
-                            <div class="w-1.5 h-20 bg-zinc-950 rounded relative flex items-center justify-center">
-                                <span class="w-3.5 h-2 bg-blue-600 rounded absolute top-4 cursor-pointer"></span>
-                            </div>
-                            <div class="w-1.5 h-20 bg-zinc-950 rounded relative flex items-center justify-center">
-                                <span class="w-3.5 h-2 bg-blue-600 rounded absolute top-14 cursor-pointer"></span>
-                            </div>
-                        </div>
-
-                        <!-- Outputs jacks -->
-                        <div class="flex justify-around mt-2">
-                            <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                <div class="w-2 h-2 rounded-full bg-black"></div>
-                            </div>
-                            <div class="w-5 h-5 rounded-full bg-zinc-950 border border-slate-400 flex items-center justify-center">
-                                <div class="w-2 h-2 rounded-full bg-black"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center text-slate-400 text-[8px]">BEHRINGER · 8 HP</div>
-                </div>
-
             </div>
         </div>
 

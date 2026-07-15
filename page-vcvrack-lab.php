@@ -118,13 +118,18 @@ get_header();
         main>section:nth-of-type(11) {
             display: none !important;
         }
+
+        /* Hide "Plantillas y Descargas" (Section 12) for PDF only */
+        main>section:nth-of-type(12) {
+            display: none !important;
+        }
     }
 </style>
 
 <main id="primary" class="bg-slate-200 text-slate-900">
 
     <!-- Hero Section -->
-    <section class="animatek-hero-section relative overflow-hidden mb-[6.25rem] px-6 sm:px-10 py-32 text-slate-50"
+    <section class="animatek-hero-section relative overflow-hidden mb-24 px-6 sm:px-10 py-32 text-slate-50"
         style="background-image: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.8)), url('https://animatek.net/wp-content/uploads/2025/04/VCVportada.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
         <div class="relative max-w-7xl mx-auto grid gap-12 z-10">
@@ -153,7 +158,7 @@ get_header();
         'form_action' => 'https://a2fe0a0a.sibforms.com/serve/MUIFAJ7u_rehkbgjVzfqm6y_yjiQolKzVyo89ILCoEHDPbMaV_cMfO0v8065Fa93pICNPLiCPPEbXwgp3buCV3Y2iGucvWQkLU3LJOHzTdwMuPCZ9pjadvWB1lTj2pNevi3UqD4piecNiS2IZKId7-bClPvI1UNgV6X1ajohFeK_xzUkDZdSLhNfawxaV-Gh0tQZ8UZLHUWFKRM_',
         'storage_key' => 'vcv_lab_unlocked',
         'title'       => 'Desbloquea la Guía Web Completa + Recibe el PDF para descargar',
-        'description' => 'Introduce tu email para acceder <strong>GRATIS</strong> a todas las Secciones (1 a 11). Desbloqueo inmediato. Solo te enviaremos trucos de VCV Rack, nada de spam.',
+        'description' => 'Introduce tu email para acceder <strong>GRATIS</strong> a todas las Secciones (1 a 12). Desbloqueo inmediato. Solo te enviaremos trucos de VCV Rack, nada de spam.',
         'email_label' => 'Introduzca su dirección de e-mail',
     ]);
     ?>
@@ -1570,12 +1575,18 @@ get_header();
                         <div
                             class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
                             <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/MD2Cd_zOnn4"
-                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/MD2Cd_zOnn4?autoplay=1><img src=https://img.youtube.com/vi/MD2Cd_zOnn4/maxresdefault.jpg alt='VCV Rack Tutorial 1'><span>▶</span></a>"
-                                    title="Tu Primera Secuencia" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/MD2Cd_zOnn4?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                    <img src="https://img.youtube.com/vi/MD2Cd_zOnn4/maxresdefault.jpg"
+                                        alt="Tu Primera Secuencia"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
+                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
+                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1589,12 +1600,18 @@ get_header();
                         <div
                             class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
                             <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/rhl2ecDW0SY"
-                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/rhl2ecDW0SY?autoplay=1><img src=https://img.youtube.com/vi/rhl2ecDW0SY/maxresdefault.jpg alt='Tutorial VCV Rack Cero'><span>▶</span></a>"
-                                    title="VCV Rack desde Cero" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/rhl2ecDW0SY?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                    <img src="https://img.youtube.com/vi/rhl2ecDW0SY/maxresdefault.jpg"
+                                        alt="VCV Rack desde Cero"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
+                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
+                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1608,12 +1625,18 @@ get_header();
                         <div
                             class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
                             <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/zsey6XzKDNA"
-                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/zsey6XzKDNA?autoplay=1><img src=https://img.youtube.com/vi/zsey6XzKDNA/maxresdefault.jpg alt='MixMaster VCV Rack'><span>▶</span></a>"
-                                    title="Guía Completa MixMaster" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/zsey6XzKDNA?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                    <img src="https://img.youtube.com/vi/zsey6XzKDNA/maxresdefault.jpg"
+                                        alt="Guía Completa MixMaster"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
+                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
+                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1627,12 +1650,18 @@ get_header();
                         <div
                             class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
                             <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/tFrtnotI6AU"
-                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/tFrtnotI6AU?autoplay=1><img src=https://img.youtube.com/vi/tFrtnotI6AU/maxresdefault.jpg alt='Cardinal VST Tutorial'><span>▶</span></a>"
-                                    title="Primeros Pasos con Cardinal" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/tFrtnotI6AU?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                    <img src="https://img.youtube.com/vi/tFrtnotI6AU/maxresdefault.jpg"
+                                        alt="Primeros Pasos con Cardinal"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
+                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
+                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1646,12 +1675,18 @@ get_header();
                         <div
                             class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
                             <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/KJKx-im6D3I"
-                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/KJKx-im6D3I?autoplay=1><img src=https://img.youtube.com/vi/KJKx-im6D3I/maxresdefault.jpg alt='Automatizar Cardinal'><span>▶</span></a>"
-                                    title="Automatización en el DAW" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/KJKx-im6D3I?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                    <img src="https://img.youtube.com/vi/KJKx-im6D3I/maxresdefault.jpg"
+                                        alt="Automatización en el DAW"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
+                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
+                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1665,12 +1700,18 @@ get_header();
                         <div
                             class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
                             <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/VQBSR6qAL_k"
-                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/VQBSR6qAL_k?autoplay=1><img src=https://img.youtube.com/vi/VQBSR6qAL_k/maxresdefault.jpg alt='Sintetizador 3 Osciladores'><span>▶</span></a>"
-                                    title="Sintetizador 3 Osciladores" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/VQBSR6qAL_k?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                    <img src="https://img.youtube.com/vi/VQBSR6qAL_k/maxresdefault.jpg"
+                                        alt="Sintetizador 3 Osciladores"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
+                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
+                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1707,18 +1748,109 @@ get_header();
                             </div>
                             <div
                                 class="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700/50 group-hover:shadow-xl transition-all relative bg-slate-100 dark:bg-slate-800/40">
-                                <iframe class="w-full h-full"
-                                    src="https://www.youtube.com/embed/videoseries?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo"
-                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/videoseries?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo&autoplay=1><img src=https://img.youtube.com/vi/QPkYPGQTJz8/maxresdefault.jpg alt='Curso UZZ Rack'><span>▶</span></a>"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
+                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/videoseries?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo&autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                    <img src="https://img.youtube.com/vi/QPkYPGQTJz8/maxresdefault.jpg"
+                                        alt="Curso UZZ Rack"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        loading="lazy">
+                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
+                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
+                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- 12. Plantillas y Descargas -->
+        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+            <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
+                <h2 class="mb-8 flex items-center gap-3">
+                    <span
+                        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center">12</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-8 h-8 text-primary">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    Plantillas y Patches Descargables
+                </h2>
+
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl">
+                    Descarga plantillas y patches listos para usar en VCV Rack. Estos recursos están diseñados para ayudarte a arrancar rápidamente tus proyectos con una estructura organizada y un flujo de señal optimizado.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Plantilla 2026 Card -->
+                    <div class="group overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 dark:border-slate-700/50 dark:bg-slate-800/40">
+                        <div class="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-800">
+                            <img src="https://animatek.net/wp-content/uploads/2026/06/Plantilla2026.webp"
+                                alt="Plantilla VCV Rack 2026"
+                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                            <span class="absolute left-3 top-3 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur">
+                                #vcvs #selection
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between gap-3 mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Plantilla 2026</h3>
+                                <span class="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">v1.0</span>
+                            </div>
+                            <p class="text-sm font-semibold leading-snug text-slate-700 dark:text-slate-200 mb-3">
+                                Plantilla base de selección (.vcvs) para iniciar tus parches en VCV Rack
+                            </p>
+                            <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                                Una estructura base organizada con selección de módulos esenciales de reloj, mezcla y utilidades configurados bajo el código de colores de Animatek. Ideal para ahorrar tiempo y empezar con buen pie.
+                            </p>
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <a href="https://animatekcursos.s3.us-east-2.amazonaws.com/Patches+VCVRACK/Plantilla+2026+(selection).vcvs.zip" class="inline-flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-5 text-xs transition-colors shadow-md shadow-primary/20" download>
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Descargar Plantilla
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FixedRack 40 Cosas Card -->
+                    <div class="group overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 dark:border-slate-700/50 dark:bg-slate-800/40">
+                        <div class="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-800">
+                            <img src="https://animatek.net/wp-content/uploads/2026/07/FixedArregaldo.webp"
+                                alt="FixedRack 40 Cosas VCV Rack"
+                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                            <span class="absolute left-3 top-3 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur">
+                                #vcv #fixed
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between gap-3 mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">FixedRack · 40 Cosas</h3>
+                                <span class="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">v1.0</span>
+                            </div>
+                            <p class="text-sm font-semibold leading-snug text-slate-700 dark:text-slate-200 mb-3">
+                                Patch fijo (.vcv) con las 40 claves esenciales para dominar VCV Rack
+                            </p>
+                            <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                                Ocho años de experiencia con el modular destilados en 40 claves prácticas: fundamentals (VCO, LFO, VCA), workflow con código de colores, ritmo generativo y optimización de CPU. El atajo para pasar del caos a patches coherentes y profesionales.
+                            </p>
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <a href="https://animatekcursos.s3.us-east-2.amazonaws.com/Preset+y+Recursos/FixedRack40cosas.vcv.zip" class="inline-flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-5 text-xs transition-colors shadow-md shadow-primary/20" download>
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Descargar Patch
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1730,6 +1862,13 @@ get_header();
 
 </main>
 
+
+<script>
+function playYoutubeVideo(button, embedUrl) {
+    const container = button.parentElement;
+    container.innerHTML = `<iframe class="w-full h-full" src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+}
+</script>
 
 <?php
 get_footer();
