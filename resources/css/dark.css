@@ -183,13 +183,16 @@
 
 /* === HEADER / NAV === */
 
-[data-theme="dark"] header {
+/* Solo el header del sitio (hijo directo de #page): un selector
+   genérico "header" también pintaba el <header> interno de la página
+   de curso de Tutor (.tutor-course-details-header). */
+[data-theme="dark"] #page > header {
     background-color: rgba(2, 6, 23, 0.92) !important;
     border-color: #334155 !important;
 }
 
 /* Logo text */
-[data-theme="dark"] header .text-slate-900 {
+[data-theme="dark"] #page > header .text-slate-900 {
     color: #e2e8f0 !important;
 }
 
@@ -216,11 +219,204 @@
 
 /* === TUTOR LMS === */
 
-/* Tutor LMS 4 trae dark mode nativo: functions.php fuerza
-   data-tutor-theme="dark" en <html> y el plugin aplica sus propios
-   tokens oscuros ([data-tutor-theme=dark] en tutor-core.css).
-   Las ~140 reglas .tutor-* que había aquí eran para la v3 (clases
-   que ya no existen) y se eliminaron. */
+/* Tutor LMS 4 trae dark mode nativo solo en tutor-core.css
+   ([data-tutor-theme=dark]): functions.php fuerza ese atributo en
+   <html>. Pero las pantallas "clásicas" (detalles del curso, checkout,
+   modales…) cargan tutor.css y tutor-front.css, que NO tienen ni una
+   regla dark: fondos #fff/#eff1f6 hardcodeados y variables --tutor-*
+   inyectadas inline con valores claros. Aquí remapeamos esas variables
+   y los fondos hardcodeados a la paleta slate del sitio. */
+
+/* Variables inline del plugin (:root) → tokens oscuros.
+   OJO: --tutor-color-white NO se toca porque también se usa como
+   color de texto sobre fondos oscuros (topbar, tooltips). */
+[data-theme="dark"] {
+    --tutor-body-color: #e2e8f0 !important;
+    --tutor-body-color-rgb: 226, 232, 240 !important;
+    --tutor-border-color: #334155 !important;
+    --tutor-border-color-rgb: 51, 65, 85 !important;
+    --tutor-color-secondary: #cbd5e1 !important;
+    --tutor-color-subdued: #94a3b8 !important;
+    --tutor-color-muted: #94a3b8 !important;
+    --tutor-color-hints: #94a3b8 !important;
+    --tutor-color-gray: #334155 !important;
+    --tutor-color-gray-rgb: 51, 65, 85 !important;
+    --tutor-color-gray-10: #172033 !important;
+}
+
+/* La cabecera del curso (estrellas + título) iba pegada al header
+   del sitio: Tutor no le pone separación superior. */
+[data-theme="dark"] .tutor-course-top-info .tutor-course-details-page {
+    padding-top: 40px;
+}
+
+/* Título del curso: Tutor lo deja pequeño (fs-4); lo agrandamos y
+   usamos el azul de los headings del sitio (mismo que h2). */
+[data-theme="dark"] .tutor-course-details-title {
+    font-size: clamp(1.875rem, 4vw, 2.75rem) !important;
+    line-height: 1.15 !important;
+    color: #60a5fa !important;
+}
+
+/* Utilidades de texto con color hardcodeado (no usan variables) */
+[data-theme="dark"] .tutor-color-secondary { color: #cbd5e1 !important; }
+[data-theme="dark"] .tutor-color-subdued { color: #94a3b8 !important; }
+[data-theme="dark"] .tutor-color-muted,
+[data-theme="dark"] .tutor-color-hints { color: #94a3b8 !important; }
+
+/* Cards (sidebar del curso, reseñas, anuncios…) */
+[data-theme="dark"] .tutor-card {
+    background-color: #1e293b !important;
+}
+
+/* Sidebar de detalles del curso: la card de precio/inscripción y el
+   bloque "Un curso de / Audiencia" llevan fondos claros hardcodeados
+   en tutor-front.css (#f4f6f9 y #fcfcfd). */
+[data-theme="dark"] .tutor-sidebar-card .tutor-card-body {
+    background-color: #172033 !important;
+}
+[data-theme="dark"] .tutor-single-course-sidebar-more > div {
+    background-color: #1e293b !important;
+}
+
+/* Tabs "Información del curso / Reseñas / Anuncios" */
+[data-theme="dark"] .tutor-nav {
+    background: #172033 !important;
+}
+[data-theme="dark"] .tutor-nav > li > a.is-active {
+    background-color: #1e293b !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .4) !important;
+}
+
+/* Acordeón "Contenido del curso" */
+[data-theme="dark"] .tutor-accordion-item {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+[data-theme="dark"] .tutor-accordion-item-header {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+[data-theme="dark"] .tutor-accordion-item-header.is-active {
+    background-color: #172033 !important;
+}
+[data-theme="dark"] .tutor-accordion-item-body-content {
+    border-color: #334155 !important;
+}
+[data-theme="dark"] .tutor-course-content-list-item {
+    background-color: #1e293b !important;
+    color: #cbd5e1 !important;
+}
+[data-theme="dark"] .tutor-course-content-list-item:hover {
+    background-color: #172033 !important;
+}
+
+/* Utilidades de fondo claras */
+[data-theme="dark"] .tutor-bg-white { background-color: #1e293b !important; }
+[data-theme="dark"] .tutor-bg-light,
+[data-theme="dark"] .tutor-bg-gray-10 { background-color: #172033 !important; }
+[data-theme="dark"] .tutor-bg-gray-20 { background-color: #0f172a !important; }
+
+/* Botón terciario (fondo blanco hardcodeado) */
+[data-theme="dark"] .tutor-btn-tertiary {
+    background-color: #1e293b !important;
+    color: #cbd5e1 !important;
+    border-color: #334155 !important;
+}
+[data-theme="dark"] .tutor-btn-tertiary:hover,
+[data-theme="dark"] .tutor-btn-tertiary:focus,
+[data-theme="dark"] .tutor-btn-tertiary:active {
+    background-color: #172033 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Formularios propios de Tutor */
+[data-theme="dark"] .tutor-form-control,
+[data-theme="dark"] .tutor-input-group-addon {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Dropdowns y selects custom */
+[data-theme="dark"] .tutor-dropdown,
+[data-theme="dark"] .tutor-dropdown-select-selected,
+[data-theme="dark"] .tutor-dropdown-select-options-container {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+[data-theme="dark"] .tutor-dropdown-select-option:hover {
+    background-color: #172033 !important;
+}
+
+/* Modales */
+[data-theme="dark"] .tutor-modal-content,
+[data-theme="dark"] .tutor-modal-content-white,
+[data-theme="dark"] .tutor-modal-footer {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* Alertas y notificaciones */
+[data-theme="dark"] .tutor-alert,
+[data-theme="dark"] .tutor-notification {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Sidebar del área de aprendizaje clásica (lecciones/quiz) */
+[data-theme="dark"] .tutor-course-single-sidebar-wrapper,
+[data-theme="dark"] .tutor-course-single-sidebar-title,
+[data-theme="dark"] .tutor-course-single-sidebar-wrapper .tutor-accordion-item-header,
+[data-theme="dark"] .tutor-course-single-sidebar-wrapper .tutor-accordion-item-body,
+[data-theme="dark"] .tutor-course-single-sidebar-wrapper .tutor-course-topic-item a {
+    background-color: #1e293b !important;
+    color: #cbd5e1 !important;
+}
+[data-theme="dark"] .tutor-course-single-sidebar-wrapper .tutor-course-topic-item.is-active a {
+    background-color: #172033 !important;
+}
+[data-theme="dark"] .tutor-quiz-item {
+    background-color: #1e293b !important;
+}
+
+/* Comentarios / Q&A del curso (spotlight) */
+[data-theme="dark"] .tutor-course-spotlight-wrapper .tutor-conversation .tutor-comments-list .tutor-single-comment .tutor-actual-comment,
+[data-theme="dark"] .tutor-course-spotlight-wrapper .tutor-conversation .tutor-comment-textarea {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
+/* Checkout nativo de Tutor (por si se usa en local; producción es SureCart) */
+[data-theme="dark"] .tutor-checkout-payment-options,
+[data-theme="dark"] .tutor-checkout-page .tutor-apply-coupon-form {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* Iconos extra del modal "Compartir" (functions.php añade whatsapp,
+   pinterest y email vía tutor_social_share_icons; la fuente de iconos
+   de Tutor no los trae, así que van como máscara SVG y heredan el
+   blanco del botón). */
+.atk-share-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: currentColor;
+    -webkit-mask: var(--atk-share-svg) center / contain no-repeat;
+    mask: var(--atk-share-svg) center / contain no-repeat;
+}
+.atk-share-whatsapp {
+    --atk-share-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z'/%3E%3C/svg%3E");
+}
+.atk-share-pinterest {
+    --atk-share-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345c-.091.378-.293 1.194-.333 1.361-.052.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.966 7.398 6.931 0 4.136-2.608 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12Z'/%3E%3C/svg%3E");
+}
+.atk-share-email {
+    --atk-share-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z'/%3E%3Cpath d='M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z'/%3E%3C/svg%3E");
+}
 
 /* === FLUENT FORM === */
 

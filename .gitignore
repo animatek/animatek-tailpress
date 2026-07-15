@@ -11,6 +11,7 @@
 error_log
 *.log
 skills-lock.json
+_backup-tutor-v3/
 
 # Superpowers
 .superpowers/

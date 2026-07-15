@@ -53,6 +53,41 @@ add_filter( 'tutor_user_preference_defaults', function ( $defaults ) {
     return $defaults;
 } );
 
+// Modal "Compartir" de los cursos: Tutor solo trae Facebook, X y LinkedIn.
+// Su librería SocialShare también soporta whatsapp, email, reddit y pinterest
+// (class_prefix "s_" + nombre de la plantilla). El modal sanea icon_html con
+// wp_kses permitiendo solo <span>/<i>, así que los iconos que la fuente de
+// Tutor no trae (WhatsApp, Pinterest, Email) van como <i> con una máscara
+// SVG definida en dark.css (.atk-share-*).
+add_filter( 'tutor_social_share_icons', function ( $icons ) {
+    $icons['whatsapp'] = [
+        'share_class' => 's_whatsapp',
+        'icon_html'   => '<i class="tutor-valign-middle atk-share-icon atk-share-whatsapp"></i>',
+        'text'        => '',
+        'color'       => '#25D366',
+    ];
+    $icons['reddit'] = [
+        'share_class' => 's_reddit',
+        'icon_html'   => '<i class="tutor-valign-middle tutor-icon-brand-reddit"></i>',
+        'text'        => '',
+        'color'       => '#FF4500',
+    ];
+    $icons['pinterest'] = [
+        'share_class' => 's_pinterest',
+        'icon_html'   => '<i class="tutor-valign-middle atk-share-icon atk-share-pinterest"></i>',
+        'text'        => '',
+        'color'       => '#E60023',
+    ];
+    $icons['email'] = [
+        'share_class' => 's_email',
+        'icon_html'   => '<i class="tutor-valign-middle atk-share-icon atk-share-email"></i>',
+        'text'        => '',
+        'color'       => '#64748b',
+    ];
+
+    return $icons;
+} );
+
 
 
 
