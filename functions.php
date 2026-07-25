@@ -268,6 +268,41 @@ function animatek_render_virtual_nme_pages(): void {
 }
 add_action( 'template_redirect', 'animatek_render_virtual_nme_pages', 1 );
 
+/**
+ * Página virtual del manual de Animatek NME, colgando de la landing.
+ * El contenido se genera desde manual/*.md del repositorio del editor.
+ */
+function animatek_render_virtual_nme_manual_pages(): void {
+	if ( is_admin() || wp_doing_ajax() ) {
+		return;
+	}
+
+	$locales = [
+		'animatek-nme/manual'     => 'es',
+		'animatek-nme-eng/manual' => 'en',
+	];
+
+	$request_path = animatek_current_request_path();
+
+	if ( ! isset( $locales[ $request_path ] ) ) {
+		return;
+	}
+
+	global $wp_query;
+	if ( $wp_query instanceof WP_Query ) {
+		$wp_query->is_404  = false;
+		$wp_query->is_page = true;
+	}
+
+	status_header( 200 );
+	get_header();
+	require_once get_theme_file_path( 'inc/animatek-nme-manual-template.php' );
+	animatek_nme_manual_render_page( $locales[ $request_path ] );
+	get_footer();
+	exit;
+}
+add_action( 'template_redirect', 'animatek_render_virtual_nme_manual_pages', 1 );
+
 function animatek_render_virtual_vcv_module_pages(): void {
     if ( is_admin() || wp_doing_ajax() ) {
         return;
