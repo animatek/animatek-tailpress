@@ -367,8 +367,21 @@ function animatek_software_seo_trim_description( string $description, int $max_l
 }
 
 function animatek_software_seo_context(): ?array {
+    static $cache = [];
+
     $request_path = animatek_current_request_path();
     $site_name    = 'Animatek';
+
+    // Las rutas virtuales desmarcan el 404 en template_redirect. Si a estas
+    // alturas la consulta sigue siendo un 404, es que la pagina real ya no
+    // existe: no le damos titulo ni robots indexables.
+    if ( did_action( 'template_redirect' ) && is_404() ) {
+        return null;
+    }
+
+    if ( array_key_exists( $request_path, $cache ) ) {
+        return $cache[ $request_path ];
+    }
 
     $software_image = 'https://animatek.net/wp-content/uploads/2026/04/UZZ_2_5.webp';
     $nme_image      = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME_imagen.png';
@@ -459,6 +472,77 @@ function animatek_software_seo_context(): ?array {
                 'category' => 'MusicApplication',
                 'operatingSystem' => 'Windows, macOS, Linux',
                 'url' => home_url( '/animatek-nme-eng/' ),
+            ],
+        ],
+        // Estas tres no tienen imagen social propia: se queda la que ponga
+        // Rank Math por defecto hasta que haya una por pagina.
+        'glosario' => [
+            'title'       => 'Glosario de producción musical, síntesis y audio',
+            'description' => 'Términos esenciales de síntesis, mezcla, audio digital, VCV Rack y Bitwig Studio explicados en claro. Tu referencia rápida de producción musical.',
+            'canonical'   => home_url( '/glosario/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => '',
+            'type'        => 'website',
+            'schema_type' => 'WebPage',
+        ],
+        // Copy heredado del bloque que page-gear.php imprimia por su cuenta.
+        'gear' => [
+            'title'       => 'Mi Equipo y Setup 2026',
+            'description' => 'Descubre el setup completo de producción musical, sintetizadores, secuenciadores, Eurorack y software de Javier Melgar (Animatek).',
+            'canonical'   => home_url( '/gear/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => get_stylesheet_directory_uri() . '/screenshot.png',
+            'type'        => 'website',
+            'schema_type' => 'WebPage',
+        ],
+        'bitwig-lab' => [
+            'title'       => 'Bitwig Starter Pack: aprende Bitwig Studio desde cero',
+            'description' => 'Guía gratuita de Bitwig Studio: la ventana principal, los módulos básicos y tus primeros patches, en vídeos cortos y ordenados para empezar.',
+            'canonical'   => home_url( '/bitwig-lab/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => '',
+            'type'        => 'website',
+            'schema_type' => 'WebPage',
+        ],
+        'animatek-nme/manual' => [
+            'title'       => 'Manual de Animatek NME - Editor para Nord Modular G1',
+            'description' => 'Manual de usuario de Animatek NME: instalación, conexión del Nord Modular G1, edición de patches, slots, MIDI y formatos de archivo.',
+            'canonical'   => home_url( '/animatek-nme/manual/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => $nme_image,
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/animatek-nme/manual/' ),
+                'en'        => home_url( '/animatek-nme-eng/manual/' ),
+                'x-default' => home_url( '/animatek-nme/manual/' ),
+            ],
+            'schema_type' => 'TechArticle',
+            'breadcrumb_parent' => [
+                'name' => 'Animatek NME',
+                'item' => home_url( '/animatek-nme/' ),
+            ],
+        ],
+        'animatek-nme-eng/manual' => [
+            'title'       => 'Animatek NME Manual - Nord Modular G1 Editor',
+            'description' => 'User manual for Animatek NME: installing it, connecting the Nord Modular G1, editing patches, working with slots, MIDI and file formats.',
+            'canonical'   => home_url( '/animatek-nme-eng/manual/' ),
+            'locale'      => 'en_US',
+            'lang'        => 'en',
+            'image'       => $nme_image,
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/animatek-nme/manual/' ),
+                'en'        => home_url( '/animatek-nme-eng/manual/' ),
+                'x-default' => home_url( '/animatek-nme/manual/' ),
+            ],
+            'schema_type' => 'TechArticle',
+            'breadcrumb_parent' => [
+                'name' => 'Animatek NME',
+                'item' => home_url( '/animatek-nme-eng/' ),
             ],
         ],
         'ultimate-ztep-zequencer' => [
@@ -592,10 +676,14 @@ function animatek_software_seo_context(): ?array {
     $context = $contexts[ $request_path ] ?? null;
 
     if ( ! $context ) {
+        $cache[ $request_path ] = null;
+
         return null;
     }
 
     $context['site_name'] = $site_name;
+
+    $cache[ $request_path ] = $context;
 
     return $context;
 }
@@ -636,6 +724,133 @@ function animatek_nme_document_title_parts( array $title ): array {
 }
 add_filter( 'document_title_parts', 'animatek_nme_document_title_parts' );
 
+/**
+ * Título tal y como se imprime en <title> y en las etiquetas sociales.
+ */
+function animatek_software_seo_full_title( array $context ): string {
+    return $context['title'] . ' | Animatek';
+}
+
+/**
+ * Puente con Rank Math para las rutas virtuales (manual de NME, /sample-packs/).
+ *
+ * Esas rutas no existen como página en la base de datos: WordPress marca la
+ * consulta como 404 y Rank Math ya ha resuelto su contexto cuando
+ * template_redirect la desmarca, así que imprimía "Página no encontrada" en el
+ * <title> y en og:title. Le damos los valores de animatek_software_seo_context()
+ * para que use los nuestros. Sin Rank Math instalado estos filtros no se
+ * ejecutan y manda animatek_nme_document_title_parts().
+ */
+function animatek_rank_math_apply_seo_context(): void {
+    add_filter(
+        'rank_math/frontend/title',
+        static function ( $title ) {
+            $context = animatek_software_seo_context();
+
+            return $context ? animatek_software_seo_full_title( $context ) : $title;
+        }
+    );
+
+    add_filter(
+        'rank_math/frontend/description',
+        static function ( $description ) {
+            $context = animatek_software_seo_context();
+
+            return $context ? animatek_software_seo_trim_description( $context['description'] ) : $description;
+        }
+    );
+
+    add_filter(
+        'rank_math/frontend/canonical',
+        static function ( $canonical ) {
+            $context = animatek_software_seo_context();
+
+            return $context ? $context['canonical'] : $canonical;
+        }
+    );
+
+    add_filter(
+        'rank_math/frontend/robots',
+        static function ( $robots ) {
+            if ( ! animatek_software_seo_context() ) {
+                return $robots;
+            }
+
+            return [
+                'index'             => 'index',
+                'follow'            => 'follow',
+                'max-image-preview' => 'max-image-preview:large',
+            ];
+        }
+    );
+
+    // og:type lo resuelve Rank Math por tipo de contenido y en estas rutas
+    // devolvia "article"; el tema declara website o product.
+    add_filter(
+        'rank_math/opengraph/type',
+        static function ( $type ) {
+            $context = animatek_software_seo_context();
+
+            if ( ! $context ) {
+                return $type;
+            }
+
+            return 'product' === ( $context['type'] ?? '' ) ? 'product' : 'website';
+        }
+    );
+
+    // La imagen social no sale de un post con miniatura, asi que se la damos
+    // por el hook que Rank Math expone para eso.
+    foreach ( [ 'facebook', 'twitter' ] as $network ) {
+        add_action(
+            'rank_math/opengraph/' . $network . '/add_images',
+            static function ( $image_object ) {
+                $context = animatek_software_seo_context();
+
+                if ( $context && ! empty( $context['image'] ) && is_object( $image_object ) && method_exists( $image_object, 'add_image_by_url' ) ) {
+                    $image_object->add_image_by_url( $context['image'] );
+                }
+            }
+        );
+    }
+
+    // Rank Math pasa cada etiqueta social por rank_math/opengraph/{red}/{propiedad}.
+    $social_tags = [
+        'facebook/og_title'           => 'title',
+        'facebook/og_description'     => 'description',
+        'facebook/og_url'             => 'canonical',
+        'facebook/og_image'           => 'image',
+        'twitter/twitter_title'       => 'title',
+        'twitter/twitter_description' => 'description',
+        'twitter/twitter_image'       => 'image',
+    ];
+
+    foreach ( $social_tags as $filter => $key ) {
+        add_filter(
+            'rank_math/opengraph/' . $filter,
+            static function ( $value ) use ( $key ) {
+                $context = animatek_software_seo_context();
+
+                if ( ! $context ) {
+                    return $value;
+                }
+
+                if ( 'title' === $key ) {
+                    return animatek_software_seo_full_title( $context );
+                }
+
+                if ( 'description' === $key ) {
+                    return animatek_software_seo_trim_description( $context['description'] );
+                }
+
+                // Sin imagen propia se respeta la que haya resuelto Rank Math.
+                return empty( $context[ $key ] ) ? $value : $context[ $key ];
+            }
+        );
+    }
+}
+add_action( 'wp', 'animatek_rank_math_apply_seo_context' );
+
 function animatek_software_schema_graph( array $context ): array {
     $organization = [
         '@type' => 'Organization',
@@ -661,7 +876,7 @@ function animatek_software_schema_graph( array $context ): array {
         'publisher'   => [
             '@id' => home_url( '/#organization' ),
         ],
-        'image'       => [
+        'image'       => empty( $context['image'] ) ? null : [
             '@type' => 'ImageObject',
             'url'   => $context['image'],
         ],
@@ -714,9 +929,20 @@ function animatek_software_schema_graph( array $context ): array {
     ];
 
     if ( ! in_array( animatek_current_request_path(), [ 'software', 'software-eng' ], true ) ) {
+        // Las páginas que cuelgan de otra (el manual, bajo la landing de NME)
+        // insertan a su padre antes de aparecer ellas.
+        if ( ! empty( $context['breadcrumb_parent'] ) ) {
+            $breadcrumb['itemListElement'][] = [
+                '@type'    => 'ListItem',
+                'position' => 3,
+                'name'     => $context['breadcrumb_parent']['name'],
+                'item'     => $context['breadcrumb_parent']['item'],
+            ];
+        }
+
         $breadcrumb['itemListElement'][] = [
             '@type'    => 'ListItem',
-            'position' => 3,
+            'position' => count( $breadcrumb['itemListElement'] ) + 1,
             'name'     => $context['title'],
             'item'     => $context['canonical'],
         ];
@@ -732,6 +958,16 @@ function animatek_software_schema_graph( array $context ): array {
     ];
 }
 
+/**
+ * Rank Math ya imprime title, description, canonical, robots y las etiquetas
+ * sociales, y desde animatek_rank_math_apply_seo_context() lo hace con nuestros
+ * valores. Cuando esta activo, el tema solo aporta lo que el plugin no cubre en
+ * estas rutas: los hreflang y su propio JSON-LD.
+ */
+function animatek_seo_plugin_owns_meta(): bool {
+    return defined( 'RANK_MATH_VERSION' ) || class_exists( 'RankMath' );
+}
+
 function animatek_render_software_seo_head(): void {
     $context = animatek_software_seo_context();
 
@@ -740,28 +976,42 @@ function animatek_render_software_seo_head(): void {
     }
 
     $description = animatek_software_seo_trim_description( $context['description'] );
-    $title       = $context['title'] . ' | Animatek';
+    $title       = animatek_software_seo_full_title( $context );
     $canonical   = $context['canonical'];
     $image       = $context['image'];
     $og_type     = 'product' === ( $context['type'] ?? '' ) ? 'product' : 'website';
-    ?>
-    <meta name="description" content="<?php echo esc_attr( $description ); ?>">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="<?php echo esc_url( $canonical ); ?>">
-    <?php foreach ( $context['alternates'] ?? [] as $hreflang => $url ) : ?>
+    $plugin_meta = animatek_seo_plugin_owns_meta();
+
+    if ( ! $plugin_meta ) :
+        ?>
+        <meta name="description" content="<?php echo esc_attr( $description ); ?>">
+        <meta name="robots" content="index, follow, max-image-preview:large">
+        <link rel="canonical" href="<?php echo esc_url( $canonical ); ?>">
+        <?php
+    endif;
+
+    foreach ( $context['alternates'] ?? [] as $hreflang => $url ) :
+        ?>
         <link rel="alternate" hreflang="<?php echo esc_attr( $hreflang ); ?>" href="<?php echo esc_url( $url ); ?>">
-    <?php endforeach; ?>
-    <meta property="og:locale" content="<?php echo esc_attr( $context['locale'] ?? 'es_ES' ); ?>">
-    <meta property="og:type" content="<?php echo esc_attr( $og_type ); ?>">
-    <meta property="og:site_name" content="Animatek">
-    <meta property="og:title" content="<?php echo esc_attr( $title ); ?>">
-    <meta property="og:description" content="<?php echo esc_attr( $description ); ?>">
-    <meta property="og:url" content="<?php echo esc_url( $canonical ); ?>">
-    <meta property="og:image" content="<?php echo esc_url( $image ); ?>">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?php echo esc_attr( $title ); ?>">
-    <meta name="twitter:description" content="<?php echo esc_attr( $description ); ?>">
-    <meta name="twitter:image" content="<?php echo esc_url( $image ); ?>">
+        <?php
+    endforeach;
+
+    if ( ! $plugin_meta ) :
+        ?>
+        <meta property="og:locale" content="<?php echo esc_attr( $context['locale'] ?? 'es_ES' ); ?>">
+        <meta property="og:type" content="<?php echo esc_attr( $og_type ); ?>">
+        <meta property="og:site_name" content="Animatek">
+        <meta property="og:title" content="<?php echo esc_attr( $title ); ?>">
+        <meta property="og:description" content="<?php echo esc_attr( $description ); ?>">
+        <meta property="og:url" content="<?php echo esc_url( $canonical ); ?>">
+        <meta property="og:image" content="<?php echo esc_url( $image ); ?>">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="<?php echo esc_attr( $title ); ?>">
+        <meta name="twitter:description" content="<?php echo esc_attr( $description ); ?>">
+        <meta name="twitter:image" content="<?php echo esc_url( $image ); ?>">
+        <?php
+    endif;
+    ?>
     <script type="application/ld+json"><?php echo wp_json_encode( animatek_software_schema_graph( $context ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
     <?php
 }
@@ -773,6 +1023,8 @@ function animatek_software_sitemap_urls(): array {
         home_url( '/software-eng/' ),
         home_url( '/animatek-nme/' ),
         home_url( '/animatek-nme-eng/' ),
+        home_url( '/animatek-nme/manual/' ),
+        home_url( '/animatek-nme-eng/manual/' ),
         home_url( '/ultimate-ztep-zequencer/' ),
         home_url( '/ultimate-ztep-zequencer-eng/' ),
         home_url( '/ultimate-ztep-zequencer-vcvrack/' ),

@@ -5,26 +5,11 @@
  * @package Animatek
  */
 
-// Optimización SEO y Marcado Estructurado JSON-LD
+// El title, la description, el canonical y las etiquetas sociales de esta
+// pagina salen de animatek_software_seo_context() ('gear'), que es quien
+// alimenta a Rank Math. Aqui solo queda el listado de equipo en JSON-LD.
 add_action( 'wp_head', function() {
     ?>
-    <meta name="description" content="Descubre el setup completo de producción musical, sintetizadores, secuenciadores, Eurorack y software de Javier Melgar (Animatek)." />
-    <link rel="canonical" href="<?php echo esc_url( home_url( '/gear/' ) ); ?>" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Mi Equipo y Setup 2026 | Animatek" />
-    <meta property="og:description" content="Descubre el setup de producción musical, sintetizadores, secuenciadores, Eurorack y software de Javier Melgar (Animatek)." />
-    <meta property="og:url" content="<?php echo esc_url( home_url( '/gear/' ) ); ?>" />
-    <meta property="og:type" content="profile" />
-    <meta property="og:image" content="<?php echo esc_url( get_stylesheet_directory_uri() . '/screenshot.png' ); ?>" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mi Equipo y Setup 2026 | Animatek" />
-    <meta name="twitter:description" content="Descubre el setup de producción musical, sintetizadores, secuenciadores, Eurorack y software de Javier Melgar (Animatek)." />
-    <meta name="twitter:image" content="<?php echo esc_url( get_stylesheet_directory_uri() . '/screenshot.png' ); ?>" />
-
-    <!-- Marcado Estructurado JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
