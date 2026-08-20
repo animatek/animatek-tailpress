@@ -269,6 +269,61 @@
     background-color: #1e293b !important;
 }
 
+/* Listas dentro de una card (reseñas del curso, Q&A…): cada fila lleva
+   su propio fondo blanco (#fff / #fcfcfd alterno) y separador #cdcfd5
+   en tutor.css, así que tapaba el fondo oscuro de .tutor-card. */
+[data-theme="dark"] .tutor-card-list-item {
+    background-color: #1e293b !important;
+    color: #cbd5e1 !important;
+}
+[data-theme="dark"] .tutor-card-list-item:nth-child(2n) {
+    background-color: #172033 !important;
+}
+[data-theme="dark"] .tutor-card-list-item:not(:last-child) {
+    border-bottom-color: #334155 !important;
+}
+[data-theme="dark"] .tutor-card-list-horizontal .tutor-card-list-item:not(:last-child) {
+    border-right-color: #334155 !important;
+}
+
+/* Nombre del alumno en la reseña (.tutor-color-black) y texto negro
+   hardcodeado de Tutor en general. */
+[data-theme="dark"] .tutor-color-black { color: #e2e8f0 !important; }
+
+/* Avatar sin foto: el círculo lleva fondo blanco de base. */
+[data-theme="dark"] .tutor-avatar {
+    background-color: #172033 !important;
+    box-shadow: 0 0 0 1px #334155 !important;
+}
+
+/* Barras del resumen de valoraciones (5★ 4★ 3★…): pista gris clara. */
+[data-theme="dark"] .tutor-progress-bar {
+    background: #334155 !important;
+}
+[data-theme="dark"] .tutor-progress-circle:before {
+    background: #0f172a !important;
+}
+
+/* Tabs con contenedor (algunas pantallas usan .tutor-nav-tabs) */
+[data-theme="dark"] .tutor-nav-tabs-container {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+[data-theme="dark"] .tutor-nav-tabs .tutor-nav-link.is-active {
+    background-color: #1e293b !important;
+    border-bottom-color: #1e293b !important;
+}
+
+/* Tablas de Tutor (P y R, pedidos…) */
+[data-theme="dark"] .tutor-table tr th {
+    background: #172033 !important;
+    color: #cbd5e1 !important;
+}
+[data-theme="dark"] .tutor-table tr td {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
 /* Sidebar de detalles del curso: la card de precio/inscripción y el
    bloque "Un curso de / Audiencia" llevan fondos claros hardcodeados
    en tutor-front.css (#f4f6f9 y #fcfcfd). */
@@ -277,6 +332,14 @@
 }
 [data-theme="dark"] .tutor-single-course-sidebar-more > div {
     background-color: #1e293b !important;
+}
+
+/* Separador entre TODAS las secciones del bloque lateral (Materiales
+   incluidos, Requisitos, Etiquetas, Audiencia…): Tutor solo pone línea
+   tras "Un curso de" (.tutor-course-details-instructors + div). */
+[data-theme="dark"] .tutor-single-course-sidebar-more > div + div {
+    border-top: 1px solid #334155 !important;
+    padding-top: 24px !important;
 }
 
 /* Tabs "Información del curso / Reseñas / Anuncios" */
@@ -386,6 +449,39 @@
     border-color: #334155 !important;
     color: #e2e8f0 !important;
 }
+
+/* Tooltips de los iconos (i) (badges de info del curso, cabeceras del
+   acordeón…). Tutor los pinta con background: var(--tutor-body-color)
+   y color: var(--tutor-color-white): como arriba remapeamos
+   --tutor-body-color a slate claro, el globo salía casi blanco con
+   texto blanco = ilegible. Aquí lo fijamos a un fondo oscuro propio,
+   incluyendo las flechitas (:after de cada posición). */
+[data-theme="dark"] .tooltip-wrap .tooltip-txt {
+    background: #0b1220 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #334155 !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .45) !important;
+}
+[data-theme="dark"] .tooltip-wrap .tooltip-top:after { border-top-color: #0b1220 !important; }
+[data-theme="dark"] .tooltip-wrap .tooltip-bottom:after { border-bottom-color: #0b1220 !important; }
+[data-theme="dark"] .tooltip-wrap .tooltip-left:after { border-left-color: #0b1220 !important; }
+[data-theme="dark"] .tooltip-wrap .tooltip-right:after { border-right-color: #0b1220 !important; }
+
+/* Icono (i) en sí: usa --tutor-color-muted, ya remapeado, pero en los
+   badges del curso queda muy apagado sobre fondo oscuro. */
+[data-theme="dark"] .tooltip-wrap.tooltip-icon {
+    color: #94a3b8 !important;
+}
+
+/* Tooltip nuevo de Tutor 4 (tutor-core): en dark usa --tutor-surface-dark
+   (#61646c, gris medio). Lo alineamos con el globo de arriba. */
+[data-theme="dark"] .tutor-tooltip {
+    background-color: #0b1220 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #334155 !important;
+}
+[data-theme="dark"] .tutor-tooltip-top:before { border-top-color: #0b1220 !important; }
+[data-theme="dark"] .tutor-tooltip-bottom:before { border-bottom-color: #0b1220 !important; }
 
 /* Sidebar del área de aprendizaje clásica (lecciones/quiz) */
 [data-theme="dark"] .tutor-course-single-sidebar-wrapper,
