@@ -6,10 +6,10 @@ $is_vcv_lab    = is_page( 'vcvrack-lab' );
 $is_bitwig_lab = is_page( 'bitwig-lab' );
 $in_lab        = $is_vcv_lab || $is_bitwig_lab;
 
-// Oferta de verano del curso de VCV Rack: 50% con el cupón VERANO50.
-// Se muestra hasta el final del 5 de agosto y luego desaparece sola.
-$vcv_offer_url    = 'https://animatek.net/pago/?line_items[0][price_id]=561821f8-89f8-48cc-98c5-3e5f909ec7c5&line_items[0][quantity]=1&coupon=VERANO50';
-$vcv_offer_active = current_time( 'timestamp' ) < strtotime( '2026-08-06 00:00:00' );
+// Oferta en curso: precio fundador de Patch Lab 01.
+// Se muestra hasta el final del 20 de agosto y luego desaparece sola.
+$vcv_offer_url    = 'https://animatek.net/cursos/patch-lab-01/';
+$vcv_offer_active = current_time( 'timestamp' ) < strtotime( '2026-08-21 00:00:00' );
 ?>
 <div id="labs-banner" class="hidden border-b border-slate-200 bg-slate-50 text-slate-700">
     <div class="relative mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-10 py-2.5 text-sm sm:px-12">
@@ -38,7 +38,7 @@ $vcv_offer_active = current_time( 'timestamp' ) < strtotime( '2026-08-06 00:00:0
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
                 </svg>
-                <span>Curso VCV Rack <strong>-50%</strong> · cupón VERANO50 · hasta el 5 ago</span>
+                <span><strong>Precio fundador:</strong> Patch Lab 01 a 35€ hasta el 20 de agosto · después 45€</span>
             </a>
         <?php endif; ?>
         <?php if ( ! $vcv_offer_active ) : ?>
