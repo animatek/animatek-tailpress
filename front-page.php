@@ -242,7 +242,7 @@ get_header();
                     </div>
 
                     <a href="https://animatek.net/cursos/curso-uzz/"
-                        class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-slate-700 bg-white border border-slate-300 rounded-lg hover:border-cyan-500 hover:text-cyan-600 transition-colors w-full">
+                        class="btn-secondary w-full text-sm px-5 py-2.5">
                         Acceder al curso UZZ (gratis)
                     </a>
                 </div>
@@ -264,7 +264,7 @@ get_header();
                         Reserva una consulta gratuita de 15 minutos y lo vemos juntos.
                     </p>
                     <a href="<?php echo esc_url(home_url('/consulta-gratuita/#calendario')); ?>"
-                        class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white text-base font-bold rounded-lg hover:bg-blue-600 transition-all shadow-md hover:shadow-xl hover:shadow-primary/30 transform hover:-translate-y-0.5">
+                        class="btn-primary px-8 py-4 text-base">
                         Reservar consulta gratuita
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -341,7 +341,7 @@ get_header();
                 Reservar consulta gratuita
             </a>
             <a href="https://animatek.net/curso-vcvrack/"
-                class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-700 bg-white border border-slate-300 rounded-lg hover:border-slate-400 hover:text-slate-900 transition-colors">
+                class="w-full sm:w-auto btn-secondary px-8 py-4 text-base">
                 Empezar por el curso VCV (29&euro;)
             </a>
         </div>

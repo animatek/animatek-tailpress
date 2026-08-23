@@ -8,6 +8,7 @@
 @import './dark.css';
 
 @source '../../*.php';
+@source '../../inc/**/*.php';
 @source '../../template-parts/**/*.php';
 @source '../../src/**/*.php';
 @source '../**/*.{js,jsx,ts,tsx,vue,php}';
@@ -17,6 +18,15 @@
 @utility container {
     margin-inline: auto;
     padding-inline: 2rem;
+}
+
+/* Rejilla de fondo de los heros. Patrón único del sitio (dark-only):
+   se usa con un div overlay: <div class="absolute inset-0 pointer-events-none opacity-40 hero-grid"></div> */
+@utility hero-grid {
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 
 /*
@@ -76,15 +86,17 @@
         border-color: var(--color-zinc-200, currentColor);
     }
 
+    /* Sistema de botones unificado: pill (rounded-full) con hover-lift,
+       el mismo lenguaje que los CTAs de las páginas nuevas (packs, labs). */
     .btn-primary,
     .btn-secondary {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        padding: 1rem 2rem;
+        padding: 0.875rem 1.75rem;
         font-weight: 700;
-        border-radius: 0.75rem;
+        border-radius: 9999px;
         border: 1px solid transparent;
         transition: all 0.3s ease;
         text-decoration: none;
@@ -98,6 +110,8 @@
     .btn-primary:hover {
         background-color: #1c63d9;
         border-color: #1c63d9;
+        transform: translateY(-2px);
+        box-shadow: 0 16px 34px -16px rgba(33, 112, 245, 0.7);
     }
     .btn-secondary {
         background-color: #ffffff;
@@ -107,6 +121,7 @@
     .btn-secondary:hover {
         border-color: #2C7FFF;
         color: #2C7FFF;
+        transform: translateY(-2px);
     }
     .btn-primary svg,
     .btn-secondary svg {
@@ -118,4 +133,27 @@
     .btn-secondary:hover svg {
         transform: translateX(4px);
     }
+}
+/* Reproductor de vídeo de la ficha de curso (Tutor + Plyr).
+   LiteSpeed Cache aplica lazy load a los iframes: en la copia cacheada el
+   iframe sale como src="about:blank" + data-src, así que Plyr no llega a
+   montar su caja responsive y el embed de YouTube se pinta al tamaño por
+   defecto del iframe (300x150). Mientras Plyr no haya montado (no existe
+   .plyr__video-wrapper y el iframe sigue siendo hijo directo) forzamos el
+   16:9 nosotros; cuando Plyr monta, esta regla deja de aplicar sola. */
+.tutor-video-player .plyr__video-embed:not(.plyr__video-wrapper) {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+}
+
+.tutor-video-player .plyr__video-embed:not(.plyr__video-wrapper) > iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }

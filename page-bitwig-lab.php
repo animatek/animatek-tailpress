@@ -4,12 +4,14 @@
  */
 
 get_header();
+
+$bitwig_buy_url = 'https://www.bitwig.com/en/buy/?ref=220025';
 ?>
 
 <main id="primary" class="bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden px-6 sm:px-10 py-28 lg:py-32 text-slate-50"
+    <section class="relative overflow-hidden mb-24 px-6 sm:px-10 py-28 lg:py-32 text-slate-50"
         style="background-image: linear-gradient(90deg, rgba(15,23,42,0.86) 0%, rgba(15,23,42,0.7) 42%, rgba(15,23,42,0.22) 100%), url('https://animatek.net/wp-content/uploads/2026/04/GRID_portada.webp'); background-size: cover; background-position: center right; background-repeat: no-repeat;">
         <div class="relative max-w-7xl mx-auto z-10">
             <div class="max-w-4xl space-y-6">
@@ -86,7 +88,7 @@ get_header();
                                         </span>
                                     </a>
 
-                                    <a href="https://www.bitwig.com/" target="_blank" rel="noopener"
+                                    <a href="<?php echo esc_url( $bitwig_buy_url ); ?>" target="_blank" rel="noopener"
                                         class="flex items-center p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-white/10 hover:border-slate-400 hover:bg-white dark:hover:bg-slate-900 transition-all group shadow-sm">
                                         <span class="w-10 h-10 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 flex items-center justify-center mr-4 group-hover:bg-lime-500 group-hover:text-slate-950 transition-all">
                                             <img src="https://animatek.net/wp-content/uploads/2025/11/pngwing.com_.png" alt="Bitwig" class="w-6 h-6 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
@@ -168,11 +170,11 @@ get_header();
 
                             <div class="grid gap-5 lg:grid-cols-3">
                                 <!-- Essentials -->
-                                <div class="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md dark:border-white/10 dark:bg-slate-900">
+                                <div class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-slate-900">
                                     <div class="mb-4">
                                         <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-600 dark:bg-white/10 dark:text-slate-300">Essentials</span>
                                     </div>
-                                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1">99€</p>
+                                    <a href="<?php echo esc_url( $bitwig_buy_url ); ?>" target="_blank" rel="noopener" class="mb-1 inline-flex text-4xl font-extrabold text-slate-900 underline decoration-primary/40 decoration-2 underline-offset-4 transition hover:text-primary hover:decoration-primary dark:text-white dark:hover:text-primary">99€</a>
                                     <p class="text-xs text-slate-400 dark:text-slate-500 mb-4">Pago único</p>
                                     <h4 class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-3">Bitwig Studio Essentials</h4>
                                     <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -181,11 +183,11 @@ get_header();
                                 </div>
 
                                 <!-- Producer -->
-                                <div class="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md dark:border-white/10 dark:bg-slate-900">
+                                <div class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-slate-900">
                                     <div class="mb-4">
                                         <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-primary dark:bg-primary/20">Producer</span>
                                     </div>
-                                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1">199€</p>
+                                    <a href="<?php echo esc_url( $bitwig_buy_url ); ?>" target="_blank" rel="noopener" class="mb-1 inline-flex text-4xl font-extrabold text-slate-900 underline decoration-primary/40 decoration-2 underline-offset-4 transition hover:text-primary hover:decoration-primary dark:text-white dark:hover:text-primary">199€</a>
                                     <p class="text-xs text-slate-400 dark:text-slate-500 mb-4">Pago único</p>
                                     <h4 class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-3">Bitwig Studio Producer</h4>
                                     <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -194,7 +196,7 @@ get_header();
                                 </div>
 
                                 <!-- Studio (Recomendado) -->
-                                <div class="group relative rounded-2xl border-2 border-primary bg-white p-6 shadow-lg shadow-primary/10 transition hover:shadow-xl hover:shadow-primary/15 dark:border-primary/60 dark:bg-slate-900">
+                                <div class="relative rounded-2xl border-2 border-primary bg-white p-6 shadow-lg shadow-primary/10 dark:border-primary/60 dark:bg-slate-900">
                                     <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
                                         <span class="inline-flex items-center gap-1 rounded-full bg-primary px-3.5 py-1 text-xs font-bold uppercase tracking-[0.1em] text-white shadow-md shadow-primary/25">
                                             <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -204,7 +206,7 @@ get_header();
                                     <div class="mb-4 mt-1">
                                         <span class="inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white dark:bg-white dark:text-slate-900">Studio</span>
                                     </div>
-                                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1">399€</p>
+                                    <a href="<?php echo esc_url( $bitwig_buy_url ); ?>" target="_blank" rel="noopener" class="mb-1 inline-flex text-4xl font-extrabold text-slate-900 underline decoration-primary/40 decoration-2 underline-offset-4 transition hover:text-primary hover:decoration-primary dark:text-white dark:hover:text-primary">399€</a>
                                     <p class="text-xs text-slate-400 dark:text-slate-500 mb-4">Pago único</p>
                                     <h4 class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-3">Bitwig Studio</h4>
                                     <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -688,8 +690,22 @@ get_header();
                         </div>
                     </div>
                 </article>
-            </div>
+    
+            <?php get_template_part( 'template-parts/block-sound-pack' ); ?>
+
+        </div>
         </section>
+
+        <?php
+        get_template_part(
+            'template-parts/block-siguiente-paso',
+            null,
+            array(
+                'cursos' => array( 'bitwig', 'uzz' ),
+                'intro'  => 'El Bitwig Lab es gratis y lo seguirá siendo. Si prefieres un camino ordenado en vez de ir picoteando por el canal, estos son los dos sitios por donde seguir.',
+            )
+        );
+        ?>
     </div>
 
 </main>

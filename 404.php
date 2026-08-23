@@ -113,8 +113,8 @@ get_header();
                         <a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>" class="text-primary hover:text-blue-400 transition no-underline font-medium">
                             Contacto
                         </a>
-                        <a href="<?php echo esc_url( home_url( '/libreria-sonora' ) ); ?>" class="text-primary hover:text-blue-400 transition no-underline font-medium">
-                            Librería
+                        <a href="<?php echo esc_url( home_url( '/vcvrack-lab/' ) ); ?>" class="text-primary hover:text-blue-400 transition no-underline font-medium">
+                            VCV Rack Lab
                         </a>
                     </div>
                 </div>

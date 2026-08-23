@@ -6,21 +6,13 @@
  */
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> data-theme="dark">
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-    <script>
-    (function() {
-        var t = null;
-        try { t = localStorage.getItem('animatek-theme'); } catch(e) {}
-        if (t !== 'light') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-    })();
-    </script>
+    <meta name="google-adsense-account" content="ca-pub-5093101899692258">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class('bg-slate-200 text-zinc-900 antialiased'); ?>>
@@ -88,26 +80,13 @@
                     <?php endif; ?>
                 </nav>
 
-                <!-- Dark mode toggle -->
-                <button
-                    type="button"
-                    id="dark-mode-toggle"
-                    aria-label="<?php esc_attr_e('Activar modo oscuro', 'animatek'); ?>"
-                    class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white p-2 text-slate-600 shadow-sm transition hover:border-primary hover:text-primary shrink-0">
-                    <!-- Luna: visible en modo claro -->
-                    <svg id="dark-toggle-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-                    </svg>
-                    <!-- Sol: visible en modo oscuro -->
-                    <svg id="dark-toggle-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 hidden">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                    </svg>
-                </button>
             </div>
         </div>
 
 
     </header>
+
+    <?php get_template_part( 'template-parts/banner-labs' ); ?>
 
     <div id="content" class="site-content grow">
         <?php do_action('tailpress_content_start'); ?>

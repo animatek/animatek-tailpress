@@ -4,6 +4,8 @@
  */
 
 get_header();
+
+require_once get_theme_file_path( 'inc/animatek-vcv-module-template.php' );
 ?>
 
 <main id="primary" class="bg-slate-200 text-slate-900">
@@ -15,18 +17,17 @@ get_header();
         </div>
 
         <div class="max-w-7xl mx-auto space-y-6 relative z-10">
-            <div class="inline-flex flex-wrap items-center gap-1 p-1 rounded-full bg-white border border-slate-200 shadow-sm">
-                <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer-vcvrack')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                    UZZ · VCV Rack
-                </a>
-                <a href="<?php echo esc_url(home_url('/ultimate-ztep-zequencer')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                    UZZ · Max for Live
-                </a>
-                <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-sm" aria-current="page">
-                    OXI-CV
-                </span>
-                <a href="<?php echo esc_url(home_url('/nomad2026')); ?>" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-primary hover:bg-slate-100 transition">
-                    Nomad2026
+            <div class="flex flex-wrap items-center gap-3">
+                <?php animatek_vcv_modules_nav( 'oxi-cv' ); ?>
+                <a href="<?php echo esc_url(home_url('/oxi-cv-eng/')); ?>" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-primary hover:text-primary transition shadow-sm">
+                    <span>EN</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 12h18" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3c2.5 3.5 2.5 14 0 18" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 5c1.5 2 1.5 12 0 14" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 5c-1.5 2-1.5 12 0 14" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </a>
             </div>
 
@@ -149,10 +150,10 @@ get_header();
                 </div>
 
                 <!-- Divisor -->
-                <div class="border-t-2 border-dashed border-slate-300 pt-10">
+                <div id="multi" class="border-t-2 border-dashed border-slate-300 pt-10 scroll-mt-24">
                     <div class="flex items-center gap-3 mb-6">
                         <span class="px-3 py-1 rounded-full bg-slate-800 text-white text-xs font-bold font-mono">10 HP</span>
-                        <h2 class="text-2xl font-extrabold text-slate-900">OXI-CV Expansor</h2>
+                        <h2 class="text-2xl font-extrabold text-slate-900">MULTI / OXI-CV Expansor</h2>
                         <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-500 text-[11px] font-semibold">Expander</span>
                     </div>
                     <p class="text-base text-slate-700 leading-relaxed mb-8">
