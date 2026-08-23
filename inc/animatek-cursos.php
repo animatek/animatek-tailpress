@@ -93,7 +93,7 @@ function animatek_cursos(): array {
 			'titulo'      => 'Bitwig desde CERO',
 			'subtitulo'   => 'El DAW completo, por un Certified Trainer',
 			'gancho'      => 'El DAW, de cero y bien hecho',
-			'imagen'      => 'https://animatek.net/wp-content/uploads/2026/06/Bitwig_Curso.webp',
+			'imagen'      => 'https://animatek.net/wp-content/uploads/2025/08/portada_bitwig_6_beta.webp',
 			'alt'         => 'Curso Bitwig desde CERO de Animatek',
 			'texto'       => 'Pistas, clips, dispositivos y el flujo de trabajo oficial de Bitwig Studio, enseñado por un Bitwig Certified Trainer. El curso se está creando en público y se publica por bloques.',
 			'texto_corto' => 'Pistas, clips, dispositivos y el flujo de trabajo oficial de Bitwig, por un Certified Trainer. Está en producción y se publica por bloques: si entras ahora, entras como alumno fundador y recibes las lecciones según salen.',
