@@ -67,3 +67,32 @@ GitHub Actions (`.github/workflows/release.yml`): On release → `composer insta
 - **Font:** Inter (weights 400, 500, 600, 700, 800) loaded from Google Fonts with handle `animatek-inter`
 - **Mobile menu toggle:** handled by `resources/js/app.js` (`initPrimaryMenuToggle`). Uses `data-menu-bound` to prevent double-binding
 - **Button classes:** `.btn-primary` and `.btn-secondary` are defined as inline CSS in `header.php`, not as Tailwind utilities. Page templates use these classes extensively
+
+## Despliegue
+
+**No subas archivos sueltos por FTP.** El navegador ejecuta `dist/`, que está en
+`.gitignore` y no viaja con los commits ni con las ramas: al mezclar PHP de una rama
+con un `dist/` de otra salen estados a medias muy difíciles de diagnosticar.
+
+El camino bueno es el release, que ya está montado en
+`.github/workflows/release.yml` y hace `composer install` + `npm ci` + `npm run build`
+antes de empaquetar:
+
+```sh
+# 1. subir la versión en style.css (Version: X.Y.Z)
+# 2. commit y push a main
+git tag vX.Y.Z && git push origin vX.Y.Z
+gh release create vX.Y.Z --title "vX.Y.Z" --notes "…"
+# 3. esperar al workflow y descargar el zip del release
+# 4. WordPress -> Apariencia -> Temas -> Añadir -> Subir tema -> reemplazar
+# 5. purgar LiteSpeed
+```
+
+Comprobación de que la subida entró, sin depender de cachés ni de PHP:
+`https://animatek.net/wp-content/themes/animatek-tailpress/screenshot.png`
+
+**Si aun así hace falta FTP** (un arreglo urgente de un solo archivo), acuérdate de que
+`npm run build` está roto por un symlink de vite: se lanza con
+`node node_modules/vite/bin/vite.js build`, y hay que subir `dist/` entero porque los
+nombres llevan hash. `dist/.vite/manifest.json` empieza por punto y muchos clientes FTP
+lo ocultan.
