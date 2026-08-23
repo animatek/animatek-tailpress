@@ -23,7 +23,7 @@
 
     <header class="relative z-50 bg-white/95 border-b border-slate-200/80 shadow-[0_12px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between gap-4 min-h-[72px] relative">
+            <div class="flex items-center justify-between gap-4 min-h-[72px]">
                 <div class="flex items-center gap-3">
                     <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-3 !no-underline">
                         <img src="https://animatek.net/wp-content/uploads/2025/05/Logotek2025azulwebp.webp" alt="<?php bloginfo('name'); ?>" class="h-10 w-auto object-contain" loading="lazy" />
