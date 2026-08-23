@@ -90,22 +90,36 @@ function animatek_cursos(): array {
 		),
 
 		'bitwig'    => array(
-			'titulo'      => 'Curso Bitwig Studio',
-			'subtitulo'   => 'El DAW, de cero y bien hecho',
+			'titulo'      => 'Bitwig desde CERO',
+			'subtitulo'   => 'El DAW completo, por un Certified Trainer',
 			'gancho'      => 'El DAW, de cero y bien hecho',
-			'imagen'      => '',
-			'alt'         => 'Curso de Bitwig Studio de Animatek',
-			'texto'       => 'Pistas, clips, dispositivos y el flujo de trabajo oficial de Bitwig, por un Certified Trainer. En producción y publicándose por bloques.',
+			'imagen'      => 'https://animatek.net/wp-content/uploads/2026/06/Bitwig_Curso.webp',
+			'alt'         => 'Curso Bitwig desde CERO de Animatek',
+			'texto'       => 'Pistas, clips, dispositivos y el flujo de trabajo oficial de Bitwig Studio, enseñado por un Bitwig Certified Trainer. El curso se está creando en público y se publica por bloques.',
 			'texto_corto' => 'Pistas, clips, dispositivos y el flujo de trabajo oficial de Bitwig, por un Certified Trainer. Está en producción y se publica por bloques: si entras ahora, entras como alumno fundador y recibes las lecciones según salen.',
-			'badge'       => 'En producción',
-			'badge_cls'   => 'bg-violet-500 text-white shadow',
+			'badge'       => 'Early Access',
+			'badge_cls'   => 'bg-purple-500 text-white shadow',
 			'etiqueta'    => 'Empieza aquí',
 			'et_cls'      => 'bg-amber-400 text-amber-950',
-			'meta'        => array( 'Early Access', 'Principiante', 'Por bloques' ),
+			'meta'        => array( 'En producción', 'Principiante', 'Por bloques' ),
 			'precio'      => 29,
 			'url'         => 'https://animatek.net/curso-bitwig-studio/',
-			'cta'         => 'Ver el curso',
-			// Tiene su propia landing y no es un curso cerrado todavía.
+			'cta'         => 'Ver la página del curso',
+
+			// --- solo para el bloque de Early Access de la Academia ---
+			// Va aparte de los tres cursos terminados para que nadie lo compre
+			// creyendo que está completo. La ficha es la que cobra; la landing es
+			// la que explica en qué estado está.
+			'early'       => true,
+			'url_compra'  => 'https://animatek.net/cursos/bitwig-desde-cero/',
+			'cta_compra'  => 'Entrar como fundador',
+			'fases'       => array(
+				array( '29 €', 'Ahora, mientras se produce' ),
+				array( '39 €', 'Semana de lanzamiento' ),
+				array( '50 €', 'Precio final' ),
+			),
+
+			// Fuera de la rejilla de cursos terminados: tiene su propia sección.
 			'en_academia' => false,
 		),
 

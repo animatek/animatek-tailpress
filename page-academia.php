@@ -158,6 +158,76 @@ $icono_check = '<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrin
 
         </div>
 
+        <!-- Early Access: cursos que se están creando en público.
+             Van aparte de la rejilla a propósito, para que nadie los compre
+             creyendo que están terminados. -->
+        <?php
+        $animatek_early = array_filter( animatek_cursos(), static fn( $c ) => ! empty( $c['early'] ) );
+        foreach ( $animatek_early as $curso_early ) :
+            ?>
+            <div class="mt-8 overflow-hidden rounded-2xl border-2 border-purple-400/40 bg-white shadow-sm dark:bg-slate-900">
+                <div class="grid gap-0 lg:grid-cols-3">
+
+                    <div class="relative aspect-[4/3] overflow-hidden bg-slate-950">
+                        <?php if ( ! empty( $curso_early['imagen'] ) ) : ?>
+                            <img src="<?php echo esc_url( $curso_early['imagen'] ); ?>" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full scale-125 object-cover opacity-40 blur-2xl" loading="lazy">
+                            <img src="<?php echo esc_url( $curso_early['imagen'] ); ?>" alt="<?php echo esc_attr( $curso_early['alt'] ); ?>" class="relative mx-auto h-full w-auto max-w-full object-contain" loading="lazy">
+                        <?php endif; ?>
+                        <span class="absolute left-3 top-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider <?php echo esc_attr( $curso_early['badge_cls'] ); ?>">
+                            <?php echo esc_html( $curso_early['badge'] ); ?>
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col gap-4 p-6 sm:p-8 lg:col-span-2">
+
+                        <div class="space-y-1">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-purple-600 dark:text-purple-300">
+                                Se está creando en público
+                            </p>
+                            <h3 class="text-2xl font-black leading-tight text-slate-900 dark:text-white">
+                                <?php echo esc_html( $curso_early['titulo'] ); ?>
+                            </h3>
+                            <p class="text-sm font-semibold text-primary"><?php echo esc_html( $curso_early['subtitulo'] ); ?></p>
+                        </div>
+
+                        <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                            <?php echo esc_html( $curso_early['texto'] ); ?>
+                        </p>
+
+                        <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                            <strong class="font-bold text-slate-900 dark:text-white">Todavía no está completo</strong>, y por eso
+                            cuesta menos ahora. Si entras hoy pagas precio de fundador y recibes las lecciones conforme se publican,
+                            sin pagar la diferencia cuando suba.
+                        </p>
+
+                        <?php if ( ! empty( $curso_early['fases'] ) ) : ?>
+                            <div class="grid gap-3 sm:grid-cols-3">
+                                <?php foreach ( $curso_early['fases'] as $i => $fase ) : ?>
+                                    <div class="rounded-xl border p-3 <?php echo 0 === $i ? 'border-purple-400/40 bg-purple-50 dark:bg-purple-900/30' : 'border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-slate-950'; ?>">
+                                        <p class="text-lg font-black tabular-nums <?php echo 0 === $i ? 'text-purple-600 dark:text-purple-300' : 'text-slate-400 dark:text-slate-500'; ?>">
+                                            <?php echo esc_html( $fase[0] ); ?>
+                                        </p>
+                                        <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400"><?php echo esc_html( $fase[1] ); ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="mt-auto flex flex-wrap items-center gap-3 border-t border-slate-100 pt-4 dark:border-white/5">
+                            <a href="<?php echo esc_url( $curso_early['url_compra'] ); ?>" class="btn-primary text-sm">
+                                <?php echo esc_html( $curso_early['cta_compra'] ); ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                            </a>
+                            <a href="<?php echo esc_url( $curso_early['url'] ); ?>" class="text-sm font-bold text-primary hover:underline">
+                                <?php echo esc_html( $curso_early['cta'] ); ?>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
         <!-- Cierre de la rejilla: banda fija, se mantenga el número de cursos que se mantenga -->
         <div class="mt-6 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-dashed border-slate-300 bg-white/40 px-6 py-5 text-center sm:flex-row sm:text-left dark:border-white/10 dark:bg-white/[0.02]">
             <div class="flex items-center gap-4">
