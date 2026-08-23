@@ -690,8 +690,22 @@ $bitwig_buy_url = 'https://www.bitwig.com/en/buy/?ref=220025';
                         </div>
                     </div>
                 </article>
-            </div>
+    
+            <?php get_template_part( 'template-parts/block-sound-pack' ); ?>
+
+        </div>
         </section>
+
+        <?php
+        get_template_part(
+            'template-parts/block-siguiente-paso',
+            null,
+            array(
+                'cursos' => array( 'bitwig', 'uzz' ),
+                'intro'  => 'El Bitwig Lab es gratis y lo seguirá siendo. Si prefieres un camino ordenado en vez de ir picoteando por el canal, estos son los dos sitios por donde seguir.',
+            )
+        );
+        ?>
     </div>
 
 </main>

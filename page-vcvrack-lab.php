@@ -1769,7 +1769,7 @@ get_header();
         </section>
 
         <!-- 12. Plantillas y Descargas -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="descargas" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3">
                     <span
@@ -1785,6 +1785,20 @@ get_header();
                 <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl">
                     Descarga plantillas y patches listos para usar en VCV Rack. Estos recursos están diseñados para ayudarte a arrancar rápidamente tus proyectos con una estructura organizada y un flujo de señal optimizado.
                 </p>
+
+                <!-- Puente a Patch Lab: aquí es donde más pega, porque el curso va justo de esto -->
+                <div class="mb-8 flex flex-col gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-6 sm:flex-row sm:items-center dark:border-primary/30 dark:bg-primary/10">
+                    <p class="flex-1 text-slate-700 dark:text-slate-200 leading-relaxed text-[15px]">
+                        <strong class="font-bold text-slate-900 dark:text-white">¿Y si en vez de descargar un patch lo montas tú?</strong>
+                        En <strong class="font-semibold">Patch Lab 01</strong> se construyen cinco patches completos de principio a fin, explicando por qué va cada cable donde va. Incluye los <code class="font-mono text-[13px]">.vcv</code> y dos plantillas de techno.
+                    </p>
+                    <a href="https://animatek.net/patch-lab-01/" class="btn-primary shrink-0 text-sm">
+                        Ver Patch Lab 01
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Plantilla 2026 Card -->
@@ -1851,8 +1865,13 @@ get_header();
                         </div>
                     </div>
                 </div>
+
+                <?php get_template_part( 'template-parts/block-sound-pack' ); ?>
+
             </div>
         </section>
+
+        <?php get_template_part('template-parts/block-siguiente-paso'); ?>
 
         <?php get_template_part('template-parts/block-developers'); ?>
 

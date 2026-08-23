@@ -59,10 +59,10 @@
         </div>
 
         <!-- Grid de Tarjetas de Recursos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
         
-            <!-- Tarjeta 1: Nuestros Cursos -->
-            <a href="/academia" class="group relative flex flex-col items-start p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:shadow-[#2C7FFF]/20 hover:border-[#2C7FFF]/50 transition-all duration-300 hover:-translate-y-1 h-full">
+            <!-- Tarjeta 1: Cursos -->
+            <a href="<?php echo esc_url( home_url( '/academia/' ) ); ?>" class="group relative flex flex-col items-start p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:shadow-[#2C7FFF]/20 hover:border-[#2C7FFF]/50 transition-all duration-300 hover:-translate-y-1 h-full">
                 <div class="mb-4 bg-primary/10 p-4 rounded-xl group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300 text-primary">
                     <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M4.5 5.5H12a2 2 0 0 1 2 2v11H7a2.5 2.5 0 0 1-2.5-2.5z"/>
@@ -72,11 +72,12 @@
                     </svg>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#2C7FFF] transition-colors">
-                    Nuestros Cursos
+                    Cursos
                 </h3>
                 <p class="text-sm text-gray-600 mt-auto leading-relaxed">
-                    Aprende desde cero y domina la síntesis modular.
+                    VCV Rack desde cero, Patch Lab 01 y Bitwig Studio. A tu ritmo, con acceso de por vida.
                 </p>
+                <span class="mt-3 text-sm font-bold text-[#2C7FFF]">Ver los cursos &rarr;</span>
             </a>
 
             <!-- Tarjeta 2: Clases -->
@@ -98,40 +99,8 @@
                 </p>
             </a>
 
-            <!-- Tarjeta 3: Ebook -->
-            <a href="/ebook-vcvrack/" class="group relative flex flex-col items-start p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300 transition-all duration-300 hover:-translate-y-1 h-full">
-                <div class="mb-4 bg-emerald-50 p-4 rounded-xl group-hover:bg-emerald-100 group-hover:scale-110 transition-all duration-300 text-emerald-600">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M6 3h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
-                        <path d="M14 3v4a2 2 0 0 0 2 2h2"/>
-                        <path d="M12 11v5m0 0-2.5-2.5M12 16l2.5-2.5"/>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
-                    Ebook
-                </h3>
-                <p class="text-sm text-gray-600 mt-auto leading-relaxed">
-                    Primeros pasos esenciales con VCV Rack.
-                </p>
-            </a>
-
-            <!-- Tarjeta 4: Recursos -->
-            <a href="/vcv-rack-sound-pack-01/" class="group relative flex flex-col items-start p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:shadow-orange-500/10 hover:border-orange-300 transition-all duration-300 hover:-translate-y-1 h-full">
-                <div class="mb-4 bg-orange-50 p-4 rounded-xl group-hover:bg-orange-100 group-hover:scale-110 transition-all duration-300 text-orange-600">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 7h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>
-                        <path d="M8 7l1.5-3h5L16 7"/>
-                        <path d="M12 11v4m0 0-2-2m2 2 2-2"/>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
-                    Recursos
-                </h3>
-                <p class="text-sm text-gray-600 mt-auto leading-relaxed">
-                    Descarga y practica con ejemplos listos para usar.
-                </p>
-            </a>
-
+            
+            
         </div>
 
         <!-- Sección CTA Discord -->
