@@ -40,13 +40,25 @@ $pl_video_id  = 'KffWMFIlEoE';
 //            o sea que hay que acordarse de cuadrarlo con el de TutorLMS.
 //
 //   'caja'   La caja de matriculación de TutorLMS, la misma de la ficha: botón
-//            "Compra 45 €", nivel, total de inscritos y última actualización.
+//            "Compra 19 €", nivel, total de inscritos y última actualización.
 //            El precio sale de TutorLMS, así que NUNCA puede desmentir al
 //            checkout. A cambio manda su estética, no la de la página.
 //
 // Las dos necesitan $pl_course_id y el snippet en functions.php. Si falta algo,
 // cae al enlace normal a la ficha y la página sigue funcionando.
 $pl_cta_modo = 'boton';
+
+// Temario de TutorLMS al final de la sección de lecciones: el acordeón real de
+// temas y lecciones, con duraciones y candados. Ventaja de traerlo en vez de
+// escribirlo: se actualiza solo. En cuanto montes los cuestionarios o subas las
+// demos de sonido a TutorLMS, aparecen aquí sin tocar esta plantilla.
+$pl_temario = true;
+
+// Caja de compra de TutorLMS al lado del temario ("Compra 19 €", nivel, inscritos,
+// última actualización). Es el sitio donde más se decide la compra: justo cuando
+// acabas de leer qué hay dentro. El precio lo pone SureCart, así que no puede
+// desmentir al checkout.
+$pl_caja_temario = true;
 
 // Póster del vídeo. Se puede subir a la mediateca y cambiar esta URL.
 $pl_video_poster = 'https://i.ytimg.com/vi/' . $pl_video_id . '/maxresdefault.jpg';
@@ -316,57 +328,59 @@ $pl_caja = static function () use ( $pl_cta_modo, $pl_course_id ) {
         </div>
     </section>
 
-    <!-- 2. DÓNDE ENCAJA -->
-    <section class="mx-auto max-w-3xl px-6 py-10 sm:px-10 sm:py-14">
-        <div class="rounded-2xl border border-white/10 bg-slate-900 p-6 font-mono text-[15px] leading-relaxed text-slate-200 shadow-xl sm:p-8">
-            <div class="mb-5 flex gap-1.5" aria-hidden="true">
-                <span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+    <!-- 2. ACERCA DEL CURSO + DÓNDE ENCAJA (dos columnas para no hacer scroll) -->
+    <section class="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-14">
+        <div class="grid gap-8 lg:grid-cols-3 lg:items-start lg:gap-12">
+
+            <div class="lg:col-span-2">
+                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Acerca de este curso</p>
+                <h2 class="mt-3 text-2xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl dark:text-white">
+                    Ya sabes qué hace un VCA. Y aun así no terminas nada.
+                </h2>
+
+                <div class="mt-5 space-y-4 text-[17px] leading-relaxed text-slate-600 dark:text-slate-300">
+                    <p class="text-lg font-medium text-slate-800 sm:text-xl dark:text-slate-200">
+                        Abres VCV Rack, empiezas a meter módulos y a la media hora tienes algo que suena
+                        pero que no va a ninguna parte. Lo dejas ahí. Al día siguiente abres uno nuevo.
+                    </p>
+                    <p>
+                        Ese es el hueco que llena este curso. No es la teoría otra vez. Son cinco patches
+                        completos, de principio a fin, construidos delante de ti y explicando por qué va
+                        cada cable donde va.
+                    </p>
+                    <p>
+                        Un techno entero con su bombo, su bajo, sus voces y su mezcla. Dos sistemas
+                        autogenerativos que se tocan solos sin sonar a ruido aleatorio. Un drone armónico
+                        con ocho octavadores. Y antes de nada, una plantilla base para que no vuelvas a
+                        empezar desde el rack vacío.
+                    </p>
+                    <p>
+                        Aquí está la trampa de los fundamentos: entender las piezas por separado no te
+                        enseña a montar la máquina. Eso solo se aprende viendo montar máquinas enteras.
+                        Por eso ninguna lección corta antes de que el patch suene.
+                    </p>
+                </div>
             </div>
 
-            <p><span class="text-teal-300">~/animatek $</span> dónde encaja este curso</p>
-            <p class="mt-3.5">
-                Este no es el curso principal. El principal es el
-                <a href="<?php echo esc_url( home_url( '/cursos/vcv-rack-desde-cero/' ) ); ?>" class="font-semibold text-white underline decoration-primary decoration-2 underline-offset-4">Curso VCV Rack desde cero</a>,
-                y ahí se explican las piezas una a una.
-            </p>
-            <p class="mt-3.5">
-                Este es <b class="font-semibold text-white">el taller de después</b>: cinco patches
-                terminados para ver cómo se monta una máquina entera.
-                <span class="text-slate-400">Práctico, corto y barato.</span>
-            </p>
-        </div>
-    </section>
+            <div class="rounded-2xl border border-white/10 bg-slate-900 p-5 font-mono text-sm leading-relaxed text-slate-200 shadow-xl self-start">
+                <div class="mb-4 flex gap-1.5" aria-hidden="true">
+                    <span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                </div>
 
-    <!-- 3. EL PROBLEMA -->
-    <section class="mx-auto max-w-3xl px-6 py-8 sm:px-10 sm:py-12">
-        <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Acerca de este curso</p>
-        <h2 class="mt-3 text-2xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl dark:text-white">
-            Ya sabes qué hace un VCA. Y aun así no terminas nada.
-        </h2>
+                <p><span class="text-teal-300">~/animatek $</span> dónde encaja</p>
+                <p class="mt-3">
+                    Este no es el curso principal. El principal es el
+                    <a href="<?php echo esc_url( home_url( '/cursos/vcv-rack-desde-cero/' ) ); ?>" class="font-semibold text-white underline decoration-primary decoration-2 underline-offset-4">Curso VCV Rack desde cero</a>.
+                </p>
+                <p class="mt-3">
+                    Este es <b class="font-semibold text-white">el taller de después</b>: cinco patches
+                    terminados para ver cómo se monta una máquina entera.
+                    <span class="text-slate-400">Práctico, corto y barato.</span>
+                </p>
+            </div>
 
-        <div class="mt-5 space-y-4 text-[17px] leading-relaxed text-slate-600 dark:text-slate-300">
-            <p class="text-lg font-medium text-slate-800 sm:text-xl dark:text-slate-200">
-                Abres VCV Rack, empiezas a meter módulos y a la media hora tienes algo que suena
-                pero que no va a ninguna parte. Lo dejas ahí. Al día siguiente abres uno nuevo.
-            </p>
-            <p>
-                Ese es el hueco que llena este curso. No es la teoría otra vez. Son cinco patches
-                completos, de principio a fin, construidos delante de ti y explicando por qué va
-                cada cable donde va.
-            </p>
-            <p>
-                Un techno entero con su bombo, su bajo, sus voces y su mezcla. Dos sistemas
-                autogenerativos que se tocan solos sin sonar a ruido aleatorio. Un drone armónico
-                con ocho octavadores. Y antes de nada, una plantilla base para que no vuelvas a
-                empezar desde el rack vacío.
-            </p>
-            <p>
-                Aquí está la trampa de los fundamentos: entender las piezas por separado no te
-                enseña a montar la máquina. Eso solo se aprende viendo montar máquinas enteras.
-                Por eso ninguna lección corta antes de que el patch suene.
-            </p>
         </div>
     </section>
 
@@ -443,6 +457,38 @@ $pl_caja = static function () use ( $pl_cta_modo, $pl_course_id ) {
                     </article>
                 <?php endforeach; ?>
             </div>
+
+            <?php
+            $pl_html_temario = ( $pl_temario && $pl_course_id && shortcode_exists( 'animatek_curso_temario' ) )
+                ? do_shortcode( sprintf( '[animatek_curso_temario id="%d" titulo="%s"]', $pl_course_id, esc_attr__( 'El temario completo', 'animatek' ) ) )
+                : '';
+            ?>
+
+            <?php
+            $pl_html_caja = ( $pl_caja_temario && $pl_course_id && shortcode_exists( 'animatek_caja_curso' ) )
+                ? do_shortcode( sprintf( '[animatek_caja_curso id="%d"]', $pl_course_id ) )
+                : '';
+            ?>
+
+            <?php if ( $pl_html_temario ) : ?>
+                <div class="mt-10 grid items-start gap-6 <?php echo $pl_html_caja ? 'lg:grid-cols-3' : ''; ?>">
+
+                    <div class="tutor-box rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 lg:col-span-2 dark:border-white/10 dark:bg-slate-900">
+                        <?php echo $pl_html_temario; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+                        <p class="mt-6 text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
+                            Los candados son las lecciones que se abren al comprar. Dentro de cada tema
+                            van también el archivo <code class="font-mono text-[13px]">.vcv</code> y su material.
+                        </p>
+                    </div>
+
+                    <?php if ( $pl_html_caja ) : ?>
+                        <aside class="tutor-box lg:sticky lg:top-24">
+                            <?php echo $pl_html_caja; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+                        </aside>
+                    <?php endif; ?>
+
+                </div>
+            <?php endif; ?>
 
         </div>
     </section>
