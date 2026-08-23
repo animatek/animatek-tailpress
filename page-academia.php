@@ -34,12 +34,11 @@ $cursos = [
         'badge'        => 'Nuevo',
         'badge_cls'    => 'bg-primary text-white shadow',
         'meta'         => [ '6 lecciones', '2h 07 de vídeo', 'Intermedio' ],
-        'precio'       => 35,
-        'precio_antes' => 45,
-        'oferta_texto' => 'Precio fundador',
-        'oferta_hasta' => '2026-08-20',
+        // 19 € es el precio, no una oferta: sin 'precio_antes' ni fecha, así no
+        // sale tachado ni con cuenta atrás. Cuadra con SureCart, que es quien cobra.
+        'precio'       => 19,
         'destacado'    => true,
-        'url'          => 'https://animatek.net/cursos/patch-lab-01/',
+        'url'          => 'https://animatek.net/patch-lab-01/',
         'cta'          => 'Ver el curso',
     ],
     [
@@ -94,8 +93,9 @@ $resolver_precio = static function ( array $curso ) : array {
     ];
 };
 
-// El aviso de oferta va en la barra global del sitio (template-parts/banner-labs.php),
-// así que aquí no se repite: la tarjeta del curso ya lleva el precio y la fecha.
+// Ahora mismo no hay ninguna oferta activa: los precios de arriba son los precios.
+// El mecanismo de oferta ('precio_antes' + 'oferta_hasta') sigue disponible para
+// cuando haga falta, y caduca solo.
 
 // Ruta recomendada. Añade pasos según crezca el catálogo.
 $ruta = [
@@ -109,7 +109,7 @@ $ruta = [
         'paso'  => '02',
         'nombre'=> 'Patch Lab 01',
         'texto' => 'Ya sabes las piezas: ahora monta máquinas enteras. Cinco patches terminados.',
-        'url'   => 'https://animatek.net/cursos/patch-lab-01/',
+        'url'   => 'https://animatek.net/patch-lab-01/',
     ],
     [
         'paso'  => '03',
@@ -372,7 +372,7 @@ $icono_check = '<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrin
                 ],
                 [
                     'q' => '¿Qué pasa cuando termina un precio de lanzamiento?',
-                    'a' => 'El precio sube a su valor normal en la fecha anunciada y no vuelve a bajar. Si ya has comprado, mantienes el acceso completo y todas las actualizaciones sin pagar la diferencia.',
+                    'a' => 'El precio sube a su valor normal en la fecha anunciada. Y si alguna vez recoloco un curso y su precio cambia, quien ya lo compró mantiene el acceso completo y todas las actualizaciones, sin pagar ni recuperar la diferencia.',
                 ],
                 [
                     'q' => '¿Puedo combinar curso y mentoría?',
