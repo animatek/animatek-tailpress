@@ -15,67 +15,24 @@
  *         'intro'  => 'Texto de entrada a medida.',
  *     ) );
  *
- * Claves disponibles: vcv-rack · patch-lab · bitwig · uzz
+ * Claves disponibles: las de animatek_cursos() — vcv-rack · patch-lab · bitwig · uzz
  *
- * NO lleva precios a propósito. El precio ya vive en SureCart, en TutorLMS y en
- * el array de page-academia.php; meterlo aquí sería un cuarto sitio que se
- * desincroniza. Los enlaces llevan a páginas donde el precio siempre es el
- * correcto.
+ * Los textos y las URLs salen de animatek_cursos() (inc/animatek-cursos.php).
+ * No pinta el precio a propósito: quien cobra es SureCart y el visitante lo ve
+ * en la página de destino, siempre correcto.
  *
  * @package Animatek
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$animatek_catalogo = array(
-	'vcv-rack'  => array(
-		'titulo'   => 'Curso VCV Rack desde cero',
-		'gancho'   => 'Los fundamentos',
-		'texto'    => 'Qué hace cada módulo y por qué. Osciladores, filtros, VCA, envolventes y control por voltaje, construyendo una voz completa paso a paso. Si el Lab te ha dejado con ganas pero con dudas, empieza aquí.',
-		'url'      => 'https://animatek.net/cursos/vcv-rack-desde-cero/',
-		'cta'      => 'Ver el curso',
-		'etiqueta' => 'Empieza aquí',
-		'et_cls'   => 'bg-amber-400 text-amber-950',
-	),
-	'patch-lab' => array(
-		'titulo'   => 'Patch Lab 01',
-		'gancho'   => 'Cinco patches terminados',
-		'texto'    => 'Ya sabes lo que hace un VCA y aun así no terminas nada. Aquí se montan cinco patches enteros delante de ti —techno, dos generativos y un drone— con los archivos .vcv y dos plantillas para que los abras y los rompas.',
-		'url'      => 'https://animatek.net/patch-lab-01/',
-		'cta'      => 'Ver el curso',
-		'etiqueta' => 'El siguiente paso',
-		'et_cls'   => 'bg-primary text-white',
-	),
-	'bitwig'    => array(
-		'titulo'   => 'Curso Bitwig Studio',
-		'gancho'   => 'El DAW, de cero y bien hecho',
-		'texto'    => 'Pistas, clips, dispositivos y el flujo de trabajo oficial de Bitwig, por un Certified Trainer. Está en producción y se publica por bloques: si entras ahora, entras como alumno fundador y recibes las lecciones según salen.',
-		'url'      => 'https://animatek.net/curso-bitwig-studio/',
-		'cta'      => 'Ver el curso',
-		'etiqueta' => 'Empieza aquí',
-		'et_cls'   => 'bg-amber-400 text-amber-950',
-	),
-	'uzz'       => array(
-		'titulo'   => 'Curso UZZ',
-		'gancho'   => 'Gratis, 16 lecciones',
-		'texto'    => 'UZZ es un secuenciador por pasos que hice yo, y no existe otra formación sobre él en ningún sitio. Funciona en Bitwig, en Ableton y en VCV Rack. El curso es gratuito y no pide tarjeta.',
-		'url'      => 'https://animatek.net/cursos/curso-uzz/',
-		'cta'      => 'Empezar gratis',
-		'etiqueta' => 'Gratis',
-		'et_cls'   => 'bg-green-500 text-white',
-	),
-);
+require_once get_theme_file_path( 'inc/animatek-cursos.php' );
 
 $animatek_claves = isset( $args['cursos'] ) && is_array( $args['cursos'] )
 	? $args['cursos']
 	: array( 'vcv-rack', 'patch-lab' );
 
-$animatek_pasos = array();
-foreach ( $animatek_claves as $clave ) {
-	if ( isset( $animatek_catalogo[ $clave ] ) ) {
-		$animatek_pasos[] = $animatek_catalogo[ $clave ];
-	}
-}
+$animatek_pasos = animatek_cursos_por_clave( $animatek_claves );
 
 if ( empty( $animatek_pasos ) ) {
 	return;
@@ -121,7 +78,7 @@ $animatek_cierre = $args['cierre'] ?? 'Si prefieres seguir por libre, el Lab y e
 					</p>
 
 					<p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed text-[15px]">
-						<?php echo esc_html( $paso['texto'] ); ?>
+						<?php echo esc_html( $paso['texto_corto'] ); ?>
 					</p>
 
 					<div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700/50">

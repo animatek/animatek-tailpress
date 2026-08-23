@@ -1,3 +1,6 @@
+<?php
+require_once get_theme_file_path( 'inc/animatek-cursos.php' );
+?>
 
 <section class="w-full bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 font-sans">
     <div class="max-w-7xl mx-auto">
@@ -75,7 +78,12 @@
                     Cursos
                 </h3>
                 <p class="text-sm text-gray-600 mt-auto leading-relaxed">
-                    VCV Rack desde cero, Patch Lab 01 y Bitwig Studio. A tu ritmo, con acceso de por vida.
+                    <?php
+                    // Los nombres salen del catálogo (inc/animatek-cursos.php) para que
+                    // esta tarjeta no se quede vieja al añadir o quitar un curso.
+                    $animatek_titulos = wp_list_pluck( animatek_cursos_academia(), 'titulo' );
+                    echo esc_html( wp_sprintf( '%l', $animatek_titulos ) );
+                    ?>. A tu ritmo, con acceso de por vida.
                 </p>
                 <span class="mt-3 text-sm font-bold text-[#2C7FFF]">Ver los cursos &rarr;</span>
             </a>

@@ -6,92 +6,14 @@
 get_header();
 
 // ---------------------------------------------------------------------------
-// Datos de los cursos. Para añadir o editar un curso, toca solo este array.
-//
-// Campos:
-//   titulo / subtitulo   Nombre y frase corta (el subtítulo es opcional).
-//   imagen / alt         Portada cuadrada (1600x1600). Se muestra entera, sin recortar.
-//   texto                Descripción de la tarjeta. 2-3 líneas.
-//   badge / badge_cls    Etiqueta sobre la portada (opcional).
-//   meta                 Hasta 3 datos cortos: lecciones, duración, nivel.
-//   precio               Número en euros, o null si el curso es gratis.
-//   precio_antes         Precio normal cuando hay oferta. Al caducar la oferta pasa
-//                        a ser el precio que se muestra: la subida es automática.
-//   oferta_texto         Nombre de la oferta ("Precio fundador").
-//   oferta_hasta         Último día de la oferta, 'Y-m-d'. Vacío = sin oferta.
-//   destacado            true para resaltar el curso con borde de color.
-//   url / cta            Destino y texto del botón.
-//
-// El orden del array es el orden en que se muestran: lo nuevo o lo importante, arriba.
+// Los cursos salen del catálogo del tema, que es el único sitio donde se editan.
+// Ver inc/animatek-cursos.php. Antes vivían aquí en un array propio, y eso dejó
+// a esta página anunciando 45 € mientras el checkout cobraba 19 €.
 // ---------------------------------------------------------------------------
-$cursos = [
-    [
-        'titulo'       => 'Patch Lab 01',
-        'subtitulo'    => '5 patches completos de VCV Rack, de cero a sonando',
-        'imagen'       => 'https://animatek.net/wp-content/uploads/2026/08/04-patch-lab-01-portada-1600.webp',
-        'alt'          => 'Patch Lab 01, curso de VCV Rack de Animatek',
-        'texto'        => 'Cinco patches construidos delante de ti, cable a cable: una plantilla base de techno, un track completo, dos sistemas autogenerativos y un drone armónico. Incluye los archivos .vcv para abrirlos, romperlos y hacerlos tuyos.',
-        'badge'        => 'Nuevo',
-        'badge_cls'    => 'bg-primary text-white shadow',
-        'meta'         => [ '6 lecciones', '2h 07 de vídeo', 'Intermedio' ],
-        // 19 € es el precio, no una oferta: sin 'precio_antes' ni fecha, así no
-        // sale tachado ni con cuenta atrás. Cuadra con SureCart, que es quien cobra.
-        'precio'       => 19,
-        'destacado'    => true,
-        'url'          => 'https://animatek.net/patch-lab-01/',
-        'cta'          => 'Ver el curso',
-    ],
-    [
-        'titulo'    => 'Curso VCV Rack',
-        'subtitulo' => 'Síntesis modular desde cero, con los módulos esenciales',
-        'imagen'    => 'https://animatek.net/wp-content/uploads/2025/04/Curso_Cuadrada.webp',
-        'alt'       => 'Curso VCV Rack desde cero',
-        'texto'     => 'Fundamentos reales de síntesis con VCV Rack 2 usando solo los módulos esenciales. Construyes una voz sustractiva desde cero y entiendes voltajes, osciladores, filtros, VCA, envolventes, modulación, secuenciación y control por voltaje.',
-        'badge'     => 'Más vendido',
-        'badge_cls' => 'bg-amber-400 text-amber-950 shadow',
-        'meta'      => [ '34 lecciones', 'Principiante', 'A tu ritmo' ],
-        'precio'    => 29,
-        'url'       => 'https://animatek.net/cursos/vcv-rack-desde-cero/',
-        'cta'       => 'Empezar el curso',
-    ],
-    [
-        'titulo'    => 'Curso UZZ',
-        'subtitulo' => 'El secuenciador por pasos para improvisar',
-        'imagen'    => 'https://animatek.net/wp-content/uploads/2025/11/UZZ_Curso.webp',
-        'alt'       => 'Curso UZZ gratis',
-        'texto'     => 'Curso gratuito para dominar UZZ, el secuenciador por pasos diseñado para improvisar y crear patrones complejos con rapidez. Aprendes todas sus funciones, salidas y posibilidades dentro de Bitwig, Ableton y VCV Rack.',
-        'badge'     => 'Gratis',
-        'badge_cls' => 'bg-green-400 text-green-950 shadow',
-        'meta'      => [ '16 lecciones', 'Principiante', 'Sin tarjeta' ],
-        'precio'    => null,
-        'url'       => 'https://animatek.net/cursos/curso-uzz/',
-        'cta'       => 'Empezar gratis',
-    ],
-];
+require_once get_theme_file_path( 'inc/animatek-cursos.php' );
 
-// ---------------------------------------------------------------------------
-// Resuelve precio y oferta de un curso según la fecha de hoy.
-// Cuando la oferta caduca, el precio pasa solo a 'precio_antes'.
-// ---------------------------------------------------------------------------
-$resolver_precio = static function ( array $curso ) : array {
-    $precio  = $curso['precio'] ?? null;
-    $antes   = $curso['precio_antes'] ?? null;
-    $hasta   = $curso['oferta_hasta'] ?? '';
-    $vigente = $hasta && $antes && current_time( 'timestamp' ) <= strtotime( $hasta . ' 23:59:59' );
-
-    if ( ! $vigente && $antes ) {
-        $precio = $antes;
-    }
-
-    return [
-        'gratis'  => null === $precio,
-        'importe' => null === $precio ? 'Gratis' : $precio . '€',
-        'antes'   => $vigente ? $antes . '€' : '',
-        'oferta'  => $vigente ? ( $curso['oferta_texto'] ?? 'Oferta' ) : '',
-        'hasta'   => $vigente ? date_i18n( 'j F', strtotime( $hasta ) ) : '',
-        'vigente' => $vigente,
-    ];
-};
+$cursos          = animatek_cursos_academia();
+$resolver_precio = 'animatek_curso_precio';
 
 // Ahora mismo no hay ninguna oferta activa: los precios de arriba son los precios.
 // El mecanismo de oferta ('precio_antes' + 'oferta_hasta') sigue disponible para
