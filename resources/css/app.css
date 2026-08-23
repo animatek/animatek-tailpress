@@ -157,3 +157,29 @@
     height: 100%;
     border: 0;
 }
+
+/* Menú móvil: transición de apertura.
+   El JS alterna `is-open`; la clase `hidden` de Tailwind sigue encargándose de
+   sacarlo del flujo, pero el fundido y el desplazamiento se hacen aquí porque
+   `display` no se puede animar.
+
+   Solo por debajo del breakpoint md (782 px): a partir de ahí el nav es
+   estático y no debe llevar ni opacidad ni transform. */
+@media (max-width: 781px) {
+    #primary-navigation {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+        transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    #primary-navigation.is-open {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #primary-navigation {
+        transition: none;
+    }
+}
