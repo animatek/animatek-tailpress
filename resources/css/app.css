@@ -134,3 +134,26 @@
         transform: translateX(4px);
     }
 }
+/* Reproductor de vídeo de la ficha de curso (Tutor + Plyr).
+   LiteSpeed Cache aplica lazy load a los iframes: en la copia cacheada el
+   iframe sale como src="about:blank" + data-src, así que Plyr no llega a
+   montar su caja responsive y el embed de YouTube se pinta al tamaño por
+   defecto del iframe (300x150). Mientras Plyr no haya montado (no existe
+   .plyr__video-wrapper y el iframe sigue siendo hijo directo) forzamos el
+   16:9 nosotros; cuando Plyr monta, esta regla deja de aplicar sola. */
+.tutor-video-player .plyr__video-embed:not(.plyr__video-wrapper) {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+}
+
+.tutor-video-player .plyr__video-embed:not(.plyr__video-wrapper) > iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}

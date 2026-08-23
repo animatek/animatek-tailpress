@@ -1225,3 +1225,29 @@ function animatek_render_virtual_sample_packs_page(): void {
     exit;
 }
 add_action( 'template_redirect', 'animatek_render_virtual_sample_packs_page', 1 );
+
+/**
+ * LiteSpeed Cache minifica mal el bundle de Tutor: la copia optimizada de
+ * assets/js/tutor.js que sirve desde /wp-content/litespeed/js/ se queda sin dos
+ * llaves de cierre y revienta con "SyntaxError: expected expression, got ')'".
+ * Al no ejecutarse el bundle no se registra ningún listener de Tutor, así que
+ * "Mostrar más" (y el resto de <a href="#"> de Tutor) navegan a la propia URL
+ * con almohadilla en lugar de desplegar.
+ *
+ * data-no-optimize="1" es la marca que LiteSpeed respeta para dejar un script
+ * tal cual viene del plugin.
+ */
+function animatek_skip_litespeed_optimize_tutor_js( $tag, $handle ) {
+    $handles = array( 'tutor-script', 'tutor-frontend' );
+
+    if ( ! in_array( $handle, $handles, true ) ) {
+        return $tag;
+    }
+
+    if ( false !== strpos( $tag, 'data-no-optimize' ) ) {
+        return $tag;
+    }
+
+    return str_replace( '<script ', '<script data-no-optimize="1" ', $tag );
+}
+add_filter( 'script_loader_tag', 'animatek_skip_litespeed_optimize_tutor_js', 10, 2 );
