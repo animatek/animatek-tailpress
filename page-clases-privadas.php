@@ -140,7 +140,7 @@ get_header();
                     <p class="text-slate-600 text-sm leading-relaxed">Para quien necesita resolver una duda concreta, desbloquear un problema o recibir asesoramiento personalizado.</p>
                 </div>
                 <div class="mb-6">
-                    <span class="text-4xl font-bold text-slate-900">40 &euro;</span>
+                    <span class="text-4xl font-bold text-slate-900">60 &euro;</span>
                     <span class="text-slate-500 text-sm">/hora</span>
                 </div>
                 <ul class="mb-6 space-y-3 text-slate-700 text-sm flex-1">
@@ -177,16 +177,15 @@ get_header();
             <div class="bg-white border-2 border-primary rounded-2xl p-8 flex flex-col shadow-lg shadow-primary/15 relative overflow-hidden">
                 <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary to-cyan-400"></div>
                 <div class="absolute top-4 right-4">
-                    <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Promo &mdash; 3 plazas a 120 &euro;</span>
+                    <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Pack 5 horas</span>
                 </div>
                 <div class="mb-6 mt-4">
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Programa 5 horas &mdash; Arranca tu sistema modular</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">Quieres montar tu entorno de trabajo en VCV Rack o Bitwig y empezar a crear con criterio.</p>
                 </div>
                 <div class="mb-6">
-                    <span class="text-4xl font-bold text-slate-900">150 &euro;</span>
-                    <span class="text-sm text-slate-400 line-through ml-2">200 &euro;</span>
-                    <span class="text-green-700 text-xs font-bold ml-2 bg-green-100 px-2 py-1 rounded">Ahorras 50 &euro;</span>
+                    <span class="text-4xl font-bold text-slate-900">300 &euro;</span>
+                    <span class="text-slate-500 text-sm">/pack</span>
                 </div>
                 <ul class="mb-8 space-y-3 text-slate-700 text-sm flex-1">
                     <?php
@@ -219,9 +218,9 @@ get_header();
                     <p class="text-slate-600 text-sm leading-relaxed">Quieres dominar VCV Rack desde cero, integrarlo con Bitwig y terminar con un proyecto publicable.</p>
                 </div>
                 <div class="mb-6">
-                    <span class="text-4xl font-bold text-slate-900">295 &euro;</span>
-                    <span class="text-sm text-slate-400 line-through ml-2">400 &euro;</span>
-                    <span class="text-green-700 text-xs font-bold ml-2 bg-green-100 px-2 py-1 rounded">Ahorras 105 &euro;</span>
+                    <span class="text-4xl font-bold text-slate-900">550 &euro;</span>
+                    <span class="text-sm text-slate-400 line-through ml-2">600 &euro;</span>
+                    <span class="text-green-700 text-xs font-bold ml-2 bg-green-100 px-2 py-1 rounded">Ahorras 50 &euro;</span>
                 </div>
                 <ul class="mb-8 space-y-3 text-slate-700 text-sm flex-1">
                     <?php
