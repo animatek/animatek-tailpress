@@ -1205,3 +1205,259 @@ function animatek_skip_litespeed_optimize_tutor_js( $tag, $handle ) {
     return str_replace( '<script ', '<script data-no-optimize="1" ', $tag );
 }
 add_filter( 'script_loader_tag', 'animatek_skip_litespeed_optimize_tutor_js', 10, 2 );
+
+/**
+ * SureCart en oscuro.
+ *
+ * El plugin decide el tema desde la marca de la cuenta (API) y por defecto pone
+ * `surecart-theme-light` en el <body>. La web es dark-only, así que se lo
+ * cambiamos: el CSS de `.surecart-theme-dark` ya viene en el plugin.
+ *
+ * @param string[] $classes Clases del body.
+ * @return string[]
+ */
+function animatek_surecart_dark_body_class( array $classes ): array {
+	if ( ! defined( 'SURECART_PLUGIN_FILE' ) && ! class_exists( '\SureCart' ) ) {
+		return $classes;
+	}
+
+	$classes   = array_diff( $classes, [ 'surecart-theme-light' ] );
+	$classes[] = 'surecart-theme-dark';
+
+	return array_values( array_unique( $classes ) );
+}
+add_filter( 'body_class', 'animatek_surecart_dark_body_class', 20 );
+
+/**
+ * SureCart en español.
+ *
+ * Dos problemas distintos, los dos ajenos al tema:
+ *
+ * 1. La plantilla del plugin escribe el texto de los botones a pelo en el
+ *    markup (`templates/parts/product-info.html` trae {"text":"Buy Now"}), así
+ *    que es contenido y no pasa por las traducciones. Igual con la etiqueta
+ *    "Quantity", que es el valor por defecto del atributo del bloque.
+ * 2. El código llama a __( 'Add to Cart' ) pero el catálogo es_ES solo trae el
+ *    msgid "Add To Cart", con la T en mayúscula. Al no coincidir, se queda en
+ *    inglés aunque la traducción exista.
+ *
+ * @param array $block Bloque analizado.
+ * @return array
+ */
+function animatek_surecart_bloques_es( $block ) {
+	if ( empty( $block['blockName'] ) || 0 !== strpos( $block['blockName'], 'surecart/' ) ) {
+		return $block;
+	}
+
+	// 'defecto' se usa cuando el bloque no trae el atributo: hace falta porque
+	// el plugin resuelve `$attributes['label'] ?? __( 'Quantity' )` con el valor
+	// por defecto de block.json ya puesto, así que la traducción nunca entra.
+	$textos = [
+		'surecart/product-buy-button' => [
+			'text' => [
+				'defecto'      => null,
+				'traducciones' => [
+					'Add to Cart' => 'Añadir al carrito',
+					'Add To Cart' => 'Añadir al carrito',
+					'Buy Now'     => 'Comprar ahora',
+				],
+			],
+		],
+		'surecart/product-quantity'   => [
+			'label' => [
+				'defecto'      => 'Cantidad',
+				'traducciones' => [
+					'Quantity' => 'Cantidad',
+				],
+			],
+		],
+		// Ficha de "paga lo que quieras" (Patches Tutoriales VCV Rack).
+		'surecart/product-selected-price-ad-hoc-amount' => [
+			'label' => [
+				'defecto'      => 'Introduce un importe',
+				'traducciones' => [
+					'Enter an amount' => 'Introduce un importe',
+					'Amount'          => 'Importe',
+				],
+			],
+		],
+		// Va oculto hasta que un precio tiene descuento, pero entonces sale.
+		'surecart/product-sale-badge' => [
+			'text' => [
+				'defecto'      => 'Oferta',
+				'traducciones' => [
+					'Sale' => 'Oferta',
+				],
+			],
+		],
+	];
+
+	if ( empty( $textos[ $block['blockName'] ] ) ) {
+		return $block;
+	}
+
+	foreach ( $textos[ $block['blockName'] ] as $atributo => $regla ) {
+		$actual = $block['attrs'][ $atributo ] ?? null;
+
+		if ( null === $actual ) {
+			if ( null !== $regla['defecto'] ) {
+				$block['attrs'][ $atributo ] = $regla['defecto'];
+			}
+			continue;
+		}
+
+		if ( isset( $regla['traducciones'][ $actual ] ) ) {
+			$block['attrs'][ $atributo ] = $regla['traducciones'][ $actual ];
+		}
+	}
+
+	return $block;
+}
+add_filter( 'render_block_data', 'animatek_surecart_bloques_es' );
+
+/**
+ * Parches de cadenas que el catálogo es_ES de SureCart no trae.
+ *
+ * Dos casos distintos:
+ *
+ * - "Add to Cart": el msgid del catálogo es "Add To Cart", con la T en
+ *   mayúscula, y al no coincidir la traducción nunca entra.
+ * - "Custom Amount": lo pinta Price::getDisplayAmountAttribute() donde iría el
+ *   precio de un producto de importe libre, y sencillamente no está traducido.
+ *
+ * Cuando el plugin los corrija, esto deja de hacer nada por sí solo, porque
+ * solo actúa si la traducción no ha entrado.
+ *
+ * @param string $traduccion Cadena traducida.
+ * @param string $original   Cadena original.
+ * @param string $dominio    Dominio de texto.
+ * @return string
+ */
+function animatek_surecart_gettext( $traduccion, $original, $dominio ) {
+	if ( 'surecart' !== $dominio || $traduccion !== $original ) {
+		return $traduccion;
+	}
+
+	$parches = [
+		'Add to Cart'     => 'Añadir al carrito',
+		'Custom Amount'   => 'Importe libre',
+		'Enter an amount' => 'Introduce un importe',
+		'Sale'            => 'Oferta',
+	];
+
+	return $parches[ $original ] ?? $traduccion;
+}
+add_filter( 'gettext', 'animatek_surecart_gettext', 10, 3 );
+
+/**
+ * "You may also like" del bloque de productos relacionados.
+ *
+ * El encabezado no es una cadena traducible: la plantilla del plugin
+ * (`templates/parts/product-info.html`) lo escribe a pelo dentro de un
+ * `core/heading`, así que viaja como contenido. Lo sustituimos en el HTML ya
+ * montado del bloque relacionado, que es el único sitio donde aparece.
+ *
+ * @param string $html   HTML del bloque.
+ * @param array  $bloque Bloque analizado.
+ * @return string
+ */
+function animatek_surecart_relacionados_es( $html, $bloque ) {
+	if ( ( $bloque['blockName'] ?? '' ) !== 'surecart/product-list-related' ) {
+		return $html;
+	}
+
+	return str_replace( 'You may also like', 'También te puede interesar', $html );
+}
+add_filter( 'render_block', 'animatek_surecart_relacionados_es', 10, 2 );
+
+/**
+ * Ficha de producto siempre con la plantilla del tema.
+ *
+ * SureCart registra una plantilla de página propia ("SureCart Layout",
+ * `pages/template-surecart-product.php`) que se puede elegir producto a
+ * producto desde el editor. Esa plantilla se salta `single-sc_product.php`:
+ * pinta el bloque suelto, sin el contenedor ni las migas del tema, y el
+ * resultado es una página descuadrada. Le pasó a "Patch Lab 01".
+ *
+ * Solo interceptamos ese caso concreto; cualquier otra plantilla se respeta.
+ *
+ * @param string $plantilla Ruta de la plantilla que va a usar WordPress.
+ * @return string
+ */
+function animatek_surecart_plantilla_producto( $plantilla ) {
+	if ( ! is_singular( 'sc_product' ) ) {
+		return $plantilla;
+	}
+
+	if ( 'template-surecart-product.php' !== basename( $plantilla ) ) {
+		return $plantilla;
+	}
+
+	$nuestra = locate_template( 'single-sc_product.php' );
+
+	return $nuestra ? $nuestra : $plantilla;
+}
+add_filter( 'template_include', 'animatek_surecart_plantilla_producto', 20 );
+
+/**
+ * Plazas libres de un producto de SureCart.
+ *
+ * SureCart crea un post `sc_product` por producto y mantiene ahí el stock en el
+ * metadato `available_stock` (es de donde lee su propia etiqueta dinámica de
+ * stock). Leerlo de la base de datos evita una llamada a la API por visita.
+ *
+ * Devuelve null cuando no se puede saber: no está el plugin, el producto no
+ * existe todavía en este WordPress, o el producto no lleva control de stock. En
+ * ese caso quien llama decide qué enseñar.
+ *
+ * @param string $product_id ID del producto en SureCart (el uuid, no el post).
+ * @return int|null Unidades disponibles, o null si no se puede determinar.
+ */
+function animatek_surecart_stock_disponible( string $product_id ): ?int {
+	if ( ! post_type_exists( 'sc_product' ) ) {
+		return null;
+	}
+
+	// El post apenas cambia de ID; lo que cambia es el stock. Cacheamos la
+	// búsqueda y leemos el metadato fresco en cada visita.
+	$clave    = 'animatek_sc_post_' . md5( $product_id );
+	$post_id  = get_transient( $clave );
+
+	if ( false === $post_id ) {
+		$encontrados = get_posts(
+			[
+				'post_type'      => 'sc_product',
+				'post_status'    => 'any',
+				'posts_per_page' => 1,
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+				'meta_query'     => [ // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+					[
+						'key'   => 'sc_id',
+						'value' => $product_id,
+					],
+				],
+			]
+		);
+
+		$post_id = ! empty( $encontrados ) ? (int) $encontrados[0] : 0;
+		set_transient( $clave, $post_id, $post_id ? DAY_IN_SECONDS : HOUR_IN_SECONDS );
+	}
+
+	if ( ! $post_id ) {
+		return null;
+	}
+
+	// Sin control de stock no hay número que enseñar: son ilimitadas.
+	if ( ! get_post_meta( $post_id, 'stock_enabled', true ) ) {
+		return null;
+	}
+
+	$stock = get_post_meta( $post_id, 'available_stock', true );
+
+	if ( '' === $stock || null === $stock ) {
+		return null;
+	}
+
+	return max( 0, (int) $stock );
+}

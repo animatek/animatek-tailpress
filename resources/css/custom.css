@@ -86,3 +86,64 @@
     margin-bottom: 0 !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Ficha de producto de SureCart (single-sc_product.php)
+
+   El bloque `surecart/product-page` se pinta con clase `alignwide`, y la
+   utilidad alignwide del tema ensancha 320px cualquier <img> que haya dentro
+   (pensada para fotos de artículos del blog). En un producto eso saca la imagen
+   fuera de la tarjeta y tapa el precio y los botones de compra. Aquí la
+   desactivamos solo dentro de la ficha.
+   -------------------------------------------------------------------------- */
+.animatek-producto .alignwide,
+.animatek-producto .alignfull {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.animatek-producto .alignwide img {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* La imagen del producto, contenida y con las esquinas de la casa. */
+.animatek-producto .wp-block-surecart-product-media {
+    margin: 0;
+}
+
+.animatek-producto .wp-block-surecart-product-media img {
+    display: block;
+    width: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+/* Las dos columnas se apilan en móvil con aire entre ellas. */
+.animatek-producto .wp-block-columns {
+    gap: 2rem;
+}
+
+/* Mientras el producto no tenga imagen en SureCart, el plugin sirve un
+   placeholder blanco que deslumbra sobre fondo oscuro. Lo invertimos para que
+   no cante; en cuanto se suba una imagen de verdad, esta regla deja de aplicar
+   sola, porque va atada al nombre del fichero del plugin. */
+.animatek-producto .wp-block-surecart-product-media img[src*="/surecart/images/placeholder"] {
+    filter: invert(1) brightness(0.75);
+    opacity: 0.5;
+}
+
+/* La etiqueta "Cantidad" venía pegada a la descripción. */
+.animatek-producto .wp-block-surecart-product-quantity {
+    margin-top: 1.25rem;
+}
+
+.animatek-producto .wp-block-surecart-product-quantity .sc-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
