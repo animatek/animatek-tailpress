@@ -155,8 +155,8 @@ get_header();
 
     <?php
     get_template_part('template-parts/brevo-locker', null, [
-        'form_action' => 'https://a2fe0a0a.sibforms.com/serve/MUIFAJ7u_rehkbgjVzfqm6y_yjiQolKzVyo89ILCoEHDPbMaV_cMfO0v8065Fa93pICNPLiCPPEbXwgp3buCV3Y2iGucvWQkLU3LJOHzTdwMuPCZ9pjadvWB1lTj2pNevi3UqD4piecNiS2IZKId7-bClPvI1UNgV6X1ajohFeK_xzUkDZdSLhNfawxaV-Gh0tQZ8UZLHUWFKRM_',
-        'storage_key' => 'vcv_lab_unlocked',
+        'form_action' => animatek_vcv_lab_form_action(),
+        'storage_key' => animatek_vcv_lab_storage_key(),
         'title'       => 'Desbloquea la Guía Web Completa + Recibe el PDF para descargar',
         'description' => 'Introduce tu email para acceder <strong>GRATIS</strong> a todas las Secciones (1 a 12). Desbloqueo inmediato. Solo te enviaremos trucos de VCV Rack, nada de spam.',
         'email_label' => 'Introduzca su dirección de e-mail',

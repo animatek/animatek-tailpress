@@ -1205,3 +1205,20 @@ function animatek_skip_litespeed_optimize_tutor_js( $tag, $handle ) {
     return str_replace( '<script ', '<script data-no-optimize="1" ', $tag );
 }
 add_filter( 'script_loader_tag', 'animatek_skip_litespeed_optimize_tutor_js', 10, 2 );
+
+/**
+ * Formulario de Brevo del VCV Rack Lab.
+ *
+ * Lo usan la pagina del Lab (`page-vcvrack-lab.php`) y el bloque del glosario
+ * (`template-parts/glosario-lab-form.php`). Apuntan a la misma lista a proposito:
+ * quien deja el email en el glosario entra en el mismo funnel y, como la clave de
+ * desbloqueo se guarda por dominio, llega al Lab con la guia ya abierta.
+ */
+function animatek_vcv_lab_form_action(): string {
+	return 'https://a2fe0a0a.sibforms.com/serve/MUIFAJ7u_rehkbgjVzfqm6y_yjiQolKzVyo89ILCoEHDPbMaV_cMfO0v8065Fa93pICNPLiCPPEbXwgp3buCV3Y2iGucvWQkLU3LJOHzTdwMuPCZ9pjadvWB1lTj2pNevi3UqD4piecNiS2IZKId7-bClPvI1UNgV6X1ajohFeK_xzUkDZdSLhNfawxaV-Gh0tQZ8UZLHUWFKRM_';
+}
+
+/** Clave de localStorage que marca que el visitante ya tiene el Lab desbloqueado. */
+function animatek_vcv_lab_storage_key(): string {
+	return 'vcv_lab_unlocked';
+}

@@ -68,6 +68,16 @@ function glosario_icon(string $slug, string $category, array $icons, array $icon
                 Términos esenciales de síntesis, mezcla, audio digital, VCV Rack y Bitwig Studio. Tu referencia rápida
                 para entender el lenguaje de la producción.
             </p>
+            <?php // El bloque del Lab que hay al final de la pagina queda a 135 tarjetas de
+                  // scroll: casi nadie llega. Aqui va el mismo enlace en discreto, para que
+                  // se vea sin robarle el sitio al buscador. ?>
+            <p class="text-sm text-slate-400">
+                ¿Prefieres verlos sonando?
+                <a href="<?php echo esc_url(home_url('/vcvrack-lab/')); ?>"
+                    class="block sm:inline font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary transition-colors">
+                    Entra gratis en el VCV Rack Lab
+                </a>
+            </p>
         </div>
     </section>
 
@@ -136,7 +146,16 @@ endforeach; ?>
     </div>
 
     <!-- Term cards -->
-    <section class="max-w-6xl mx-auto px-6 py-10" id="glosario-list">
+    <section class="max-w-6xl mx-auto px-6 py-10">
+        <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+
+        <?php // El formulario acompana todo el scroll del listado en vez de esperar al
+              // final: con 135 tarjetas por delante, ahi abajo no llegaba nadie. ?>
+        <aside id="glosario-lab-aside" class="lg:w-64 lg:shrink-0 lg:sticky lg:top-16">
+            <?php get_template_part('template-parts/glosario-lab-form'); ?>
+        </aside>
+
+        <div id="glosario-list" class="min-w-0 flex-1">
         <?php foreach ($alphabet as $letter): ?>
         <?php if (isset($grouped[$letter])): ?>
         <div class="glosario-group mb-8" data-letter="<?php echo $letter; ?>">
@@ -144,21 +163,21 @@ endforeach; ?>
                 class="text-xl font-extrabold text-primary mb-4 scroll-mt-16 tracking-wide">
                 <?php echo $letter; ?>
             </h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
                 <?php foreach ($grouped[$letter] as $t):
             $cat = $categories[$t['category']];
             $svg_inner = glosario_icon($t['slug'], $t['category'], $icons, $icon_map, $cat_icons);
+            // La tarjeta lleva a la ficha del termino. Sin el plugin activo no hay
+            // ficha a la que ir, asi que se pinta igual pero sin enlazar.
+            $ficha = isset($t['url']) ? $t['url'] : '';
+            $tag   = $ficha ? 'a' : 'div';
 ?>
-                <button type="button"
-                    class="glosario-term glosario-card group flex flex-col items-center text-center gap-2.5 p-4 sm:p-5 rounded-2xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 hover:border-slate-600 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 cursor-pointer"
+                <<?php echo $tag; ?> <?php if ($ficha): ?>href="<?php echo esc_url($ficha); ?>"
+                    <?php
+        endif; ?>class="glosario-term glosario-card group flex flex-col items-center text-center gap-2.5 p-4 sm:p-5 rounded-2xl border border-slate-800 bg-slate-900/60<?php echo $ficha ? ' hover:bg-slate-800/80 hover:border-slate-600 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5' : ''; ?>"
                     data-category="<?php echo esc_attr($t['category']); ?>"
                     data-term="<?php echo esc_attr($t['term']); ?>"
-                    data-definition="<?php echo esc_attr($t['definition']); ?>"
-                    data-cat-label="<?php echo esc_attr($cat['label']); ?>"
-                    data-cat-bg="<?php echo esc_attr($cat['bg']); ?>"
-                    data-cat-text="<?php echo esc_attr($cat['text']); ?>"
-                    data-cat-border="<?php echo esc_attr($cat['border']); ?>"
-                    data-url="<?php echo esc_url(isset($t['url']) ? $t['url'] : ''); ?>">
+                    data-definition="<?php echo esc_attr($t['definition']); ?>">
                     <div
                         class="glosario-icon w-12 h-12 rounded-xl <?php echo esc_attr($cat['bg']); ?> flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                         <svg class="w-6 h-6 <?php echo esc_attr($cat['text']); ?>" viewBox="0 0 24 24" fill="none"
@@ -174,7 +193,7 @@ endforeach; ?>
                         class="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold border <?php echo esc_attr($cat['bg'] . ' ' . $cat['text'] . ' ' . $cat['border']); ?>">
                         <?php echo esc_html($cat['label']); ?>
                     </span>
-                </button>
+                </<?php echo $tag; ?>>
                 <?php
         endforeach; ?>
             </div>
@@ -194,9 +213,11 @@ endforeach; ?>
             <p class="text-slate-500 text-lg">No se encontraron términos</p>
             <p class="text-slate-600 text-sm mt-1">Prueba con otra búsqueda o categoría</p>
         </div>
+        </div>
+        </div>
     </section>
 
-    <?php get_template_part('template-parts/glosario-modal'); ?>
+
 
 </main>
 
@@ -382,28 +403,6 @@ endforeach; ?>
         color: #cbd5e1;
     }
 
-    /* Modal */
-    .glosario-light #glosario-modal .relative {
-        background-color: #ffffff;
-        border-color: #e2e8f0;
-    }
-
-    .glosario-light #modal-term {
-        color: #0f172a;
-    }
-
-    .glosario-light #modal-definition {
-        color: #475569;
-    }
-
-    .glosario-light #glosario-modal-close {
-        color: #94a3b8;
-    }
-
-    .glosario-light #glosario-modal-close:hover {
-        color: #0f172a;
-        background-color: #f1f5f9;
-    }
 
     /* Icon visibility handled via JS */
     .glosario-light .glosario-icon-moon {
@@ -448,13 +447,6 @@ endforeach; ?>
         var groups = document.querySelectorAll('.glosario-group');
         var letters = document.querySelectorAll('.glosario-letter');
         var emptyState = document.getElementById('glosario-empty');
-        var modal = document.getElementById('glosario-modal');
-        var modalTerm = document.getElementById('modal-term');
-        var modalBadge = document.getElementById('modal-badge');
-        var modalDef = document.getElementById('modal-definition');
-        var modalClose = document.getElementById('glosario-modal-close');
-        var modalBackdrop = document.getElementById('glosario-modal-backdrop');
-
         var activeCategory = 'all';
 
         function filterTerms() {
@@ -509,55 +501,6 @@ endforeach; ?>
             });
         });
 
-        var modalIcon = document.getElementById('modal-icon');
-
-        function openModal(el) {
-            modalTerm.textContent = el.getAttribute('data-term');
-            modalDef.textContent = el.getAttribute('data-definition');
-
-            var modalLink = document.getElementById('modal-link');
-            if (modalLink) {
-                var url = el.getAttribute('data-url');
-                modalLink.href = url || '#';
-                modalLink.classList.toggle('hidden', !url);
-            }
-
-            modalBadge.textContent = el.getAttribute('data-cat-label');
-            modalBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-semibold border ' +
-                el.getAttribute('data-cat-bg') + ' ' +
-                el.getAttribute('data-cat-text') + ' ' +
-                el.getAttribute('data-cat-border');
-
-            // Clone icon from card into modal
-            var srcIcon = el.querySelector('.glosario-icon');
-            if (srcIcon) {
-                var srcSvg = srcIcon.querySelector('svg');
-                modalIcon.className = 'shrink-0 w-14 h-14 rounded-xl flex items-center justify-center ' + el.getAttribute('data-cat-bg');
-                modalIcon.innerHTML = '<svg class="w-7 h-7 ' + el.getAttribute('data-cat-text') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + srcSvg.innerHTML + '</svg>';
-            }
-
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
-
-        terms.forEach(function (el) {
-            el.addEventListener('click', function () { openModal(el); });
-        });
-
-        modalClose.addEventListener('click', closeModal);
-        modalBackdrop.addEventListener('click', closeModal);
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                closeModal();
-            }
-        });
     })();
 </script>
 
