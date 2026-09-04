@@ -86,7 +86,9 @@ while ( have_posts() ) :
             </div>
         </div>
 
-        <div class="max-w-3xl mx-auto px-6 pb-16 -mt-4">
+        <?php // `relative` para que el texto quede por encima del degradado del hero,
+              // que al estar posicionado se pintaba sobre el primer parrafo. ?>
+        <div class="relative z-10 max-w-3xl mx-auto px-6 pb-16">
 
             <div class="text-lg leading-relaxed text-slate-300
                         [&_p]:mb-5 [&_p:last-child]:mb-0
