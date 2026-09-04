@@ -17,7 +17,6 @@ _backup-tutor-v3/
 .superpowers/
 docs/superpowers/
 .claude/
-.github/
 
 # Compilado de vite dentro de resources (el zip del release ya excluye /resources)
 /resources/dist
