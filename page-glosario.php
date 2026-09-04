@@ -4,20 +4,35 @@ get_header();
 
 $glosario = require __DIR__ . '/inc/glosario-data.php';
 $categories = $glosario['categories'];
-$terms      = $glosario['terms'];
+// Los terminos salen del plugin Animatek Glosario (editables desde el admin y con
+// ficha propia). Si el plugin no esta activo, se sigue usando el array de siempre.
+$terms      = function_exists('agl_terminos') ? agl_terminos() : $glosario['terms'];
 $icons      = $glosario['icons'];
 $icon_map   = $glosario['icon_map'];
 $cat_icons  = $glosario['cat_icons'];
 
 usort($terms, fn($a, $b) => strcasecmp($a['term'], $b['term']));
 
+/** Inicial para agrupar. Lo que no empieza por letra cae en el grupo '#'. */
+function glosario_letra(string $termino): string
+{
+    $inicial = strtoupper(mb_substr(remove_accents($termino), 0, 1));
+    return preg_match('/[A-Z]/', $inicial) ? $inicial : '#';
+}
+
+/** Ancla valida para el enlace del indice: '#' no vale dentro de un href. */
+function glosario_ancla(string $letra): string
+{
+    return $letra === '#' ? 'letter-num' : 'letter-' . $letra;
+}
+
 $grouped = [];
 foreach ($terms as $t) {
-    $letter = strtoupper(mb_substr($t['term'], 0, 1));
-    $grouped[$letter][] = $t;
+    $grouped[glosario_letra($t['term'])][] = $t;
 }
 ksort($grouped);
-$alphabet = range('A', 'Z');
+// El grupo '#' va primero, como en cualquier glosario.
+$alphabet = array_merge(['#'], range('A', 'Z'));
 
 function glosario_icon(string $slug, string $category, array $icons, array $icon_map, array $cat_icons): string
 {
@@ -107,7 +122,7 @@ endforeach; ?>
     <div class="sticky top-0 z-20 bg-slate-950/95 backdrop-blur border-b border-slate-800" id="glosario-alphabet">
         <div class="max-w-5xl mx-auto px-6 py-2 flex flex-wrap justify-center gap-1">
             <?php foreach ($alphabet as $letter): ?>
-            <a href="#letter-<?php echo $letter; ?>"
+            <a href="#<?php echo glosario_ancla($letter); ?>"
                 class="glosario-letter w-8 h-8 flex items-center justify-center rounded text-sm font-bold transition-colors <?php echo isset($grouped[$letter]) ? 'text-slate-300 hover:text-white hover:bg-slate-800' : 'text-slate-700 pointer-events-none'; ?>"
                 <?php if (!isset($grouped[$letter])): ?>aria-disabled="true"
                 <?php
@@ -125,7 +140,7 @@ endforeach; ?>
         <?php foreach ($alphabet as $letter): ?>
         <?php if (isset($grouped[$letter])): ?>
         <div class="glosario-group mb-8" data-letter="<?php echo $letter; ?>">
-            <h2 id="letter-<?php echo $letter; ?>"
+            <h2 id="<?php echo glosario_ancla($letter); ?>"
                 class="text-xl font-extrabold text-primary mb-4 scroll-mt-16 tracking-wide">
                 <?php echo $letter; ?>
             </h2>
@@ -142,7 +157,8 @@ endforeach; ?>
                     data-cat-label="<?php echo esc_attr($cat['label']); ?>"
                     data-cat-bg="<?php echo esc_attr($cat['bg']); ?>"
                     data-cat-text="<?php echo esc_attr($cat['text']); ?>"
-                    data-cat-border="<?php echo esc_attr($cat['border']); ?>">
+                    data-cat-border="<?php echo esc_attr($cat['border']); ?>"
+                    data-url="<?php echo esc_url(isset($t['url']) ? $t['url'] : ''); ?>">
                     <div
                         class="glosario-icon w-12 h-12 rounded-xl <?php echo esc_attr($cat['bg']); ?> flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                         <svg class="w-6 h-6 <?php echo esc_attr($cat['text']); ?>" viewBox="0 0 24 24" fill="none"
@@ -498,6 +514,13 @@ endforeach; ?>
         function openModal(el) {
             modalTerm.textContent = el.getAttribute('data-term');
             modalDef.textContent = el.getAttribute('data-definition');
+
+            var modalLink = document.getElementById('modal-link');
+            if (modalLink) {
+                var url = el.getAttribute('data-url');
+                modalLink.href = url || '#';
+                modalLink.classList.toggle('hidden', !url);
+            }
 
             modalBadge.textContent = el.getAttribute('data-cat-label');
             modalBadge.className = 'inline-block px-3 py-1 rounded-full text-xs font-semibold border ' +
