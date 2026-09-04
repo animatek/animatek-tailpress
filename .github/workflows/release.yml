@@ -44,16 +44,18 @@ jobs:
 
       - name: Create zip archive
         run: |
+          # La carpeta de dentro es el slug del tema en WordPress, para que la
+          # actualizacion reemplace el tema y no instale uno nuevo al lado.
+          # El nombre del zip sigue la convencion de Git Updater, $repo-$tag.zip,
+          # y se deriva del repo para que siga valiendo si algun dia se renombra.
           mkdir animatek-tailpress
           rsync -a --exclude-from=.distignore --exclude=animatek-tailpress/ . animatek-tailpress/
-          cd animatek-tailpress
-          zip -r ../animatek-tailpress_${{ github.ref_name }}.zip .
-          cd ..
+          zip -rq ${{ github.event.repository.name }}-${{ github.ref_name }}.zip animatek-tailpress
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: animatek-tailpress_${{ github.ref_name }}.zip
+          files: ${{ github.event.repository.name }}-${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
