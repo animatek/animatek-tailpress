@@ -88,6 +88,14 @@ gh release create vX.Y.Z --title "vX.Y.Z" --notes "…"
 # 5. purgar LiteSpeed
 ```
 
+**Convención de tags:** siempre `vX.Y.Z` (con la `v`). Los tags anteriores a `v5.1.0`
+(`0.0.1` … `5.0.2`) usan el formato antiguo sin `v` y se quedan como están: son historia
+ya publicada y renombrarlos rompería enlaces. Ojo: `1.0.0` y `v1.0.0` apuntan a commits
+distintos, no son el mismo release.
+
+**Higiene de ramas:** al mezclar una PR, borra la rama en local y en `origin`. `main` es
+la única rama que sobrevive entre trabajos.
+
 Comprobación de que la subida entró, sin depender de cachés ni de PHP:
 `https://animatek.net/wp-content/themes/animatek-tailpress/screenshot.png`
 
