@@ -83,10 +83,26 @@ antes de empaquetar:
 # 2. commit y push a main
 git tag vX.Y.Z && git push origin vX.Y.Z
 gh release create vX.Y.Z --title "vX.Y.Z" --notes "…"
-# 3. esperar al workflow y descargar el zip del release
-# 4. WordPress -> Apariencia -> Temas -> Añadir -> Subir tema -> reemplazar
+# 3. esperar al workflow
+# 4. WordPress -> Escritorio -> Actualizaciones -> Comprobar de nuevo -> Actualizar
 # 5. purgar LiteSpeed
 ```
+
+**El zip no se sube a mano.** `style.css` lleva las cabeceras de Git Updater
+(`GitHub Theme URI: animatek/animatek-tailpress`, `Primary Branch: main`,
+`Release Asset: true`), asi que publicar el release basta: el tema sale en el flujo
+normal de actualizaciones de WordPress y se instala con un boton. `Release Asset` es
+obligatorio porque el zip que genera GitHub por su cuenta no lleva `dist/`, que esta
+en `.gitignore`; hay que usar el del workflow, que se llama `$repo-$tag.zip` por esa
+misma convencion. El repo es publico: no hace falta token.
+
+Si el aviso no aparece, es la cache de Git Updater, que guarda las respuestas de la
+API de GitHub unas horas. Ajustes -> Git Updater -> Refresh Cache.
+
+El plugin hermano `animatek-glosario` (repo aparte, fuera de este arbol) se despliega
+igual, con `GitHub Plugin URI`. Cuando un cambio del tema depende de una funcion nueva
+del plugin, **primero el plugin**: las plantillas las llaman con `function_exists()`,
+asi que al reves no rompe nada, pero se queda a medias sin avisar.
 
 **Convención de tags:** siempre `vX.Y.Z` (con la `v`). Los tags anteriores a `v5.1.0`
 (`0.0.1` … `5.0.2`) usan el formato antiguo sin `v` y se quedan como están: son historia
@@ -96,8 +112,12 @@ distintos, no son el mismo release.
 **Higiene de ramas:** al mezclar una PR, borra la rama en local y en `origin`. `main` es
 la única rama que sobrevive entre trabajos.
 
-Comprobación de que la subida entró, sin depender de cachés ni de PHP:
-`https://animatek.net/wp-content/themes/animatek-tailpress/screenshot.png`
+Comprobación de qué versión corre de verdad, sin depender de cachés ni de PHP: el
+`style.css` servido es un archivo estático y lleva la cabecera `Version:` dentro.
+
+```sh
+curl -s https://animatek.net/wp-content/themes/animatek-tailpress/style.css | head -12
+```
 
 **Si aun así hace falta FTP** (un arreglo urgente de un solo archivo), acuérdate de que
 `npm run build` está roto por un symlink de vite: se lanza con
