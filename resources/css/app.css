@@ -586,4 +586,163 @@
     .empezar-panel + .empezar-panel .empezar-volver {
         margin-top: 0;
     }
+
+    /* === Barra de últimos artículos (home) ===
+       Etiqueta fija a la izquierda y la tira deslizándose a la derecha. */
+
+    .ticker {
+        display: flex;
+        align-items: stretch;
+        border-top: 1px solid #1e293b;
+        border-bottom: 1px solid #1e293b;
+        background-color: #020617;
+    }
+
+    .ticker__label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        flex: none;
+        width: 5.5rem;
+        padding: 0 0.75rem;
+        background-color: #2C7FFF;
+        color: #fff !important;
+        text-decoration: none !important;
+    }
+
+    .ticker__label:hover,
+    .ticker__label:focus-visible {
+        background-color: #1b6ae8;
+    }
+
+    .ticker__label-texto {
+        font-size: 0.6875rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+    }
+
+    .ticker__chevrones {
+        width: 2rem;
+        height: 0.7rem;
+        opacity: 0.85;
+    }
+
+    .ticker__pista {
+        display: flex;
+        gap: 0;
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+        scrollbar-color: #334155 transparent;
+    }
+
+    .ticker__pista:focus-visible {
+        outline: 2px solid #2C7FFF;
+        outline-offset: -2px;
+    }
+
+    .ticker__item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex: none;
+        width: 20rem;
+        max-width: 82vw;
+        padding: 0.75rem 1rem;
+        border-right: 1px solid #1e293b;
+        scroll-snap-align: start;
+        text-decoration: none !important;
+    }
+
+    .ticker__item:hover,
+    .ticker__item:focus-visible {
+        background-color: #0f172a;
+    }
+
+    .ticker__img {
+        display: block;
+        flex: none;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: #1e293b;
+    }
+
+    .ticker__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Un artículo sin imagen destacada no puede dejar un hueco blanco. */
+    .ticker__img-vacia {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #2C7FFF;
+        background-color: #1e293b;
+    }
+
+    .ticker__texto {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        min-width: 0;
+    }
+
+    .ticker__titulo {
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #e2e8f0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .ticker__fecha {
+        font-size: 0.75rem;
+        color: #64748b;
+    }
+
+    .ticker__item--todos {
+        width: auto;
+        min-width: 13rem;
+        justify-content: space-between;
+        color: #2C7FFF !important;
+    }
+
+    .ticker__item--todos .ticker__titulo {
+        color: #2C7FFF;
+    }
+
+    .ticker__item--todos svg {
+        width: 1.1rem;
+        height: 1.1rem;
+        flex: none;
+    }
+
+    @media (max-width: 639px) {
+        .ticker__label {
+            width: 3.75rem;
+            padding: 0 0.5rem;
+        }
+
+        .ticker__chevrones {
+            display: none;
+        }
+    }
 }
