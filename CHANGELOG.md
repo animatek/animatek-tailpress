@@ -2,6 +2,28 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- **Header actions**: account and contact links now render as icon buttons in their own
+  group on the right (`.header-actions`), outside the menu list. The account icon is
+  session-aware: user outline when logged out, initial on a brand-colour disc when logged in.
+- **Full-screen mobile menu** (`#mobile-nav`): a dedicated overlay with large type and its
+  own account/contact buttons, instead of shrinking the desktop `<ul>` under the header.
+
+### Changed
+- The primary nav switches to the overlay below `lg` (960 px, per `theme.css`) instead of
+  `md` (782 px): seven items plus the logo and the action icons no longer fit on a tablet.
+- `header.php` no longer renders the "Cuenta" and "Contacto" menu items in the list;
+  `wp_nav_menu_objects` filters them out and `animatek_header_action_items()` reads their
+  URLs from the menu, with a fallback to the Tutor dashboard when there is no "Cuenta" item.
+- New `.icon-btn` and `.mobile-nav` styles live in `@layer components` in `app.css`; being
+  unlayered would have beaten Tailwind utilities such as `lg:hidden`.
+
+### Removed
+- The `walker_nav_menu_start_el` filter that swapped the "Cuenta" title for an icon, and the
+  inline `nav_menu_item_title` filter in `header.php` that did the same for "Contacto".
+
 ## [5.1.0] - 2026-04-16
 
 ### Added

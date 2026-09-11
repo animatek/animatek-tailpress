@@ -4,6 +4,9 @@
  *
  * @package Animatek
  */
+
+$animatek_actions = animatek_header_action_items();
+$animatek_user    = is_user_logged_in() ? wp_get_current_user() : null;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> data-theme="dark">
@@ -32,59 +35,100 @@
                 </div>
 
                 <?php if (has_nav_menu('primary')): ?>
-                    <button
-                        type="button"
-                        aria-label="<?php esc_attr_e('Toggle navigation', 'animatek'); ?>"
-                        aria-expanded="false"
-                        aria-controls="primary-navigation"
-                        id="primary-menu-toggle"
-                        class="md:hidden inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-2 text-slate-700 shadow-sm transition hover:border-primary hover:text-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </button>
+                    <nav id="primary-navigation" class="hidden lg:flex lg:items-center lg:gap-6" aria-label="<?php esc_attr_e('Primary menu', 'animatek'); ?>">
+                        <?php
+                        wp_nav_menu([
+                            'container'      => false,
+                            'menu_class'     => 'flex items-center gap-6 text-sm font-bold uppercase tracking-wide [&_a]:text-black [&_a]:!no-underline [&_a:hover]:text-primary transition-colors [&_.current-menu-item_a]:text-primary [&_.current-menu-ancestor_a]:text-primary',
+                            'theme_location' => 'primary',
+                            'li_class'       => 'relative',
+                            'fallback_cb'    => false,
+                        ]);
+                        ?>
+                    </nav>
+                <?php elseif (current_user_can('administrator')): ?>
+                    <a href="<?php echo esc_url(admin_url('nav-menus.php')); ?>" class="hidden lg:inline text-sm text-zinc-600"><?php esc_html_e('Edit Menus', 'animatek'); ?></a>
                 <?php endif; ?>
 
-                <nav id="primary-navigation" class="hidden flex flex-col md:flex md:flex-row items-start md:items-center gap-4 md:gap-6 absolute left-0 right-0 top-full z-30 bg-white px-6 py-4 border-b border-slate-200 shadow-lg md:static md:border-none md:bg-transparent md:px-0 md:py-0 md:shadow-none" aria-label="<?php esc_attr_e('Primary menu', 'animatek'); ?>">
-                    <?php if (current_user_can('administrator') && !has_nav_menu('primary')): ?>
-                        <a href="<?php echo esc_url(admin_url('nav-menus.php')); ?>" class="text-sm text-zinc-600"><?php esc_html_e('Edit Menus', 'animatek'); ?></a>
-                    <?php else: ?>
-                        <?php
-                        $contact_icon_filter = static function ($title, $item, $args, $depth) {
-                            if ($args->theme_location !== 'primary') {
-                                return $title;
-                            }
-
-                            if (strcasecmp(trim($title), 'Contacto') === 0) {
-                                return '<span class="sr-only">Contacto</span><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25Z"></path><path d="M21.75 7.017a2.25 2.25 0 0 1-1.02 1.89l-6.75 4.5a2.25 2.25 0 0 1-2.46 0l-6.75-4.5a2.25 2.25 0 0 1-1.02-1.89"></path></svg>';
-                            }
-
-                            return $title;
-                        };
-
-                        add_filter('nav_menu_item_title', $contact_icon_filter, 10, 4);
-
-                        $menu_markup = wp_nav_menu([
-                            'container'       => false,
-                            'menu_class'      => 'flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-sm font-bold uppercase tracking-wide [&_a]:text-black [&_a]:!no-underline [&_a:hover]:text-primary transition-colors [&_.current-menu-item_a]:text-primary [&_.current-menu-ancestor_a]:text-primary',
-                            'theme_location'  => 'primary',
-                            'li_class'        => 'relative',
-                            'fallback_cb'     => false,
-                            'echo'            => false,
-                        ]);
-
-                        remove_filter('nav_menu_item_title', $contact_icon_filter, 10);
-
-                        echo $menu_markup;
-                        ?>
+                <?php
+                /**
+                 * Acciones del header: cuenta y contacto salen del <ul> del menú
+                 * y viven aquí, a la derecha, donde se leen como iconos y no como
+                 * dos entradas sueltas al final de una lista de texto.
+                 */
+                ?>
+                <div class="header-actions flex items-center gap-2">
+                    <?php if (!empty($animatek_actions['contacto'])): ?>
+                        <a class="icon-btn" href="<?php echo esc_url($animatek_actions['contacto']); ?>" aria-label="<?php esc_attr_e('Contacto', 'animatek'); ?>" title="<?php esc_attr_e('Contacto', 'animatek'); ?>">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25Z"></path><path d="M21.75 7.017a2.25 2.25 0 0 1-1.02 1.89l-6.75 4.5a2.25 2.25 0 0 1-2.46 0l-6.75-4.5a2.25 2.25 0 0 1-1.02-1.89"></path></svg>
+                        </a>
                     <?php endif; ?>
-                </nav>
 
+                    <?php if (!empty($animatek_actions['cuenta'])): ?>
+                        <?php if ($animatek_user): ?>
+                            <a class="icon-btn icon-btn--avatar" href="<?php echo esc_url($animatek_actions['cuenta']); ?>" aria-label="<?php esc_attr_e('Mi cuenta', 'animatek'); ?>" title="<?php echo esc_attr($animatek_user->display_name); ?>">
+                                <span aria-hidden="true"><?php echo esc_html(animatek_user_initial($animatek_user)); ?></span>
+                            </a>
+                        <?php else: ?>
+                            <a class="icon-btn" href="<?php echo esc_url($animatek_actions['cuenta']); ?>" aria-label="<?php esc_attr_e('Entrar', 'animatek'); ?>" title="<?php esc_attr_e('Entrar', 'animatek'); ?>">
+                                <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+                            </a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+                    <?php if (has_nav_menu('primary')): ?>
+                        <button
+                            type="button"
+                            aria-label="<?php esc_attr_e('Abrir menú', 'animatek'); ?>"
+                            aria-expanded="false"
+                            aria-controls="mobile-nav"
+                            id="primary-menu-toggle"
+                            class="icon-btn nav-toggle lg:hidden">
+                            <svg class="i-open" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+                            <svg class="i-close" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19" /></svg>
+                        </button>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
-
-
     </header>
+
+    <?php if (has_nav_menu('primary')): ?>
+        <?php
+        /**
+         * Menú móvil: overlay propio a pantalla completa, no el <ul> de
+         * escritorio encogido. El JS (resources/js/app.js) alterna .is-open.
+         */
+        ?>
+        <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+            <nav aria-label="<?php esc_attr_e('Menú móvil', 'animatek'); ?>">
+                <?php
+                wp_nav_menu([
+                    'container'      => false,
+                    'menu_class'     => 'mobile-nav__menu',
+                    'theme_location' => 'primary',
+                    'fallback_cb'    => false,
+                ]);
+                ?>
+            </nav>
+
+            <div class="mobile-nav__meta">
+                <?php if (!empty($animatek_actions['cuenta'])): ?>
+                    <a class="mobile-nav__btn" href="<?php echo esc_url($animatek_actions['cuenta']); ?>">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+                        <?php echo $animatek_user ? esc_html__('Mi escritorio', 'animatek') : esc_html__('Entrar', 'animatek'); ?>
+                    </a>
+                <?php endif; ?>
+
+                <?php if (!empty($animatek_actions['contacto'])): ?>
+                    <a class="mobile-nav__btn" href="<?php echo esc_url($animatek_actions['contacto']); ?>">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25Z"></path><path d="M21.75 7.017a2.25 2.25 0 0 1-1.02 1.89l-6.75 4.5a2.25 2.25 0 0 1-2.46 0l-6.75-4.5a2.25 2.25 0 0 1-1.02-1.89"></path></svg>
+                        <?php esc_html_e('Contacto', 'animatek'); ?>
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <?php get_template_part( 'template-parts/banner-labs' ); ?>
 

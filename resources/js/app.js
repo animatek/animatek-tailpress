@@ -1,128 +1,76 @@
 /**
- * Menú principal en móvil.
+ * Menú móvil.
  *
- * Abre y cierra el desplegable con transición, se cierra con los gestos que la
- * gente espera (tocar fuera, Escape, pulsar un enlace) y bloquea el scroll del
- * fondo mientras está abierto.
+ * Abre y cierra el overlay a pantalla completa (#mobile-nav), que es una lista
+ * aparte y no el <ul> de escritorio encogido. Se cierra con los gestos que la
+ * gente espera (Escape, pulsar un enlace) y bloquea el scroll del fondo
+ * mientras está abierto.
  *
- * En escritorio (>= 782 px) el nav es estático y nada de esto aplica: el media
- * query devuelve el control al CSS.
+ * A partir de 960 px (breakpoint lg del tema) el nav del header es estático y nada de esto aplica: el
+ * media query devuelve el control al CSS.
  */
 const initPrimaryMenuToggle = () => {
-    const mainNavigation = document.getElementById('primary-navigation')
-    const mainNavigationToggle = document.getElementById('primary-menu-toggle')
+    const mobileNav = document.getElementById('mobile-nav')
+    const toggle = document.getElementById('primary-menu-toggle')
 
-    if (!mainNavigation || !mainNavigationToggle || mainNavigationToggle.dataset.menuBound === 'true') {
+    if (!mobileNav || !toggle || toggle.dataset.menuBound === 'true') {
         return
     }
 
-    mainNavigationToggle.dataset.menuBound = 'true'
+    toggle.dataset.menuBound = 'true'
 
-    const desktopMediaQuery = window.matchMedia('(min-width: 782px)')
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const desktopMediaQuery = window.matchMedia('(min-width: 960px)')
 
-    // Tiene que coincidir con la transición de #primary-navigation en app.css.
-    const TRANSITION_MS = 220
+    const isOpen = () => mobileNav.classList.contains('is-open')
 
-    let closeTimer = null
-
-    const isOpen = () => mainNavigation.classList.contains('is-open')
-
-    const lockScroll = (lock) => {
-        document.body.style.overflow = lock ? 'hidden' : ''
+    const setState = (open) => {
+        mobileNav.classList.toggle('is-open', open)
+        mobileNav.setAttribute('aria-hidden', open ? 'false' : 'true')
+        document.documentElement.classList.toggle('menu-open', open)
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false')
+        toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú')
+        // El overlay es fixed: sin esto el fondo sigue haciendo scroll detrás.
+        document.body.style.overflow = open ? 'hidden' : ''
     }
 
-    const open = () => {
-        window.clearTimeout(closeTimer)
-        mainNavigation.classList.remove('hidden')
-        mainNavigation.style.display = 'flex'
-        mainNavigation.style.flexDirection = 'column'
-        // Fuerza un reflow para que la transición arranque desde el estado
-        // cerrado en vez de saltarse el fotograma inicial.
-        void mainNavigation.offsetHeight
-        mainNavigation.classList.add('is-open')
-        mainNavigationToggle.setAttribute('aria-expanded', 'true')
-        lockScroll(true)
-    }
-
-    const close = () => {
-        window.clearTimeout(closeTimer)
-        mainNavigation.classList.remove('is-open')
-        mainNavigationToggle.setAttribute('aria-expanded', 'false')
-        lockScroll(false)
-
-        const hide = () => {
-            // Si se ha vuelto a abrir mientras se cerraba, no lo escondas.
-            if (isOpen()) {
-                return
-            }
-            mainNavigation.classList.add('hidden')
-            mainNavigation.style.display = 'none'
-        }
-
-        if (reducedMotion.matches) {
-            hide()
-        } else {
-            closeTimer = window.setTimeout(hide, TRANSITION_MS)
+    // El foco se queda en la hamburguesa a propósito: el overlay va justo
+    // después en el DOM, así que el siguiente tabulador ya entra en el menú.
+    const close = ({ restoreFocus = false } = {}) => {
+        setState(false)
+        if (restoreFocus) {
+            toggle.focus()
         }
     }
 
-    const syncStateWithDesktop = () => {
-        window.clearTimeout(closeTimer)
-
-        if (desktopMediaQuery.matches) {
-            // En escritorio manda el CSS: ni clases de estado ni scroll bloqueado.
-            mainNavigation.classList.remove('hidden', 'is-open')
-            mainNavigation.style.display = ''
-            mainNavigation.style.flexDirection = ''
-            mainNavigationToggle.setAttribute('aria-expanded', 'true')
-            lockScroll(false)
-            return
-        }
-
-        mainNavigation.classList.remove('is-open')
-        mainNavigation.classList.add('hidden')
-        mainNavigation.style.display = 'none'
-        mainNavigationToggle.setAttribute('aria-expanded', 'false')
-        lockScroll(false)
-    }
-
-    mainNavigationToggle.addEventListener('click', (event) => {
+    toggle.addEventListener('click', (event) => {
         event.preventDefault()
-        event.stopPropagation()
-        isOpen() ? close() : open()
-    })
-
-    // Tocar fuera: es lo primero que prueba cualquiera en un móvil.
-    document.addEventListener('click', (event) => {
-        if (!isOpen() || desktopMediaQuery.matches) {
-            return
-        }
-        if (!mainNavigation.contains(event.target) && !mainNavigationToggle.contains(event.target)) {
-            close()
-        }
+        setState(!isOpen())
     })
 
     // Escape, para quien navegue con teclado.
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && isOpen()) {
-            close()
-            mainNavigationToggle.focus()
+            close({ restoreFocus: true })
         }
     })
 
     // Al pulsar un enlace. Importa sobre todo con los que van a un ancla de la
     // misma página, donde no hay recarga que cierre el menú por su cuenta.
-    mainNavigation.addEventListener('click', (event) => {
+    mobileNav.addEventListener('click', (event) => {
         if (event.target.closest('a') && isOpen()) {
             close()
         }
     })
 
-    mainNavigationToggle.setAttribute('aria-controls', 'primary-navigation')
+    // Girar el móvil o ensanchar la ventana hasta escritorio con el menú
+    // abierto dejaba el scroll bloqueado y el overlay tapando la página.
+    desktopMediaQuery.addEventListener('change', (event) => {
+        if (event.matches && isOpen()) {
+            close()
+        }
+    })
 
-    desktopMediaQuery.addEventListener('change', syncStateWithDesktop)
-    syncStateWithDesktop()
+    setState(false)
 }
 
 if (document.readyState === 'loading') {

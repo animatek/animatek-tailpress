@@ -158,28 +158,167 @@
     border: 0;
 }
 
-/* Menú móvil: transición de apertura.
-   El JS alterna `is-open`; la clase `hidden` de Tailwind sigue encargándose de
-   sacarlo del flujo, pero el fundido y el desplazamiento se hacen aquí porque
-   `display` no se puede animar.
+/* Va en @layer components a propósito: sin capa, estas reglas le ganarían a
+   las utilidades de Tailwind y `lg:hidden` no escondería la hamburguesa en
+   escritorio (los estilos sin capa tienen más prioridad que cualquier @layer). */
+@layer components {
+    /* === Header: acciones e iconos ===
+       El sitio es dark-only (ver dark.css), así que estas clases propias llevan ya
+       su color y no necesitan remapeo: la paleta es la misma de siempre
+       (#020617 hondo, #1e293b card, #334155 borde, #e2e8f0 texto, #2C7FFF marca). */
 
-   Solo por debajo del breakpoint md (782 px): a partir de ahí el nav es
-   estático y no debe llevar ni opacidad ni transform. */
-@media (max-width: 781px) {
-    #primary-navigation {
-        opacity: 0;
-        transform: translateY(-0.5rem);
-        transition: opacity 0.22s ease, transform 0.22s ease;
+    .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        flex: none;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        color: #e2e8f0;
+        text-decoration: none !important;
+        transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
     }
 
-    #primary-navigation.is-open {
+    .icon-btn:hover,
+    .icon-btn:focus-visible {
+        border-color: #2C7FFF;
+        color: #2C7FFF;
+    }
+
+    .icon-btn svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    /* Con sesión iniciada el icono genérico se cambia por la inicial: es lo que
+       hace que se lea como "mi cuenta" y no como un botón más. */
+    .icon-btn--avatar {
+        background-color: #2C7FFF;
+        border-color: #2C7FFF;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9375rem;
+        line-height: 1;
+    }
+
+    .icon-btn--avatar:hover,
+    .icon-btn--avatar:focus-visible {
+        background-color: #1e293b;
+        color: #2C7FFF;
+    }
+
+    /* El aspa solo aparece con el menú abierto. */
+    .nav-toggle .i-close,
+    .menu-open .nav-toggle .i-open {
+        display: none;
+    }
+
+    .menu-open .nav-toggle .i-close {
+        display: block;
+    }
+
+    /* === Menú móvil: overlay a pantalla completa ===
+       El JS (resources/js/app.js) alterna .is-open. Se queda por debajo del header
+       (z-50) para que la hamburguesa siga siendo el aspa de cerrar. */
+
+    .mobile-nav {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: 6rem 1.5rem 2.5rem;
+        background-color: #020617;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-0.75rem);
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    }
+
+    .mobile-nav.is-open {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
     }
-}
 
-@media (prefers-reduced-motion: reduce) {
-    #primary-navigation {
-        transition: none;
+    @media (min-width: 960px) {
+        .mobile-nav {
+            display: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .mobile-nav {
+            transition: none;
+        }
+    }
+
+    .mobile-nav__menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-nav__menu li + li {
+        border-top: 1px solid #1e293b;
+    }
+
+    .mobile-nav__menu a {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        color: #e2e8f0 !important;
+        text-decoration: none !important;
+    }
+
+    .mobile-nav__menu a:hover,
+    .mobile-nav__menu a:focus-visible,
+    .mobile-nav__menu .current-menu-item > a,
+    .mobile-nav__menu .current-menu-ancestor > a {
+        color: #2C7FFF !important;
+    }
+
+    .mobile-nav__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .mobile-nav__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        color: #e2e8f0 !important;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        text-decoration: none !important;
+    }
+
+    .mobile-nav__btn:hover,
+    .mobile-nav__btn:focus-visible {
+        border-color: #2C7FFF;
+        color: #2C7FFF !important;
+    }
+
+    .mobile-nav__btn svg {
+        width: 1.125rem;
+        height: 1.125rem;
     }
 }

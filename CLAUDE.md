@@ -43,7 +43,7 @@ Pure Tailwind v4: no `tailwind.config.js`. Configuration lives in CSS:
 
 ### PHP Structure
 
-- **`functions.php`** — Theme setup via TailPress fluent API (`tailpress()`), Vite manifest fallback enqueue, "Cuenta" menu item → account icon replacement, "Contacto" menu item → email icon replacement (in `header.php`), AJAX handler for `animatek_like`
+- **`functions.php`** — Theme setup via TailPress fluent API (`tailpress()`), Vite manifest fallback enqueue, `animatek_header_action_items()` / `animatek_account_url()` (cuenta y contacto del header), AJAX handler for `animatek_like`
 - **`src/`** — PSR-4 autoloaded under `TailPress\` namespace:
   - `Pagination.php` — Custom numbered pagination with SVG prev/next icons
   - `Walkers/CommentWalker.php` — Custom comment HTML5 rendering
@@ -63,9 +63,10 @@ GitHub Actions (`.github/workflows/release.yml`): On release → `composer insta
 ## Key Conventions
 
 - **Language:** UI strings are in Spanish with text domain `'animatek'` and `__()` / `esc_html_e()` calls
-- **Menu IDs:** `primary-navigation` (nav element), `primary-menu-toggle` (hamburger button). Mobile breakpoint at `md` (782px per `theme.css`)
+- **Menu IDs:** `primary-navigation` (nav de escritorio), `primary-menu-toggle` (hamburguesa), `mobile-nav` (overlay móvil a pantalla completa). El corte es `lg` (960px según `theme.css`): por debajo manda el overlay. Si cambia el breakpoint, hay que cambiarlo en los tres sitios — `header.php`, el `@media` de `.mobile-nav` en `app.css` y el `matchMedia` de `app.js`
 - **Font:** Inter (weights 400, 500, 600, 700, 800) loaded from Google Fonts with handle `animatek-inter`
-- **Mobile menu toggle:** handled by `resources/js/app.js` (`initPrimaryMenuToggle`). Uses `data-menu-bound` to prevent double-binding
+- **Mobile menu toggle:** handled by `resources/js/app.js` (`initPrimaryMenuToggle`). Uses `data-menu-bound` to prevent double-binding. Alterna `.is-open` en `#mobile-nav` y `.menu-open` en `<html>` (esta última es la que cambia la hamburguesa por el aspa)
+- **Cuenta y contacto no se pintan en el `<ul>`:** un filtro `wp_nav_menu_objects` los saca del menú y `animatek_header_action_items()` lee sus URLs para pintarlos como iconos a la derecha. Las URLs se siguen editando en Apariencia → Menús; si no hay ítem "Cuenta", `animatek_account_url()` cae al escritorio de Tutor
 - **Button classes:** `.btn-primary` and `.btn-secondary` are defined as inline CSS in `header.php`, not as Tailwind utilities. Page templates use these classes extensively
 
 ## Despliegue
