@@ -17,6 +17,9 @@ All notable changes to TailPress will be documented in this file.
   courses are named by key and read from `animatek_cursos()`, so prices are never duplicated.
   Panels are server-rendered and the JS only shows and hides, so results are crawlable and
   individually linkable (`/empezar/#res-r_techno`). Needs a page with slug `empezar`.
+- The Labs lead every result they fit (12 of 13) with per-result text naming the chapter that
+  answers that question, and the card states up front that the guide opens with an email —
+  they are the only piece of the page that adds a contact to Brevo.
 - **Latest posts strip** (`template-parts/block-ultimos-posts.php`) under the home hero:
   eight most recent posts, thumbnail, title and date, no autoplay.
 
@@ -30,6 +33,8 @@ All notable changes to TailPress will be documented in this file.
   unlayered would have beaten Tailwind utilities such as `lg:hidden`.
 
 ### Fixed
+- `/empezar/` now listens for `hashchange`: moving from `#res-a` to `#res-b` does not reload
+  the page, so a second result link in the same YouTube description did nothing when clicked.
 - The overlay's top gap is measured from the header (or the WordPress admin bar, whichever
   sits lower) when it opens, instead of a fixed `6rem` padding that hid the first menu item
   behind the admin bar — which is 46 px on mobile, not 32.
