@@ -105,12 +105,26 @@ get_header();
                 </p>
 
                 <?php if ( ! empty( $animatek_res['enlaces'] ) ) : ?>
-                    <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                    <?php
+                    // Los Labs van delante de los vídeos a propósito: son lo más
+                    // completo que hay gratis, y son la única pieza de todo esto
+                    // que deja un correo en la lista.
+                    ?>
+                    <div class="mt-8 grid gap-3 <?php echo count( $animatek_res['enlaces'] ) > 1 ? 'sm:grid-cols-2' : ''; ?>">
                         <?php foreach ( $animatek_res['enlaces'] as $animatek_enlace ) : ?>
-                            <a class="empezar-recurso" href="<?php echo esc_url( home_url( $animatek_enlace['url'] ) ); ?>">
-                                <span class="empezar-recurso__etiqueta">Gratis</span>
+                            <?php $animatek_puerta = ! empty( $animatek_enlace['correo'] ); ?>
+                            <a class="empezar-recurso<?php echo $animatek_puerta ? ' empezar-recurso--puerta' : ''; ?>" href="<?php echo esc_url( home_url( $animatek_enlace['url'] ) ); ?>">
+                                <span class="empezar-recurso__etiqueta">
+                                    <?php echo $animatek_puerta ? 'Guía completa · gratis' : 'Gratis'; ?>
+                                </span>
                                 <span class="empezar-recurso__titulo"><?php echo esc_html( $animatek_enlace['titulo'] ); ?></span>
                                 <span class="empezar-recurso__texto"><?php echo esc_html( $animatek_enlace['texto'] ); ?></span>
+                                <?php if ( $animatek_puerta ) : ?>
+                                    <span class="empezar-recurso__nota">
+                                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25Z"></path><path d="M21.75 7.017a2.25 2.25 0 0 1-1.02 1.89l-6.75 4.5a2.25 2.25 0 0 1-2.46 0l-6.75-4.5a2.25 2.25 0 0 1-1.02-1.89"></path></svg>
+                                        Se abre con tu correo. Nada de spam, y te sales cuando quieras.
+                                    </span>
+                                <?php endif; ?>
                             </a>
                         <?php endforeach; ?>
                     </div>

@@ -431,6 +431,36 @@
         color: #94a3b8;
     }
 
+    /* El Lab es la pieza que deja un correo en la lista: se marca como lo que
+       es, con más peso que un enlace normal y diciendo antes del clic que pide
+       el correo. Una puerta que se anuncia molesta menos que una que sorprende. */
+    .empezar-recurso--puerta {
+        border-color: #24B979;
+        background: linear-gradient(180deg, #16281f 0%, #1e293b 60%);
+    }
+
+    .empezar-recurso--puerta .empezar-recurso__titulo {
+        font-size: 1.125rem;
+    }
+
+    .empezar-recurso__nota {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #334155;
+        font-size: 0.75rem;
+        color: #94a3b8;
+    }
+
+    .empezar-recurso__nota svg {
+        width: 0.9rem;
+        height: 0.9rem;
+        flex: none;
+        color: #24B979;
+    }
+
     /* Lista de vídeos, numerada: el orden es parte de la respuesta. */
     .empezar-videos {
         list-style: none;

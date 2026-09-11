@@ -165,14 +165,24 @@ const initEmpezar = () => {
         }
     })
 
-    // Entrar directamente a un resultado enlazado desde fuera.
-    const inicial = location.hash.slice(1)
+    // Entrar directamente a un resultado enlazado desde fuera. También con el
+    // hash ya en la página: cambiar de #res-a a #res-b no recarga nada, así que
+    // sin esto un segundo enlace en la misma descripción de YouTube no hacía
+    // nada al pulsarlo.
+    const abrirDesdeHash = () => {
+        const nombre = location.hash.slice(1)
 
-    if (inicial && paneles.has(inicial)) {
+        if (!nombre || !paneles.has(nombre)) {
+            return
+        }
+
         paneles.forEach((panel) => {
-            panel.hidden = panel.dataset.panel !== inicial
+            panel.hidden = panel.dataset.panel !== nombre
         })
     }
+
+    window.addEventListener('hashchange', abrirDesdeHash)
+    abrirDesdeHash()
 }
 
 if (document.readyState === 'loading') {

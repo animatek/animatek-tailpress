@@ -197,6 +197,7 @@ function animatek_empezar_resultados(): array {
 					'url'    => '/vcvrack-lab/',
 					'titulo' => 'VCV Rack Lab',
 					'texto'  => 'La guía escrita, entera y gratis. Para consultar mientras montas.',
+					'correo' => true,
 				),
 			),
 			'videos'  => array(
@@ -217,6 +218,7 @@ function animatek_empezar_resultados(): array {
 					'url'    => '/bitwig-lab/',
 					'titulo' => 'Bitwig Lab',
 					'texto'  => 'La guía escrita del DAW, gratis.',
+					'correo' => true,
 				),
 			),
 			'videos'  => array(
@@ -232,6 +234,15 @@ function animatek_empezar_resultados(): array {
 		'r_hoy' => array(
 			'titulo'  => 'Que suene algo hoy',
 			'texto'   => 'Cuatro vídeos cortos, ninguno pasa de veinte minutos. Con el primero ya tienes una secuencia sonando; con el último, cinco patches terminados que puedes abrir y romper. Lo largo sigue ahí para cuando quieras entender el porqué.',
+			'enlaces' => array(
+				array(
+					'url'    => '/vcvrack-lab/',
+					'titulo' => 'VCV Rack Lab',
+					'texto'  => 'La guía escrita, si prefieres leer a ver vídeo. La sección 2 es cables e interfaz, que es lo primero que estorba.',
+					'correo' => true,
+				),
+			),
+
 			'videos'  => array(
 				array( 'id' => 'MD2Cd_zOnn4', 'titulo' => 'Tu primera secuencia en VCV Rack, en minutos', 'min' => 21 ),
 				array( 'id' => 'zWVctnRv61g', 'titulo' => 'Cómo grabar tus sonidos en VCV Rack', 'min' => 5 ),
@@ -244,6 +255,21 @@ function animatek_empezar_resultados(): array {
 		'r_hibrido' => array(
 			'titulo'  => 'El modular y el DAW, a la vez',
 			'texto'   => 'El problema nunca es el cable: es el reloj, la latencia y por dónde entra el audio. Empieza por el de quince minutos, que es el resumen; los directos son el mismo montaje hecho despacio y con los fallos dentro, que es donde se aprende.',
+			'enlaces' => array(
+				array(
+					'url'    => '/vcvrack-lab/',
+					'titulo' => 'VCV Rack Lab',
+					'texto'  => 'Sección 3: configuración de audio y MIDI. El lío del híbrido está casi todo ahí.',
+					'correo' => true,
+				),
+				array(
+					'url'    => '/bitwig-lab/',
+					'titulo' => 'Bitwig Lab',
+					'texto'  => 'El ecosistema y el dashboard por escrito, para no perderte entre menús.',
+					'correo' => true,
+				),
+			),
+
 			'videos'  => array(
 				array( 'id' => '71Y6vLvmHdM', 'titulo' => 'Synth modular híbrido: VCV Rack + Bitwig paso a paso', 'min' => 15 ),
 				array( 'id' => '5DmMoFmm9ME', 'titulo' => 'Multipista en VCV Rack: VST y standalone', 'min' => 21 ),
@@ -258,6 +284,12 @@ function animatek_empezar_resultados(): array {
 			'titulo'  => 'Qué modula qué',
 			'texto'   => 'Un LFO y un sample and hold explican más del modular que cualquier lista de módulos. Cuando ves que el mismo voltaje sirve para una nota, para abrir un filtro o para disparar un bombo, deja de haber misterio.',
 			'enlaces' => array(
+				array(
+					'url'    => '/vcvrack-lab/',
+					'titulo' => 'VCV Rack Lab',
+					'texto'  => 'Secciones 7 y 8: modulaciones y voltaje. Es la parte que hay que releer dos veces.',
+					'correo' => true,
+				),
 				array(
 					'url'    => '/glosario/',
 					'titulo' => 'Glosario',
@@ -276,6 +308,15 @@ function animatek_empezar_resultados(): array {
 		'r_secuencia' => array(
 			'titulo'  => 'Que la secuencia respire',
 			'texto'   => 'Si suena a cuadrícula es porque lo es: dieciséis pasos que se repiten idénticos. La salida no es tocar más notas, es meter probabilidad, acumuladores y ratchets para que cada vuelta se parezca a la anterior sin ser la misma.',
+			'enlaces' => array(
+				array(
+					'url'    => '/vcvrack-lab/',
+					'titulo' => 'VCV Rack Lab',
+					'texto'  => 'Secciones 9 y 10: secuenciadores, cuantizadores, lógica y sample & hold.',
+					'correo' => true,
+				),
+			),
+
 			'videos'  => array(
 				array( 'id' => 'TiSewAcHfPE', 'titulo' => 'RANDOM8: el secuenciador aleatorio', 'min' => 17 ),
 				array( 'id' => 'hwiCLX_OGe0', 'titulo' => 'UZZ 2.5: probabilidad global, ratchets y modos generativos', 'min' => 118 ),
@@ -288,6 +329,15 @@ function animatek_empezar_resultados(): array {
 		'r_techno' => array(
 			'titulo'  => 'Techno que aguante',
 			'texto'   => 'Un patch de techno no se cae por falta de módulos, se cae porque no hay nada que cambie con el tiempo. Estos son patches enteros, de principio a fin, con las decisiones a la vista.',
+			'enlaces' => array(
+				array(
+					'url'    => '/vcvrack-lab/',
+					'titulo' => 'VCV Rack Lab',
+					'texto'  => 'Sección 12: plantillas y patches descargables, con la plantilla 2026 dentro.',
+					'correo' => true,
+				),
+			),
+
 			'videos'  => array(
 				array( 'id' => 'yVACHaB8uuo', 'titulo' => 'Percusiones techno con 4ms, paso a paso', 'min' => 22 ),
 				array( 'id' => 'vsWu02p4ZLg', 'titulo' => 'Cómo hacer techno en VCV Rack desde cero (patch completo)', 'min' => 134 ),
@@ -301,6 +351,15 @@ function animatek_empezar_resultados(): array {
 		'r_drones' => array(
 			'titulo'  => 'Drones y ambient',
 			'texto'   => 'Lo lento perdona menos: sin percusión que tape, se oye todo. Empieza por el de diecinueve minutos y quédate con la idea de que el movimiento lo pone la modulación, no las notas.',
+			'enlaces' => array(
+				array(
+					'url'    => '/vcvrack-lab/',
+					'titulo' => 'VCV Rack Lab',
+					'texto'  => 'Secciones 5 y 7: filtros y modulaciones, que es de donde sale el movimiento.',
+					'correo' => true,
+				),
+			),
+
 			'videos'  => array(
 				array( 'id' => 'f-6wVfyZ6_c', 'titulo' => 'Crea un drone vivo con LFOs, patch desde cero', 'min' => 19 ),
 				array( 'id' => '5DOogivIxvg', 'titulo' => 'Dark drone loop con XFMN01, delay y Grainer', 'min' => 9 ),
@@ -314,6 +373,15 @@ function animatek_empezar_resultados(): array {
 		'r_generativo' => array(
 			'titulo'  => 'Que se toque solo',
 			'texto'   => 'Generativo no es aleatorio: es aleatoriedad con reglas. El trabajo está en ponerle los límites, y por eso los directos largos enseñan más aquí que cualquier resumen.',
+			'enlaces' => array(
+				array(
+					'url'    => '/vcvrack-lab/',
+					'titulo' => 'VCV Rack Lab',
+					'texto'  => 'Sección 10: operaciones lógicas, S&H y mecanismos.',
+					'correo' => true,
+				),
+			),
+
 			'videos'  => array(
 				array( 'id' => 'qXJ3TUT2Tsk', 'titulo' => 'Música generativa con un sinte básico en VCV Rack y Bitwig', 'min' => 117 ),
 				array( 'id' => 'UYcT7-2EtRQ', 'titulo' => 'Patch generativo con Befaco, UZZ y LFOs', 'min' => 94 ),
@@ -331,6 +399,7 @@ function animatek_empezar_resultados(): array {
 					'url'    => '/vcvrack-lab/',
 					'titulo' => 'VCV Rack Lab',
 					'texto'  => 'La guía completa, gratis y para consultar.',
+					'correo' => true,
 				),
 				array(
 					'url'    => '/software/',
@@ -355,6 +424,7 @@ function animatek_empezar_resultados(): array {
 					'url'    => '/bitwig-lab/',
 					'titulo' => 'Bitwig Lab',
 					'texto'  => 'La guía escrita del DAW, gratis.',
+					'correo' => true,
 				),
 			),
 			'videos'  => array(
