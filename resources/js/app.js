@@ -23,7 +23,23 @@ const initPrimaryMenuToggle = () => {
 
     const isOpen = () => mobileNav.classList.contains('is-open')
 
+    // Dónde empieza la lista. El hueco no se puede fijar en el CSS: el header
+    // mide 72 px, pero con la barra de administración de WordPress encima (32 px,
+    // fija) empieza más abajo, y el primer ítem quedaba cortado. Se mide al abrir,
+    // que además da el valor bueno si la página está desplazada.
+    const topGap = () => {
+        const header = document.querySelector('#page > header')
+        const adminBar = document.getElementById('wpadminbar')
+        const bottom = Math.max(
+            header ? header.getBoundingClientRect().bottom : 0,
+            adminBar ? adminBar.getBoundingClientRect().bottom : 0
+        )
+
+        return `${Math.round(bottom) + 24}px`
+    }
+
     const setState = (open) => {
+        mobileNav.style.paddingTop = open ? topGap() : ''
         mobileNav.classList.toggle('is-open', open)
         mobileNav.setAttribute('aria-hidden', open ? 'false' : 'true')
         document.documentElement.classList.toggle('menu-open', open)
