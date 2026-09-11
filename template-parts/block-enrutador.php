@@ -218,7 +218,13 @@ $animatek_lab_propio = 'vcv' === $animatek_lab ? '/vcvrack-lab/' : ( 'bitwig' ==
 				</<?php echo $animatek_h2; ?>>
 				<div class="grid gap-3 <?php echo count( $animatek_cursos_res ) > 1 ? 'sm:grid-cols-2' : ''; ?>">
 					<?php foreach ( $animatek_cursos_res as $animatek_curso ) : ?>
-						<a class="empezar-curso" href="<?php echo esc_url( $animatek_curso['url'] ); ?>">
+						<?php
+						// Gratis es precio null. Ojo con ?? aquí: trata null como
+						// ausente y devolvería el valor por defecto, así que el curso
+						// gratis nunca se marcaría.
+						$animatek_gratis = array_key_exists( 'precio', $animatek_curso ) && null === $animatek_curso['precio'];
+						?>
+						<a class="empezar-curso<?php echo $animatek_gratis ? ' empezar-curso--gratis' : ''; ?>" href="<?php echo esc_url( $animatek_curso['url'] ); ?>">
 							<img src="<?php echo esc_url( $animatek_curso['imagen'] ); ?>" alt="" width="96" height="96" loading="lazy" decoding="async" />
 							<span class="empezar-curso__cuerpo">
 								<span class="empezar-curso__etiqueta"><?php echo esc_html( $animatek_curso['etiqueta'] ); ?></span>

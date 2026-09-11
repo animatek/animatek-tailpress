@@ -211,7 +211,7 @@ function animatek_empezar_resultados(): array {
 				array( 'id' => 'VQBSR6qAL_k', 'titulo' => 'Crea un sintetizador con 3 osciladores', 'min' => 19 ),
 				array( 'id' => 'xfAlAKKncOs', 'titulo' => '8 años de VCV Rack en 31 minutos: 40 lecciones', 'min' => 31 ),
 			),
-			'cursos'  => array( 'vcv-rack' ),
+			'cursos'  => array( 'uzz', 'vcv-rack' ),
 		),
 
 		'r_bitwig_cero' => array(
@@ -354,7 +354,7 @@ function animatek_empezar_resultados(): array {
 				array( 'id' => 'y7w5oQ3uRzw', 'titulo' => 'Patch techno desde cero con Poly Counter', 'min' => 99 ),
 				array( 'id' => 'Ud1yhz1C7nI', 'titulo' => 'Patch techno con Trummor, Random8 y UZZ', 'min' => 140 ),
 			),
-			'cursos'  => array( 'patch-lab' ),
+			'cursos'  => array( 'uzz', 'patch-lab' ),
 		),
 
 		'r_drones' => array(
@@ -399,7 +399,7 @@ function animatek_empezar_resultados(): array {
 				array( 'id' => 'PPpWWhGwYho', 'titulo' => 'Un drone vivo que se construye solo', 'min' => 374 ),
 				array( 'id' => 'sU7Q4shIREE', 'titulo' => 'San Juan Drone: patching en directo, sin hablar', 'min' => 413 ),
 			),
-			'cursos'  => array( 'patch-lab' ),
+			'cursos'  => array( 'uzz', 'patch-lab' ),
 		),
 
 		'r_vcv' => array(
@@ -425,7 +425,7 @@ function animatek_empezar_resultados(): array {
 				array( 'id' => '3r26Bl8YaNY', 'titulo' => 'Cómo hacer un patch polifónico', 'min' => 12 ),
 				array( 'id' => 'PTxZ0kbyn48', 'titulo' => 'Cómo optimizar VCV Rack', 'min' => 7 ),
 			),
-			'cursos'  => array( 'vcv-rack', 'patch-lab' ),
+			'cursos'  => array( 'uzz', 'vcv-rack', 'patch-lab' ),
 		),
 
 		'r_bitwig' => array(
@@ -445,7 +445,7 @@ function animatek_empezar_resultados(): array {
 				array( 'id' => 'qIxWl_UNJ88', 'titulo' => 'De cero a cuatro voces: tu propio PERfourMER MkII en The Grid', 'min' => 107 ),
 				array( 'id' => 'dKn-fOinX94', 'titulo' => 'Bitwig Studio 6: todas las novedades', 'min' => 107 ),
 			),
-			'cursos'  => array( 'bitwig' ),
+			'cursos'  => array( 'uzz', 'bitwig' ),
 		),
 
 		'r_hardware' => array(

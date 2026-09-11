@@ -1581,52 +1581,55 @@ get_header();
                 );
                 ?>
 
-                <!-- Course Playlist -->
-                <div class="mt-12">
-                    <div
-                        class="bg-white rounded-2xl p-8 text-slate-900 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden group">
-                        <!-- Background decoration -->
+                <?php
+                // El curso de UZZ. Antes esto mandaba a una playlist de YouTube: el
+                // curso completo está aquí, es gratis y no pide tarjeta, así que
+                // sacar a la gente del sitio para que lo vea suelto no tenía sentido.
+                // Título, URL y botón salen de animatek_cursos(); la imagen se queda
+                // como estaba porque la del catálogo es cuadrada y este hueco es 16:9.
+                require_once get_theme_file_path( 'inc/animatek-cursos.php' );
+                $animatek_uzz = animatek_cursos_por_clave( array( 'uzz' ) )[0] ?? null;
+                ?>
+                <?php if ( $animatek_uzz ) : ?>
+                    <div class="mt-12">
                         <div
-                            class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(33,112,245,0.15),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(56,189,248,0.12),transparent_30%),radial-gradient(circle_at_50%_80%,rgba(99,102,241,0.12),transparent_30%)]">
-                        </div>
-
-                        <div
-                            class="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-                            <div class="flex-1">
-                                <h3 class="text-2xl font-bold mb-2 text-slate-900">Curso Completo UZZ Rack</h3>
-                                <p class="text-slate-600 mb-6">Domina el secuenciador definitivo para VCV Rack. Una
-                                    serie de
-                                    tutoriales paso a paso para sacarle todo el partido.</p>
-                                <a href="https://www.youtube.com/playlist?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo"
-                                    target="_blank"
-                                    class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-colors shadow-lg shadow-primary/30">
-                                    Ver Playlist en YouTube
-                                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </a>
-                            </div>
+                            class="bg-white rounded-2xl p-8 text-slate-900 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden group">
+                            <!-- Background decoration -->
                             <div
-                                class="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700/50 group-hover:shadow-xl transition-all relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/videoseries?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo&autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
+                                class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(33,112,245,0.15),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(56,189,248,0.12),transparent_30%),radial-gradient(circle_at_50%_80%,rgba(99,102,241,0.12),transparent_30%)]">
+                            </div>
+
+                            <div
+                                class="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                                <div class="flex-1">
+                                    <p class="mb-3">
+                                        <span class="inline-flex items-center rounded-full bg-green-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white">
+                                            <?php echo esc_html( $animatek_uzz['etiqueta'] ); ?>
+                                        </span>
+                                    </p>
+                                    <h3 class="text-2xl font-bold mb-2 text-slate-900"><?php echo esc_html( $animatek_uzz['titulo'] ); ?></h3>
+                                    <p class="text-slate-600 mb-2"><?php echo esc_html( $animatek_uzz['subtitulo'] ); ?></p>
+                                    <p class="text-slate-500 text-sm mb-6"><?php echo esc_html( implode( ' · ', $animatek_uzz['meta'] ) ); ?></p>
+                                    <a href="<?php echo esc_url( $animatek_uzz['url'] ); ?>"
+                                        class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-colors shadow-lg shadow-primary/30">
+                                        <?php echo esc_html( $animatek_uzz['cta'] ); ?>
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <a href="<?php echo esc_url( $animatek_uzz['url'] ); ?>"
+                                    class="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700/50 group-hover:shadow-xl transition-all relative bg-slate-100 dark:bg-slate-800/40 block">
                                     <img src="https://img.youtube.com/vi/QPkYPGQTJz8/maxresdefault.jpg"
-                                        alt="Curso UZZ Rack"
+                                        alt="<?php echo esc_attr( $animatek_uzz['alt'] ); ?>"
                                         class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                                         loading="lazy">
                                     <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
 
             </div>
         </section>
@@ -1744,13 +1747,6 @@ get_header();
 
 </main>
 
-
-<script>
-function playYoutubeVideo(button, embedUrl) {
-    const container = button.parentElement;
-    container.innerHTML = `<iframe class="w-full h-full" src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-}
-</script>
 
 <?php
 get_footer();

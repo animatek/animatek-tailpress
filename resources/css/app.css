@@ -720,11 +720,26 @@
     }
 
     .empezar-curso__etiqueta {
+        display: inline-block;
+        align-self: flex-start;
+        padding: 0.05rem 0.4rem;
+        border-radius: 999px;
+        border: 1px solid currentColor;
         font-size: 0.625rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.12em;
         color: #2C7FFF;
+    }
+
+    /* Lo gratis se marca en verde, igual que los Labs: es lo que lo distingue
+       de un curso de pago de un vistazo, sin tener que leer la etiqueta. */
+    .empezar-curso--gratis {
+        border-color: #24B979;
+    }
+
+    .empezar-curso--gratis .empezar-curso__etiqueta {
+        color: #24B979;
     }
 
     .empezar-curso__titulo {
