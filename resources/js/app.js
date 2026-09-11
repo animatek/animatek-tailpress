@@ -121,6 +121,31 @@ const initEnrutador = (raiz) => {
     const escribeHash = raiz.dataset.hash === '1'
     const historia = []
 
+    // La elección se recuerda entre páginas: quien contesta en /empezar/, deja el
+    // correo y entra al Lab, se encontraba las mismas dos preguntas otra vez. Es
+    // el mismo truco de localStorage que ya usa el locker del Lab.
+    const MEMORIA = 'animatek_camino'
+
+    const recuerda = (nombre) => {
+        try {
+            if (nombre) {
+                localStorage.setItem(MEMORIA, nombre)
+            } else {
+                localStorage.removeItem(MEMORIA)
+            }
+        } catch (e) {
+            // Ventana privada o almacenamiento bloqueado: se sigue sin memoria.
+        }
+    }
+
+    const recordado = () => {
+        try {
+            return localStorage.getItem(MEMORIA)
+        } catch (e) {
+            return null
+        }
+    }
+
     const mostrar = (nombre, { apilar = true } = {}) => {
         const destino = paneles.get(nombre)
 
@@ -137,6 +162,10 @@ const initEnrutador = (raiz) => {
         paneles.forEach((panel) => {
             panel.hidden = panel !== destino
         })
+
+        if (nombre.startsWith('res-')) {
+            recuerda(nombre)
+        }
 
         if (escribeHash) {
             // replaceState y no hash directo: el hash llenaría el historial de
@@ -190,6 +219,8 @@ const initEnrutador = (raiz) => {
 
         if (event.target.closest('[data-reiniciar]')) {
             historia.length = 0
+            recuerda(null)
+            raiz.querySelectorAll('.empezar-memoria').forEach((aviso) => { aviso.hidden = true })
             mostrar('paso-inicio', { apilar: false })
             return
         }
@@ -203,20 +234,33 @@ const initEnrutador = (raiz) => {
     // hash ya en la página: cambiar de #res-a a #res-b no recarga nada, así que
     // sin esto un segundo enlace en la misma descripción de YouTube no hacía
     // nada al pulsarlo.
-    const abrirDesdeHash = () => {
-        const nombre = location.hash.slice(1)
-
+    const abrir = (nombre, { avisar = false } = {}) => {
         if (!nombre || !paneles.has(nombre)) {
-            return
+            return false
         }
 
         paneles.forEach((panel) => {
             panel.hidden = panel.dataset.panel !== nombre
         })
+
+        const aviso = paneles.get(nombre).querySelector('.empezar-memoria')
+
+        if (aviso) {
+            aviso.hidden = !avisar
+        }
+
+        return true
     }
 
+    const abrirDesdeHash = () => abrir(location.hash.slice(1))
+
     window.addEventListener('hashchange', abrirDesdeHash)
-    abrirDesdeHash()
+
+    // El hash manda sobre lo recordado: si te pasan un enlace a un resultado
+    // concreto, es ese y no el que elegiste la semana pasada.
+    if (!abrirDesdeHash()) {
+        abrir(recordado(), { avisar: true })
+    }
 }
 
 const initEnrutadores = () => {

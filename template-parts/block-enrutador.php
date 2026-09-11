@@ -102,6 +102,17 @@ $animatek_lab_propio = 'vcv' === $animatek_lab ? '/vcvrack-lab/' : ( 'bitwig' ==
 			data-panel="res-<?php echo esc_attr( $animatek_clave ); ?>"
 			hidden>
 
+			<?php
+			// Quien ya contestó en /empezar/ no tiene que volver a contestar aquí
+			// dentro: el JS guarda la elección y abre directamente su resultado.
+			// Este aviso es el que explica por qué se ha saltado las preguntas.
+			?>
+			<p class="empezar-memoria" hidden>
+				<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7" /></svg>
+				<span><?php esc_html_e( 'Esto es lo que elegiste la última vez.', 'animatek' ); ?></span>
+				<button type="button" data-reiniciar><?php esc_html_e( 'Elegir otra cosa', 'animatek' ); ?></button>
+			</p>
+
 			<p class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary"><?php esc_html_e( 'Tu camino', 'animatek' ); ?></p>
 			<<?php echo $animatek_h; ?> class="mt-2 text-2xl sm:text-3xl font-black tracking-tight">
 				<?php echo esc_html( $animatek_res['titulo'] ); ?>
