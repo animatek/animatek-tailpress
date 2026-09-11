@@ -94,3 +94,89 @@ if (document.readyState === 'loading') {
 } else {
     initPrimaryMenuToggle()
 }
+
+/**
+ * Recorrido "¿Por dónde empiezo?" (/empezar/).
+ *
+ * Los paneles ya vienen pintados en el HTML: aquí solo se enseña uno y se
+ * esconden los demás. Sin JS la página sigue siendo legible (y rastreable),
+ * que es justo por lo que no se renderiza desde JavaScript.
+ */
+const initEmpezar = () => {
+    const raiz = document.getElementById('empezar')
+
+    if (!raiz || raiz.dataset.empezarBound === 'true') {
+        return
+    }
+
+    raiz.dataset.empezarBound = 'true'
+
+    const paneles = new Map()
+    raiz.querySelectorAll('[data-panel]').forEach((panel) => paneles.set(panel.dataset.panel, panel))
+
+    const historia = []
+
+    const mostrar = (nombre, { apilar = true } = {}) => {
+        const destino = paneles.get(nombre)
+
+        if (!destino) {
+            return
+        }
+
+        const actual = [...paneles.values()].find((panel) => !panel.hidden)
+
+        if (actual && apilar && actual !== destino) {
+            historia.push(actual.dataset.panel)
+        }
+
+        paneles.forEach((panel) => {
+            panel.hidden = panel !== destino
+        })
+
+        // Los resultados se pueden enlazar sueltos (una descripción de YouTube
+        // apuntando a /empezar/#res-r_techno). replaceState y no hash directo:
+        // el hash llenaría el historial de pasos intermedios.
+        if (nombre.startsWith('res-')) {
+            history.replaceState(null, '', `#${nombre}`)
+        } else if (location.hash) {
+            history.replaceState(null, '', location.pathname)
+        }
+
+        const arriba = raiz.getBoundingClientRect().top + window.scrollY - 24
+        window.scrollTo({ top: arriba, behavior: 'smooth' })
+    }
+
+    raiz.addEventListener('click', (event) => {
+        const opcion = event.target.closest('[data-ir]')
+
+        if (opcion) {
+            mostrar(opcion.dataset.ir)
+            return
+        }
+
+        if (event.target.closest('[data-reiniciar]')) {
+            historia.length = 0
+            mostrar('paso-inicio', { apilar: false })
+            return
+        }
+
+        if (event.target.closest('[data-volver]')) {
+            mostrar(historia.pop() || 'paso-inicio', { apilar: false })
+        }
+    })
+
+    // Entrar directamente a un resultado enlazado desde fuera.
+    const inicial = location.hash.slice(1)
+
+    if (inicial && paneles.has(inicial)) {
+        paneles.forEach((panel) => {
+            panel.hidden = panel.dataset.panel !== inicial
+        })
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmpezar, { once: true })
+} else {
+    initEmpezar()
+}

@@ -321,4 +321,269 @@
         width: 1.125rem;
         height: 1.125rem;
     }
+
+    /* === /empezar/: el recorrido "¿Por dónde empiezo?" ===
+       Mismos colores que el resto: el sitio es dark-only. */
+
+    .empezar-opcion {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+        padding: 1.125rem 1.25rem;
+        border-radius: 1rem;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    .empezar-opcion:hover,
+    .empezar-opcion:focus-visible {
+        border-color: #2C7FFF;
+        background-color: #24334d;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .empezar-opcion:hover {
+            transform: translateX(2px);
+        }
+    }
+
+    .empezar-opcion__num {
+        flex: none;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.6;
+        letter-spacing: 0.08em;
+        color: #2C7FFF;
+    }
+
+    .empezar-opcion__texto {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        min-width: 0;
+    }
+
+    .empezar-opcion__titulo {
+        font-size: 1.0625rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #e2e8f0;
+    }
+
+    .empezar-opcion__detalle {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #94a3b8;
+    }
+
+    .empezar-opcion__flecha {
+        width: 1.25rem;
+        height: 1.25rem;
+        flex: none;
+        margin-left: auto;
+        align-self: center;
+        color: #475569;
+    }
+
+    .empezar-opcion:hover .empezar-opcion__flecha,
+    .empezar-opcion:focus-visible .empezar-opcion__flecha {
+        color: #2C7FFF;
+    }
+
+    /* Recursos propios (Labs, glosario): lo gratis va antes que los vídeos. */
+    .empezar-recurso {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 1.125rem;
+        border-radius: 1rem;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        text-decoration: none !important;
+    }
+
+    .empezar-recurso:hover,
+    .empezar-recurso:focus-visible {
+        border-color: #24B979;
+    }
+
+    .empezar-recurso__etiqueta {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #24B979;
+    }
+
+    .empezar-recurso__titulo {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #e2e8f0;
+    }
+
+    .empezar-recurso__texto {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #94a3b8;
+    }
+
+    /* Lista de vídeos, numerada: el orden es parte de la respuesta. */
+    .empezar-videos {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .empezar-videos a {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        padding: 0.5rem;
+        border-radius: 0.875rem;
+        border: 1px solid transparent;
+        text-decoration: none !important;
+    }
+
+    .empezar-videos a:hover,
+    .empezar-videos a:focus-visible {
+        border-color: #334155;
+        background-color: #1e293b;
+    }
+
+    .empezar-videos img {
+        width: 7.5rem;
+        height: 4.2rem;
+        flex: none;
+        border-radius: 0.5rem;
+        object-fit: cover;
+        background-color: #0f172a;
+    }
+
+    .empezar-video__cuerpo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        min-width: 0;
+    }
+
+    .empezar-video__titulo {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        line-height: 1.35;
+        color: #e2e8f0;
+    }
+
+    .empezar-video__num {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #475569;
+        margin-right: 0.375rem;
+    }
+
+    .empezar-video__meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #94a3b8;
+    }
+
+    /* Un directo de dos horas no se ve igual que un tutorial de veinte minutos:
+       más vale decirlo antes del clic. */
+    .empezar-video__pill {
+        padding: 0.05rem 0.4rem;
+        border-radius: 999px;
+        border: 1px solid #475569;
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #cbd5e1;
+    }
+
+    .empezar-curso {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        padding: 0.75rem;
+        border-radius: 1rem;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        text-decoration: none !important;
+    }
+
+    .empezar-curso:hover,
+    .empezar-curso:focus-visible {
+        border-color: #2C7FFF;
+    }
+
+    .empezar-curso img {
+        width: 4rem;
+        height: 4rem;
+        flex: none;
+        border-radius: 0.75rem;
+        object-fit: cover;
+    }
+
+    .empezar-curso__cuerpo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        min-width: 0;
+    }
+
+    .empezar-curso__etiqueta {
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #2C7FFF;
+    }
+
+    .empezar-curso__titulo {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #e2e8f0;
+    }
+
+    .empezar-curso__texto {
+        font-size: 0.875rem;
+        color: #94a3b8;
+    }
+
+    .empezar-volver {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background: none;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: #94a3b8;
+        cursor: pointer;
+    }
+
+    .empezar-volver:hover,
+    .empezar-volver:focus-visible {
+        border-color: #2C7FFF;
+        color: #2C7FFF;
+    }
+
+    .empezar-volver svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .empezar-panel + .empezar-panel .empezar-volver {
+        margin-top: 0;
+    }
 }
