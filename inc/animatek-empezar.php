@@ -183,6 +183,9 @@ function animatek_empezar_pasos(): array {
  *   enlaces         Páginas propias (url relativa a la home, titulo, texto).
  *   videos          id de YouTube, titulo y minutos.
  *   cursos          Claves de animatek_cursos(): vcv-rack · patch-lab · bitwig · uzz.
+ *   seccion         Sección del VCV Rack Lab (1-12) que responde a esto. Solo se usa
+ *                   cuando el enrutador vive DENTRO del Lab: ahí la tarjeta del Lab no
+ *                   pinta nada (ya estás dentro) y se cambia por un salto al capítulo.
  *
  * @return array<string,array<string,mixed>>
  */
@@ -190,6 +193,7 @@ function animatek_empezar_resultados(): array {
 	return apply_filters( 'animatek_empezar_resultados', array(
 
 		'r_vcv_cero' => array(
+			'seccion' => 2,
 			'titulo'  => 'Empieza por aquí',
 			'texto'   => 'VCV Rack es gratis y es un modular completo: no hay excusa de presupuesto ni de sitio. El orden de abajo es el bueno — el tutorial largo primero, y la primera secuencia el mismo día, para no pasarte una semana leyendo antes de oír nada.',
 			'enlaces' => array(
@@ -232,6 +236,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_hoy' => array(
+			'seccion' => 2,
 			'titulo'  => 'Que suene algo hoy',
 			'texto'   => 'Cuatro vídeos cortos, ninguno pasa de veinte minutos. Con el primero ya tienes una secuencia sonando; con el último, cinco patches terminados que puedes abrir y romper. Lo largo sigue ahí para cuando quieras entender el porqué.',
 			'enlaces' => array(
@@ -253,6 +258,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_hibrido' => array(
+			'seccion' => 3,
 			'titulo'  => 'El modular y el DAW, a la vez',
 			'texto'   => 'El problema nunca es el cable: es el reloj, la latencia y por dónde entra el audio. Empieza por el de quince minutos, que es el resumen; los directos son el mismo montaje hecho despacio y con los fallos dentro, que es donde se aprende.',
 			'enlaces' => array(
@@ -281,6 +287,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_senal' => array(
+			'seccion' => 7,
 			'titulo'  => 'Qué modula qué',
 			'texto'   => 'Un LFO y un sample and hold explican más del modular que cualquier lista de módulos. Cuando ves que el mismo voltaje sirve para una nota, para abrir un filtro o para disparar un bombo, deja de haber misterio.',
 			'enlaces' => array(
@@ -306,6 +313,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_secuencia' => array(
+			'seccion' => 9,
 			'titulo'  => 'Que la secuencia respire',
 			'texto'   => 'Si suena a cuadrícula es porque lo es: dieciséis pasos que se repiten idénticos. La salida no es tocar más notas, es meter probabilidad, acumuladores y ratchets para que cada vuelta se parezca a la anterior sin ser la misma.',
 			'enlaces' => array(
@@ -327,6 +335,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_techno' => array(
+			'seccion' => 12,
 			'titulo'  => 'Techno que aguante',
 			'texto'   => 'Un patch de techno no se cae por falta de módulos, se cae porque no hay nada que cambie con el tiempo. Estos son patches enteros, de principio a fin, con las decisiones a la vista.',
 			'enlaces' => array(
@@ -349,6 +358,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_drones' => array(
+			'seccion' => 7,
 			'titulo'  => 'Drones y ambient',
 			'texto'   => 'Lo lento perdona menos: sin percusión que tape, se oye todo. Empieza por el de diecinueve minutos y quédate con la idea de que el movimiento lo pone la modulación, no las notas.',
 			'enlaces' => array(
@@ -371,6 +381,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_generativo' => array(
+			'seccion' => 10,
 			'titulo'  => 'Que se toque solo',
 			'texto'   => 'Generativo no es aleatorio: es aleatoriedad con reglas. El trabajo está en ponerle los límites, y por eso los directos largos enseñan más aquí que cualquier resumen.',
 			'enlaces' => array(
@@ -392,6 +403,7 @@ function animatek_empezar_resultados(): array {
 		),
 
 		'r_vcv' => array(
+			'seccion' => 1,
 			'titulo'  => 'Todo lo de VCV Rack',
 			'texto'   => 'El Lab es la guía escrita y es gratis. Los vídeos de abajo son los de andar por casa: lo que cambió en la última versión, cómo hacer polifonía y cómo evitar que se te atragante el ordenador.',
 			'enlaces' => array(

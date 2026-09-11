@@ -96,24 +96,29 @@ if (document.readyState === 'loading') {
 }
 
 /**
- * Recorrido "¿Por dónde empiezo?" (/empezar/).
+ * Enrutador "¿Por dónde empiezo?".
  *
- * Los paneles ya vienen pintados en el HTML: aquí solo se enseña uno y se
- * esconden los demás. Sin JS la página sigue siendo legible (y rastreable),
- * que es justo por lo que no se renderiza desde JavaScript.
+ * Vive en /empezar/ y dentro de los Labs, así que puede haber más de uno en la
+ * página y cada uno lleva su propio estado. Los paneles ya vienen pintados en el
+ * HTML: aquí solo se enseña uno y se esconden los demás. Sin JS la página sigue
+ * siendo legible (y rastreable), que es por lo que no se renderiza desde
+ * JavaScript.
+ *
+ * Los vídeos se abren aquí dentro. Mandar a YouTube a quien acaba de decirte qué
+ * necesita es regalar la visita, y desde el Lab además es sacarlo de la guía que
+ * acaba de desbloquear.
  */
-const initEmpezar = () => {
-    const raiz = document.getElementById('empezar')
-
-    if (!raiz || raiz.dataset.empezarBound === 'true') {
+const initEnrutador = (raiz) => {
+    if (raiz.dataset.enrutadorBound === 'true') {
         return
     }
 
-    raiz.dataset.empezarBound = 'true'
+    raiz.dataset.enrutadorBound = 'true'
 
     const paneles = new Map()
     raiz.querySelectorAll('[data-panel]').forEach((panel) => paneles.set(panel.dataset.panel, panel))
 
+    const escribeHash = raiz.dataset.hash === '1'
     const historia = []
 
     const mostrar = (nombre, { apilar = true } = {}) => {
@@ -133,20 +138,49 @@ const initEmpezar = () => {
             panel.hidden = panel !== destino
         })
 
-        // Los resultados se pueden enlazar sueltos (una descripción de YouTube
-        // apuntando a /empezar/#res-r_techno). replaceState y no hash directo:
-        // el hash llenaría el historial de pasos intermedios.
-        if (nombre.startsWith('res-')) {
-            history.replaceState(null, '', `#${nombre}`)
-        } else if (location.hash) {
-            history.replaceState(null, '', location.pathname)
+        if (escribeHash) {
+            // replaceState y no hash directo: el hash llenaría el historial de
+            // pasos intermedios y el botón de atrás dejaría de salir de la página.
+            history.replaceState(null, '', nombre.startsWith('res-') ? `#${nombre}` : location.pathname)
         }
 
         const arriba = raiz.getBoundingClientRect().top + window.scrollY - 24
         window.scrollTo({ top: arriba, behavior: 'smooth' })
     }
 
+    const reproducir = (boton) => {
+        const id = boton.dataset.video
+
+        if (!/^[\w-]{6,20}$/.test(id || '')) {
+            return
+        }
+
+        const fila = boton.closest('li')
+        const cuerpo = boton.querySelector('.empezar-video__cuerpo')
+        const marco = document.createElement('div')
+
+        marco.className = 'empezar-video__player'
+        // nocookie: el vídeo no deja rastro hasta que se pulsa play de verdad.
+        marco.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${boton.textContent.trim().replace(/"/g, '')}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+        fila.textContent = ''
+        fila.append(marco)
+
+        if (cuerpo) {
+            fila.append(cuerpo)
+        }
+
+        fila.classList.add('empezar-video--abierto')
+    }
+
     raiz.addEventListener('click', (event) => {
+        const video = event.target.closest('[data-video]')
+
+        if (video) {
+            reproducir(video)
+            return
+        }
+
         const opcion = event.target.closest('[data-ir]')
 
         if (opcion) {
@@ -185,8 +219,12 @@ const initEmpezar = () => {
     abrirDesdeHash()
 }
 
+const initEnrutadores = () => {
+    document.querySelectorAll('[data-enrutador]').forEach(initEnrutador)
+}
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initEmpezar, { once: true })
+    document.addEventListener('DOMContentLoaded', initEnrutadores, { once: true })
 } else {
-    initEmpezar()
+    initEnrutadores()
 }

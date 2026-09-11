@@ -2,24 +2,18 @@
 /**
  * Template Name: Empezar
  *
- * "¿Por dónde empiezo?" — dos preguntas y una lista curada.
+ * "¿Por dónde empiezo?" — el enrutador, en su página propia.
  *
- * El canal tiene más de cuatrocientos vídeos y la mitad son directos de dos
- * horas: quien llega nuevo no necesita un buscador, necesita que alguien le
- * diga por dónde. El recorrido y las listas están en inc/animatek-empezar.php;
- * los cursos salen de animatek_cursos(), así que los precios no se duplican.
+ * Es el enlace para pegar en las descripciones de YouTube. El recorrido y las
+ * listas están en inc/animatek-empezar.php y los pinta
+ * template-parts/block-enrutador.php, que es el mismo que vive dentro del Lab.
  *
- * Todo se pinta en el HTML desde el principio y el JS solo enseña y esconde.
- * Así el buscador de Google lo ve, y funciona aunque el JS falle.
+ * Aquí cada resultado empuja al Lab, que es lo único de todo esto que deja un
+ * correo en la lista; los vídeos se abren dentro de la página para no regalar
+ * la visita a YouTube.
  *
  * @package Animatek
  */
-
-require_once get_theme_file_path( 'inc/animatek-empezar.php' );
-require_once get_theme_file_path( 'inc/animatek-cursos.php' );
-
-$animatek_pasos       = animatek_empezar_pasos();
-$animatek_resultados  = animatek_empezar_resultados();
 
 get_header();
 ?>
@@ -44,156 +38,17 @@ get_header();
         </div>
     </section>
 
-    <div id="empezar" class="mx-auto max-w-4xl px-6 py-10 sm:py-14">
-
-        <?php foreach ( $animatek_pasos as $animatek_clave => $animatek_paso ) : ?>
-            <section
-                class="empezar-panel"
-                id="empezar-paso-<?php echo esc_attr( $animatek_clave ); ?>"
-                data-panel="paso-<?php echo esc_attr( $animatek_clave ); ?>"
-                <?php echo 'inicio' === $animatek_clave ? '' : 'hidden'; ?>>
-
-                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
-                    Paso <?php echo esc_html( (string) $animatek_paso['paso'] ); ?> de 2
-                </p>
-                <h2 class="mt-2 mb-8 text-2xl sm:text-3xl font-black tracking-tight">
-                    <?php echo esc_html( $animatek_paso['pregunta'] ); ?>
-                </h2>
-
-                <div class="grid gap-3">
-                    <?php foreach ( $animatek_paso['opciones'] as $animatek_opcion ) : ?>
-                        <button
-                            type="button"
-                            class="empezar-opcion"
-                            <?php if ( isset( $animatek_opcion['siguiente'] ) ) : ?>
-                                data-ir="paso-<?php echo esc_attr( $animatek_opcion['siguiente'] ); ?>"
-                            <?php else : ?>
-                                data-ir="res-<?php echo esc_attr( $animatek_opcion['resultado'] ); ?>"
-                            <?php endif; ?>>
-                            <span class="empezar-opcion__num"><?php echo esc_html( $animatek_opcion['num'] ); ?></span>
-                            <span class="empezar-opcion__texto">
-                                <span class="empezar-opcion__titulo"><?php echo esc_html( $animatek_opcion['texto'] ); ?></span>
-                                <span class="empezar-opcion__detalle"><?php echo esc_html( $animatek_opcion['detalle'] ); ?></span>
-                            </span>
-                            <svg class="empezar-opcion__flecha" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                        </button>
-                    <?php endforeach; ?>
-                </div>
-
-                <?php if ( 'inicio' !== $animatek_clave ) : ?>
-                    <button type="button" class="empezar-volver" data-volver>
-                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
-                        Volver
-                    </button>
-                <?php endif; ?>
-            </section>
-        <?php endforeach; ?>
-
-        <?php foreach ( $animatek_resultados as $animatek_clave => $animatek_res ) : ?>
-            <section
-                class="empezar-panel"
-                id="empezar-res-<?php echo esc_attr( $animatek_clave ); ?>"
-                data-panel="res-<?php echo esc_attr( $animatek_clave ); ?>"
-                hidden>
-
-                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Tu camino</p>
-                <h2 class="mt-2 text-2xl sm:text-3xl font-black tracking-tight">
-                    <?php echo esc_html( $animatek_res['titulo'] ); ?>
-                </h2>
-                <p class="mt-3 max-w-2xl leading-relaxed text-slate-600">
-                    <?php echo esc_html( $animatek_res['texto'] ); ?>
-                </p>
-
-                <?php if ( ! empty( $animatek_res['enlaces'] ) ) : ?>
-                    <?php
-                    // Los Labs van delante de los vídeos a propósito: son lo más
-                    // completo que hay gratis, y son la única pieza de todo esto
-                    // que deja un correo en la lista.
-                    ?>
-                    <div class="mt-8 grid gap-3 <?php echo count( $animatek_res['enlaces'] ) > 1 ? 'sm:grid-cols-2' : ''; ?>">
-                        <?php foreach ( $animatek_res['enlaces'] as $animatek_enlace ) : ?>
-                            <?php $animatek_puerta = ! empty( $animatek_enlace['correo'] ); ?>
-                            <a class="empezar-recurso<?php echo $animatek_puerta ? ' empezar-recurso--puerta' : ''; ?>" href="<?php echo esc_url( home_url( $animatek_enlace['url'] ) ); ?>">
-                                <span class="empezar-recurso__etiqueta">
-                                    <?php echo $animatek_puerta ? 'Guía completa · gratis' : 'Gratis'; ?>
-                                </span>
-                                <span class="empezar-recurso__titulo"><?php echo esc_html( $animatek_enlace['titulo'] ); ?></span>
-                                <span class="empezar-recurso__texto"><?php echo esc_html( $animatek_enlace['texto'] ); ?></span>
-                                <?php if ( $animatek_puerta ) : ?>
-                                    <span class="empezar-recurso__nota">
-                                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25Z"></path><path d="M21.75 7.017a2.25 2.25 0 0 1-1.02 1.89l-6.75 4.5a2.25 2.25 0 0 1-2.46 0l-6.75-4.5a2.25 2.25 0 0 1-1.02-1.89"></path></svg>
-                                        Se abre con tu correo. Nada de spam, y te sales cuando quieras.
-                                    </span>
-                                <?php endif; ?>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if ( ! empty( $animatek_res['videos'] ) ) : ?>
-                    <h3 class="mt-10 mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
-                        En este orden
-                    </h3>
-                    <ol class="empezar-videos">
-                        <?php foreach ( $animatek_res['videos'] as $animatek_i => $animatek_video ) : ?>
-                            <li>
-                                <a href="https://www.youtube.com/watch?v=<?php echo esc_attr( $animatek_video['id'] ); ?>" target="_blank" rel="noopener noreferrer">
-                                    <img
-                                        src="https://i.ytimg.com/vi/<?php echo esc_attr( $animatek_video['id'] ); ?>/mqdefault.jpg"
-                                        alt=""
-                                        width="320" height="180" loading="lazy" decoding="async" />
-                                    <span class="empezar-video__cuerpo">
-                                        <span class="empezar-video__titulo">
-                                            <span class="empezar-video__num"><?php echo esc_html( sprintf( '%02d', $animatek_i + 1 ) ); ?></span>
-                                            <?php echo esc_html( $animatek_video['titulo'] ); ?>
-                                        </span>
-                                        <span class="empezar-video__meta">
-                                            <?php if ( $animatek_video['min'] >= 60 ) : ?>
-                                                <span class="empezar-video__pill">Directo</span>
-                                            <?php endif; ?>
-                                            <?php echo esc_html( animatek_empezar_duracion( (int) $animatek_video['min'] ) ); ?>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ol>
-                <?php endif; ?>
-
-                <?php
-                $animatek_cursos_res = empty( $animatek_res['cursos'] )
-                    ? array()
-                    : animatek_cursos_por_clave( $animatek_res['cursos'] );
-                ?>
-                <?php if ( $animatek_cursos_res ) : ?>
-                    <h3 class="mt-10 mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
-                        Si quieres el camino ordenado
-                    </h3>
-                    <div class="grid gap-3 <?php echo count( $animatek_cursos_res ) > 1 ? 'sm:grid-cols-2' : ''; ?>">
-                        <?php foreach ( $animatek_cursos_res as $animatek_curso ) : ?>
-                            <a class="empezar-curso" href="<?php echo esc_url( $animatek_curso['url'] ); ?>">
-                                <img src="<?php echo esc_url( $animatek_curso['imagen'] ); ?>" alt="" width="96" height="96" loading="lazy" decoding="async" />
-                                <span class="empezar-curso__cuerpo">
-                                    <span class="empezar-curso__etiqueta"><?php echo esc_html( $animatek_curso['etiqueta'] ); ?></span>
-                                    <span class="empezar-curso__titulo"><?php echo esc_html( $animatek_curso['titulo'] ); ?></span>
-                                    <span class="empezar-curso__texto"><?php echo esc_html( $animatek_curso['gancho'] ); ?></span>
-                                </span>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-
-                <div class="mt-10 flex flex-wrap gap-3">
-                    <button type="button" class="empezar-volver" data-volver>
-                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
-                        Volver
-                    </button>
-                    <button type="button" class="empezar-volver" data-reiniciar>
-                        Empezar otra vez
-                    </button>
-                </div>
-            </section>
-        <?php endforeach; ?>
+    <div class="mx-auto max-w-4xl px-6 py-10 sm:py-14">
+        <?php
+        get_template_part(
+            'template-parts/block-enrutador',
+            null,
+            array(
+                'contexto' => 'publico',
+                'nivel'    => 'h2',
+            )
+        );
+        ?>
 
         <p class="mt-12 border-t border-slate-200 pt-6 text-sm leading-relaxed text-slate-500">
             Nada de esto hay que pagarlo para empezar: el canal, los Labs y el
