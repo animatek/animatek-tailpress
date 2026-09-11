@@ -34,6 +34,10 @@ All notable changes to TailPress will be documented in this file.
   router results, with free courses marked in green.
 
 ### Removed
+- The Lab's large UZZ card: the course already shows up as a small card inside the router's
+  result, where it appears only when it is relevant. Section 11 is now heading, one line and
+  the router. UZZ's `gancho` becomes "16 lecciones, sin tarjeta" — "free" already comes
+  through the badge.
 - `playYoutubeVideo()` from the VCV Rack Lab: section 11's six videos are the router now, and
   the UZZ card no longer plays anything.
 
