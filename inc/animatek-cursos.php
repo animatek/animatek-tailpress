@@ -126,7 +126,7 @@ function animatek_cursos(): array {
 		'uzz'       => array(
 			'titulo'      => 'Curso UZZ',
 			'subtitulo'   => 'El secuenciador por pasos para improvisar',
-			'gancho'      => 'Gratis, 16 lecciones',
+			'gancho'      => '16 lecciones, sin tarjeta',
 			'imagen'      => 'https://animatek.net/wp-content/uploads/2025/11/UZZ_Curso.webp',
 			'alt'         => 'Curso UZZ gratis',
 			'texto'       => 'Curso gratuito para dominar UZZ, el secuenciador por pasos diseñado para improvisar y crear patrones complejos con rapidez. Aprendes todas sus funciones, salidas y posibilidades dentro de Bitwig, Ableton y VCV Rack.',

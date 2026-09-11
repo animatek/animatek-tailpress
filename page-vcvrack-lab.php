@@ -1581,56 +1581,6 @@ get_header();
                 );
                 ?>
 
-                <?php
-                // El curso de UZZ. Antes esto mandaba a una playlist de YouTube: el
-                // curso completo está aquí, es gratis y no pide tarjeta, así que
-                // sacar a la gente del sitio para que lo vea suelto no tenía sentido.
-                // Título, URL y botón salen de animatek_cursos(); la imagen se queda
-                // como estaba porque la del catálogo es cuadrada y este hueco es 16:9.
-                require_once get_theme_file_path( 'inc/animatek-cursos.php' );
-                $animatek_uzz = animatek_cursos_por_clave( array( 'uzz' ) )[0] ?? null;
-                ?>
-                <?php if ( $animatek_uzz ) : ?>
-                    <div class="mt-12">
-                        <div
-                            class="bg-white rounded-2xl p-8 text-slate-900 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden group">
-                            <!-- Background decoration -->
-                            <div
-                                class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(33,112,245,0.15),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(56,189,248,0.12),transparent_30%),radial-gradient(circle_at_50%_80%,rgba(99,102,241,0.12),transparent_30%)]">
-                            </div>
-
-                            <div
-                                class="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-                                <div class="flex-1">
-                                    <p class="mb-3">
-                                        <span class="inline-flex items-center rounded-full bg-green-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white">
-                                            <?php echo esc_html( $animatek_uzz['etiqueta'] ); ?>
-                                        </span>
-                                    </p>
-                                    <h3 class="text-2xl font-bold mb-2 text-slate-900"><?php echo esc_html( $animatek_uzz['titulo'] ); ?></h3>
-                                    <p class="text-slate-600 mb-2"><?php echo esc_html( $animatek_uzz['subtitulo'] ); ?></p>
-                                    <p class="text-slate-500 text-sm mb-6"><?php echo esc_html( implode( ' · ', $animatek_uzz['meta'] ) ); ?></p>
-                                    <a href="<?php echo esc_url( $animatek_uzz['url'] ); ?>"
-                                        class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-colors shadow-lg shadow-primary/30">
-                                        <?php echo esc_html( $animatek_uzz['cta'] ); ?>
-                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6" />
-                                        </svg>
-                                    </a>
-                                </div>
-                                <a href="<?php echo esc_url( $animatek_uzz['url'] ); ?>"
-                                    class="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700/50 group-hover:shadow-xl transition-all relative bg-slate-100 dark:bg-slate-800/40 block">
-                                    <img src="https://img.youtube.com/vi/QPkYPGQTJz8/maxresdefault.jpg"
-                                        alt="<?php echo esc_attr( $animatek_uzz['alt'] ); ?>"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
             </div>
         </section>
 
