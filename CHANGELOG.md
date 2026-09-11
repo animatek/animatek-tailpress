@@ -20,6 +20,11 @@ All notable changes to TailPress will be documented in this file.
 - New `.icon-btn` and `.mobile-nav` styles live in `@layer components` in `app.css`; being
   unlayered would have beaten Tailwind utilities such as `lg:hidden`.
 
+### Fixed
+- The overlay's top gap is measured from the header (or the WordPress admin bar, whichever
+  sits lower) when it opens, instead of a fixed `6rem` padding that hid the first menu item
+  behind the admin bar — which is 46 px on mobile, not 32.
+
 ### Removed
 - The `walker_nav_menu_start_el` filter that swapped the "Cuenta" title for an icon, and the
   inline `nav_menu_item_title` filter in `header.php` that did the same for "Contacto".
