@@ -48,7 +48,8 @@ Pure Tailwind v4: no `tailwind.config.js`. Configuration lives in CSS:
   - `Pagination.php` — Custom numbered pagination with SVG prev/next icons
   - `Walkers/CommentWalker.php` — Custom comment HTML5 rendering
 - **Page templates** (`page-*.php`) — 20+ custom landing pages. Many are content-heavy (1000+ lines of inline HTML with Tailwind classes). Named using WordPress convention `page-{slug}.php`
-- **`template-parts/`** — Reusable blocks: `block-banner.php`, `block-faq.php`, `block-testimonios.php`, `block-explora.php`, `block-bitwig.php`, `block-developers.php`, `block-discografia.php`, plus `content.php`/`content-single.php`
+- **`template-parts/`** — Reusable blocks: `block-banner.php`, `block-faq.php`, `block-testimonios.php`, `block-explora.php`, `block-bitwig.php`, `block-developers.php`, `block-discografia.php`, `block-ultimos-posts.php`, `block-enrutador.php`, plus `content.php`/`content-single.php`
+- **`block-enrutador.php`** — El recorrido "¿Por dónde empiezo?" (datos en `inc/animatek-empezar.php`). Vive en dos sitios: `/empezar/` (`contexto` `publico`, empuja al Lab, escribe el resultado en el hash) y dentro del VCV Rack Lab sustituyendo la sección 11 (`contexto` `lab`, `lab` `vcv`, salta a `#seccion-N` en vez de anunciar el Lab). Puede haber varios por página: el JS los inicializa por `[data-enrutador]`. **Las secciones del Lab llevan ancla `seccion-1`…`seccion-11`; la 12 es `#descargas` y no se renombra, que está enlazada desde fuera**
 - **`tutor/`** — Tutor LMS template overrides: `dashboard.php`, `single-course.php`, `single/course/lead-info.php`
 
 ### Theme Configuration
@@ -66,6 +67,7 @@ GitHub Actions (`.github/workflows/release.yml`): On release → `composer insta
 - **Menu IDs:** `primary-navigation` (nav de escritorio), `primary-menu-toggle` (hamburguesa), `mobile-nav` (overlay móvil a pantalla completa). El corte es `lg` (960px según `theme.css`): por debajo manda el overlay. Si cambia el breakpoint, hay que cambiarlo en los tres sitios — `header.php`, el `@media` de `.mobile-nav` en `app.css` y el `matchMedia` de `app.js`
 - **Font:** Inter (weights 400, 500, 600, 700, 800) loaded from Google Fonts with handle `animatek-inter`
 - **Mobile menu toggle:** handled by `resources/js/app.js` (`initPrimaryMenuToggle`). Uses `data-menu-bound` to prevent double-binding. Alterna `.is-open` en `#mobile-nav` y `.menu-open` en `<html>` (esta última es la que cambia la hamburguesa por el aspa)
+- **Los vídeos del enrutador se abren dentro de la página**, con `youtube-nocookie`. Mandar a YouTube a quien acaba de decir qué necesita es regalar la visita, y desde el Lab es sacarlo de la guía que acaba de desbloquear
 - **Cuenta y contacto no se pintan en el `<ul>`:** un filtro `wp_nav_menu_objects` los saca del menú y `animatek_header_action_items()` lee sus URLs para pintarlos como iconos a la derecha. Las URLs se siguen editando en Apariencia → Menús; si no hay ítem "Cuenta", `animatek_account_url()` cae al escritorio de Tutor
 - **Button classes:** `.btn-primary` and `.btn-secondary` are defined as inline CSS in `header.php`, not as Tailwind utilities. Page templates use these classes extensively
 

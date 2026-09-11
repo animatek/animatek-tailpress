@@ -20,6 +20,11 @@ All notable changes to TailPress will be documented in this file.
 - The Labs lead every result they fit (12 of 13) with per-result text naming the chapter that
   answers that question, and the card states up front that the guide opens with an email —
   they are the only piece of the page that adds a contact to Brevo.
+- The router moved into `template-parts/block-enrutador.php` and now also runs inside the VCV
+  Rack Lab, replacing section 11's flat list of six tutorials. Inside the Lab it does not
+  advertise the Lab: it jumps to the chapter that answers the question (`#seccion-N`), so the
+  12 sections gained anchors.
+- Router videos play inline via `youtube-nocookie` instead of linking out to YouTube.
 - **Latest posts strip** (`template-parts/block-ultimos-posts.php`) under the home hero:
   eight most recent posts, thumbnail, title and date, no autoplay.
 
