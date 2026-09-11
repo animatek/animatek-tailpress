@@ -25,6 +25,9 @@ All notable changes to TailPress will be documented in this file.
   advertise the Lab: it jumps to the chapter that answers the question (`#seccion-N`), so the
   12 sections gained anchors.
 - Router videos play inline via `youtube-nocookie` instead of linking out to YouTube.
+- The router remembers the chosen path in `localStorage`, so someone who answered on
+  `/empezar/` and then unlocks the Lab lands on their result instead of being asked the same
+  two questions again. A hash link still wins over the remembered path.
 - **Latest posts strip** (`template-parts/block-ultimos-posts.php`) under the home hero:
   eight most recent posts, thumbnail, title and date, no autoplay.
 
