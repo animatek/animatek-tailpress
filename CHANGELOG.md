@@ -11,6 +11,15 @@ All notable changes to TailPress will be documented in this file.
 - **Full-screen mobile menu** (`#mobile-nav`): a dedicated overlay with large type and its
   own account/contact buttons, instead of shrinking the desktop `<ul>` under the header.
 
+- **`/empezar/`**: a two-question path that returns a hand-picked list instead of filtering
+  the catalogue — 13 endings, 55 videos taken from the channel's real catalogue, with the
+  free stuff (Labs, glossary) ahead of the paid courses. Data in `inc/animatek-empezar.php`;
+  courses are named by key and read from `animatek_cursos()`, so prices are never duplicated.
+  Panels are server-rendered and the JS only shows and hides, so results are crawlable and
+  individually linkable (`/empezar/#res-r_techno`). Needs a page with slug `empezar`.
+- **Latest posts strip** (`template-parts/block-ultimos-posts.php`) under the home hero:
+  eight most recent posts, thumbnail, title and date, no autoplay.
+
 ### Changed
 - The primary nav switches to the overlay below `lg` (960 px, per `theme.css`) instead of
   `md` (782 px): seven items plus the logo and the action icons no longer fit on a tablet.
