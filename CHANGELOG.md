@@ -28,6 +28,15 @@ All notable changes to TailPress will be documented in this file.
 - The router remembers the chosen path in `localStorage`, so someone who answered on
   `/empezar/` and then unlocks the Lab lands on their result instead of being asked the same
   two questions again. A hash link still wins over the remembered path.
+- The Lab's UZZ card points at `/cursos/curso-uzz/` instead of the YouTube playlist, keeps its
+  artwork, drops the play button and reads its title, badge, meta and CTA from
+  `animatek_cursos()`. The free UZZ course also leads the "camino ordenado" block in five
+  router results, with free courses marked in green.
+
+### Removed
+- `playYoutubeVideo()` from the VCV Rack Lab: section 11's six videos are the router now, and
+  the UZZ card no longer plays anything.
+
 - **Latest posts strip** (`template-parts/block-ultimos-posts.php`) under the home hero:
   eight most recent posts, thumbnail, title and date, no autoplay.
 
