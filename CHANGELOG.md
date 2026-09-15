@@ -4,6 +4,8 @@ All notable changes to TailPress will be documented in this file.
 
 ## [Unreleased]
 
+## [5.6.0] - 2026-09-15
+
 ### Added
 - **Header actions**: account and contact links now render as icon buttons in their own
   group on the right (`.header-actions`), outside the menu list. The account icon is
