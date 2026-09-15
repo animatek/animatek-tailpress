@@ -81,6 +81,9 @@ get_header();
         </div>
     </section>
 
+    <!-- Últimos artículos del blog, justo bajo el hero -->
+    <?php get_template_part( 'template-parts/block-ultimos-posts' ); ?>
+
     <!-- Bloque 2: Elige tu camino -->
     <section id="recorrido" class="max-w-7xl mx-auto px-6 pt-12 pb-16 lg:pt-16 lg:pb-24">
         <div class="text-center mb-16">

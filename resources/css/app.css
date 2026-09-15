@@ -158,28 +158,787 @@
     border: 0;
 }
 
-/* Menú móvil: transición de apertura.
-   El JS alterna `is-open`; la clase `hidden` de Tailwind sigue encargándose de
-   sacarlo del flujo, pero el fundido y el desplazamiento se hacen aquí porque
-   `display` no se puede animar.
+/* Va en @layer components a propósito: sin capa, estas reglas le ganarían a
+   las utilidades de Tailwind y `lg:hidden` no escondería la hamburguesa en
+   escritorio (los estilos sin capa tienen más prioridad que cualquier @layer). */
+@layer components {
+    /* === Header: acciones e iconos ===
+       El sitio es dark-only (ver dark.css), así que estas clases propias llevan ya
+       su color y no necesitan remapeo: la paleta es la misma de siempre
+       (#020617 hondo, #1e293b card, #334155 borde, #e2e8f0 texto, #2C7FFF marca). */
 
-   Solo por debajo del breakpoint md (782 px): a partir de ahí el nav es
-   estático y no debe llevar ni opacidad ni transform. */
-@media (max-width: 781px) {
-    #primary-navigation {
-        opacity: 0;
-        transform: translateY(-0.5rem);
-        transition: opacity 0.22s ease, transform 0.22s ease;
+    .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        flex: none;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        color: #e2e8f0;
+        text-decoration: none !important;
+        transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
     }
 
-    #primary-navigation.is-open {
+    .icon-btn:hover,
+    .icon-btn:focus-visible {
+        border-color: #2C7FFF;
+        color: #2C7FFF;
+    }
+
+    .icon-btn svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    /* Con sesión iniciada el icono genérico se cambia por la inicial: es lo que
+       hace que se lea como "mi cuenta" y no como un botón más. */
+    .icon-btn--avatar {
+        background-color: #2C7FFF;
+        border-color: #2C7FFF;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9375rem;
+        line-height: 1;
+    }
+
+    .icon-btn--avatar:hover,
+    .icon-btn--avatar:focus-visible {
+        background-color: #1e293b;
+        color: #2C7FFF;
+    }
+
+    /* El aspa solo aparece con el menú abierto. */
+    .nav-toggle .i-close,
+    .menu-open .nav-toggle .i-open {
+        display: none;
+    }
+
+    .menu-open .nav-toggle .i-close {
+        display: block;
+    }
+
+    /* === Menú móvil: overlay a pantalla completa ===
+       El JS (resources/js/app.js) alterna .is-open. Se queda por debajo del header
+       (z-50) para que la hamburguesa siga siendo el aspa de cerrar. */
+
+    .mobile-nav {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: 6rem 1.5rem 2.5rem;
+        background-color: #020617;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-0.75rem);
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    }
+
+    .mobile-nav.is-open {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
     }
-}
 
-@media (prefers-reduced-motion: reduce) {
-    #primary-navigation {
-        transition: none;
+    @media (min-width: 960px) {
+        .mobile-nav {
+            display: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .mobile-nav {
+            transition: none;
+        }
+    }
+
+    .mobile-nav__menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-nav__menu li + li {
+        border-top: 1px solid #1e293b;
+    }
+
+    .mobile-nav__menu a {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        color: #e2e8f0 !important;
+        text-decoration: none !important;
+    }
+
+    .mobile-nav__menu a:hover,
+    .mobile-nav__menu a:focus-visible,
+    .mobile-nav__menu .current-menu-item > a,
+    .mobile-nav__menu .current-menu-ancestor > a {
+        color: #2C7FFF !important;
+    }
+
+    .mobile-nav__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .mobile-nav__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        color: #e2e8f0 !important;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        text-decoration: none !important;
+    }
+
+    .mobile-nav__btn:hover,
+    .mobile-nav__btn:focus-visible {
+        border-color: #2C7FFF;
+        color: #2C7FFF !important;
+    }
+
+    .mobile-nav__btn svg {
+        width: 1.125rem;
+        height: 1.125rem;
+    }
+
+    /* === /empezar/: el recorrido "¿Por dónde empiezo?" ===
+       Mismos colores que el resto: el sitio es dark-only. */
+
+    .empezar-opcion {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+        padding: 1.125rem 1.25rem;
+        border-radius: 1rem;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    .empezar-opcion:hover,
+    .empezar-opcion:focus-visible {
+        border-color: #2C7FFF;
+        background-color: #24334d;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .empezar-opcion:hover {
+            transform: translateX(2px);
+        }
+    }
+
+    .empezar-opcion__num {
+        flex: none;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.6;
+        letter-spacing: 0.08em;
+        color: #2C7FFF;
+    }
+
+    .empezar-opcion__texto {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        min-width: 0;
+    }
+
+    .empezar-opcion__titulo {
+        font-size: 1.0625rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #e2e8f0;
+    }
+
+    .empezar-opcion__detalle {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #94a3b8;
+    }
+
+    .empezar-opcion__flecha {
+        width: 1.25rem;
+        height: 1.25rem;
+        flex: none;
+        margin-left: auto;
+        align-self: center;
+        color: #475569;
+    }
+
+    .empezar-opcion:hover .empezar-opcion__flecha,
+    .empezar-opcion:focus-visible .empezar-opcion__flecha {
+        color: #2C7FFF;
+    }
+
+    /* Recursos propios (Labs, glosario): lo gratis va antes que los vídeos. */
+    .empezar-recurso {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 1.125rem;
+        border-radius: 1rem;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        text-decoration: none !important;
+    }
+
+    .empezar-recurso:hover,
+    .empezar-recurso:focus-visible {
+        border-color: #24B979;
+    }
+
+    .empezar-recurso__etiqueta {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #24B979;
+    }
+
+    .empezar-recurso__titulo {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #e2e8f0;
+    }
+
+    .empezar-recurso__texto {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #94a3b8;
+    }
+
+    /* El Lab es la pieza que deja un correo en la lista: se marca como lo que
+       es, con más peso que un enlace normal y diciendo antes del clic que pide
+       el correo. Una puerta que se anuncia molesta menos que una que sorprende. */
+    .empezar-recurso--puerta {
+        border-color: #24B979;
+        background: linear-gradient(180deg, #16281f 0%, #1e293b 60%);
+    }
+
+    .empezar-recurso--puerta .empezar-recurso__titulo {
+        font-size: 1.125rem;
+    }
+
+    .empezar-recurso__nota {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #334155;
+        font-size: 0.75rem;
+        color: #94a3b8;
+    }
+
+    .empezar-recurso__nota svg {
+        width: 0.9rem;
+        height: 0.9rem;
+        flex: none;
+        color: #24B979;
+    }
+
+    /* Lista de vídeos, numerada: el orden es parte de la respuesta. */
+    .empezar-videos {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .empezar-video {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 0.875rem;
+        border: 1px solid transparent;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .empezar-video:hover,
+    .empezar-video:focus-visible {
+        border-color: #334155;
+        background-color: #1e293b;
+    }
+
+    .empezar-video__miniatura {
+        position: relative;
+        display: block;
+        width: 7.5rem;
+        height: 4.2rem;
+        flex: none;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: #0f172a;
+    }
+
+    .empezar-video__miniatura img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* El play deja claro que suena aquí y no te manda a YouTube. */
+    .empezar-video__play {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 999px;
+        background-color: rgba(2, 6, 23, 0.7);
+        color: #fff;
+        transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    .empezar-video__play svg {
+        width: 1rem;
+        height: 1rem;
+        margin-left: 0.1rem;
+    }
+
+    .empezar-video:hover .empezar-video__play,
+    .empezar-video:focus-visible .empezar-video__play {
+        background-color: #2C7FFF;
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    /* Reproduciendo: el marco 16:9 arriba y el título debajo. */
+    .empezar-videos li.empezar-video--abierto {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .empezar-video__player {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    .empezar-video__player iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* Aviso de "ya elegiste esto": solo sale cuando el panel se abre de memoria,
+       nunca cuando se acaba de contestar. */
+    .empezar-memoria {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        font-size: 0.8125rem;
+        color: #94a3b8;
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    .empezar-memoria svg {
+        width: 1rem;
+        height: 1rem;
+        flex: none;
+        color: #24B979;
+    }
+
+    .empezar-memoria button {
+        border: 0;
+        background: none;
+        padding: 0;
+        font: inherit;
+        font-weight: 700;
+        color: #2C7FFF;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    /* Dentro del Lab la guía ya está desbloqueada: en vez de anunciarla, se
+       salta al capítulo que responde a lo que acaba de contestar. */
+    .empezar-salto {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        margin-top: 2rem;
+        padding: 1rem 1.25rem;
+        border-radius: 1rem;
+        border: 1px solid #2C7FFF;
+        background-color: #16233d;
+        color: #e2e8f0 !important;
+        font-weight: 700;
+        text-decoration: none !important;
+    }
+
+    .empezar-salto:hover,
+    .empezar-salto:focus-visible {
+        background-color: #1b2c4d;
+    }
+
+    .empezar-salto small {
+        display: block;
+        font-size: 0.8125rem;
+        font-weight: 400;
+        color: #94a3b8;
+    }
+
+    .empezar-salto__num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        flex: none;
+        border-radius: 999px;
+        background-color: #2C7FFF;
+        color: #fff;
+        font-size: 0.875rem;
+    }
+
+    .empezar-salto svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        flex: none;
+        margin-left: auto;
+        color: #2C7FFF;
+    }
+
+    .empezar-video__cuerpo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        min-width: 0;
+    }
+
+    .empezar-video__titulo {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        line-height: 1.35;
+        color: #e2e8f0;
+    }
+
+    .empezar-video__num {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #475569;
+        margin-right: 0.375rem;
+    }
+
+    .empezar-video__meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: #94a3b8;
+    }
+
+    /* Un directo de dos horas no se ve igual que un tutorial de veinte minutos:
+       más vale decirlo antes del clic. */
+    .empezar-video__pill {
+        padding: 0.05rem 0.4rem;
+        border-radius: 999px;
+        border: 1px solid #475569;
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #cbd5e1;
+    }
+
+    .empezar-curso {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        padding: 0.75rem;
+        border-radius: 1rem;
+        border: 1px solid #334155;
+        background-color: #1e293b;
+        text-decoration: none !important;
+    }
+
+    .empezar-curso:hover,
+    .empezar-curso:focus-visible {
+        border-color: #2C7FFF;
+    }
+
+    .empezar-curso img {
+        width: 4rem;
+        height: 4rem;
+        flex: none;
+        border-radius: 0.75rem;
+        object-fit: cover;
+    }
+
+    .empezar-curso__cuerpo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        min-width: 0;
+    }
+
+    .empezar-curso__etiqueta {
+        display: inline-block;
+        align-self: flex-start;
+        padding: 0.05rem 0.4rem;
+        border-radius: 999px;
+        border: 1px solid currentColor;
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #2C7FFF;
+    }
+
+    /* Lo gratis se marca en verde, igual que los Labs: es lo que lo distingue
+       de un curso de pago de un vistazo, sin tener que leer la etiqueta. */
+    .empezar-curso--gratis {
+        border-color: #24B979;
+    }
+
+    .empezar-curso--gratis .empezar-curso__etiqueta {
+        color: #24B979;
+    }
+
+    .empezar-curso__titulo {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #e2e8f0;
+    }
+
+    .empezar-curso__texto {
+        font-size: 0.875rem;
+        color: #94a3b8;
+    }
+
+    .empezar-volver {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background: none;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: #94a3b8;
+        cursor: pointer;
+    }
+
+    .empezar-volver:hover,
+    .empezar-volver:focus-visible {
+        border-color: #2C7FFF;
+        color: #2C7FFF;
+    }
+
+    .empezar-volver svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .empezar-panel + .empezar-panel .empezar-volver {
+        margin-top: 0;
+    }
+
+    /* === Barra de últimos artículos (home) ===
+       Etiqueta fija a la izquierda y la tira deslizándose a la derecha. */
+
+    .ticker {
+        display: flex;
+        align-items: stretch;
+        border-top: 1px solid #1e293b;
+        border-bottom: 1px solid #1e293b;
+        background-color: #020617;
+    }
+
+    .ticker__label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        flex: none;
+        width: 5.5rem;
+        padding: 0 0.75rem;
+        background-color: #2C7FFF;
+        color: #fff !important;
+        text-decoration: none !important;
+    }
+
+    .ticker__label:hover,
+    .ticker__label:focus-visible {
+        background-color: #1b6ae8;
+    }
+
+    .ticker__label-texto {
+        font-size: 0.6875rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+    }
+
+    .ticker__chevrones {
+        width: 2rem;
+        height: 0.7rem;
+        opacity: 0.85;
+    }
+
+    .ticker__pista {
+        display: flex;
+        gap: 0;
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+        scrollbar-color: #334155 transparent;
+    }
+
+    .ticker__pista:focus-visible {
+        outline: 2px solid #2C7FFF;
+        outline-offset: -2px;
+    }
+
+    .ticker__item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex: none;
+        width: 20rem;
+        max-width: 82vw;
+        padding: 0.75rem 1rem;
+        border-right: 1px solid #1e293b;
+        scroll-snap-align: start;
+        text-decoration: none !important;
+    }
+
+    .ticker__item:hover,
+    .ticker__item:focus-visible {
+        background-color: #0f172a;
+    }
+
+    .ticker__img {
+        display: block;
+        flex: none;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: #1e293b;
+    }
+
+    .ticker__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Un artículo sin imagen destacada no puede dejar un hueco blanco. */
+    .ticker__img-vacia {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #2C7FFF;
+        background-color: #1e293b;
+    }
+
+    .ticker__texto {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        min-width: 0;
+    }
+
+    .ticker__titulo {
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #e2e8f0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .ticker__fecha {
+        font-size: 0.75rem;
+        color: #64748b;
+    }
+
+    .ticker__item--todos {
+        width: auto;
+        min-width: 13rem;
+        justify-content: space-between;
+        color: #2C7FFF !important;
+    }
+
+    .ticker__item--todos .ticker__titulo {
+        color: #2C7FFF;
+    }
+
+    .ticker__item--todos svg {
+        width: 1.1rem;
+        height: 1.1rem;
+        flex: none;
+    }
+
+    @media (max-width: 639px) {
+        .ticker__label {
+            width: 3.75rem;
+            padding: 0 0.5rem;
+        }
+
+        .ticker__chevrones {
+            display: none;
+        }
     }
 }

@@ -170,7 +170,7 @@ get_header();
         <div class="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-white/80"></div>
 
         <!-- 1. Introducción y Ecosistema -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-1" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden relative p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3">
                     <span
@@ -341,7 +341,7 @@ get_header();
 
 
         <!-- 2. Primeros Pasos: Interfaz y Cables -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-2" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div
                 class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
@@ -490,7 +490,7 @@ get_header();
         </section>
 
         <!-- 3. Configuración Audio & MIDI -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-3" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3 relative z-10">
                     <span
@@ -682,7 +682,7 @@ get_header();
         </section>
 
         <!-- 4. Conceptos Básicos: VCO -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-4" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
 
                 <div class="flex flex-col md:flex-row gap-8 lg:gap-12 items-start">
@@ -803,7 +803,7 @@ get_header();
         </section>
 
         <!-- 5. Filters VCF -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-5" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div
                 class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
@@ -884,7 +884,7 @@ get_header();
         </section>
 
         <!-- 6. ADSR -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-6" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div
                 class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
@@ -961,7 +961,7 @@ get_header();
         </section>
 
         <!-- 7. Modulaciones -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-7" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div
                 class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
@@ -1038,7 +1038,7 @@ get_header();
         </section>
 
         <!-- 8. Voltaje -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-8" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div
                 class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
@@ -1165,7 +1165,7 @@ get_header();
         </section>
 
         <!-- 9. Creación Musical -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-9" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3">
                     <span
@@ -1326,7 +1326,7 @@ get_header();
         </section>
 
         <!-- 10. Logic & Quantizers -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-10" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div
                 class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12 relative group">
                 <div
@@ -1551,7 +1551,7 @@ get_header();
         </section>
 
         <!-- 11. Tutoriales Recomendados -->
-        <section class="max-w-7xl mx-auto px-6 mb-[6.25rem]">
+        <section id="seccion-11" class="max-w-7xl mx-auto px-6 mb-[6.25rem] scroll-mt-24">
             <div class="bg-white rounded-[1.75rem] border border-slate-200 dark:border-slate-700/50 shadow-sm overflow-hidden p-8 sm:p-12">
                 <h2 class="mb-8 flex items-center gap-3">
                     <span
@@ -1564,206 +1564,22 @@ get_header();
                     Tutoriales Recomendados (Para Empezar)
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl">
+                    Antes había aquí seis vídeos iguales para todo el mundo. Dime en qué punto estás
+                    y te doy los tuyos, en orden, con el capítulo de esta misma guía que los explica.
+                </p>
 
-                    <!-- Video 1 -->
-                    <div class="space-y-3 group">
-                        <h3
-                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors leading-tight">
-                            Tu Primera Secuencia
-                        </h3>
-                        <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
-                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/MD2Cd_zOnn4?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
-                                    <img src="https://img.youtube.com/vi/MD2Cd_zOnn4/maxresdefault.jpg"
-                                        alt="Tu Primera Secuencia"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video 2 -->
-                    <div class="space-y-3 group">
-                        <h3
-                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors leading-tight">
-                            VCV Rack desde Cero
-                        </h3>
-                        <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
-                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/rhl2ecDW0SY?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
-                                    <img src="https://img.youtube.com/vi/rhl2ecDW0SY/maxresdefault.jpg"
-                                        alt="VCV Rack desde Cero"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video 3 -->
-                    <div class="space-y-3 group">
-                        <h3
-                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors leading-tight">
-                            Guía Completa MixMaster
-                        </h3>
-                        <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
-                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/zsey6XzKDNA?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
-                                    <img src="https://img.youtube.com/vi/zsey6XzKDNA/maxresdefault.jpg"
-                                        alt="Guía Completa MixMaster"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video 4 -->
-                    <div class="space-y-3 group">
-                        <h3
-                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors leading-tight">
-                            Primeros Pasos con Cardinal
-                        </h3>
-                        <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
-                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/tFrtnotI6AU?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
-                                    <img src="https://img.youtube.com/vi/tFrtnotI6AU/maxresdefault.jpg"
-                                        alt="Primeros Pasos con Cardinal"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video 5 -->
-                    <div class="space-y-3 group">
-                        <h3
-                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors leading-tight">
-                            Automatización en el DAW
-                        </h3>
-                        <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
-                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/KJKx-im6D3I?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
-                                    <img src="https://img.youtube.com/vi/KJKx-im6D3I/maxresdefault.jpg"
-                                        alt="Automatización en el DAW"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video 6 -->
-                    <div class="space-y-3 group">
-                        <h3
-                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors leading-tight">
-                            Sintetizador de 3 Osciladores
-                        </h3>
-                        <div
-                            class="rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700/50">
-                            <div class="aspect-video relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/VQBSR6qAL_k?autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
-                                    <img src="https://img.youtube.com/vi/VQBSR6qAL_k/maxresdefault.jpg"
-                                        alt="Sintetizador 3 Osciladores"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Course Playlist -->
-                <div class="mt-12">
-                    <div
-                        class="bg-white rounded-2xl p-8 text-slate-900 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden group">
-                        <!-- Background decoration -->
-                        <div
-                            class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(33,112,245,0.15),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(56,189,248,0.12),transparent_30%),radial-gradient(circle_at_50%_80%,rgba(99,102,241,0.12),transparent_30%)]">
-                        </div>
-
-                        <div
-                            class="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-                            <div class="flex-1">
-                                <h3 class="text-2xl font-bold mb-2 text-slate-900">Curso Completo UZZ Rack</h3>
-                                <p class="text-slate-600 mb-6">Domina el secuenciador definitivo para VCV Rack. Una
-                                    serie de
-                                    tutoriales paso a paso para sacarle todo el partido.</p>
-                                <a href="https://www.youtube.com/playlist?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo"
-                                    target="_blank"
-                                    class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition-colors shadow-lg shadow-primary/30">
-                                    Ver Playlist en YouTube
-                                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div
-                                class="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700/50 group-hover:shadow-xl transition-all relative bg-slate-100 dark:bg-slate-800/40">
-                                <button onclick="playYoutubeVideo(this, 'https://www.youtube.com/embed/videoseries?list=PLEQa2KGITfTsMysD_-YTAgrPIHfKYkBwo&autoplay=1')" class="w-full h-full text-left relative block focus:outline-none">
-                                    <img src="https://img.youtube.com/vi/QPkYPGQTJz8/maxresdefault.jpg"
-                                        alt="Curso UZZ Rack"
-                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                        loading="lazy">
-                                    <span class="absolute inset-0 bg-slate-950/20 transition group-hover:bg-slate-950/10"></span>
-                                    <span class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition group-hover:scale-110">
-                                        <svg class="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                get_template_part(
+                    'template-parts/block-enrutador',
+                    null,
+                    array(
+                        'contexto' => 'lab',
+                        'lab'      => 'vcv',
+                        'nivel'    => 'h3',
+                    )
+                );
+                ?>
 
             </div>
         </section>
@@ -1881,13 +1697,6 @@ get_header();
 
 </main>
 
-
-<script>
-function playYoutubeVideo(button, embedUrl) {
-    const container = button.parentElement;
-    container.innerHTML = `<iframe class="w-full h-full" src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-}
-</script>
 
 <?php
 get_footer();

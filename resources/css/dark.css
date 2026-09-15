@@ -196,25 +196,13 @@
     color: #e2e8f0 !important;
 }
 
-/* Nav mobile dropdown */
-[data-theme="dark"] #primary-navigation {
-    background-color: #020617 !important;
-    border-color: #334155 !important;
-}
-
-/* Nav links */
+/* Nav links (el menú móvil es un overlay aparte, .mobile-nav, que lleva sus
+   propios colores en app.css) */
 [data-theme="dark"] #primary-navigation a {
     color: #e2e8f0 !important;
 }
 [data-theme="dark"] #primary-navigation a:hover {
     color: #2C7FFF !important;
-}
-
-/* Hamburger button */
-[data-theme="dark"] #primary-menu-toggle {
-    background-color: #1e293b !important;
-    border-color: #334155 !important;
-    color: #e2e8f0 !important;
 }
 
 /* === TUTOR LMS === */

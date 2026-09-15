@@ -143,29 +143,86 @@ add_action('after_setup_theme', function () {
     load_theme_textdomain('animatek', get_template_directory() . '/languages');
 });
 
-// Reemplaza el texto del ítem "Cuenta" por un icono accesible en el menú primario.
-add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $args) {
-    if (!isset($args->theme_location) || $args->theme_location !== 'primary') {
-        return $item_output;
+/**
+ * Ítems del menú primario que se pintan como iconos a la derecha del header en
+ * vez de dentro del <ul>: cuenta y contacto. La URL sigue saliendo del menú de
+ * WordPress, así que se cambia desde Apariencia → Menús como cualquier otra.
+ *
+ * @return array{cuenta: ?string, contacto: ?string}
+ */
+function animatek_header_action_items(): array {
+    static $cache = null;
+
+    if ( is_array( $cache ) ) {
+        return $cache;
     }
 
-    $title = isset($item->title) ? trim(strtolower($item->title)) : '';
-    if ($title !== 'cuenta') {
-        return $item_output;
+    $cache = [ 'cuenta' => null, 'contacto' => null ];
+
+    $locations = get_nav_menu_locations();
+    $items     = empty( $locations['primary'] ) ? [] : wp_get_nav_menu_items( $locations['primary'] );
+
+    foreach ( $items ?: [] as $item ) {
+        $key = strtolower( trim( (string) $item->title ) );
+
+        if ( array_key_exists( $key, $cache ) && null === $cache[ $key ] ) {
+            $cache[ $key ] = $item->url;
+        }
     }
 
-    $icon = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'
-        . '<circle cx="12" cy="8" r="4" stroke-linecap="round" stroke-linejoin="round" />'
-        . '<path d="M5 20c1-3 4-5 7-5s6 2 7 5" stroke-linecap="round" stroke-linejoin="round" />'
-        . '</svg>';
+    // El icono de cuenta es el que hace que el header se lea de un vistazo, así
+    // que no puede depender de que exista un ítem llamado "Cuenta" en el menú.
+    if ( null === $cache['cuenta'] ) {
+        $cache['cuenta'] = animatek_account_url();
+    }
 
-    return preg_replace(
-        '/>([^<]*)<\/a>/',
-        '>' . $icon . '<span class="sr-only">Cuenta</span></a>',
-        $item_output,
-        1
-    );
-}, 10, 4);
+    return $cache;
+}
+
+/**
+ * A dónde lleva el icono de cuenta cuando el menú no trae ítem propio:
+ * el escritorio de Tutor, la página /escritorio/ o, en último caso, el login.
+ */
+function animatek_account_url(): string {
+    if ( function_exists( 'tutor_utils' ) ) {
+        $dashboard = tutor_utils()->tutor_dashboard_url();
+
+        if ( $dashboard ) {
+            return $dashboard;
+        }
+    }
+
+    $escritorio = get_page_by_path( 'escritorio' );
+
+    if ( $escritorio ) {
+        return (string) get_permalink( $escritorio );
+    }
+
+    return wp_login_url();
+}
+
+/**
+ * Inicial para el avatar del header. Sin Gravatar: no queremos una petición
+ * externa ni filtrar el correo del usuario en cada carga de página.
+ */
+function animatek_user_initial( WP_User $user ): string {
+    $name = trim( $user->display_name ) !== '' ? $user->display_name : $user->user_login;
+
+    return strtoupper( mb_substr( $name, 0, 1 ) );
+}
+
+// Cuenta y contacto no se pintan en la lista: header.php los saca al grupo de acciones.
+add_filter( 'wp_nav_menu_objects', function ( $items, $args ) {
+    if ( ! isset( $args->theme_location ) || 'primary' !== $args->theme_location ) {
+        return $items;
+    }
+
+    $fuera = [ 'cuenta', 'contacto' ];
+
+    return array_values( array_filter( $items, static function ( $item ) use ( $fuera ) {
+        return ! in_array( strtolower( trim( (string) $item->title ) ), $fuera, true );
+    } ) );
+}, 10, 2 );
 
 
 function animatek_current_request_path(): string {
