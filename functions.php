@@ -281,7 +281,9 @@ add_action( 'template_redirect', 'animatek_render_virtual_nme_pages', 1 );
 
 /** La landing funciona sin crear una entrada en la base de datos de WordPress. */
 function animatek_render_virtual_g1_emu_page(): void {
-    if ( is_admin() || wp_doing_ajax() || 'g1-emu' !== animatek_current_request_path() ) {
+    $locales = [ 'g1-emu' => 'es', 'g1-emu-eng' => 'en' ];
+    $request_path = animatek_current_request_path();
+    if ( is_admin() || wp_doing_ajax() || ! isset( $locales[ $request_path ] ) ) {
         return;
     }
 
@@ -294,11 +296,21 @@ function animatek_render_virtual_g1_emu_page(): void {
     status_header( 200 );
     get_header();
     require_once get_theme_file_path( 'inc/animatek-g1-emu-template.php' );
-    animatek_g1_emu_render_page();
+    animatek_g1_emu_render_page( $locales[ $request_path ] );
     get_footer();
     exit;
 }
 add_action( 'template_redirect', 'animatek_render_virtual_g1_emu_page', 1 );
+
+add_filter( 'language_attributes', function ( $output ) {
+    $locales = [ 'g1-emu' => 'es', 'g1-emu-eng' => 'en' ];
+    $path = animatek_current_request_path();
+    if ( ! is_admin() && isset( $locales[ $path ] ) ) {
+        $output = preg_replace( '/(?<![\w-])lang="[^"]*"/', 'lang="' . $locales[ $path ] . '"', $output );
+    }
+    return $output;
+}, 21 );
+
 
 
 /**
@@ -473,12 +485,38 @@ function animatek_software_seo_context(): ?array {
             'lang'        => 'es',
             'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
             'type'        => 'product',
+            'alternates'  => [
+                'es'        => home_url( '/g1-emu/' ),
+                'en'        => home_url( '/g1-emu-eng/' ),
+                'x-default' => home_url( '/g1-emu/' ),
+            ],
             'schema_type' => 'SoftwareApplication',
             'app'         => [
                 'name' => 'G1-Emu',
                 'category' => 'MusicApplication',
                 'operatingSystem' => 'Windows, macOS, Linux',
                 'url' => home_url( '/g1-emu/' ),
+            ],
+        ],
+        'g1-emu-eng' => [
+            'title'       => 'G1-Emu - Nord Modular G1 Emulator',
+            'description' => 'Open-source Nord Modular G1 emulator for Linux, macOS and Windows. Connect Animatek NME, load patches and play. Pre-alpha; requires your own ROM.',
+            'canonical'   => home_url( '/g1-emu-eng/' ),
+            'locale'      => 'en_US',
+            'lang'        => 'en',
+            'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
+            'type'        => 'product',
+            'alternates'  => [
+                'es'        => home_url( '/g1-emu/' ),
+                'en'        => home_url( '/g1-emu-eng/' ),
+                'x-default' => home_url( '/g1-emu/' ),
+            ],
+            'schema_type' => 'SoftwareApplication',
+            'app'         => [
+                'name' => 'G1-Emu',
+                'category' => 'MusicApplication',
+                'operatingSystem' => 'Windows, macOS, Linux',
+                'url' => home_url( '/g1-emu-eng/' ),
             ],
         ],
         'animatek-nme' => [
@@ -1071,6 +1109,7 @@ function animatek_software_sitemap_urls(): array {
         home_url( '/software/' ),
         home_url( '/software-eng/' ),
         home_url( '/g1-emu/' ),
+        home_url( '/g1-emu-eng/' ),
         home_url( '/animatek-nme/' ),
         home_url( '/animatek-nme-eng/' ),
         home_url( '/animatek-nme/manual/' ),

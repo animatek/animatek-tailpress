@@ -196,7 +196,7 @@ function animatek_vcv_modules_nav( string $current_slug, string $locale = 'es' )
     $families = [
         'g1' => [
             'label' => 'G1-Emu',
-            'url'   => '/g1-emu/',
+            'url'   => '/g1-emu' . $suffix . '/',
             'slugs' => [ 'g1-emu' ],
         ],
         'nme' => [

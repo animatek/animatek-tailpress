@@ -90,12 +90,12 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
 
     $hero_cards = [
         [
-            'url'         => home_url( '/g1-emu/' ),
+            'url'         => home_url( '/g1-emu' . $suffix . '/' ),
             'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
             'alt'         => $is_en ? 'G1-Emu synthesizer panel' : 'Panel del sintetizador G1-Emu',
             'title'       => 'G1-Emu',
             'meta'        => 'Pre-alpha · Open Source',
-            'text'        => $is_en ? 'Nord Modular G1 emulator for Linux, macOS and Windows. Requires your own ROM. Discover G1-Emu (Spanish).' : 'El Nord Modular G1 emulado en Linux, macOS y Windows. Conecta tu editor y carga tus patches. Requiere ROM propia.',
+            'text'        => $is_en ? 'Nord Modular G1 emulator for Linux, macOS and Windows. Connect your editor and load your patches. Requires your own ROM.' : 'El Nord Modular G1 emulado en Linux, macOS y Windows. Conecta tu editor y carga tus patches. Requiere ROM propia.',
             'badge_class' => 'border-slate-300 bg-white text-slate-600',
         ],
         [

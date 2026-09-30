@@ -4,6 +4,16 @@ All notable changes to TailPress will be documented in this file.
 
 ## [Unreleased]
 
+## [5.7.2] - 2026-09-30
+
+### Añadido — Codex
+- Página inglesa `/g1-emu-eng/` con traducción completa de la landing y
+  selector ES/EN. Plantilla compartida y botón de apoyo en Patreon en ambos idiomas.
+- Software EN y navegación enlazan a G1-Emu y NME en inglés. Metadatos por idioma,
+  canonical, hreflang, atributo HTML lang y ruta inglesa en el sitemap.
+- Verificado: build Vite, sintaxis PHP, HTTP 200 en ambas rutas, idiomas y
+  metadatos, enlaces del selector, sitemap y revisión visual de la página inglesa.
+
 ## [5.7.1] - 2026-09-30
 
 ### Cambiado — Codex
