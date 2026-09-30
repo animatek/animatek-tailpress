@@ -4,6 +4,7 @@ function animatek_g1_emu_render_page(): void {
     require_once get_theme_file_path( 'inc/animatek-vcv-module-template.php' );
 
     $github = 'https://github.com/animatek/G1-Emu';
+    $patreon_url = 'https://www.patreon.com/c/animatek';
     $button = 'inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-extrabold transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary';
     $card   = 'rounded-lg border border-zinc-300 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900';
     $features = [
@@ -33,6 +34,7 @@ function animatek_g1_emu_render_page(): void {
                         </div>
                         <p class="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-zinc-300">El sintetizador modular en tu ordenador: su sistema operativo original, un panel interactivo y tus patches .pch. Edita desde Animatek NME y toca en Linux, macOS o Windows.</p>
                         <div class="flex flex-wrap gap-3">
+                            <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button ); ?> bg-[#FF424D] text-white shadow-lg hover:bg-[#e63844] focus-visible:outline-[#FF424D]">Apoyar en Patreon</a>
                             <a href="<?php echo esc_url( $github . '/releases' ); ?>" class="<?php echo esc_attr( $button ); ?> bg-primary text-white hover:bg-primary/90">Descargar en GitHub</a>
                             <a href="<?php echo esc_url( $github ); ?>" class="<?php echo esc_attr( $button ); ?> border border-slate-300 bg-white text-slate-900 hover:bg-slate-100">Ver repositorio</a>
                         </div>

@@ -194,6 +194,16 @@ function animatek_vcv_modules_nav( string $current_slug, string $locale = 'es' )
     ];
 
     $families = [
+        'g1' => [
+            'label' => 'G1-Emu',
+            'url'   => '/g1-emu/',
+            'slugs' => [ 'g1-emu' ],
+        ],
+        'nme' => [
+            'label' => 'Animatek NME',
+            'url'   => '/animatek-nme' . $suffix . '/',
+            'slugs' => [ 'animatek-nme' ],
+        ],
         'vcv' => [
             'label' => 'VCV Rack',
             'url'   => '/software' . $suffix . '/#vcv-rack',
@@ -204,17 +214,6 @@ function animatek_vcv_modules_nav( string $current_slug, string $locale = 'es' )
             'url'   => '/ultimate-ztep-zequencer' . $suffix . '/',
             'slugs' => [ 'ultimate-ztep-zequencer' ],
         ],
-        'nme' => [
-            'label' => 'Animatek NME',
-            'url'   => '/animatek-nme' . $suffix . '/',
-            'slugs' => [ 'animatek-nme' ],
-        ],
-    ];
-
-    $families['g1'] = [
-        'label' => 'G1-Emu',
-        'url'   => '/g1-emu/',
-        'slugs' => [ 'g1-emu' ],
     ];
 
     $current_family = '';

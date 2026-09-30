@@ -4,6 +4,16 @@ All notable changes to TailPress will be documented in this file.
 
 ## [Unreleased]
 
+## [5.7.1] - 2026-09-30
+
+### Cambiado — Codex
+- Software (ES/EN) y navegación compartida: orden G1-Emu, Animatek NME,
+  VCV Rack y Max for Live.
+- Botón «Apoyar en Patreon» en la cabecera de G1-Emu, con el enlace y estilo
+  rojo de NME; conserva los accesos a descargas y repositorio.
+- Verificación: compilación Vite, sintaxis PHP de las tres plantillas,
+  orden de tarjetas y destino del botón comprobados en WordPress local.
+
 ## [5.7.0] - 2026-09-30
 
 ### Añadido — Codex

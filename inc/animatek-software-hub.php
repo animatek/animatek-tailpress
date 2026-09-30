@@ -90,6 +90,24 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
 
     $hero_cards = [
         [
+            'url'         => home_url( '/g1-emu/' ),
+            'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
+            'alt'         => $is_en ? 'G1-Emu synthesizer panel' : 'Panel del sintetizador G1-Emu',
+            'title'       => 'G1-Emu',
+            'meta'        => 'Pre-alpha · Open Source',
+            'text'        => $is_en ? 'Nord Modular G1 emulator for Linux, macOS and Windows. Requires your own ROM. Discover G1-Emu (Spanish).' : 'El Nord Modular G1 emulado en Linux, macOS y Windows. Conecta tu editor y carga tus patches. Requiere ROM propia.',
+            'badge_class' => 'border-slate-300 bg-white text-slate-600',
+        ],
+        [
+            'url'         => home_url( '/animatek-nme' . $suffix . '/' ),
+            'image'       => $nme_image,
+            'alt'         => $copy['nme_alt'],
+            'title'       => $copy['card_nme_title'],
+            'meta'        => $copy['card_nme_meta'],
+            'text'        => $copy['card_nme_text'],
+            'badge_class' => 'border-slate-300 bg-white text-slate-600',
+        ],
+        [
             'url'         => '#vcv-rack',
             'image'       => $vcv_image,
             'alt'         => 'Módulos Animatek para VCV Rack',
@@ -107,25 +125,6 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
             'text'        => $copy['card_max_text'],
             'badge_class' => 'border-slate-300 bg-white text-slate-600',
         ],
-        [
-            'url'         => home_url( '/animatek-nme' . $suffix . '/' ),
-            'image'       => $nme_image,
-            'alt'         => $copy['nme_alt'],
-            'title'       => $copy['card_nme_title'],
-            'meta'        => $copy['card_nme_meta'],
-            'text'        => $copy['card_nme_text'],
-            'badge_class' => 'border-slate-300 bg-white text-slate-600',
-        ],
-    ];
-
-    $hero_cards[] = [
-        'url'         => home_url( '/g1-emu/' ),
-        'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
-        'alt'         => $is_en ? 'G1-Emu synthesizer panel' : 'Panel del sintetizador G1-Emu',
-        'title'       => 'G1-Emu',
-        'meta'        => 'Pre-alpha · Open Source',
-        'text'        => $is_en ? 'Nord Modular G1 emulator for Linux, macOS and Windows. Requires your own ROM. Discover G1-Emu (Spanish).' : 'El Nord Modular G1 emulado en Linux, macOS y Windows. Conecta tu editor y carga tus patches. Requiere ROM propia.',
-        'badge_class' => 'border-slate-300 bg-white text-slate-600',
     ];
 
     $pill_neutral = 'inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-black uppercase tracking-widest text-slate-600 dark:border-slate-600 dark:text-slate-300';
