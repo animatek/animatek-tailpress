@@ -23,7 +23,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'lang_label'     => 'ES',
         'lang_url'       => home_url( '/software/' ),
         'title'          => 'Software',
-        'intro'          => 'Sequencers, modules and editors made by Animatek, for VCV Rack, Ableton Live and the Clavia Nord Modular G1.',
+        'intro'          => 'Sequencers, modules, editors and emulators made by Animatek, for VCV Rack, Ableton Live and the Clavia Nord Modular G1.',
         'card_vcv_title' => 'VCV Rack',
         'card_vcv_meta'  => $module_count . ' modules · Free',
         'card_vcv_text'  => 'Open-source modules in the VCV Library: sequencers, MIDI-to-CV bridges and utilities.',
@@ -57,7 +57,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'lang_label'     => 'EN',
         'lang_url'       => home_url( '/software-eng/' ),
         'title'          => 'Software',
-        'intro'          => 'Secuenciadores, módulos y editores creados por Animatek, para VCV Rack, Ableton Live y el Clavia Nord Modular G1.',
+        'intro'          => 'Secuenciadores, módulos, editores y emuladores creados por Animatek, para VCV Rack, Ableton Live y el Clavia Nord Modular G1.',
         'card_vcv_title' => 'VCV Rack',
         'card_vcv_meta'  => $module_count . ' módulos · Gratis',
         'card_vcv_text'  => 'Módulos open-source en la VCV Library: secuenciadores, puentes MIDI-to-CV y utilidades.',
@@ -118,6 +118,16 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         ],
     ];
 
+    $hero_cards[] = [
+        'url'         => home_url( '/g1-emu/' ),
+        'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
+        'alt'         => $is_en ? 'G1-Emu synthesizer panel' : 'Panel del sintetizador G1-Emu',
+        'title'       => 'G1-Emu',
+        'meta'        => 'Pre-alpha · Open Source',
+        'text'        => $is_en ? 'Nord Modular G1 emulator for Linux, macOS and Windows. Requires your own ROM. Discover G1-Emu (Spanish).' : 'El Nord Modular G1 emulado en Linux, macOS y Windows. Conecta tu editor y carga tus patches. Requiere ROM propia.',
+        'badge_class' => 'border-slate-300 bg-white text-slate-600',
+    ];
+
     $pill_neutral = 'inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-black uppercase tracking-widest text-slate-600 dark:border-slate-600 dark:text-slate-300';
     ?>
     <main id="primary" class="bg-slate-100 text-slate-900">
@@ -148,7 +158,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
                     </a>
                 </div>
 
-                <div class="grid gap-4 sm:grid-cols-3">
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     <?php foreach ( $hero_cards as $card ) : ?>
                         <a href="<?php echo esc_url( $card['url'] ); ?>" class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg">
                             <div class="relative h-32 overflow-hidden bg-slate-950 sm:h-36">

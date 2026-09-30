@@ -211,6 +211,12 @@ function animatek_vcv_modules_nav( string $current_slug, string $locale = 'es' )
         ],
     ];
 
+    $families['g1'] = [
+        'label' => 'G1-Emu',
+        'url'   => '/g1-emu/',
+        'slugs' => [ 'g1-emu' ],
+    ];
+
     $current_family = '';
     foreach ( $families as $key => $family ) {
         if ( in_array( $current, $family['slugs'], true ) ) {

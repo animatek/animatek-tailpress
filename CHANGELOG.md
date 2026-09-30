@@ -4,6 +4,20 @@ All notable changes to TailPress will be documented in this file.
 
 ## [Unreleased]
 
+## [5.7.0] - 2026-09-30
+
+### Añadido — Codex
+- Nueva landing `/g1-emu/`, con el estilo de NME,
+  captura del panel, funciones, requisitos de ROM, primeros pasos, estado pre-alpha
+  y enlaces al repositorio, descargas, documentación y colaboración en GitHub.
+- Acceso desde Software (ES/EN) y la navegación compartida. Ruta virtual sin alta
+  en WordPress, plantilla seleccionable, SEO y sitemap. Captura incluida en `images/`
+  para que forme parte del ZIP del tema (`resources/` se excluye de los releases).
+- Verificación: build Vite, sintaxis PHP de los cinco archivos afectados, HTTP 200,
+  metadatos y JSON-LD, captura cargada y revisión visual de escritorio y móvil.
+- Distribución mediante el release del tema; la instalación en producción se realiza
+  desde las actualizaciones de WordPress.
+
 ## [5.6.0] - 2026-09-15
 
 ### Added

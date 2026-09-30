@@ -279,6 +279,28 @@ function animatek_render_virtual_nme_pages(): void {
 }
 add_action( 'template_redirect', 'animatek_render_virtual_nme_pages', 1 );
 
+/** La landing funciona sin crear una entrada en la base de datos de WordPress. */
+function animatek_render_virtual_g1_emu_page(): void {
+    if ( is_admin() || wp_doing_ajax() || 'g1-emu' !== animatek_current_request_path() ) {
+        return;
+    }
+
+    global $wp_query;
+    if ( $wp_query instanceof WP_Query ) {
+        $wp_query->is_404  = false;
+        $wp_query->is_page = true;
+    }
+
+    status_header( 200 );
+    get_header();
+    require_once get_theme_file_path( 'inc/animatek-g1-emu-template.php' );
+    animatek_g1_emu_render_page();
+    get_footer();
+    exit;
+}
+add_action( 'template_redirect', 'animatek_render_virtual_g1_emu_page', 1 );
+
+
 /**
  * Página virtual del manual de Animatek NME, colgando de la landing.
  * El contenido se genera desde manual/*.md del repositorio del editor.
@@ -442,6 +464,22 @@ function animatek_software_seo_context(): ?array {
                 'x-default' => home_url( '/sample-packs/' ),
             ],
             'schema_type' => 'CollectionPage',
+        ],
+        'g1-emu' => [
+            'title'       => 'G1-Emu - Emulador del Nord Modular G1',
+            'description' => 'Emulador de código abierto del Nord Modular G1 para Linux, macOS y Windows. Conecta Animatek NME, carga tus patches y toca. Pre-alpha; requiere ROM propia.',
+            'canonical'   => home_url( '/g1-emu/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
+            'type'        => 'product',
+            'schema_type' => 'SoftwareApplication',
+            'app'         => [
+                'name' => 'G1-Emu',
+                'category' => 'MusicApplication',
+                'operatingSystem' => 'Windows, macOS, Linux',
+                'url' => home_url( '/g1-emu/' ),
+            ],
         ],
         'animatek-nme' => [
             'title'       => 'Animatek NME - Editor moderno para Nord Modular G1',
@@ -1032,6 +1070,7 @@ function animatek_software_sitemap_urls(): array {
     return [
         home_url( '/software/' ),
         home_url( '/software-eng/' ),
+        home_url( '/g1-emu/' ),
         home_url( '/animatek-nme/' ),
         home_url( '/animatek-nme-eng/' ),
         home_url( '/animatek-nme/manual/' ),
@@ -1060,6 +1099,7 @@ function animatek_render_software_sitemap(): void {
         __FILE__,
         get_theme_file_path( 'inc/animatek-software-hub.php' ),
         get_theme_file_path( 'inc/animatek-nme-template.php' ),
+        get_theme_file_path( 'inc/animatek-g1-emu-template.php' ),
         get_theme_file_path( 'inc/animatek-vcv-module-template.php' ),
     ];
     $lastmod = 0;
