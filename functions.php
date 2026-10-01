@@ -910,6 +910,8 @@ function animatek_rank_math_apply_seo_context(): void {
         'twitter/twitter_title'       => 'title',
         'twitter/twitter_description' => 'description',
         'twitter/twitter_image'       => 'image',
+        // Sin esto las páginas -eng salían como og:locale es_ES (la del sitio).
+        'facebook/og_locale'          => 'locale',
     ];
 
     foreach ( $social_tags as $filter => $key ) {
@@ -937,6 +939,28 @@ function animatek_rank_math_apply_seo_context(): void {
     }
 }
 add_action( 'wp', 'animatek_rank_math_apply_seo_context' );
+
+/**
+ * El idioma del schema de Rank Math. Marca todo el sitio como «es», y en las
+ * páginas -eng el WebPage salía con inLanguage "es" mientras el nuestro decía
+ * "en": dos datos contradictorios en la misma página.
+ */
+add_filter(
+    'rank_math/json_ld',
+    static function ( $data ) {
+        $context = function_exists( 'animatek_software_seo_context' ) ? animatek_software_seo_context() : null;
+        if ( ! $context || empty( $context['lang'] ) || ! is_array( $data ) ) {
+            return $data;
+        }
+        foreach ( $data as $key => $entity ) {
+            if ( is_array( $entity ) && 'WebPage' === ( $entity['@type'] ?? '' ) ) {
+                $data[ $key ]['inLanguage'] = $context['lang'];
+            }
+        }
+        return $data;
+    },
+    99
+);
 
 function animatek_software_schema_graph( array $context ): array {
     $organization = [

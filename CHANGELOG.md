@@ -4,6 +4,22 @@ All notable changes to TailPress will be documented in this file.
 
 ## [Unreleased]
 
+## [5.7.3] - 2026-10-01
+
+### Cambiado — Claude
+- **Taller online** (`/taller-sintetizador-modular/`): deja de ser el taller de VCV Rack
+  del 27 y 29 de octubre (25 €, nadie apuntado) y pasa a ser un taller de Bitwig, desde
+  el 15 de noviembre, muestra en directo del curso «Bitwig desde dentro». Mientras no
+  haya horario ni precio no vende: lista de espera con el formulario de Brevo de la lista
+  de Bitwig (`template-parts/brevo-form-bitwig.php`, el mismo de la página del curso). El
+  slug no cambia porque lo enlazan quince vídeos.
+- **G1-Emu**: sección «Así suena» con el Sound Demo 01 (`youtube-nocookie`) y mención del
+  VST3 en beta, que por ahora hay que compilar.
+
+### Corregido — Claude
+- Las páginas `-eng` (G1-Emu, NME, Software) salían con `og:locale` `es_ES` y el WebPage
+  del schema de Rank Math con `inLanguage` `es`. Ahora toman el idioma del contexto SEO.
+
 ## [5.7.2] - 2026-09-30
 
 ### Añadido — Codex

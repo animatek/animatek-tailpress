@@ -21,6 +21,9 @@ function animatek_g1_emu_render_page( string $locale = 'es' ): void {
         'caption' => 'The emulator’s panel. Modules and cables are edited in an external editor.',
         'features_title' => 'A G1 on the other end of the PC Port.',
         'intro' => 'G1-Emu is the instrument; NME is the editor. Add modules, connect cables and send the patch to the emulator just as you would with the hardware. Other editors that speak the G1 protocol work too.',
+        'listen_title' => 'How it sounds',
+        'listen_text' => 'Sound Demo 01: G1-Emu alpha 10 playing a dozen and a half patches from start to finish, no talking. Pads, an organ, drones, sequencers and a four-slot patch with morphs, all loaded from Animatek NME.',
+        'video_title' => 'Nord Modular G1 emulated (G1-Emu alpha 10) · Sound Demo 01',
         'start_title' => 'From first launch to first sound',
         'nme' => 'Discover Animatek NME',
         'docs' => 'Documentation',
@@ -48,6 +51,9 @@ function animatek_g1_emu_render_page( string $locale = 'es' ): void {
         'caption' => 'El panel del emulador. La edición de módulos y cables se realiza desde un editor externo.',
         'features_title' => 'Un G1 al otro lado del PC Port.',
         'intro' => 'G1-Emu hace de instrumento; NME hace de editor. Crea módulos, conecta cables y envía el patch al emulador como lo harías con el sintetizador físico. También admite otros editores que hablen el protocolo del G1.',
+        'listen_title' => 'Así suena',
+        'listen_text' => 'Sound Demo 01: G1-Emu alpha 10 tocando una quincena de patches de principio a fin, sin hablar. Pads, un órgano, drones, secuenciadores y un patch de cuatro slots con morphs, todos cargados desde Animatek NME.',
+        'video_title' => 'Nord Modular G1 emulado (G1-Emu alpha 10) · Sound Demo 01',
         'start_title' => 'Del primer arranque al primer sonido',
         'nme' => 'Descubrir Animatek NME',
         'docs' => 'Documentación',
@@ -68,12 +74,12 @@ function animatek_g1_emu_render_page( string $locale = 'es' ): void {
         'The original OS on emulated hardware' => 'The Nord Modular G1 rack OS 3.03 runs on an emulated Motorola 68331 and four emulated DSP56303s. The engine is built on Gearmulator.',
         'A hands-on panel' => 'A display, 18 knobs, master volume, buttons and LEDs in a dedicated window. Settings brings together ROM selection, the audio device and output level.',
         'Bring your patches to life' => 'Oscillators, filters, envelopes, clocks and effects such as chorus and overdrive already run in real time. Saved patches stay in flash memory between sessions.',
-        'Audio and MIDI for your studio' => 'PC Port connects to the editor; MIDI carries notes and controllers. On Linux, JACK provides four outputs and two inputs; without JACK, ALSA provides outputs 1/2.',
+        'Audio and MIDI for your studio' => 'PC Port connects to the editor; MIDI carries notes and controllers. On Linux, JACK provides four outputs and two inputs; without JACK, ALSA provides outputs 1/2. A VST3 is in beta, for now built from source, to play it inside your DAW.',
     ] : [
         'El sistema original, en hardware emulado' => 'El OS 3.03 del Nord Modular G1 rack se ejecuta sobre un Motorola 68331 y cuatro DSP56303 emulados. El motor se apoya en Gearmulator.',
         'Un panel que puedes tocar' => 'Pantalla, 18 controles giratorios, volumen general, botones y LEDs en una ventana propia. Settings reúne la selección de ROM, el dispositivo de audio y el nivel de salida.',
         'Patches que vuelven a sonar' => 'Osciladores, filtros, envolventes, relojes y efectos como chorus y overdrive ya funcionan en tiempo real. Los patches guardados se conservan en la memoria flash entre sesiones.',
-        'Audio y MIDI para tu estudio' => 'PC Port para comunicarte con el editor y MIDI para notas y controladores. En Linux, JACK ofrece cuatro salidas y dos entradas; sin JACK, ALSA permite usar las salidas 1/2.',
+        'Audio y MIDI para tu estudio' => 'PC Port para comunicarte con el editor y MIDI para notas y controladores. En Linux, JACK ofrece cuatro salidas y dos entradas; sin JACK, ALSA permite usar las salidas 1/2. Hay un VST3 en beta, por ahora compilándolo desde el código, para tocarlo dentro de tu DAW.',
     ];
     $steps = $is_en ? [
         'Download your build' => 'GitHub Releases has builds and release notes for Linux, macOS and Windows. These are unsigned pre-release versions.',
@@ -132,6 +138,14 @@ function animatek_g1_emu_render_page( string $locale = 'es' ): void {
                         <p class="leading-relaxed text-zinc-700 dark:text-zinc-300"><?php echo esc_html( $text ); ?></p>
                     </article>
                 <?php endforeach; ?>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-5xl px-6 pb-16 sm:px-10" aria-labelledby="g1-listen">
+            <h2 id="g1-listen" class="text-3xl font-black sm:text-4xl"><?php echo esc_html( $copy['listen_title'] ); ?></h2>
+            <p class="mt-4 max-w-3xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300"><?php echo esc_html( $copy['listen_text'] ); ?></p>
+            <div class="mt-8 overflow-hidden rounded-lg border border-zinc-300 bg-black shadow-xl dark:border-zinc-700" style="position:relative;padding-top:56.25%;">
+                <iframe src="https://www.youtube-nocookie.com/embed/3Pyff1PP19w" title="<?php echo esc_attr( $copy['video_title'] ); ?>" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </section>
 
