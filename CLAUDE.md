@@ -90,7 +90,14 @@ gh release create vX.Y.Z --title "vX.Y.Z" --notes "…"
 # 3. esperar al workflow
 # 4. WordPress -> Escritorio -> Actualizaciones -> Comprobar de nuevo -> Actualizar
 # 5. purgar LiteSpeed
+# 6. purgar Cloudflare (APO): cachea el HTML aparte de LiteSpeed
 ```
+
+**Cloudflare guarda su propia copia del HTML** (APO, `cf-cache-status: HIT`). Purgar solo
+LiteSpeed no basta: el 2026-10-01 `/software/` llevaba **16 días** (`age: 1370581`) sirviendo
+la versión sin la tarjeta de G1-Emu, aunque el tema estaba al día. Comprobarlo con
+`curl -sI https://animatek.net/<ruta>/ | grep -i 'cf-cache-status\|^age'` y, si sale `HIT` con
+una edad grande, purgar en Cloudflare (o desde su plugin en WordPress).
 
 **El zip no se sube a mano.** `style.css` lleva las cabeceras de Git Updater
 (`GitHub Theme URI: animatek/animatek-tailpress`, `Primary Branch: main`,
