@@ -113,10 +113,14 @@ if (empty($args['form_action'])) {
                         <?php foreach ($args['extra_hidden'] as $name => $value): ?>
                         <input type="hidden" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value); ?>">
                         <?php endforeach; ?>
+                        <?php // De qué vídeo de YouTube viene; lo rellena origen-video.php ?>
+                        <input type="hidden" name="ORIGEN_VIDEO" value="">
                     </form>
                 </div>
             </div>
         </div>
+
+        <?php get_template_part('template-parts/origen-video'); ?>
 
         <p class="text-xs text-slate-400 mt-2">*Si el formulario no carga, prueba a desactivar tu adblocker.</p>
     </div>
