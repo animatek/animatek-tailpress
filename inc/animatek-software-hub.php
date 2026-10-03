@@ -18,6 +18,11 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
     $modules      = animatek_vcv_modules_data();
     $module_count = count( $modules );
 
+    // Orden de las tarjetas: secuenciadores y voz primero, la cadena de audio después,
+    // los puentes MIDI y el panel ciego al final. Lo que no esté aquí va detrás.
+    $order   = [ 'uzz-vcv', 'unit-d', 'atek303-seq', 'atek303', 'cap', 'bus', 'adsrtek', 'filtertek', 'oxi-cv', 'multi', 'apc40-ctrl', 'blank-3' ];
+    $modules = array_merge( array_intersect_key( array_flip( $order ), $modules ), $modules );
+
     $copy = $is_en ? [
         'kicker'         => 'ANIMATEK · SOFTWARE',
         'lang_label'     => 'ES',
@@ -26,7 +31,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'intro'          => 'Sequencers, modules, editors and emulators made by Animatek, for VCV Rack, Ableton Live and the Clavia Nord Modular G1.',
         'card_vcv_title' => 'VCV Rack',
         'card_vcv_meta'  => $module_count . ' modules · Free',
-        'card_vcv_text'  => 'Open-source modules in the VCV Library: sequencers, MIDI-to-CV bridges and utilities.',
+        'card_vcv_text'  => 'Open-source modules in the VCV Library: sequencers, an acid voice, envelopes, filters, a mixer and MIDI-to-CV bridges.',
         'card_max_title' => 'UZZ · Max for Live',
         'card_max_meta'  => '10€ · Ableton Live',
         'card_max_text'  => '16-step sequencer with a modulation matrix to control any Live parameter.',
@@ -37,6 +42,8 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'vcv_badge'      => 'Free · Open Source',
         'vcv_text'       => 'Available in the VCV Library for Rack Free and Pro, on Windows, macOS and Linux. Source code on GitHub.',
         'vcv_cta'        => 'View module',
+        'vcv_manual'     => 'Read the manual',
+        'vcv_manual_short' => 'Manual',
         'vcv_library'    => 'VCV Library',
         'vcv_collection' => 'Animatek collection in the VCV Library',
         'max_title'      => 'UZZ · Max for Live',
@@ -60,7 +67,7 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'intro'          => 'Secuenciadores, módulos, editores y emuladores creados por Animatek, para VCV Rack, Ableton Live y el Clavia Nord Modular G1.',
         'card_vcv_title' => 'VCV Rack',
         'card_vcv_meta'  => $module_count . ' módulos · Gratis',
-        'card_vcv_text'  => 'Módulos open-source en la VCV Library: secuenciadores, puentes MIDI-to-CV y utilidades.',
+        'card_vcv_text'  => 'Módulos open-source en la VCV Library: secuenciadores, una voz acid, envolventes, filtros, un mezclador y puentes MIDI-to-CV.',
         'card_max_title' => 'UZZ · Max for Live',
         'card_max_meta'  => '10€ · Ableton Live',
         'card_max_text'  => 'Secuenciador de 16 pasos con matriz de modulación para controlar cualquier parámetro de Live.',
@@ -71,6 +78,8 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'vcv_badge'      => 'Gratis · Open Source',
         'vcv_text'       => 'Disponibles en la VCV Library para Rack Free y Pro, en Windows, macOS y Linux. Código fuente en GitHub.',
         'vcv_cta'        => 'Ver módulo',
+        'vcv_manual'     => 'Leer el manual',
+        'vcv_manual_short' => 'Manual',
         'vcv_library'    => 'VCV Library',
         'vcv_collection' => 'Colección Animatek en la VCV Library',
         'max_title'      => 'UZZ · Max for Live',
@@ -246,27 +255,36 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
                 <?php foreach ( $modules as $slug => $module ) : ?>
                     <?php
                     // page-multi.php solo existe en español; el resto tiene versión -eng.
+                    // Los módulos sin página propia ('page' => false) enlazan a su manual.
+                    $has_page      = ! ( isset( $module['page'] ) && false === $module['page'] );
                     $module_suffix = ( 'multi' === $slug ) ? '' : $suffix;
-                    $page_url      = home_url( rtrim( $module['slug'], '/' ) . $module_suffix . '/' );
+                    $page_url      = $has_page ? home_url( rtrim( $module['slug'], '/' ) . $module_suffix . '/' ) : animatek_vcv_module_url( $module, $is_en );
+                    $manual_url    = ( ! $is_en && ! empty( $module['manual_url_es'] ) ) ? $module['manual_url_es'] : $module['manual_url'];
+                    $link_attrs    = $has_page ? '' : ' target="_blank" rel="noopener noreferrer"';
                     $en_copy       = $is_en ? animatek_vcv_module_en_copy( $slug ) : [];
                     $intro         = ! empty( $en_copy['intro'] ) ? $en_copy['intro'] : $module['intro'];
                     ?>
                     <article class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                        <a href="<?php echo esc_url( $page_url ); ?>" class="block bg-slate-950">
+                        <a href="<?php echo esc_url( $page_url ); ?>"<?php echo $link_attrs; ?> class="block bg-slate-950">
                             <img src="<?php echo esc_url( $module['image'] ); ?>" alt="<?php echo esc_attr( $module['alt'] ); ?>" class="aspect-video w-full object-cover object-top" loading="lazy">
                         </a>
                         <div class="flex flex-1 flex-col gap-3 p-5">
                             <span class="self-start rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary"><?php echo esc_html( $module['badge'] ); ?></span>
                             <div>
                                 <h3 class="text-lg font-extrabold text-slate-900">
-                                    <a href="<?php echo esc_url( $page_url ); ?>" class="transition hover:text-primary"><?php echo esc_html( $module['title'] ); ?></a>
+                                    <a href="<?php echo esc_url( $page_url ); ?>"<?php echo $link_attrs; ?> class="transition hover:text-primary"><?php echo esc_html( $module['title'] ); ?></a>
                                 </h3>
                                 <p class="text-sm font-bold text-primary"><?php echo esc_html( $module['subtitle'] ); ?></p>
                             </div>
                             <p class="text-sm leading-relaxed text-slate-600"><?php echo esc_html( $intro ); ?></p>
                             <div class="mt-auto flex items-center justify-between border-t border-slate-100 pt-3">
-                                <a href="<?php echo esc_url( $page_url ); ?>" class="text-sm font-bold text-primary hover:underline"><?php echo esc_html( $copy['vcv_cta'] ); ?> &rarr;</a>
-                                <a href="<?php echo esc_url( $module['library_url'] ); ?>" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-slate-500 transition hover:text-primary"><?php echo esc_html( $copy['vcv_library'] ); ?> &nearr;</a>
+                                <a href="<?php echo esc_url( $page_url ); ?>"<?php echo $link_attrs; ?> class="text-sm font-bold text-primary hover:underline"><?php echo esc_html( $has_page ? $copy['vcv_cta'] : $copy['vcv_manual'] ); ?> &rarr;</a>
+                                <span class="flex items-center gap-3">
+                                    <?php if ( $has_page && ! empty( $manual_url ) && false !== strpos( $manual_url, 'github.com' ) ) : ?>
+                                        <a href="<?php echo esc_url( $manual_url ); ?>" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-slate-500 transition hover:text-primary"><?php echo esc_html( $copy['vcv_manual_short'] ); ?> &nearr;</a>
+                                    <?php endif; ?>
+                                    <a href="<?php echo esc_url( $module['library_url'] ); ?>" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-slate-500 transition hover:text-primary"><?php echo esc_html( $copy['vcv_library'] ); ?> &nearr;</a>
+                                </span>
                             </div>
                         </div>
                     </article>

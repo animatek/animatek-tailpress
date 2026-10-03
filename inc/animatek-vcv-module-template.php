@@ -8,7 +8,8 @@ function animatek_vcv_modules_data(): array {
             'badge' => 'VCV Rack · 2.5.0 · Free & Pro',
             'slug' => '/ultimate-ztep-zequencer-vcvrack/',
             'library_url' => 'https://library.vcvrack.com/Animatek/UZZ',
-            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/UZZ_UZZ-X_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/UZZ_UZZ-X_Manual_ES.md',
             'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
             'image' => 'https://animatek.net/wp-content/uploads/2026/06/UZZ_ancha.webp',
             'alt' => 'UZZ sequencer for VCV Rack',
@@ -27,6 +28,7 @@ function animatek_vcv_modules_data(): array {
             'slug' => '/unit-d/',
             'library_url' => 'https://library.vcvrack.com/Animatek/UnitDistanceSeq',
             'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/UNIT-D_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/UNIT-D_Manual_ES.md',
             'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
             'image' => 'https://animatek.net/wp-content/uploads/2026/06/Unit-d_imagen.webp',
             'alt' => 'UNIT-D module for VCV Rack',
@@ -123,7 +125,8 @@ function animatek_vcv_modules_data(): array {
             'badge' => 'VCV Rack · 2.5.4 · 13 HP',
             'slug' => '/apc40-ctrl/',
             'library_url' => 'https://library.vcvrack.com/Animatek/Apc40Ctrl',
-            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/APC40_CTRL_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/APC40_CTRL_Manual_ES.md',
             'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
             'image' => 'https://animatek.net/wp-content/uploads/2026/06/APC40.webp',
             'alt' => 'APC40 CTRL module for VCV Rack',
@@ -153,7 +156,8 @@ function animatek_vcv_modules_data(): array {
             'badge' => 'VCV Rack · 2.5.4 · 3 HP',
             'slug' => '/blank-3/',
             'library_url' => 'https://library.vcvrack.com/Animatek/Blank3',
-            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/BLANKS_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/BLANKS_Manual_ES.md',
             'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
             'image' => 'https://animatek.net/wp-content/uploads/2026/06/Blank.webp',
             'alt' => 'BLANK 3 panel for VCV Rack',
@@ -174,6 +178,132 @@ function animatek_vcv_modules_data(): array {
                 ['Tema', 'Cambia entre panel claro y oscuro desde el menú contextual.'],
                 ['Rendimiento', 'Usa Pause animation si quieres reducir actividad visual en patches grandes.'],
             ],
+            'inputs' => [],
+            'outputs' => [],
+        ],
+        'atek303' => [
+            'title' => 'ATEK303',
+            'subtitle' => 'Acid Synth Voice',
+            'badge' => 'VCV Rack · 2.5.9 · 12 HP',
+            // Sin página propia todavía: las tarjetas y el menú lateral enlazan al manual.
+            'slug' => '',
+            'page' => false,
+            'library_url' => 'https://library.vcvrack.com/Animatek/ATEK303',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/ATEK303_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/ATEK303_Manual_ES.md',
+            'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'image' => get_theme_file_uri( 'images/vcv/atek303.webp' ),
+            'alt' => 'ATEK303 synth voice for VCV Rack',
+            'intro' => 'Voz acid monofónica inspirada en la TB-303: oscilador de sierra o cuadrada, filtro resonante, envolvente de decay, accent y slide. Todos los controles de sonido se modulan por CV.',
+            'lead' => [],
+            'features_title' => '',
+            'features' => [],
+            'manual_sections' => [],
+            'inputs' => [],
+            'outputs' => [],
+        ],
+        'atek303-seq' => [
+            'title' => 'ATEK303 SEQ',
+            'subtitle' => 'Acid Pattern Generator',
+            'badge' => 'VCV Rack · 2.5.9 · 20 HP',
+            // Sin página propia todavía: las tarjetas y el menú lateral enlazan al manual.
+            'slug' => '',
+            'page' => false,
+            'library_url' => 'https://library.vcvrack.com/Animatek/ATEK303SEQ',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/ATEK303SEQ_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/ATEK303SEQ_Manual_ES.md',
+            'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'image' => get_theme_file_uri( 'images/vcv/atek303-seq.webp' ),
+            'alt' => 'ATEK303 SEQ acid pattern generator for VCV Rack',
+            'intro' => 'Generador de patrones acid de hasta 64 pasos para ATEK303 o cualquier voz. Patrones repetibles con semilla, editor de piano roll, importación de MIDI y mutaciones de ritmo, octava, acentos y slides.',
+            'lead' => [],
+            'features_title' => '',
+            'features' => [],
+            'manual_sections' => [],
+            'inputs' => [],
+            'outputs' => [],
+        ],
+        'cap' => [
+            'title' => 'CAP',
+            'subtitle' => 'Ducking VCA · Low-Pass Gate',
+            'badge' => 'VCV Rack · 2.5.9 · 6 HP',
+            // Sin página propia todavía: las tarjetas y el menú lateral enlazan al manual.
+            'slug' => '',
+            'page' => false,
+            'library_url' => 'https://library.vcvrack.com/Animatek/SideChain',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/CAP_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/CAP_Manual_ES.md',
+            'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'image' => get_theme_file_uri( 'images/vcv/cap.webp' ),
+            'alt' => 'CAP ducking VCA for VCV Rack',
+            'intro' => 'VCA estéreo de ducking que baja el audio en cada trigger y lo recupera con profundidad, tiempo y variación ajustables. También funciona como filtro paso bajo o low-pass gate tipo vactrol, con pan por CV, y varias CAP juntas forman un mezclador sin cables.',
+            'lead' => [],
+            'features_title' => '',
+            'features' => [],
+            'manual_sections' => [],
+            'inputs' => [],
+            'outputs' => [],
+        ],
+        'bus' => [
+            'title' => 'BUS',
+            'subtitle' => 'Mixer for CAP',
+            'badge' => 'VCV Rack · 2.5.9 · 4 HP',
+            // Sin página propia todavía: las tarjetas y el menú lateral enlazan al manual.
+            'slug' => '',
+            'page' => false,
+            'library_url' => 'https://library.vcvrack.com/Animatek/CapBus',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/BUS_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/BUS_Manual_ES.md',
+            'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'image' => get_theme_file_uri( 'images/vcv/bus.webp' ),
+            'alt' => 'BUS mixer for CAP in VCV Rack',
+            'intro' => 'La salida de mezcla de una fila de CAP: envío y retorno estéreo para un efecto, WET, pan con CV, fader con medidor estéreo y un nombre que se rellena con el efecto conectado. Un BUS cierra su fila, así que una CAP detrás empieza otra en paralelo.',
+            'lead' => [],
+            'features_title' => '',
+            'features' => [],
+            'manual_sections' => [],
+            'inputs' => [],
+            'outputs' => [],
+        ],
+        'adsrtek' => [
+            'title' => 'ADSRTEK',
+            'subtitle' => 'Measured ADSR/AD Envelope',
+            'badge' => 'VCV Rack · 2.5.9 · 8 HP',
+            // Sin página propia todavía: las tarjetas y el menú lateral enlazan al manual.
+            'slug' => '',
+            'page' => false,
+            'library_url' => 'https://library.vcvrack.com/Animatek/AdsrTek',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/ADSRtek_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/ADSRtek_Manual_ES.md',
+            'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'image' => get_theme_file_uri( 'images/vcv/adsrtek.webp' ),
+            'alt' => 'ADSRTEK envelope for VCV Rack',
+            'intro' => 'Envolvente ADSR y AD modelada sobre medidas de un modular virtual analógico clásico de los 90: su tabla de tiempos, sus ataques log, lineal y exponencial y sus decays secos. Polifónica, con CV en cada etapa, VCA integrado y pantalla que enseña la etapa en curso.',
+            'lead' => [],
+            'features_title' => '',
+            'features' => [],
+            'manual_sections' => [],
+            'inputs' => [],
+            'outputs' => [],
+        ],
+        'filtertek' => [
+            'title' => 'FILTERTEK',
+            'subtitle' => 'Measured Multimode Filter',
+            'badge' => 'VCV Rack · 2.5.9 · 8 HP',
+            // Sin página propia todavía: las tarjetas y el menú lateral enlazan al manual.
+            'slug' => '',
+            'page' => false,
+            'library_url' => 'https://library.vcvrack.com/Animatek/FilterTek',
+            'manual_url' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/FILTERtek_Manual_EN.md',
+            'manual_url_es' => 'https://github.com/animatek/UZZ-VCV-RACK/blob/main/Manuals/FILTERtek_Manual_ES.md',
+            'source_url' => 'https://github.com/animatek/UZZ-VCV-RACK',
+            'image' => get_theme_file_uri( 'images/vcv/filtertek.webp' ),
+            'alt' => 'FILTERTEK multimode filter for VCV Rack',
+            'intro' => 'Filtro multimodo modelado sobre medidas del mismo modular: paso bajo, banda, alto y rechazo de banda a 12 o 24 dB/oct, con su resonancia, control de ganancia y su saturación dura. Estéreo y polifónico, con curva de respuesta en directo, V/oct y CV de corte y resonancia.',
+            'lead' => [],
+            'features_title' => '',
+            'features' => [],
+            'manual_sections' => [],
             'inputs' => [],
             'outputs' => [],
         ],
@@ -259,6 +389,17 @@ function animatek_vcv_modules_nav( string $current_slug, string $locale = 'es' )
         <?php endif; ?>
     </nav>
     <?php
+}
+
+/**
+ * Where a module links to: its own page, or its manual (English or Spanish) for the
+ * modules that do not have a page yet.
+ */
+function animatek_vcv_module_url( array $item, bool $is_en ): string {
+    if ( isset( $item['page'] ) && false === $item['page'] ) {
+        return ( ! $is_en && ! empty( $item['manual_url_es'] ) ) ? $item['manual_url_es'] : $item['manual_url'];
+    }
+    return home_url( $is_en ? rtrim( $item['slug'], '/' ) . '-eng/' : $item['slug'] );
 }
 
 function animatek_vcv_module_en_copy( string $module_slug ): array {
@@ -351,6 +492,24 @@ function animatek_vcv_module_en_copy( string $module_slug ): array {
                 ['Performance', 'Use Pause animation if you want to reduce visual activity in large patches.'],
             ],
         ],
+        'atek303' => [
+            'intro' => 'Monophonic acid voice inspired by the TB-303: saw or square oscillator, resonant filter, decay envelope, accent and slide. Every sound control takes CV.',
+        ],
+        'atek303-seq' => [
+            'intro' => 'Acid pattern generator of up to 64 steps for ATEK303 or any voice. Repeatable seeded patterns, a piano-roll editor, MIDI file import, and mutations of rhythm, octave, accents and slides.',
+        ],
+        'cap' => [
+            'intro' => 'Stereo ducking VCA that dips the audio on every trigger and recovers with adjustable depth, timing and variation. It also works as a lowpass filter or vactrol-style low-pass gate, has pan with CV, and CAPs side by side chain into a mixer without cables.',
+        ],
+        'bus' => [
+            'intro' => 'The mix output for a row of CAPs: a stereo send and return for an effect, WET, pan with CV, a fader with a stereo meter and a name that fills in with the patched effect. A BUS closes its row, so a CAP after it starts a parallel one.',
+        ],
+        'adsrtek' => [
+            'intro' => 'ADSR and AD envelope modelled on measurements of a classic 90s virtual-analogue modular: its time table, its log, linear and exponential attacks and its snappy decays. Polyphonic, with CV over every stage, a built-in VCA and a display showing the current stage.',
+        ],
+        'filtertek' => [
+            'intro' => 'Multimode filter modelled on measurements of the same modular: lowpass, bandpass, highpass and band reject at 12 or 24 dB/oct, with its resonance, gain control and hard saturation. Stereo and polyphonic, with a live response curve, V/oct and CV over cutoff and resonance.',
+        ],
     ];
 
     return $copy[ $module_slug ] ?? [];
@@ -365,6 +524,10 @@ function animatek_vcv_module_render( string $module_slug, string $locale = 'es' 
     }
 
     $is_en = 'en' === $locale;
+
+    if ( ! $is_en && ! empty( $module['manual_url_es'] ) ) {
+        $module['manual_url'] = $module['manual_url_es'];
+    }
 
     if ( $is_en ) {
         $module = array_replace( $module, animatek_vcv_module_en_copy( $module_slug ) );
@@ -569,7 +732,7 @@ function animatek_vcv_module_render( string $module_slug, string $locale = 'es' 
                         <div class="grid gap-2">
                             <?php foreach ( animatek_vcv_modules_data() as $slug => $item ) : ?>
                                 <?php if ( $slug === $module_slug || 'multi' === $slug ) { continue; } ?>
-                                <a href="<?php echo esc_url( home_url( $is_en ? rtrim( $item['slug'], '/' ) . '-eng/' : $item['slug'] ) ); ?>" class="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-700 transition hover:border-primary hover:text-primary">
+                                <a href="<?php echo esc_url( animatek_vcv_module_url( $item, $is_en ) ); ?>" class="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-700 transition hover:border-primary hover:text-primary">
                                     <?php echo esc_html( $item['title'] ); ?>
                                     <span class="text-xs text-slate-400">v<?php echo esc_html( preg_replace( '/^.*?(\d+\.\d+\.\d+).*$/', '$1', $item['badge'] ) ); ?></span>
                                 </a>

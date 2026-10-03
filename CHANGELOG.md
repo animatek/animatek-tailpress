@@ -4,6 +4,17 @@ All notable changes to TailPress will be documented in this file.
 
 ## [Unreleased]
 
+### Añadido — Claude
+- **Software: los módulos de VCV de Animatek 2.5.9.** Tarjetas para ATEK303, ATEK303 SEQ, CAP,
+  BUS, ADSRTEK y FILTERTEK, con imágenes de sus paneles en `images/vcv/` (capturas de Rack con el
+  mismo degradado y marco que las demás) y textos en español e inglés. Como aún no tienen página
+  propia (`'page' => false`), la tarjeta y el menú «Más módulos» enlazan a su manual en GitHub,
+  en castellano o en inglés según el idioma (`animatek_vcv_module_url()`).
+- Todas las tarjetas con manual en GitHub llevan además un enlace «Manual», y las páginas de
+  módulo en español enlazan al manual en castellano (`manual_url_es`). UZZ, APC40 CTRL y BLANK 3
+  apuntaban a la raíz del repo y ahora van a su manual.
+- Orden de las tarjetas: secuenciadores y voz, cadena de audio, puentes MIDI y panel ciego.
+
 ## [5.7.3] - 2026-10-01
 
 ### Cambiado — Claude
