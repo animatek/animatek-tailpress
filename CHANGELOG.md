@@ -2,7 +2,24 @@
 
 All notable changes to TailPress will be documented in this file.
 
-## [Unreleased]
+## [5.7.4] - 2026-10-13
+
+### Cambiado — Claude
+- **Clases privadas: precios a la baja** (`page-clases-privadas.php`). El pack de 5 horas pasa
+  de 300 € a 150 € tachando 200 €, con la etiqueta «5 plazas» y la nota «precio especial para
+  los 5 primeros alumnos; después, 200 €». La mentoría de 10 horas pasa de 550 € (tachado 600)
+  a 350 € (tachado 400, «Ahorras 50 €»). La hora suelta sigue a 60 €. A 300 € no entraba nadie.
+  **El cobro va por SureCart:** los enlaces conservan los mismos `price_id`; Javier actualizó allí
+  los tres importes antes de publicar este release, para que la ficha y el pago coincidan.
+- **Clases privadas: la página dice quién enseña.** El H1 pasa de «Clases y asesoramiento
+  personalizado» a «Clases de Bitwig y VCV Rack con un formador certificado», y el subtítulo
+  nombra a Javier Melgar, la certificación de Bitwig, el español y lo online. El logo de Bitwig
+  Certified Trainer deja de ir al 70 % de opacidad. Dos preguntas nuevas en las FAQ (quién da
+  las clases; idioma y desde dónde). Datos estructurados `Person` (con la credencial de Bitwig)
+  y `Service` (con tres ofertas) en `wp_head`: en producción la página no tenía ninguno. Los
+  precios pasan a `$clases_precios`, arriba del archivo, y de ahí los leen las tarjetas y el
+  schema. Motivo: el último alumno llegó preguntando a ChatGPT por profesores de Bitwig.
+  Comprobado en local (`:8081`): el JSON-LD se lee bien y sin errores de PHP.
 
 ### Añadido — Claude
 - **Software: los módulos de VCV de Animatek 2.5.9.** Tarjetas para ATEK303, ATEK303 SEQ, CAP,

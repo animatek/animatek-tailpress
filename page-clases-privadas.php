@@ -1,7 +1,78 @@
 <?php
 /**
  * Template Name: Clases Privadas
+ *
+ * Los precios viven solo en $clases_precios: los usan las tarjetas y los datos
+ * estructurados. Cobra SureCart (los price_id de los botones), así que un cambio aquí
+ * va siempre con el mismo cambio en SureCart.
  */
+
+$clases_precios = [
+    'hora'      => 60,   // sesión suelta
+    'pack5'     => 150,  // oferta para los 5 primeros alumnos
+    'pack5_ref' => 200,  // precio del pack de 5 h pasada la oferta
+    'pack10'    => 350,
+    'pack10_ref'=> 400,
+];
+
+// Quién da las clases, la certificación y los precios, en datos estructurados: lo que leen
+// Google y los buscadores de IA para recomendar a un profesor de Bitwig. En producción
+// Rank Math no emite schema aquí (comprobado el 2026-10-09); en local sí, pero como
+// Article, que no dice nada de clases ni de precios.
+add_action('wp_head', function () use ($clases_precios) {
+    $url     = home_url('/clases-privadas/');
+    $persona = [
+        '@type'       => 'Person',
+        '@id'         => home_url('/#javier-melgar'),
+        'name'        => 'Javier Melgar',
+        'alternateName' => 'Animatek',
+        'jobTitle'    => 'Bitwig Certified Trainer',
+        'description' => 'Formador certificado por Bitwig. Da clases online 1 a 1, en español, de Bitwig Studio, VCV Rack, síntesis modular y directo híbrido.',
+        'url'         => home_url('/'),
+        'knowsAbout'  => ['Bitwig Studio', 'VCV Rack', 'Síntesis modular', 'Nord Modular G1', 'Producción musical', 'Directo híbrido'],
+        'knowsLanguage' => 'es',
+        'hasCredential' => [
+            '@type'              => 'EducationalOccupationalCredential',
+            'name'               => 'Bitwig Certified Trainer',
+            'credentialCategory' => 'certification',
+            'recognizedBy'       => ['@type' => 'Organization', 'name' => 'Bitwig GmbH', 'url' => 'https://www.bitwig.com/'],
+        ],
+        'sameAs'      => ['https://www.youtube.com/@animatek', 'https://www.patreon.com/c/animatek', 'https://www.instagram.com/animatek', 'https://github.com/animatek'],
+    ];
+    $oferta = function ($nombre, $precio) use ($url) {
+        return [
+            '@type'         => 'Offer',
+            'name'          => $nombre,
+            'price'         => (string) $precio,
+            'priceCurrency' => 'EUR',
+            'availability'  => 'https://schema.org/InStock',
+            'url'           => $url . '#planes',
+        ];
+    };
+    $grafo = [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
+            $persona,
+            [
+                '@type'       => 'Service',
+                '@id'         => $url . '#servicio',
+                'name'        => 'Clases particulares de Bitwig y VCV Rack online',
+                'serviceType' => 'Clases particulares de producción musical',
+                'description' => 'Clases 1 a 1 por videollamada, en español, con un formador certificado por Bitwig: Bitwig Studio, VCV Rack, síntesis modular, Nord Modular G1 y directo híbrido, sobre el proyecto del alumno.',
+                'provider'    => ['@id' => home_url('/#javier-melgar')],
+                'availableLanguage' => 'es',
+                'areaServed'  => 'Mundial (online, en español)',
+                'url'         => $url,
+                'offers'      => [
+                    $oferta('Sesión puntual de 1 hora', $clases_precios['hora']),
+                    $oferta('Programa 5 horas', $clases_precios['pack5']),
+                    $oferta('Mentoría 10 horas', $clases_precios['pack10']),
+                ],
+            ],
+        ],
+    ];
+    echo '<script type="application/ld+json">' . wp_json_encode($grafo, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "</script>\n";
+});
 
 get_header();
 ?>
@@ -21,11 +92,11 @@ get_header();
 
         <div class="relative z-10 container mx-auto px-6 text-center max-w-5xl">
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight">
-                Clases y asesoramiento <span class="text-primary">personalizado</span>
+                Clases de <span class="text-primary">Bitwig y VCV Rack</span> con un formador certificado
             </h1>
 
             <p class="text-lg md:text-xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-                Sesiones 1:1 online, adaptadas a tu proyecto. Feedback directo, plan personalizado y seguimiento real.
+                Soy Javier Melgar (Animatek), formador certificado por Bitwig. Doy clases 1 a 1 online, en espa&ntilde;ol, sobre tu propio proyecto: feedback directo, un plan para ti y seguimiento real.
             </p>
 
             <div class="flex flex-col items-center gap-6">
@@ -42,7 +113,7 @@ get_header();
                 <!-- Bitwig Certified Trainer badge -->
                 <img src="https://animatek.net/wp-content/uploads/2025/04/Certified-Trainer-Banner.webp"
                      alt="Bitwig Certified Trainer"
-                     class="h-8 md:h-10 w-auto opacity-70">
+                     class="h-8 md:h-10 w-auto">
 
                 <p class="text-sm text-slate-400 max-w-lg mx-auto leading-relaxed">
                     Sin compromiso. Hablamos de tu situaci&oacute;n, tu nivel y tus objetivos. Si encaja, dise&ntilde;o un plan a tu medida.
@@ -140,7 +211,7 @@ get_header();
                     <p class="text-slate-600 text-sm leading-relaxed">Para quien necesita resolver una duda concreta, desbloquear un problema o recibir asesoramiento personalizado.</p>
                 </div>
                 <div class="mb-6">
-                    <span class="text-4xl font-bold text-slate-900">60 &euro;</span>
+                    <span class="text-4xl font-bold text-slate-900"><?php echo (int) $clases_precios['hora']; ?> &euro;</span>
                     <span class="text-slate-500 text-sm">/hora</span>
                 </div>
                 <ul class="mb-6 space-y-3 text-slate-700 text-sm flex-1">
@@ -184,8 +255,10 @@ get_header();
                     <p class="text-slate-600 text-sm leading-relaxed">Quieres montar tu entorno de trabajo en VCV Rack o Bitwig y empezar a crear con criterio.</p>
                 </div>
                 <div class="mb-6">
-                    <span class="text-4xl font-bold text-slate-900">300 &euro;</span>
-                    <span class="text-slate-500 text-sm">/pack</span>
+                    <span class="text-4xl font-bold text-slate-900"><?php echo (int) $clases_precios['pack5']; ?> &euro;</span>
+                    <span class="text-sm text-slate-400 line-through ml-2"><?php echo (int) $clases_precios['pack5_ref']; ?> &euro;</span>
+                    <span class="text-green-700 text-xs font-bold ml-2 bg-green-100 px-2 py-1 rounded">5 plazas</span>
+                    <p class="text-slate-500 text-sm mt-2">Precio especial para los 5 primeros alumnos. Despu&eacute;s, <?php echo (int) $clases_precios['pack5_ref']; ?> &euro; el pack.</p>
                 </div>
                 <ul class="mb-8 space-y-3 text-slate-700 text-sm flex-1">
                     <?php
@@ -218,9 +291,9 @@ get_header();
                     <p class="text-slate-600 text-sm leading-relaxed">Quieres dominar VCV Rack desde cero, integrarlo con Bitwig y terminar con un proyecto publicable.</p>
                 </div>
                 <div class="mb-6">
-                    <span class="text-4xl font-bold text-slate-900">550 &euro;</span>
-                    <span class="text-sm text-slate-400 line-through ml-2">600 &euro;</span>
-                    <span class="text-green-700 text-xs font-bold ml-2 bg-green-100 px-2 py-1 rounded">Ahorras 50 &euro;</span>
+                    <span class="text-4xl font-bold text-slate-900"><?php echo (int) $clases_precios['pack10']; ?> &euro;</span>
+                    <span class="text-sm text-slate-400 line-through ml-2"><?php echo (int) $clases_precios['pack10_ref']; ?> &euro;</span>
+                    <span class="text-green-700 text-xs font-bold ml-2 bg-green-100 px-2 py-1 rounded">Ahorras <?php echo (int) ($clases_precios['pack10_ref'] - $clases_precios['pack10']); ?> &euro;</span>
                 </div>
                 <ul class="mb-8 space-y-3 text-slate-700 text-sm flex-1">
                     <?php
@@ -357,6 +430,14 @@ get_header();
         <div class="space-y-4">
             <?php
             $faqs = [
+                [
+                    'q' => '¿Quién da las clases?',
+                    'a' => 'Yo, Javier Melgar (Animatek). Soy formador certificado por Bitwig (Bitwig Certified Trainer) y enseño VCV Rack y síntesis modular en el canal de YouTube, en cursos y en talleres. Todas las sesiones las doy yo, no hay otros profesores.',
+                ],
+                [
+                    'q' => '¿En qué idioma y desde dónde?',
+                    'a' => 'En español, desde España y por videollamada, así que puedes estar en cualquier país. Buscamos un horario que te encaje con tu zona horaria.',
+                ],
                 [
                     'q' => '¿Puedo grabar las clases?',
                     'a' => 'Sí, puedes grabarlas tú o pedir la grabación al terminar la sesión para repasar cuando quieras.',
