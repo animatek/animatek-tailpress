@@ -317,11 +317,14 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
                         </p>
                     </div>
 
+                    <div class="space-y-6">
                     <figure class="relative">
                         <div class="overflow-hidden rounded-lg border border-slate-200 bg-zinc-950 shadow-2xl">
                             <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $copy['image_alt'] ); ?>" class="aspect-video w-full object-cover object-top">
                         </div>
                     </figure>
+                    <?php get_template_part( 'template-parts/brevo-form-g1', null, [ 'locale' => $is_en ? 'en' : 'es', 'compact' => true ] ); ?>
+                    </div>
                 </div>
             </div>
         </section>

@@ -2,6 +2,29 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.8.0] - 2026-10-21
+
+### Añadido — Claude
+- **Lista de correo «Nord Modular» en G1-Emu y Animatek NME** (`template-parts/brevo-form-g1.php`,
+  usado desde `inc/animatek-g1-emu-template.php` y `inc/animatek-nme-template.php`, en
+  español e inglés). Formulario de la lista 23 de Brevo con el aspecto del tema: título, una frase y un
+  campo de email con botón, en la columna derecha del hero, debajo de la imagen del producto, para que
+  se vea al entrar y el hero no crezca (argumento `compact`). Usa el JS de Brevo
+  (`main.js`), que necesita los contenedores `.form__label-row` y `.entry__field`: sin ellos el
+  formulario se enviaba de forma nativa en vez de por AJAX. A diferencia del de Bitwig, no
+  fuerza `display:none` sobre los avisos de éxito y error de Brevo, así que quien se apunta ve
+  la confirmación. Las páginas `-eng` llevan el mismo formulario con los textos en inglés
+  (argumento `locale`); el envío va al mismo formulario de Brevo, que es el español, así que los
+  errores que devuelva su servidor saldrían en español.
+  **Cambio local, sin commit; probado en localhost:8081, pendiente de producción.**
+
+- **Imagen de G1-Emu: la del README del repo** (`images/g1-emu.png`, hero de `/g1-emu/` y
+  `/g1-emu-eng/`, tarjeta de `/software/` y metadatos sociales de `functions.php`). Sustituye a una
+  captura antigua del panel (1202×470) por `docs/g1-emu-panel.png` de `animatek/G1-Emu`,
+  reducida a 1600×660 y cuantizada a 256 colores (258 KB frente a los 730 KB del original).
+  Mismo nombre de archivo para que los tres usos cambien a la vez; `width`/`height` del hero
+  puestos a 1600×660. **Cambio local, sin commit.**
+
 ## [5.7.4] - 2026-10-13
 
 ### Cambiado — Claude

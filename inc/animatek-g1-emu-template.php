@@ -116,12 +116,15 @@ function animatek_g1_emu_render_page( string $locale = 'es' ): void {
                         </div>
                         <p class="border-l-4 border-yellow-400 pl-4 text-sm leading-relaxed text-slate-600 dark:text-zinc-300"><?php echo esc_html( $copy['rom_notice'] ); ?></p>
                     </div>
+                    <div class="space-y-6">
                     <figure>
                         <div class="overflow-hidden rounded-lg border border-zinc-700 bg-zinc-950 shadow-2xl">
-                            <img src="<?php echo esc_url( get_theme_file_uri( 'images/g1-emu.png' ) ); ?>" alt="<?php echo esc_attr( $copy['image_alt'] ); ?>" class="h-auto w-full" width="1202" height="470" fetchpriority="high">
+                            <img src="<?php echo esc_url( get_theme_file_uri( 'images/g1-emu.png' ) ); ?>" alt="<?php echo esc_attr( $copy['image_alt'] ); ?>" class="h-auto w-full" width="1600" height="660" fetchpriority="high">
                         </div>
                         <figcaption class="mt-3 text-sm text-slate-500 dark:text-zinc-400"><?php echo esc_html( $copy['caption'] ); ?></figcaption>
                     </figure>
+                    <?php get_template_part( 'template-parts/brevo-form-g1', null, [ 'locale' => $is_en ? 'en' : 'es', 'compact' => true ] ); ?>
+                    </div>
                 </div>
             </div>
         </section>
