@@ -368,10 +368,14 @@ get_header();
 
                                     <input type="text" name="email_address_check" value="" class="input--hidden">
                                     <input type="hidden" name="locale" value="es">
+                                    <?php // De qué vídeo de YouTube viene; lo rellena origen-video.php ?>
+                                    <input type="hidden" name="ORIGEN_VIDEO" value="">
                                 </form>
                             </div>
                         </div>
                     </div>
+
+                    <?php get_template_part('template-parts/origen-video'); ?>
 
                     <script>
                         window.REQUIRED_CODE_ERROR_MESSAGE = 'Elija un código de país';
