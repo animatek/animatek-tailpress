@@ -7,6 +7,11 @@
  * lo dice y no enlaza ningún .fwsc.
  */
 
+/** El repo público de los firmwares (GPL-3.0). */
+function animatek_fm1_repo_url( string $path = '' ): string {
+    return 'https://github.com/animatek/FM1-Animatek' . ( '' !== $path ? '/tree/main/' . $path : '' );
+}
+
 function animatek_fm1_styles(): array {
     return [
         'button'  => 'inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-extrabold transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
@@ -92,6 +97,9 @@ function animatek_fm1_render_hub(): void {
                     <p class="<?php echo esc_attr( $s['kicker'] ); ?>">Animatek · Software · M-VAVE FM-1</p>
                     <h1 class="text-4xl font-black leading-none sm:text-5xl">Firmwares para el FM-1</h1>
                     <p class="max-w-2xl text-lg leading-relaxed text-slate-700 dark:text-zinc-300">El M-VAVE FM-1 es un sinte de bolsillo que se puede reprogramar: le instalas otro firmware y se convierte en otro instrumento. Aquí van los que hacemos en Animatek. Son gratis y de código abierto.</p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="<?php echo esc_url( animatek_fm1_repo_url() ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $s['button'] ); ?> border border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">Código en GitHub</a>
+                    </div>
                 </div>
                 <?php animatek_fm1_render_vst_shot(); ?>
             </div>
@@ -230,6 +238,7 @@ function animatek_atek303_fm1_render(): void {
                         <div class="flex flex-wrap gap-3">
                             <a href="<?php echo esc_url( $vcv_url ); ?>" class="<?php echo esc_attr( $s['button'] ); ?> bg-primary text-white">ATEK303 en VCV Rack</a>
                             <a href="#manual" class="<?php echo esc_attr( $s['button'] ); ?> border border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">Leer el manual</a>
+                            <a href="<?php echo esc_url( animatek_fm1_repo_url( 'atek303' ) ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $s['button'] ); ?> border border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">Código en GitHub</a>
                         </div>
                     </div>
                     <?php animatek_fm1_render_vst_shot(); ?>

@@ -2,6 +2,14 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.9.1] - 2026-11-06
+
+### Añadido — Claude
+- **Botón «Código en GitHub» en `/fm1/` y `/atek303-fm1/`** (`inc/animatek-fm1-template.php`): el repo de los
+  firmwares ya es público, `animatek/FM1-Animatek` (GPL-3.0). En `/fm1/` lleva a la raíz del repo y en el ATEK303 a
+  su carpeta `atek303/`. La URL sale de `animatek_fm1_repo_url()`. El aviso «Todavía no se puede descargar» se
+  queda: el código está, el firmware compilado no se publica hasta probarlo en un FM-1 real.
+
 ## [5.9.0] - 2026-11-06
 
 ### Añadido — Claude
