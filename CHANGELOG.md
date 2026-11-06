@@ -2,6 +2,15 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.9.2] - 2026-11-06
+
+### Cambiado — Claude
+- **Software: NME destacada y las tarjetas en orden** (2026-11-06, `inc/animatek-software-hub.php`). Orden nuevo:
+  NME, G1-Emu, VCV Rack, FM-1 y UZZ. NME ocupa dos columnas y dos filas (`'featured' => true`) con la captura de la
+  0.26 (`ANME-26.webp`) y las otras cuatro van a su lado en 2x2, sin la quinta tarjeta suelta. Los textos de NME
+  dejan de decir solo «Patreon»: «Beta · 19 € · Open Source» y «App de escritorio · Beta · 19 € o Patreon», y la
+  sección de NME de más abajo gana el botón «Comprar · 19 €» (directo al pago). Revisado en local, escritorio y móvil.
+
 ## [5.9.1] - 2026-11-06
 
 ### Añadido — Claude

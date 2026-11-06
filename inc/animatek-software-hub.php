@@ -13,7 +13,8 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
     $vcv_library_url = 'https://library.vcvrack.com/Animatek';
     $vcv_image       = 'https://animatek.net/wp-content/uploads/2026/04/UZZ_2_5.webp';
     $uzz_max_image   = 'https://animatek.net/wp-content/uploads/2017/08/screenshot.png';
-    $nme_image       = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME_imagen.png';
+    $nme_image       = 'https://animatek.net/wp-content/uploads/2026/11/ANME-26.webp';
+    $nme_buy_url     = 'https://animatek.net/pago/?line_items%5B0%5D%5Bprice_id%5D=523399fb-b563-4e42-bf44-954621963bbb&line_items%5B0%5D%5Bquantity%5D=1';
 
     $modules      = animatek_vcv_modules_data();
     $module_count = count( $modules );
@@ -36,8 +37,8 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'card_max_meta'  => '10€ · Ableton Live',
         'card_max_text'  => '16-step sequencer with a modulation matrix to control any Live parameter.',
         'card_nme_title' => 'Animatek NME',
-        'card_nme_meta'  => 'Beta · Patreon',
-        'card_nme_text'  => 'A new native editor for the Clavia Nord Modular G1, open source and cross-platform.',
+        'card_nme_meta'  => 'Beta · €19 · Open Source',
+        'card_nme_text'  => 'A new native editor for the Clavia Nord Modular G1, open source and cross-platform. Patch editing, banks, many synths at once and a direct link with G1-Emu. Buy the installers once, get them on Patreon, or build it yourself for free.',
         'vcv_title'      => 'Modules for VCV Rack',
         'vcv_badge'      => 'Free · Open Source',
         'vcv_text'       => 'Available in the VCV Library for Rack Free and Pro, on Windows, macOS and Linux. Source code on GitHub.',
@@ -52,12 +53,13 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'max_cta'        => 'Discover UZZ',
         'max_buy'        => 'Buy — 10€',
         'max_alt'        => 'UZZ Max for Live interface',
-        'nme_badge'      => 'Desktop app · Beta · Patreon',
+        'nme_badge'      => 'Desktop app · Beta · €19 or Patreon',
         'nme_title'      => 'Animatek NME',
         'nme_subtitle'   => 'Nord Modular Editor G1',
         'nme_text'       => 'A modern, native, open-source editor for the legendary Clavia Nord Modular G1, rebuilt from scratch with JUCE/C++. Runs on Windows, macOS and Linux.',
         'nme_cta'        => 'Discover Animatek NME',
         'nme_patreon'    => 'Patreon',
+        'nme_buy'        => 'Buy · €19',
         'nme_alt'        => 'Animatek NME Nord Modular G1 editor screenshot',
     ] : [
         'kicker'         => 'ANIMATEK · SOFTWARE',
@@ -72,8 +74,8 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'card_max_meta'  => '10€ · Ableton Live',
         'card_max_text'  => 'Secuenciador de 16 pasos con matriz de modulación para controlar cualquier parámetro de Live.',
         'card_nme_title' => 'Animatek NME',
-        'card_nme_meta'  => 'Beta · Patreon',
-        'card_nme_text'  => 'Un nuevo editor nativo para el Clavia Nord Modular G1, open source y multiplataforma.',
+        'card_nme_meta'  => 'Beta · 19 € · Open Source',
+        'card_nme_text'  => 'Un nuevo editor nativo para el Clavia Nord Modular G1, open source y multiplataforma. Edición de patches, bancos, varios sintes a la vez y enlace directo con G1-Emu. Compra los instaladores una vez, consíguelos en Patreon o compílalo gratis.',
         'vcv_title'      => 'Módulos para VCV Rack',
         'vcv_badge'      => 'Gratis · Open Source',
         'vcv_text'       => 'Disponibles en la VCV Library para Rack Free y Pro, en Windows, macOS y Linux. Código fuente en GitHub.',
@@ -88,16 +90,29 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         'max_cta'        => 'Descubrir UZZ',
         'max_buy'        => 'Comprar — 10€',
         'max_alt'        => 'Interfaz UZZ Max for Live',
-        'nme_badge'      => 'App de escritorio · Beta · Patreon',
+        'nme_badge'      => 'App de escritorio · Beta · 19 € o Patreon',
         'nme_title'      => 'Animatek NME',
         'nme_subtitle'   => 'Nord Modular Editor G1',
         'nme_text'       => 'Un editor moderno, nativo y open-source para el legendario Clavia Nord Modular G1, reconstruido desde cero con JUCE/C++. Funciona en Windows, macOS y Linux.',
         'nme_cta'        => 'Descubrir Animatek NME',
         'nme_patreon'    => 'Patreon',
+        'nme_buy'        => 'Comprar · 19 €',
         'nme_alt'        => 'Captura de Animatek NME para Nord Modular G1',
     ];
 
+    // Orden: NME (destacada), G1-Emu, VCV Rack, FM-1 y UZZ.
     $hero_cards = [
+        [
+            // Destacada: dos columnas y dos filas en escritorio; las otras cuatro van en 2x2 a su lado.
+            'featured'    => true,
+            'url'         => home_url( '/animatek-nme' . $suffix . '/' ),
+            'image'       => $nme_image,
+            'alt'         => $copy['nme_alt'],
+            'title'       => $copy['card_nme_title'],
+            'meta'        => $copy['card_nme_meta'],
+            'text'        => $copy['card_nme_text'],
+            'badge_class' => 'border-slate-300 bg-white text-slate-600',
+        ],
         [
             'url'         => home_url( '/g1-emu' . $suffix . '/' ),
             'image'       => get_theme_file_uri( 'images/g1-emu.png' ),
@@ -106,6 +121,15 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
             'meta'        => 'Pre-alpha · Open Source',
             'text'        => $is_en ? 'Nord Modular G1 emulator for Linux, macOS and Windows. Connect your editor and load your patches. Requires your own ROM.' : 'El Nord Modular G1 emulado en Linux, macOS y Windows. Conecta tu editor y carga tus patches. Requiere ROM propia.',
             'badge_class' => 'border-slate-300 bg-white text-slate-600',
+        ],
+        [
+            'url'         => '#vcv-rack',
+            'image'       => $vcv_image,
+            'alt'         => 'Módulos Animatek para VCV Rack',
+            'title'       => $copy['card_vcv_title'],
+            'meta'        => $copy['card_vcv_meta'],
+            'text'        => $copy['card_vcv_text'],
+            'badge_class' => 'border-green-400/40 bg-slate-950 text-green-300',
         ],
         [
             // Mientras el ATEK303 sea el único firmware, la tarjeta va directa a él; /fm1/ (el índice)
@@ -117,24 +141,6 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
             'meta'        => $is_en ? 'Firmware · In testing · Free' : 'Firmware · En pruebas · Gratis',
             'text'        => $is_en ? 'An Animatek firmware for the M-VAVE FM-1 pocket synth: the ATEK303 acid voice with its pattern generator, effects and step editor.' : 'Firmware de Animatek para el sinte de bolsillo M-VAVE FM-1: la voz acid del ATEK303 con su generador de patrones, efectos y editor de pasos.',
             'badge_class' => 'border-slate-300 bg-white text-slate-600',
-        ],
-        [
-            'url'         => home_url( '/animatek-nme' . $suffix . '/' ),
-            'image'       => $nme_image,
-            'alt'         => $copy['nme_alt'],
-            'title'       => $copy['card_nme_title'],
-            'meta'        => $copy['card_nme_meta'],
-            'text'        => $copy['card_nme_text'],
-            'badge_class' => 'border-slate-300 bg-white text-slate-600',
-        ],
-        [
-            'url'         => '#vcv-rack',
-            'image'       => $vcv_image,
-            'alt'         => 'Módulos Animatek para VCV Rack',
-            'title'       => $copy['card_vcv_title'],
-            'meta'        => $copy['card_vcv_meta'],
-            'text'        => $copy['card_vcv_text'],
-            'badge_class' => 'border-green-400/40 bg-slate-950 text-green-300',
         ],
         [
             'url'         => home_url( '/ultimate-ztep-zequencer' . $suffix . '/' ),
@@ -178,19 +184,19 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
                 </div>
 
                 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <?php foreach ( $hero_cards as $card ) : ?>
-                        <a href="<?php echo esc_url( $card['url'] ); ?>" class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg">
-                            <div class="relative h-32 overflow-hidden bg-slate-950 sm:h-36">
+                    <?php foreach ( $hero_cards as $card ) : $featured = ! empty( $card['featured'] ); ?>
+                        <a href="<?php echo esc_url( $card['url'] ); ?>" class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg<?php echo $featured ? ' sm:col-span-2 lg:row-span-2' : ''; ?>">
+                            <div class="relative overflow-hidden bg-slate-950 <?php echo $featured ? 'h-52 sm:h-64 lg:h-auto lg:flex-1' : 'h-32 sm:h-36'; ?>">
                                 <img src="<?php echo esc_url( $card['image'] ); ?>" alt="<?php echo esc_attr( $card['alt'] ); ?>" class="h-full w-full object-cover object-top transition duration-300 group-hover:scale-105" loading="lazy">
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div>
                                 <span class="absolute left-3 top-3 inline-flex items-center rounded-md border px-2.5 py-1 text-[10px] font-black uppercase tracking-wider <?php echo esc_attr( $card['badge_class'] ); ?>"><?php echo esc_html( $card['meta'] ); ?></span>
                             </div>
-                            <div class="flex flex-1 flex-col gap-1.5 p-4">
-                                <h2 class="flex items-center justify-between gap-2 text-lg font-extrabold text-slate-900">
+                            <div class="flex flex-col gap-1.5 <?php echo $featured ? 'p-5 sm:p-6' : 'flex-1 p-4'; ?>">
+                                <h2 class="flex items-center justify-between gap-2 font-extrabold text-slate-900 <?php echo $featured ? 'text-2xl sm:text-3xl' : 'text-lg'; ?>">
                                     <?php echo esc_html( $card['title'] ); ?>
                                     <span class="text-slate-400 transition group-hover:translate-x-1 group-hover:text-primary" aria-hidden="true">&rarr;</span>
                                 </h2>
-                                <p class="text-sm leading-relaxed text-slate-600"><?php echo esc_html( $card['text'] ); ?></p>
+                                <p class="leading-relaxed text-slate-600 <?php echo $featured ? 'text-base' : 'text-sm'; ?>"><?php echo esc_html( $card['text'] ); ?></p>
                             </div>
                         </a>
                     <?php endforeach; ?>
@@ -238,6 +244,9 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
                         <div class="mt-auto flex flex-wrap gap-3 pt-4">
                             <a href="<?php echo esc_url( home_url( '/animatek-nme' . $suffix . '/' ) ); ?>" class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-primary/90">
                                 <?php echo esc_html( $copy['nme_cta'] ); ?>
+                            </a>
+                            <a href="<?php echo esc_url( $nme_buy_url ); ?>" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">
+                                <?php echo esc_html( $copy['nme_buy'] ); ?>
                             </a>
                             <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#FF424D] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#e63844]">
                                 <?php echo esc_html( $copy['nme_patreon'] ); ?>
