@@ -2,6 +2,39 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.9.0] - 2026-11-06
+
+### Añadido — Claude
+- **Ficha de producto de SureCart y botón de compra de NME** (2026-11-06). Plantilla nueva
+  `single-sc_product.php`: las fichas de `/products/...` dejan de pasar por `single.php` (tarjeta de entrada
+  con fecha, «min de lectura» y autor, y el bloque de SureCart encajado en 720 px, con la imagen montada sobre el
+  título y el texto oscuro del tema claro de SureCart sobre el fondo oscuro). Ahora: migas a la Tienda, ancho
+  completo, colores de Animatek (botón principal azul, el secundario en contorno), tarjetas relacionadas oscuras
+  y, si el producto no tiene foto, un recuadro oscuro en vez del marcador gris. Estilos acotados a
+  `.animatek-producto`, sin tocar el checkout. En `/animatek-nme/` y `/animatek-nme-eng/`
+  (`inc/animatek-nme-template.php`): botón **Comprar ya · 19 €** (azul, directo al pago de SureCart) delante
+  de Patreon en la cabecera y en la llamada final, nota de pago único con enlace a la ficha, y los textos que
+  decían que las builds eran solo de Patreon. Revisado en local, escritorio y móvil.
+  **La tienda (`/tienda/`) también tiene plantilla**, `page-tienda.php`: cabecera propia y el listado a todo el
+  ancho, fuera de la tarjeta de página. Los estilos de SureCart pasan a `inc/animatek-surecart.php`
+  (`animatek_surecart_estilos()`, acotados a `.animatek-tienda`), compartidos por la tienda y las fichas: tarjetas
+  de producto de alto fijo (imagen 4:3 y título a dos líneas) y, sin imagen, un degradado azul.
+- **Firmwares para el M-VAVE FM-1** (2026-11-06). Página índice `/fm1/` (`page-fm1.php`), pensada para que entren
+  los firmwares que vengan, y página del **ATEK303 para FM-1** `/atek303-fm1/` (`page-atek303-fm1.php`) con su
+  manual: botones, las ocho páginas, secuenciador, editor de pasos, presets, MIDI, instalación, créditos y el aviso
+  de firmware no oficial. Las dos se pintan desde `inc/animatek-fm1-template.php` y usan capturas del simulador y
+  del emulador (`images/atek303-fm1-*.png`). Tarjeta «Firmwares FM-1» en el hub de software
+  (`inc/animatek-software-hub.php`). **No hay descarga:** la página dice que se publicará cuando esté probado en un
+  FM-1 real. Solo en español (la versión inglesa del hub enlaza a la página en español). Creadas y revisadas en el
+  WordPress local (`localhost:8081`); en producción hay que crear las páginas con esos slugs al publicar el tema.
+- **FM-1: tarjeta directa al ATEK303, heros compactos y SEO** (2026-11-06). La tarjeta de Software se llama
+  «ATEK303 para FM-1» y va a `/atek303-fm1/`: mientras haya un solo firmware, `/fm1/` existe pero no se enlaza.
+  Los dos heros son más bajos, sin el enlace «← Software» / «← Firmwares», y llevan a la derecha la captura del
+  emulador del FM-1 con el ATEK303 sonando (`images/atek303-fm1-vst.{webp,png}`, sacada con `fm1-live --shot`);
+  en `/fm1/` las tarjetas suben. Contextos SEO de las dos páginas en `animatek_software_seo_context()` (título,
+  descripción, canonical, imagen social `images/atek303-fm1-og.png` de 1200×630, CollectionPage para `/fm1/` y
+  SoftwareApplication sin offers para el ATEK303, que aún no se descarga).
+
 ## [5.8.0] - 2026-10-21
 
 ### Añadido — Claude

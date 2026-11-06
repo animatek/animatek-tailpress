@@ -477,6 +477,42 @@ function animatek_software_seo_context(): ?array {
             ],
             'schema_type' => 'CollectionPage',
         ],
+        // Firmwares para el M-VAVE FM-1. /fm1/ es el índice y aún no se enlaza desde ningún sitio (solo hay
+        // un firmware y la tarjeta de Software va directa al ATEK303), pero se indexa y sale en el sitemap.
+        'fm1' => [
+            'title'       => 'Firmwares para el M-VAVE FM-1: ATEK303 y más',
+            'description' => 'Firmwares gratis y de código abierto de Animatek para el sinte de bolsillo M-VAVE FM-1. El primero, ATEK303: voz acid tipo 303 con secuenciador y efectos.',
+            'canonical'   => home_url( '/fm1/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => get_theme_file_uri( 'images/atek303-fm1-og.png' ),
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/fm1/' ),
+                'x-default' => home_url( '/fm1/' ),
+            ],
+            'schema_type' => 'CollectionPage',
+        ],
+        'atek303-fm1' => [
+            'title'       => 'ATEK303 para M-VAVE FM-1 - Firmware acid 303',
+            'description' => 'Firmware 303 para el M-VAVE FM-1: voz acid de VCV Rack, generador de patrones, editor de pasos, delay, chorus, drive, reverb y presets. Gratis y GPLv3.',
+            'canonical'   => home_url( '/atek303-fm1/' ),
+            'locale'      => 'es_ES',
+            'lang'        => 'es',
+            'image'       => get_theme_file_uri( 'images/atek303-fm1-og.png' ),
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/atek303-fm1/' ),
+                'x-default' => home_url( '/atek303-fm1/' ),
+            ],
+            'schema_type' => 'SoftwareApplication',
+            // Sin offers ni downloadUrl: todavía no se puede descargar (falta probarlo en un FM-1 real).
+            'app'         => [
+                'name'            => 'ATEK303 para M-VAVE FM-1',
+                'category'        => 'MusicApplication',
+                'operatingSystem' => 'M-VAVE FM-1 (firmware)',
+            ],
+        ],
         'g1-emu' => [
             'title'       => 'G1-Emu - Emulador del Nord Modular G1',
             'description' => 'Emulador de código abierto del Nord Modular G1 para Linux, macOS y Windows. Conecta Animatek NME, carga tus patches y toca. Pre-alpha; requiere ROM propia.',

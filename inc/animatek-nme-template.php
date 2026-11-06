@@ -9,13 +9,19 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
 
     $patreon_url = 'https://www.patreon.com/c/animatek';
     $github_url  = 'https://github.com/animatek/Animatek-NME';
+    // Pago único en la tienda (SureCart): el botón va directo al pago; la ficha explica qué se compra
+    $buy_url     = 'https://animatek.net/pago/?line_items%5B0%5D%5Bprice_id%5D=523399fb-b563-4e42-bf44-954621963bbb&line_items%5B0%5D%5Bquantity%5D=1';
+    $product_url = home_url( '/products/animatek-nme/' );
     $image_url   = 'https://animatek.net/wp-content/uploads/2026/06/ANIMATEK-NME_imagen.png';
 
     $copy = $is_en ? [
-        'template_badge' => 'BETA IN DEVELOPMENT · PATREON',
+        'template_badge' => 'BETA IN DEVELOPMENT · OPEN SOURCE',
         'lang_label' => 'ES',
         'lang_url' => home_url( '/animatek-nme/' ),
         'hero_text' => 'A modern, native, open-source editor for the legendary Clavia Nord Modular G1, rebuilt from scratch with JUCE/C++. Runs on Windows, macOS and Linux with no Java or legacy runtime required.',
+        'buy' => 'Buy now · €19',
+        'buy_note' => 'One-time purchase: ready-to-run builds for Windows, macOS and Linux, updates included. Or build it yourself for free from GitHub.',
+        'buy_more' => 'What you get',
         'patreon' => 'Support on Patreon',
         'github' => 'View on GitHub',
         'manual' => 'Read the manual',
@@ -27,7 +33,7 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'intro_points' => [
             'Revives the original Nomad-style patch workflow without old Java runtimes.',
             'Edits .pch patches, modules, cables, morphs, MIDI CCs and hardware knob assignments.',
-            'Keeps the project open-source while beta builds are distributed to Patreon supporters.',
+            'Open source (GPLv3): build it for free, or get the ready-to-run builds in the store or on Patreon.',
         ],
         'stack_title' => 'Technical stack',
         'sections' => [
@@ -86,14 +92,17 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'teaser_title' => 'What is coming next',
         'teaser' => 'The Patch Mutator, the extra themes and the four-slot tiled workspace all shipped. What is next is depth rather than breadth: an editor-side meta-modulation layer, more work on the plugin build, and whatever the hardware testing on real racks turns up. Animatek NME is not just about opening old patches again; it is about making the Nord Modular G1 comfortable in a modern setup.',
         'cta_title' => 'Do you own a Nord Modular G1 and want to try the new editor?',
-        'cta_body' => 'Animatek NME is in active beta development. You can support the project and access the builds through Patreon, or follow the code and report issues on GitHub.',
+        'cta_body' => 'Animatek NME is in active beta development. Buy the ready-to-run builds once (€19, updates included), get them as a Patreon supporter, or build it yourself from the code on GitHub.',
         'cta_patreon' => 'Become a supporter',
         'image_alt' => 'Animatek NME Nord Modular G1 editor screenshot',
     ] : [
-        'template_badge' => 'BETA EN DESARROLLO · PATREON',
+        'template_badge' => 'BETA EN DESARROLLO · OPEN SOURCE',
         'lang_label' => 'EN',
         'lang_url' => home_url( '/animatek-nme-eng/' ),
         'hero_text' => 'Un editor moderno, nativo y open-source para el legendario Clavia Nord Modular G1, reconstruido desde cero con JUCE/C++. Funciona en Windows, macOS y Linux sin depender de Java ni de entornos legacy.',
+        'buy' => 'Comprar ya · 19 €',
+        'buy_note' => 'Pago único: instaladores listos para Windows, macOS y Linux, con las actualizaciones incluidas. O compílalo gratis desde GitHub.',
+        'buy_more' => 'Qué incluye',
         'patreon' => 'Apoyar en Patreon',
         'github' => 'Ver en GitHub',
         'manual' => 'Leer el manual',
@@ -105,7 +114,7 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'intro_points' => [
             'Recupera el flujo de trabajo tipo Nomad sin depender de runtimes Java antiguos.',
             'Edita patches .pch, módulos, cables, morphs, MIDI CCs y asignaciones de knobs físicos.',
-            'Mantiene el proyecto open-source mientras las builds beta se distribuyen a supporters de Patreon.',
+            'Open source (GPLv3): compílalo gratis, o llévate los instaladores listos en la tienda o en Patreon.',
         ],
         'stack_title' => 'Stack técnico',
         'sections' => [
@@ -164,7 +173,7 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'teaser_title' => 'Lo próximo',
         'teaser' => 'El Patch Mutator, los temas nuevos y el espacio de trabajo en mosaico con los cuatro slots ya están fuera. Lo próximo va de profundidad más que de anchura: una capa de meta-modulación en el editor, más trabajo en la versión plugin, y lo que vaya saliendo de las pruebas en racks reales. Animatek NME no busca solo volver a abrir patches antiguos; quiere convertir el Nord Modular G1 en un instrumento cómodo dentro de un setup moderno.',
         'cta_title' => '¿Tienes un Nord Modular G1 y quieres probar el nuevo editor?',
-        'cta_body' => 'La beta de Animatek NME está en desarrollo activo. Puedes apoyar el proyecto y acceder a las builds desde Patreon, o seguir el código y reportar issues en GitHub.',
+        'cta_body' => 'La beta de Animatek NME está en desarrollo activo. Compra los instaladores una vez (19 €, actualizaciones incluidas), consíguelos apoyando en Patreon, o compílalo tú desde el código en GitHub.',
         'cta_patreon' => 'Convertirse en supporter',
         'image_alt' => 'Captura de Animatek NME para Nord Modular G1',
     ];
@@ -174,13 +183,13 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
         'Cross-platform' => 'Linux, Windows and macOS, including universal macOS arm64+x86_64 builds.',
         'MIDI SysEx' => 'Direct communication with the Nord Modular G1.',
         'Open Source' => 'Public code on GitHub and open issue tracking.',
-        'Supporter beta' => 'Development builds distributed through Patreon.',
+        'Ready-to-run builds' => 'One-time purchase in the store, or through Patreon.',
     ] : [
         'JUCE / C++ nativo' => 'Aplicación de escritorio real, sin capa Java.',
         'Multiplataforma' => 'Linux, Windows y macOS, incluyendo binario universal macOS arm64+x86_64.',
         'MIDI SysEx' => 'Comunicación directa con el Nord Modular G1.',
         'Open Source' => 'Código público en GitHub y seguimiento de issues abierto.',
-        'Beta para supporters' => 'Builds de desarrollo distribuidas vía Patreon.',
+        'Instaladores listos' => 'Pago único en la tienda, o a través de Patreon.',
     ];
 
     $beta_items = $is_en ? [
@@ -260,6 +269,7 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
 
     $button_base      = 'inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-extrabold leading-none transition duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2';
     $button_primary   = $button_base . ' bg-[#FF424D] text-white shadow-lg hover:bg-[#e63844] focus:ring-[#FF424D] focus:ring-offset-white';
+    $button_buy       = $button_base . ' bg-[#2C7FFF] text-white shadow-lg hover:bg-[#1f6ae0] focus:ring-[#2C7FFF] focus:ring-offset-white';
     $button_secondary = $button_base . ' border border-slate-300 bg-white text-slate-900 shadow-sm hover:bg-slate-100 focus:ring-slate-400 focus:ring-offset-white';
     $button_dark      = $button_base . ' border border-zinc-300 bg-zinc-950 text-white shadow-sm hover:bg-zinc-800 focus:ring-zinc-950 focus:ring-offset-white';
     $button_lang      = 'inline-flex min-h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold leading-none text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/40';
@@ -302,7 +312,10 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
                             <?php echo esc_html( $copy['hero_text'] ); ?>
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_primary ); ?>">
+                            <a href="<?php echo esc_url( $buy_url ); ?>" class="<?php echo esc_attr( $button_buy ); ?>">
+                                <?php echo esc_html( $copy['buy'] ); ?>
+                            </a>
+                            <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_secondary ); ?>">
                                 <?php echo esc_html( $copy['patreon'] ); ?>
                             </a>
                             <a href="<?php echo esc_url( $github_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_secondary ); ?>">
@@ -312,6 +325,10 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
                                 <?php echo esc_html( $copy['manual'] ); ?>
                             </a>
                         </div>
+                        <p class="max-w-2xl text-sm leading-relaxed text-slate-500">
+                            <?php echo esc_html( $copy['buy_note'] ); ?>
+                            <a href="<?php echo esc_url( $product_url ); ?>" class="font-semibold text-primary hover:underline"><?php echo esc_html( $copy['buy_more'] ); ?> →</a>
+                        </p>
                         <p class="max-w-2xl border-l-4 border-yellow-400 pl-4 text-sm leading-relaxed text-slate-500 dark:border-[#F4D35E]">
                             <?php echo esc_html( $copy['disclaimer'] ); ?>
                         </p>
@@ -474,7 +491,10 @@ function animatek_nme_render_page( string $locale = 'es' ): void {
                     <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-700 dark:text-zinc-300"><?php echo esc_html( $copy['cta_body'] ); ?></p>
                 </div>
                 <div class="flex flex-wrap gap-3">
-                    <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_primary ); ?>">
+                    <a href="<?php echo esc_url( $buy_url ); ?>" class="<?php echo esc_attr( $button_buy ); ?>">
+                        <?php echo esc_html( $copy['buy'] ); ?>
+                    </a>
+                    <a href="<?php echo esc_url( $patreon_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_secondary ); ?>">
                         <?php echo esc_html( $copy['cta_patreon'] ); ?>
                     </a>
                     <a href="<?php echo esc_url( $github_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $button_dark ); ?>">
