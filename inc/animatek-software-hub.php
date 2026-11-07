@@ -134,11 +134,11 @@ function animatek_software_hub_render( string $locale = 'es' ): void {
         [
             // Mientras el ATEK303 sea el único firmware, la tarjeta va directa a él; /fm1/ (el índice)
             // existe pero no se enlaza hasta que haya más.
-            'url'         => home_url( '/atek303-fm1/' ),
+            'url'         => home_url( '/atek303-fm1' . $suffix . '/' ),
             'image'       => get_theme_file_uri( 'images/atek303-fm1-seq.png' ),
             'alt'         => $is_en ? 'ATEK303 firmware on the M-VAVE FM-1 screen' : 'Firmware ATEK303 en la pantalla del M-VAVE FM-1',
             'title'       => $is_en ? 'ATEK303 for FM-1' : 'ATEK303 para FM-1',
-            'meta'        => $is_en ? 'Firmware · In testing · Free' : 'Firmware · En pruebas · Gratis',
+            'meta'        => $is_en ? 'Firmware · 1.1 · Free' : 'Firmware · 1.1 · Gratis',
             'text'        => $is_en ? 'An Animatek firmware for the M-VAVE FM-1 pocket synth: the ATEK303 acid voice with its pattern generator, effects and step editor.' : 'Firmware de Animatek para el sinte de bolsillo M-VAVE FM-1: la voz acid del ATEK303 con su generador de patrones, efectos y editor de pasos.',
             'badge_class' => 'border-slate-300 bg-white text-slate-600',
         ],

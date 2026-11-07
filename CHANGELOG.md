@@ -2,6 +2,21 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.9.4] - 2026-11-07
+
+### Añadido — Claude
+- **FM-1 en inglés: `/fm1-eng/` y `/atek303-fm1-eng/`**, páginas virtuales como las de G1-Emu (sin entrada en la base
+  de datos; `animatek_render_virtual_fm1_eng_pages()`), con `lang="en"`, SEO propio con alternates es/en en las
+  cuatro páginas, entrada en el sitemap de software y botón ES / EN. La plantilla (`inc/animatek-fm1-template.php`)
+  pasa a llevar el texto en los dos idiomas (`animatek_atek303_fm1_copy()`). La tarjeta de Software en inglés
+  enlaza a la versión inglesa y dice «1.1».
+- **Iconos en vez de botones**, al estilo de The Firmware Hub: cuadro oscuro con raya de color arriba y el icono
+  (tocar en el navegador, descargar, Firmware Hub, cheat sheet, novedades, código), con su nombre debajo.
+- **Imágenes nuevas**: la imagen grande es ahora la versión del navegador con COSMIC TRAX sonando
+  (`atek303-fm1-web.png/.webp`; también en la imagen para redes, `atek303-fm1-og.png`), y la galería pasa a nueve
+  pantallas sacadas del simulador con los presets de fábrica: VCF sonando con la batería, DELAY, editor, lista de
+  presets con NEXT, SAVE, OVERWRITE?, OPTIONS, ajuste fino y el tema AMBER. Revisado en local.
+
 ## [5.9.3] - 2026-11-07
 
 ### Cambiado — Claude

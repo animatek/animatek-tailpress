@@ -302,8 +302,32 @@ function animatek_render_virtual_g1_emu_page(): void {
 }
 add_action( 'template_redirect', 'animatek_render_virtual_g1_emu_page', 1 );
 
+/** /fm1-eng/ y /atek303-fm1-eng/: las páginas del FM-1 en inglés, sin entrada en la base de datos (las de español
+ * son páginas de WordPress con sus plantillas page-fm1.php y page-atek303-fm1.php). */
+function animatek_render_virtual_fm1_eng_pages(): void {
+    $pages = [ 'fm1-eng' => 'animatek_fm1_render_hub', 'atek303-fm1-eng' => 'animatek_atek303_fm1_render' ];
+    $request_path = animatek_current_request_path();
+    if ( is_admin() || wp_doing_ajax() || ! isset( $pages[ $request_path ] ) ) {
+        return;
+    }
+
+    global $wp_query;
+    if ( $wp_query instanceof WP_Query ) {
+        $wp_query->is_404  = false;
+        $wp_query->is_page = true;
+    }
+
+    status_header( 200 );
+    get_header();
+    require_once get_theme_file_path( 'inc/animatek-fm1-template.php' );
+    call_user_func( $pages[ $request_path ], 'en' );
+    get_footer();
+    exit;
+}
+add_action( 'template_redirect', 'animatek_render_virtual_fm1_eng_pages', 1 );
+
 add_filter( 'language_attributes', function ( $output ) {
-    $locales = [ 'g1-emu' => 'es', 'g1-emu-eng' => 'en' ];
+    $locales = [ 'g1-emu' => 'es', 'g1-emu-eng' => 'en', 'fm1-eng' => 'en', 'atek303-fm1-eng' => 'en' ];
     $path = animatek_current_request_path();
     if ( ! is_admin() && isset( $locales[ $path ] ) ) {
         $output = preg_replace( '/(?<![\w-])lang="[^"]*"/', 'lang="' . $locales[ $path ] . '"', $output );
@@ -489,13 +513,29 @@ function animatek_software_seo_context(): ?array {
             'type'        => 'website',
             'alternates'  => [
                 'es'        => home_url( '/fm1/' ),
+                'en'        => home_url( '/fm1-eng/' ),
+                'x-default' => home_url( '/fm1/' ),
+            ],
+            'schema_type' => 'CollectionPage',
+        ],
+        'fm1-eng' => [
+            'title'       => 'Firmwares for the M-VAVE FM-1: ATEK303 and more',
+            'description' => 'Free, open-source Animatek firmwares for the M-VAVE FM-1 pocket synth. The first, ATEK303: a 303-style acid voice with a sequencer and effects.',
+            'canonical'   => home_url( '/fm1-eng/' ),
+            'locale'      => 'en_US',
+            'lang'        => 'en',
+            'image'       => get_theme_file_uri( 'images/atek303-fm1-og.png' ),
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/fm1/' ),
+                'en'        => home_url( '/fm1-eng/' ),
                 'x-default' => home_url( '/fm1/' ),
             ],
             'schema_type' => 'CollectionPage',
         ],
         'atek303-fm1' => [
             'title'       => 'ATEK303 para M-VAVE FM-1 - Firmware acid 303',
-            'description' => 'Firmware 303 para el M-VAVE FM-1: voz acid de VCV Rack, generador de patrones, editor de pasos, delay, chorus, drive, reverb y presets. Gratis y GPLv3.',
+            'description' => 'Firmware 303 para el M-VAVE FM-1: voz acid de VCV Rack, generador de patrones de 64 pasos, editor, efectos, 12 presets y MIDI. Gratis, GPLv3 y se toca en el navegador.',
             'canonical'   => home_url( '/atek303-fm1/' ),
             'locale'      => 'es_ES',
             'lang'        => 'es',
@@ -503,14 +543,36 @@ function animatek_software_seo_context(): ?array {
             'type'        => 'website',
             'alternates'  => [
                 'es'        => home_url( '/atek303-fm1/' ),
+                'en'        => home_url( '/atek303-fm1-eng/' ),
                 'x-default' => home_url( '/atek303-fm1/' ),
             ],
             'schema_type' => 'SoftwareApplication',
-            // Sin offers ni downloadUrl: todavía no se puede descargar (falta probarlo en un FM-1 real).
             'app'         => [
                 'name'            => 'ATEK303 para M-VAVE FM-1',
                 'category'        => 'MusicApplication',
                 'operatingSystem' => 'M-VAVE FM-1 (firmware)',
+                'url'             => home_url( '/atek303-fm1/' ),
+            ],
+        ],
+        'atek303-fm1-eng' => [
+            'title'       => 'ATEK303 for M-VAVE FM-1 - Acid 303 firmware',
+            'description' => '303 firmware for the M-VAVE FM-1: the VCV Rack acid voice, a 64-step pattern generator, step editor, effects, 12 presets and MIDI. Free, GPLv3, playable in your browser.',
+            'canonical'   => home_url( '/atek303-fm1-eng/' ),
+            'locale'      => 'en_US',
+            'lang'        => 'en',
+            'image'       => get_theme_file_uri( 'images/atek303-fm1-og.png' ),
+            'type'        => 'website',
+            'alternates'  => [
+                'es'        => home_url( '/atek303-fm1/' ),
+                'en'        => home_url( '/atek303-fm1-eng/' ),
+                'x-default' => home_url( '/atek303-fm1/' ),
+            ],
+            'schema_type' => 'SoftwareApplication',
+            'app'         => [
+                'name'            => 'ATEK303 for M-VAVE FM-1',
+                'category'        => 'MusicApplication',
+                'operatingSystem' => 'M-VAVE FM-1 (firmware)',
+                'url'             => home_url( '/atek303-fm1-eng/' ),
             ],
         ],
         'g1-emu' => [
@@ -1186,6 +1248,10 @@ function animatek_software_sitemap_urls(): array {
         home_url( '/apc40-ctrl-eng/' ),
         home_url( '/blank-3/' ),
         home_url( '/blank-3-eng/' ),
+        home_url( '/fm1/' ),
+        home_url( '/fm1-eng/' ),
+        home_url( '/atek303-fm1/' ),
+        home_url( '/atek303-fm1-eng/' ),
     ];
 }
 
