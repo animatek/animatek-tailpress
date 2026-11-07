@@ -2,6 +2,16 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.9.3] - 2026-11-07
+
+### Cambiado — Claude
+- **/atek303-fm1/ con la 1.1 publicada** (`inc/animatek-fm1-template.php`). Fuera el aviso «todavía no se puede
+  descargar»: botones «Descargar la 1.1 (.fwsc)» (la release de GitHub), «Tócalo en el navegador» (GitHub Pages del
+  repo) y «The Firmware Hub», y enlaces a las notas de la versión y a la cheat sheet. La versión vive en
+  `ATEK303_FM1_VERSION` y los enlaces en `animatek_atek303_fm1_links()`. Manual al día: 64 pasos, editor por
+  páginas, 12 presets de fábrica, pantalla de guardar, OPTIONS (OCT− + HOME), MIDI de salida, limitador, reloj
+  externo e instalación probada. La tarjeta de /fm1/ pasa de «En pruebas» a «Versión 1.1». Revisado en local.
+
 ## [5.9.2] - 2026-11-06
 
 ### Cambiado — Claude

@@ -3,9 +3,22 @@
  * Firmwares de Animatek para el M-VAVE FM-1: el índice (/fm1/) y la página del ATEK303 (/atek303-fm1/) con su
  * manual. Contenido: el repo FM1-Animatek (atek303/README.md). Solo en español por ahora.
  *
- * El ATEK303 todavía no se descarga: se publica cuando esté probado en un FM-1 real. Mientras tanto la página
- * lo dice y no enlaza ningún .fwsc.
+ * El ATEK303 se descarga de la release de GitHub (la más nueva: ATEK303_FM1_VERSION) y está enviado a The Firmware
+ * Hub; se toca también en el navegador (GitHub Pages del repo). Al sacar otra versión, cambiar la constante.
  */
+
+const ATEK303_FM1_VERSION = '1.1';
+
+/** Los enlaces del ATEK303: la release, la versión para el navegador, la cheat sheet y el hub. */
+function animatek_atek303_fm1_links(): array {
+    return [
+        'release' => 'https://github.com/animatek/FM1-Animatek/releases/tag/atek303-v' . ATEK303_FM1_VERSION,
+        'fwsc'    => 'https://github.com/animatek/FM1-Animatek/releases/download/atek303-v' . ATEK303_FM1_VERSION . '/atek303-' . ATEK303_FM1_VERSION . '.fwsc',
+        'play'    => 'https://animatek.github.io/FM1-Animatek/atek303/play/',
+        'cheat'   => 'https://animatek.github.io/FM1-Animatek/atek303/cheatsheet/',
+        'hub'     => 'https://thefirmwarehub.com/',
+    ];
+}
 
 /** El repo público de los firmwares (GPL-3.0). */
 function animatek_fm1_repo_url( string $path = '' ): string {
@@ -84,8 +97,8 @@ function animatek_fm1_render_hub(): void {
             'image'  => get_theme_file_uri( 'images/atek303-fm1-seq.png' ),
             'alt'    => 'Pantalla del ATEK303 en el FM-1 con los cuatro knobs del filtro y la tira de 16 pasos',
             'title'  => 'ATEK303',
-            'meta'   => 'En pruebas · Gratis · GPLv3',
-            'text'   => 'La voz del ATEK303 de VCV Rack y su generador de patrones acid, con efectos, editor de pasos y presets.',
+            'meta'   => 'Versión ' . ATEK303_FM1_VERSION . ' · Gratis · GPLv3',
+            'text'   => 'La voz del ATEK303 de VCV Rack y su generador de patrones acid de 64 pasos, con efectos, editor de pasos, 12 presets de fábrica y MIDI. Se toca también en el navegador.',
         ],
     ];
     ?>
@@ -144,36 +157,40 @@ function animatek_atek303_fm1_render(): void {
     $img = static function ( string $name ): string {
         return get_theme_file_uri( 'images/atek303-fm1-' . $name . '.png' );
     };
+    $links = animatek_atek303_fm1_links();
     $features = [
-        'La voz del ATEK303'           => 'El mismo motor que el módulo de VCV Rack: Open303 con el oscilador y el filtro de diodos de ATEK, modelados sobre el esquema del 303. Comparado con el original, la diferencia queda a -51 dB: es el mismo sonido.',
-        'El generador de patrones acid' => 'GENERATE crea una línea nueva; las mutaciones cambian el ritmo, las octavas o los slides y acentos. Es el algoritmo del ATEK303 SEQ: la misma semilla da el mismo patrón en VCV y en el FM-1.',
-        'Efectos en estéreo'           => 'Distorsión (overdrive, RAT o fuzz), chorus o flanger, delay ping-pong sincronizado al tempo y una reverb de placa.',
-        'Editor de pasos y presets'     => 'Un piano roll con las filas UP, DOWN, GATE, ACC y SLIDE para retocar el patrón nota a nota, y 32 presets con nombre acid aleatorio.',
+        'La voz del ATEK303'           => 'El mismo motor que el módulo de VCV Rack: Open303 con el oscilador y el filtro de diodos de ATEK, modelados sobre el esquema del 303. Comparado con el original, la diferencia queda a -51 dB: es el mismo sonido. Con su ajuste fino, como en VCV.',
+        'El generador de patrones acid' => 'SEQ crea una línea nueva de hasta 64 pasos; las mutaciones cambian el ritmo, las octavas o los slides y acentos. Es el algoritmo del ATEK303 SEQ: la misma semilla da el mismo patrón en VCV y en el FM-1.',
+        'Efectos en estéreo'           => 'Distorsión (overdrive, RAT o fuzz), chorus o flanger, delay ping-pong sincronizado al tempo y una reverb de placa. A la salida, un limitador que sube el volumen sin recortar.',
+        'Editor de pasos y presets'     => 'Un piano roll por páginas de 16 pasos para retocar el patrón nota a nota, 12 presets de fábrica y 32 huecos con pantalla de guardar y confirmación.',
+        'MIDI de entrada y salida'      => 'Notas, CC y reloj de entrada; las notas del secuenciador y el reloj salen por USB, para grabar la línea en el DAW o tocar otro sinte con ella.',
+        'Pruébalo en el navegador'      => 'El mismo firmware compilado para la web: el FM-1 en pantalla, con sonido, sin instalar nada.',
     ];
     $gallery = [
-        'delay'   => 'Página DELAY: el ping-pong sigue el tempo. Abajo, la tira de los 16 pasos y el navegador de páginas.',
+        'delay'   => 'Página DELAY: el ping-pong sigue el tempo. Abajo, la tira de pasos y el navegador de páginas.',
         'seq'     => 'Con el secuenciador en marcha, el paso que suena va enmarcado.',
         'editor'  => 'El editor de pasos: la nota en el piano roll; octava, gate, acento y slide debajo.',
-        'presets' => 'La lista de presets: se cargan al pasar por ellos.',
+        'presets' => 'La lista de presets: se cargan al pasar por ellos; sonando, el cambio espera al final del patrón.',
     ];
     $buttons = [
         [ 'PLAY', 'Arranca y para el secuenciador. Si le llega reloj MIDI, lo sigue.' ],
-        [ 'SEQ', 'GENERATE: un patrón nuevo. Con LOCK activo, muta las tres capas en lugar de crear uno nuevo.' ],
-        [ 'ENV / LFO / ARP', 'Mutan el ritmo, las notas (octavas) y los slides y acentos. En el editor, ENV pone o quita el acento y LFO el slide.' ],
+        [ 'SEQ', 'Un patrón nuevo (semilla nueva). Sonando, entra en el siguiente compás. Con LOCK activo, muta las tres capas en lugar de crear uno nuevo.' ],
+        [ 'ENV / LFO / ARP', 'Mutan el ritmo, las notas (octavas) y los slides y acentos de la página a la vista. En el editor, ENV pone o quita el acento y LFO el slide.' ],
         [ 'REC', 'Deshace la última mutación o edición.' ],
-        [ 'GLO', 'LOCK: GENERATE muta en vez de crear una semilla nueva.' ],
+        [ 'GLO', 'LOCK: SEQ muta en vez de crear una semilla nueva.' ],
         [ 'EDIT', 'Abre y cierra el editor de pasos.' ],
         [ 'FX', 'Salta a las páginas de efectos; pulsado otra vez, a la siguiente.' ],
-        [ 'HOME', 'Vuelve a la página VCF y cierra el editor o la lista de presets.' ],
-        [ 'SAVE', 'Guarda un preset nuevo con nombre acid aleatorio. Mantenido un segundo, guarda encima del preset cargado.' ],
-        [ 'OCT− / OCT+', 'La octava.' ],
+        [ 'HOME', 'Recorre VCF, VOICE, PATT y SEQ; desde el editor, la lista o un efecto, vuelve a VCF.' ],
+        [ 'OCT− + HOME', 'OPTIONS: color de la pantalla, canales MIDI, notas y reloj de salida, y el ajuste fino de la voz.' ],
+        [ 'SAVE', 'Abre la pantalla de guardar: hueco y nombre; sobre un hueco ocupado pregunta OVERWRITE? NO / YES.' ],
+        [ 'OCT− / OCT+', 'La octava (OCT− al soltarlo, porque también sirve para combinaciones).' ],
         [ 'Teclas', 'Con el secuenciador parado, tocan la voz: legato hace slide y una pulsación fuerte es un acento. Con el secuenciador sonando, transportan el patrón: la tecla pasa a ser la nota base.' ],
     ];
     $pages = [
         [ 'VCF', 'CUTOFF, RESO, ENV MOD, DECAY' ],
         [ 'VOICE', 'ACCENT, TUNE, WAVE (sierra o cuadrada), GATE (duración de las notas del secuenciador)' ],
         [ 'PATT', 'DENSITY, RANGE, ACCENTS, SLIDES: el patrón vuelve a crecer desde su semilla al girarlos' ],
-        [ 'SEQ', 'STEPS, SCALE, TEMPO, ROOT' ],
+        [ 'SEQ', 'STEPS (1 a 64), SCALE, TEMPO, ROOT' ],
         [ 'DELAY', 'TIME (de 1/16 a 1/4 con puntillo), FEEDBACK, TONE, MIX' ],
         [ 'CHOR', 'TYPE (chorus o flanger), RATE, DEPTH, MIX' ],
         [ 'DRIVE', 'TYPE (off, overdrive, RAT, fuzz), DRIVE, TONE, LEVEL' ],
@@ -181,38 +198,46 @@ function animatek_atek303_fm1_render(): void {
     ];
     $manual = [
         'Primeros pasos' => [
-            'Pulsa PLAY: suena el patrón de fábrica.',
-            'Pulsa SEQ para generar otro, o ENV, LFO y ARP para mutar el que suena. REC deshace.',
+            'Pulsa PLAY: suena el preset 01, COSMIC TRAX.',
+            'Pulsa SEQ para generar otro patrón, o ENV, LFO y ARP para mutar el que suena. REC deshace.',
             'Gira K1 a K4 para cambiar el sonido. SELECT cambia de página y el navegador de abajo te dice dónde estás.',
             'Pulsa una tecla mientras suena para transportar la línea.',
-            'Pulsa SAVE: se guarda como preset con un nombre acid.',
+            'Pulsa SAVE dos veces: se guarda como preset con un nombre acid.',
         ],
         'El secuenciador' => [
             'Los patrones salen del generador del ATEK303 SEQ: grados de escala con su octava, ties, slides y acentos. SCALE y ROOT cambian la salida sin perder el patrón.',
-            'DENSITY, RANGE, ACCENTS y SLIDES regeneran el patrón desde la misma semilla en tiempo real: subir la densidad añade notas sin cambiar las que había. Se pierden las mutaciones y las ediciones hechas.',
-            'Con reloj MIDI externo sigue START, STOP y CONTINUE, a seis ticks por paso.',
+            'Hasta 64 pasos en cuatro páginas de 16: la tira enseña la página que suena, con cuatro marcas encima.',
+            'DENSITY, RANGE, ACCENTS y SLIDES regeneran el patrón desde la misma semilla en tiempo real: subir la densidad añade notas sin cambiar las que había.',
+            'Con reloj MIDI externo sigue START, STOP y CONTINUE, a seis pulsos por paso, clavado con el DAW. En pantalla, el tempo dice EXT.',
         ],
         'El editor de pasos' => [
-            'EDIT lo abre. SELECT o K1 mueven el cursor por los 16 pasos.',
-            'Una tecla pone la nota del paso y pasa al siguiente; con el secuenciador parado, además suena.',
-            'K2 cambia la octava (UP y DOWN), K3 el gate (silencio, nota o tie) y K4 la nota de semitono en semitono.',
-            'ENV pone o quita el acento y LFO el slide. Un slide hacia la misma nota suena legato, como en un 303; hacia un silencio no hace nada.',
-            'Una nota fuera de la escala pasa la escala a cromática para no perder ninguna altura.',
+            'EDIT lo abre. SELECT recorre los 16 pasos de la página y K4 cambia de página.',
+            'K1 cambia el gate (silencio, nota o tie), K2 la octava y K3 la nota de semitono en semitono. Una tecla pone la nota del paso y pasa al siguiente.',
+            'ENV pone o quita el acento y LFO el slide. Un slide hacia la misma nota suena legato, como en un 303.',
+            'OCT− mantenido y K4 cambian la longitud del patrón (de 1 a 64 pasos).',
         ],
         'Presets' => [
-            '32 presets en la memoria del FM-1, con copia de seguridad interna: un corte de luz a mitad de guardar no los pierde.',
+            '12 presets de fábrica y 32 huecos en la memoria del FM-1, con copia de seguridad interna: un corte de luz a mitad de guardar no los pierde.',
             'Cada preset guarda el patrón (con su semilla y mutaciones), la voz, los efectos, el tempo, la escala, la raíz y la octava.',
-            'Gira PRESETS para abrir la lista: el cursor carga cada preset al pasar. ENV dos veces borra el seleccionado (la primera solo avisa), SAVE en un hueco vacío guarda ahí, y HOME o seis segundos sin tocar la cierran.',
+            'Gira PRESETS para abrir la lista: el cursor carga cada preset al pasar. Sonando, el cambio espera al final del patrón, como en un 303 (NEXT). ENV dos veces borra el seleccionado y HOME cierra la lista.',
+            'Los presets se pueden copiar al ordenador y devolver por USB con la herramienta de copia de fm1-base.',
+        ],
+        'OPTIONS (OCT− + HOME)' => [
+            'COLOR: el azul de Animatek o los temas de fm1-base (verde, ámbar, cian, rojo y mono).',
+            'MIDI: canal de entrada (todos o uno), canal de salida, las notas del secuenciador por USB y el reloj de salida.',
+            'FINE TUNING: el mismo menú del ATEK303 de VCV: anchura de pulso, caídas del oscilador, drive del filtro, tiempo de slide, auto-legato, saturaciones, deriva analógica y unidad.',
+            'Las opciones son del aparato, no de los presets, y se guardan al cerrar.',
         ],
         'MIDI' => [
-            'Entrada por USB y por el minijack TRS.',
-            'Con el secuenciador parado, las notas tocan la voz (velocidad 100 o más: acento; notas solapadas: slide). Sonando, las notas transportan el patrón.',
+            'Entrada por USB y por el minijack TRS: con el secuenciador parado, las notas tocan la voz (velocidad 100 o más: acento; notas solapadas: slide); sonando, transportan el patrón.',
             'CC 74 cutoff, 71 resonancia, 75 env mod, 76 decay, 77 accent, 78 tune y 79 wave.',
+            'Salida por USB: las teclas y las notas del secuenciador (acento con velocidad 127) y, si se activa, el reloj.',
         ],
     ];
     $install = [
-        'Cuando se publique, el ATEK303 se instalará como cualquier firmware de la comunidad: desde un instalador web en Chrome o Edge, desde The Firmware Hub o con el script fm1_install.py.',
-        'Lleva la vía de actualización de la comunidad, así que siempre se puede instalar otro firmware encima o volver al oficial de M-VAVE.',
+        'Descarga el archivo .fwsc de la release ' . ATEK303_FM1_VERSION . ' en GitHub e instálalo con el instalador web de la comunidad (Chrome o Edge) o con el script fm1_install.py de fm1-base. Está enviado también a The Firmware Hub, para instalarlo desde allí con un clic.',
+        'Probado en un FM-1 real: se instala desde el firmware oficial V15 y desde otro firmware, y se puede salir de él. Lleva la vía de actualización de la comunidad, así que siempre se puede instalar otro encima o volver al oficial de M-VAVE.',
+        'Los presets guardados con la 1.0 no se cargan en la 1.1 (el formato cambió con los 64 pasos).',
     ];
     $credits = [
         'ATEK303 para FM-1 es software libre (GPL-3.0) de Animatek.',
@@ -226,17 +251,20 @@ function animatek_atek303_fm1_render(): void {
             <div class="relative mx-auto max-w-7xl px-6 py-10 sm:px-10 lg:py-12">
                 <div class="grid items-center gap-8 lg:grid-cols-[1fr_minmax(0,34rem)]">
                     <div class="space-y-5">
-                        <p class="<?php echo esc_attr( $s['kicker'] ); ?>">Firmware para M-VAVE FM-1 · En pruebas · GPLv3</p>
+                        <p class="<?php echo esc_attr( $s['kicker'] ); ?>">Firmware para M-VAVE FM-1 · Versión <?php echo esc_html( ATEK303_FM1_VERSION ); ?> · GPLv3</p>
                         <div class="space-y-3">
                             <h1 class="text-4xl font-black leading-none sm:text-5xl lg:text-6xl">ATEK303</h1>
                             <p class="text-xl font-semibold text-primary sm:text-2xl">El 303 de VCV Rack, dentro del FM-1.</p>
                         </div>
                         <p class="text-lg leading-relaxed text-slate-700 dark:text-zinc-300">La voz del ATEK303 y su generador de patrones acid, en un sinte de bolsillo. Pulsas PLAY y suena una línea; giras los knobs y se mueve. Sin ordenador y sin cables, si no quieres.</p>
-                        <div class="rounded-lg border border-primary/40 bg-white p-4 text-sm leading-relaxed dark:bg-zinc-900">
-                            <strong>Todavía no se puede descargar.</strong> Ya funciona en el simulador y en el emulador del FM-1; antes de publicarlo lo vamos a probar en un FM-1 de verdad.
-                        </div>
                         <div class="flex flex-wrap gap-3">
-                            <a href="<?php echo esc_url( $vcv_url ); ?>" class="<?php echo esc_attr( $s['button'] ); ?> bg-primary text-white">ATEK303 en VCV Rack</a>
+                            <a href="<?php echo esc_url( $links['fwsc'] ); ?>" class="<?php echo esc_attr( $s['button'] ); ?> bg-primary text-white">Descargar la <?php echo esc_html( ATEK303_FM1_VERSION ); ?> (.fwsc)</a>
+                            <a href="<?php echo esc_url( $links['play'] ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $s['button'] ); ?> bg-[#FD9A00] text-zinc-950">Tócalo en el navegador</a>
+                            <a href="<?php echo esc_url( $links['hub'] ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $s['button'] ); ?> border border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">The Firmware Hub</a>
+                        </div>
+                        <p class="text-sm <?php echo esc_attr( $s['muted'] ); ?>">Gratis y de código abierto. <a href="<?php echo esc_url( $links['release'] ); ?>" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary underline-offset-2 hover:underline">Notas de la versión <?php echo esc_html( ATEK303_FM1_VERSION ); ?></a> · <a href="<?php echo esc_url( $links['cheat'] ); ?>" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary underline-offset-2 hover:underline">Cheat sheet (PDF y web)</a></p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="<?php echo esc_url( $vcv_url ); ?>" class="<?php echo esc_attr( $s['button'] ); ?> border border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">ATEK303 en VCV Rack</a>
                             <a href="#manual" class="<?php echo esc_attr( $s['button'] ); ?> border border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">Leer el manual</a>
                             <a href="<?php echo esc_url( animatek_fm1_repo_url( 'atek303' ) ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $s['button'] ); ?> border border-zinc-300 bg-white text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white">Código en GitHub</a>
                         </div>
