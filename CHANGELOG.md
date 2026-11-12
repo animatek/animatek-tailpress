@@ -2,7 +2,7 @@
 
 All notable changes to TailPress will be documented in this file.
 
-## [Sin publicar] - 2026-11-12
+## [5.9.5] - 2026-11-12
 
 ### Añadido — Claude
 - **`/atek303/words/<id>.json` redirige a GitHub Pages** (`animatek_atek303_words_redirect()`, 302 con
