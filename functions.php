@@ -326,6 +326,21 @@ function animatek_render_virtual_fm1_eng_pages(): void {
 }
 add_action( 'template_redirect', 'animatek_render_virtual_fm1_eng_pages', 1 );
 
+/** /atek303/words/<id>.json: los ficheros de palabras del lector de pantalla del FM-1 (fm1-reader). Cada firmware
+ * del ATEK303 lleva grabada esta URL; los ficheros viven en GitHub Pages (rama gh-pages de animatek/FM1-Animatek).
+ * El lector los pide desde el navegador en modo CORS, así que la redirección también lleva la cabecera. */
+function animatek_atek303_words_redirect(): void {
+    $path = (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH );
+    if ( ! preg_match( '#^/atek303/words/([0-9a-f]{10})\.json$#', $path, $m ) ) {
+        return;
+    }
+    header( 'Access-Control-Allow-Origin: *' );
+    header( 'Cache-Control: public, max-age=86400' );
+    wp_redirect( 'https://animatek.github.io/FM1-Animatek/atek303/words/' . $m[1] . '.json', 302, 'Animatek' );
+    exit;
+}
+add_action( 'template_redirect', 'animatek_atek303_words_redirect', 0 );
+
 add_filter( 'language_attributes', function ( $output ) {
     $locales = [ 'g1-emu' => 'es', 'g1-emu-eng' => 'en', 'fm1-eng' => 'en', 'atek303-fm1-eng' => 'en' ];
     $path = animatek_current_request_path();

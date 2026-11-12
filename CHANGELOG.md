@@ -2,6 +2,15 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [Sin publicar] - 2026-11-12
+
+### Añadido — Claude
+- **`/atek303/words/<id>.json` redirige a GitHub Pages** (`animatek_atek303_words_redirect()`, 302 con
+  `Access-Control-Allow-Origin: *`): los firmwares del ATEK303 llevan grabada esa URL para el lector de pantalla
+  del FM-1 (fm1-reader), que la pide desde el navegador en modo CORS y daba 404. Los ficheros viven en `gh-pages` de
+  `animatek/FM1-Animatek` (`atek303/words/`). Probado en local (`:8081`): 302 con CORS y nombres no válidos a 404.
+  Issue `animatek/FM1-Animatek#1`.
+
 ## [5.9.4] - 2026-11-07
 
 ### Añadido — Claude
