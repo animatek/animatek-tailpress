@@ -10,10 +10,11 @@
 // comen demasiada pantalla en móvil.
 //
 // En los propios Labs sale igual, pero contextual: solo se anuncia el otro
-// (en el VCV Lab sale el de Bitwig y al revés).
+// (en el VCV Lab salen los otros dos, y así con cada uno).
 $is_vcv_lab    = is_page( 'vcvrack-lab' );
 $is_bitwig_lab = is_page( 'bitwig-lab' );
-$in_lab        = $is_vcv_lab || $is_bitwig_lab;
+$is_fm1_lab    = is_page( 'fm1-lab' );
+$in_lab        = $is_vcv_lab || $is_bitwig_lab || $is_fm1_lab;
 ?>
 <div id="labs-banner" class="border-b border-slate-200 bg-slate-50 text-slate-700">
     <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-6 py-2.5 text-sm sm:px-10">
@@ -24,7 +25,7 @@ $in_lab        = $is_vcv_lab || $is_bitwig_lab;
                 <path d="M7 15h10"/>
             </svg>
             <?php if ( $in_lab ) : ?>
-                <span><strong>Sigue aprendiendo gratis:</strong> conoce el otro Lab</span>
+                <span><strong>Sigue aprendiendo gratis:</strong> conoce los otros Labs</span>
             <?php else : ?>
                 <span><strong>Labs gratis:</strong> guías completas para empezar de cero</span>
             <?php endif; ?>
@@ -35,6 +36,9 @@ $in_lab        = $is_vcv_lab || $is_bitwig_lab;
             <?php endif; ?>
             <?php if ( ! $is_bitwig_lab ) : ?>
                 <a href="<?php echo esc_url( home_url( '/bitwig-lab/' ) ); ?>" class="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-bold text-primary shadow-sm transition hover:border-primary/40 hover:bg-primary/5">Bitwig Lab</a>
+            <?php endif; ?>
+            <?php if ( ! $is_fm1_lab ) : ?>
+                <a href="<?php echo esc_url( home_url( '/fm1-lab/' ) ); ?>" class="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-bold text-primary shadow-sm transition hover:border-primary/40 hover:bg-primary/5">FM-1 Lab</a>
             <?php endif; ?>
         </span>
     </div>

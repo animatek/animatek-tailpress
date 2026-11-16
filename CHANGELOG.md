@@ -2,6 +2,29 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.10.0] - 2026-11-16
+
+### Añadido — Claude
+- **FM-1 Lab (`/fm1-lab/`, `page-fm1-lab.php`)**: la guía gratuita del M-VAVE FM-1 detrás del formulario de la
+  lista 24 de Brevo («FM-1»), con el `brevo-locker` (clave `fm1_lab_unlocked`) y **la estructura y el diseño del
+  VCV Lab**: once secciones `seccion-1`…`seccion-11` con número e icono, tarjetas y rejillas. Qué es el FM-1 (con
+  ficha técnica, comunidad y el enlace de afiliado de Amazon con su aviso), antes de instalar, **M-Flasher**
+  (jvitkauskas/m-flasher, MIT: copia, reinstalar y rescatar con ventana), cómo cambiar de firmware, 12 firmwares
+  por uso con botón «Probar» en fm1-emu (`?fw=`) y su código, SHRUB aparte, ATEK303, FM1 Dock, probar sin el
+  FM-1, rescate en tres casos, los vídeos del FM-1 (incluido el directo `aSCG8NeZyHw`) y apoyo (Patreon,
+  afiliado, canal). El PDF sale de esta página con `Animatek.net/Funnels/Funnel FM-1/generar-pdf.sh` (maqueta de
+  escritorio, 10 hojas); botón de PDF a `uploads/2026/11/guia-fm1-animatek.pdf`. En móvil el icono del título se
+  oculta para que no lo estreche. Probado en local (`:8081`) a 1280 y 390 px.
+- **La franja de Labs anuncia también el FM-1 Lab**, y en cada Lab salen los otros dos.
+
+### Corregido — Claude
+- **ORIGEN_VIDEO volvía a perderse en todos los Labs.** `template-parts/origen-video.php` y su include en
+  `brevo-locker.php` (commits `8aab386` y `38df448`, 25/08) estaban en la rama `atribucion/origen-video`, que nunca
+  se fusionó a `main`: en producción el campo no existe y ningún suscriptor nuevo guarda de qué vídeo viene, aunque
+  `Funnels/ATRIBUCION-POR-VIDEO.md` daba la cadena por cerrada. Traído a esta rama; en local
+  `/fm1-lab/?utm_content=uMQZTRQruyA` rellena `ORIGEN_VIDEO=uMQZTRQruyA`. Arregla a la vez el VCV Lab y el Bitwig
+  Lab, que usan el mismo locker.
+
 ## [5.9.5] - 2026-11-12
 
 ### Añadido — Claude
