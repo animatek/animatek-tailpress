@@ -2,6 +2,13 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.10.1] - 2026-11-16
+
+### Cambiado — Claude
+- **El PDF del FM-1 Lab se sirve desde S3** (`animatekcursos.s3.us-east-2.amazonaws.com/guia-fm1-animatek.pdf`),
+  no desde la biblioteca de medios: es donde lo subió Javier. Comprobado: 200, `application/pdf` y el mismo
+  archivo que `Animatek.net/Funnels/Funnel FM-1/guia-fm1-animatek.pdf`.
+
 ## [5.10.0] - 2026-11-16
 
 ### Añadido — Claude

@@ -14,8 +14,8 @@
  * Los firmwares cambian cada semana: la sección 5 lleva la fecha.
  */
 
-/** El PDF de la guía, subido a la biblioteca de medios. Vacío = no se enseña el botón. */
-const ANIMATEK_FM1_LAB_PDF    = 'https://animatek.net/wp-content/uploads/2026/11/guia-fm1-animatek.pdf';
+/** El PDF de la guía, en el S3 de los cursos (lo sube Javier). Vacío = no se enseña el botón. */
+const ANIMATEK_FM1_LAB_PDF    = 'https://animatekcursos.s3.us-east-2.amazonaws.com/guia-fm1-animatek.pdf';
 const ANIMATEK_FM1_AFILIADO   = 'https://link.amazon/B0gLGJn4G';
 const ANIMATEK_FM1_EMU        = 'https://joakimeriksson.github.io/fm1-emu/';
 
