@@ -2,6 +2,15 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.10.3] - 2026-11-22
+
+### Añadido — Claude
+- **Barra de Black Friday** (`template-parts/banner-labs.php`): del 22/11 a las 00:00 al 30/11 a las 23:59
+  (hora de Madrid) la barra de los Labs anuncia el pack de VCV Rack a 29 € (48 € tachado) con un botón a su ficha,
+  para quien entra sin estar en la lista. No sale en la propia ficha del pack. Se apaga sola: la fecha se mira en
+  PHP y otra vez en el navegador, porque LiteSpeed y Cloudflare sirven HTML cacheado y una página guardada el 30
+  seguiría enseñando la oferta el 1. El bloque se puede borrar a partir del 1/12.
+
 ## [5.10.2] - 2026-11-22
 
 ### Corregido — Claude
