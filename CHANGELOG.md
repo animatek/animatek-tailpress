@@ -2,6 +2,14 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.10.4] - 2026-11-22
+
+### Corregido — Claude
+- **Dos botones «Comprar ahora» iguales en las fichas de SureCart.** La plantilla de producto trae dos botones de
+  compra con `addToCart:false` (el primero debía ser «Añadir al carrito»), y no se encuentra en el editor de
+  WordPress. `inc/animatek-surecart.php` oculta el repetido: solo cae un botón de compra directa que va detrás de
+  otro igual, así que si el primero vuelve a ser de carrito se ven los dos.
+
 ## [5.10.3] - 2026-11-22
 
 ### Añadido — Claude

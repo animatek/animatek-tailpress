@@ -69,6 +69,13 @@ function animatek_surecart_estilos(): void {
 .animatek-tienda .wp-block-surecart-product-buy-buttons .wp-block-button:not(:first-child) .sc-button__link:hover {
     border-color: #2C7FFF !important;
 }
+/* La plantilla de producto de SureCart trae dos botones «Comprar ahora» iguales (los dos con
+   addToCart:false desde noviembre de 2026). Se oculta el repetido: solo cae un botón de compra
+   directa que va detrás de otro igual, así que si algún día el primero vuelve a ser «Añadir al
+   carrito», los dos se ven otra vez. */
+.animatek-tienda .wp-block-surecart-product-buy-buttons .wp-block-button[data-wp-context*='"addToCart":false'] ~ .wp-block-button[data-wp-context*='"addToCart":false'] {
+    display: none !important;
+}
 /* Sin foto en el producto SureCart pone un marcador gris enorme: en su lugar, un recuadro oscuro */
 .animatek-tienda .wp-block-column:has(> .wp-block-surecart-product-media img[src*="images/placeholder"]) > * {
     display: none !important;
