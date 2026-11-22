@@ -2,6 +2,20 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.10.2] - 2026-11-22
+
+### Corregido — Claude
+- **La foto de las fichas de SureCart salía ensanchada y recortada.** La regla `.alignwide img` de
+  `resources/css/utilities.css` (ancho `calc(100% + 320px)` y márgenes de −160 px, con `!important` dentro de la
+  capa de utilidades, que gana a cualquier `!important` sin capa) también pillaba la foto del producto, porque
+  SureCart marca la ficha como `alignwide`. En las fotos cuadradas (Patch Lab 01, el pack de Black Friday) la
+  imagen crecía también a lo alto y se cortaba por la derecha. Ahora la regla excluye `.wp-block-surecart-product-media`.
+
+### Cambiado — Claude
+- **Descripción larga de las fichas** (`inc/animatek-surecart.php`): títulos a escala de la columna, viñetas en
+  las listas, aire entre párrafos y citas con borde azul. La etiqueta de colección («Bundles») va en oscuro en vez
+  del blanco de SureCart.
+
 ## [5.10.1] - 2026-11-16
 
 ### Cambiado — Claude

@@ -12,7 +12,9 @@
     max-width: none;
     position: relative;
 
-    img {
+    /* SureCart marca la ficha de producto como alignwide: sin el :not, la foto del
+       producto se ensancha 320 px y su caja la recorta (en las cuadradas, a lo alto). */
+    img:not(.wp-block-surecart-product-media img) {
         width: calc(100% + 320px) !important;
         max-width: none !important;
         margin-left: -160px;

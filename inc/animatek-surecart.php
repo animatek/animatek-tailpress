@@ -29,6 +29,22 @@ function animatek_surecart_estilos(): void {
 .animatek-tienda .wp-block-surecart-product-selected-price-amount { color: #f8fafc; font-weight: 700; }
 .animatek-tienda .wp-block-surecart-product-description,
 .animatek-tienda .wp-block-surecart-product-description * { color: #cbd5e1 !important; line-height: 1.65; }
+/* La descripción larga: títulos a escala de la columna, listas con viñeta y aire entre párrafos */
+.animatek-tienda .wp-block-surecart-product-description h2 { font-size: 1.35rem !important; margin: 1.75rem 0 .5rem !important; }
+.animatek-tienda .wp-block-surecart-product-description h3 { font-size: 1.1rem !important; margin: 1.5rem 0 .4rem !important; }
+.animatek-tienda .wp-block-surecart-product-description p { margin: 0 0 .9rem !important; }
+.animatek-tienda .wp-block-surecart-product-description ul,
+.animatek-tienda .wp-block-surecart-product-description ol { list-style: disc; padding-left: 1.25rem; margin: 0 0 1rem !important; }
+.animatek-tienda .wp-block-surecart-product-description ol { list-style: decimal; }
+.animatek-tienda .wp-block-surecart-product-description li { margin-bottom: .35rem; }
+.animatek-tienda .wp-block-surecart-product-description strong { color: #f8fafc !important; }
+.animatek-tienda .wp-block-surecart-product-description blockquote {
+    border-left: 3px solid #2C7FFF; padding-left: 1rem; margin: 1rem 0 !important; font-style: italic;
+}
+/* La etiqueta de colección (Bundles…) salía en blanco de SureCart */
+.animatek-tienda .wp-block-surecart-product-collection-tags .sc-tag {
+    background: #1e293b !important; color: #94a3b8 !important; border: 1px solid #334155 !important;
+}
 .animatek-tienda label, .animatek-tienda .wp-block-surecart-product-quantity { color: #94a3b8 !important; }
 .animatek-tienda .wp-block-surecart-product-quantity input,
 .animatek-tienda .wp-block-surecart-product-quantity button,
