@@ -12,12 +12,19 @@
  *
  * Fuentes: el repo FM1-Animatek (docs/01 a 04), la lista de fm1-emu y el README de m-flasher.
  * Los firmwares cambian cada semana: la sección 5 lleva la fecha.
+ *
+ * La sección 11 regala los cuatro sonidos de Brian Eno de Keyboard (febrero de 1987) en .syx, del vídeo
+ * tGY9v9k4yhY. El zip lo subió Javier al S3 de los cursos (Preset y Recursos/), como el PDF; no lleva léeme,
+ * así que lo que es cada archivo y cómo se carga se explica en la propia sección.
  */
 
 /** El PDF de la guía, en el S3 de los cursos (lo sube Javier). Vacío = no se enseña el botón. */
 const ANIMATEK_FM1_LAB_PDF    = 'https://animatekcursos.s3.us-east-2.amazonaws.com/guia-fm1-animatek.pdf';
 const ANIMATEK_FM1_AFILIADO   = 'https://link.amazon/B0gLGJn4G';
 const ANIMATEK_FM1_EMU        = 'https://joakimeriksson.github.io/fm1-emu/';
+/** Los sonidos de Eno en .syx, en el mismo S3 que el PDF (lo sube Javier). Vacío = no se enseña el botón. */
+const ANIMATEK_FM1_ENO_ZIP    = 'https://animatekcursos.s3.us-east-2.amazonaws.com/Preset+y+Recursos/Eno-DX7-syx.zip';
+const ANIMATEK_FM1_ENO_VIDEO  = 'tGY9v9k4yhY';
 
 get_header();
 
@@ -45,6 +52,7 @@ $iconos = [
     'monitor'  => 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25',
     'lifebuoy' => 'M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-4.138-5.976a3.736 3.736 0 00-.88-1.388 3.737 3.737 0 00-1.388-.88m2.268 2.268a3.765 3.765 0 010 2.528m-2.268-4.796a3.765 3.765 0 00-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 01-1.388.88m2.268-2.268l4.138 3.448m0 0a9.027 9.027 0 01-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m5.976-4.138a3.765 3.765 0 01-2.528 0m0 0a3.736 3.736 0 01-1.388-.88 3.737 3.737 0 01-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 01-1.652-1.306 9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 5.976a3.765 3.765 0 010-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 011.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 00-1.652 1.306A9.025 9.025 0 004.33 7.288',
     'play'     => 'M21 12a9 9 0 11-18 0 9 9 0 0118 0z M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z',
+    'download' => 'M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3',
     'heart'    => 'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
 ];
 
@@ -136,7 +144,7 @@ $videos = [
                     los que merecen la pena, probarlos sin tener el sinte y qué hacer si se queda bloqueado.
                 </p>
                 <ul class="flex flex-wrap gap-3 text-sm font-semibold text-slate-200">
-                    <li class="rounded-full border border-white/15 bg-white/5 px-3 py-1">11 secciones</li>
+                    <li class="rounded-full border border-white/15 bg-white/5 px-3 py-1">12 secciones</li>
                     <li class="rounded-full border border-white/15 bg-white/5 px-3 py-1">12 firmwares para probar en el navegador</li>
                     <li class="rounded-full border border-white/15 bg-white/5 px-3 py-1">Guía web + PDF</li>
                 </ul>
@@ -157,7 +165,7 @@ $videos = [
         'form_action' => 'https://a2fe0a0a.sibforms.com/serve/MUIFANVvPBn6DoxeDot0Iiesawn3FxKMB7i1w2VMLdE_xqDrBwbqoAdO7yQsEFr7IjJ3scl8qqkPFaOFN6cQb0FNZ5XC2DjPJ5_ktTOYAa0-IYe4gOljtCmc4Ele4ZyMkxix1_vyTjLAoyUqvtPa2QRw5OQgAV4n_hp7HKYCvjL4Yhf5K0MlGDKWjamip2zLI3FFlmnrnakCKawH',
         'storage_key' => 'fm1_lab_unlocked',
         'title'       => 'Desbloquea la guía completa del FM-1 + recibe el PDF',
-        'description' => 'Deja tu email y se abren aquí mismo las 11 secciones, <strong>gratis</strong>. Te mando también el PDF. Solo te escribiré de cosas del FM-1: firmwares nuevos, trucos y vídeos.',
+        'description' => 'Deja tu email y se abren aquí mismo las 12 secciones, <strong>gratis</strong>. Te mando también el PDF. Solo te escribiré de cosas del FM-1: firmwares nuevos, trucos y vídeos.',
         'email_label' => 'Tu email',
     ]);
     ?>
@@ -540,10 +548,81 @@ $videos = [
             </div>
         </section>
 
-        <!-- 11. Apoya y sigue -->
+        <!-- 11. Los sonidos de Brian Eno -->
         <section id="seccion-11" class="<?php echo esc_attr( $seccion ); ?>">
             <div class="<?php echo esc_attr( $caja ); ?>">
-                <?php $titulo( 11, 'heart', 'Si esto te sirve' ); ?>
+                <?php $titulo( 11, 'download', 'Cuatro sonidos de Brian Eno para tu FM-1' ); ?>
+                <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr] items-start">
+                    <a href="<?php echo esc_url( 'https://youtu.be/' . ANIMATEK_FM1_ENO_VIDEO ); ?>" target="_blank" rel="noopener" class="group block rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-sm">
+                        <span class="relative block aspect-video overflow-hidden bg-slate-200 dark:bg-slate-800">
+                            <img src="<?php echo esc_url( 'https://i.ytimg.com/vi/' . ANIMATEK_FM1_ENO_VIDEO . '/hqdefault.jpg' ); ?>" alt="Vídeo: El DX7 mató al 303. Su nieto de 70 € lo ha resucitado" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy">
+                            <span class="absolute left-3 top-3 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur">Del vídeo</span>
+                        </span>
+                        <span class="block p-4 bg-slate-50 dark:bg-slate-800/40 text-sm font-bold text-slate-800">El DX7 mató al 303. Su nieto de 70 € lo ha resucitado</span>
+                    </a>
+                    <div class="space-y-4 text-lg <?php echo esc_attr( $texto ); ?>">
+                        <p>En febrero de 1987, la revista <strong>Keyboard</strong> publicó cuatro sonidos que Brian Eno les mandó de su DX7: <strong>Kalimba 2, Tamboura, Glide y Violin 3</strong>. Venían en tablas, parámetro a parámetro, para meterlos a mano.</p>
+                        <p>Los he pasado a <code>.syx</code>. El FM-1 lleva dentro un motor de DX7, así que con el firmware oficial los cargas tal cual. Y si no tienes el FM-1, suenan en Dexed.</p>
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <?php if ( ANIMATEK_FM1_ENO_ZIP ) : ?>
+                                <a href="<?php echo esc_url( ANIMATEK_FM1_ENO_ZIP ); ?>" class="<?php echo esc_attr( $boton ); ?>" download>
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                    Descargar los sonidos (.zip)
+                                </a>
+                            <?php endif; ?>
+                            <a href="<?php echo esc_url( 'https://youtu.be/' . ANIMATEK_FM1_ENO_VIDEO ); ?>" target="_blank" rel="noopener" class="<?php echo esc_attr( $boton2 ); ?>">Ver el vídeo</a>
+                        </div>
+                        <p class="text-xs text-slate-500">Sonidos de Brian Eno, publicados en <em>Keyboard</em> (febrero de 1987, pág. 41). Pasados a <code>.syx</code> por Animatek.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-800 mt-12 mb-5">Los cuatro sonidos</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                    <?php
+                    $eno = [
+                        [ 'Kalimba 2', 'Eno-Kalimba2.syx', 'Percusión afinada y corta, que responde a la fuerza con la que tocas.' ],
+                        [ 'Tamboura', 'Eno-Tamboura.syx', 'Un dron al estilo de la tambura india. Mantén una nota y déjalo sonar.' ],
+                        [ 'Glide', 'Eno-Glide.syx', 'Sostenido y suave. Uno de sus operadores va en frecuencia fija.' ],
+                        [ 'Violin 3', 'Eno-Violin3.syx', 'Cuerda frotada.' ],
+                    ];
+                    foreach ( $eno as [ $nombre, $archivo, $que ] ) :
+                        ?>
+                        <div class="<?php echo esc_attr( $mini ); ?>">
+                            <strong class="block text-lg text-slate-900"><?php echo esc_html( $nombre ); ?></strong>
+                            <code class="block text-xs text-primary mb-2"><?php echo esc_html( $archivo ); ?></code>
+                            <p class="text-sm text-slate-500 leading-relaxed"><?php echo esc_html( $que ); ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2 mt-10">
+                    <div class="<?php echo esc_attr( $panel ); ?>">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3">Qué hay en el zip</h3>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li><strong>Los cuatro sonidos, uno por archivo</strong> (voz suelta de DX7).</li>
+                            <li><code>Eno-Keyboard-1987.syx</code>: un banco de DX7 con los cuatro en las posiciones 1 a 4. Para Dexed o un DX7 de verdad.</li>
+                            <li><code>FM1-grupo-D-con-Eno.syx</code>: el grupo D de fábrica del FM-1 con los cuatro en las posiciones 29 a 32, en lugar de Echo, Timbali, Percussion y What If. Las otras 28 se quedan como venían.</li>
+                            <li><code>FM1-grupo-D-original.syx</code>: el grupo D tal como viene de fábrica, para volver atrás.</li>
+                        </ul>
+                    </div>
+                    <div class="<?php echo esc_attr( $panel ); ?>">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3">Cómo se cargan en el FM-1</h3>
+                        <ol class="list-decimal pl-5 space-y-2 text-sm text-slate-600">
+                            <li>Con el <strong>firmware oficial</strong> de M-VAVE, que es el que habla DX7. Si tienes otro, vuelve antes al oficial (sección 4).</li>
+                            <li>Conéctalo por <strong>USB</strong>, con cable de datos y sin hub. Por el minijack MIDI los bancos largos pueden no llegar enteros.</li>
+                            <li>Manda el <code>.syx</code> con un programa de SysEx (SysEx Librarian en Mac, MIDI-OX en Windows, <code>amidi</code> en Linux) o con un editor web de DX7 compatible con el FM-1.</li>
+                            <li>Lo más cómodo es <code>FM1-grupo-D-con-Eno.syx</code> en el grupo D: solo cambian los huecos 29 a 32. Para dejarlo como estaba, manda <code>FM1-grupo-D-original.syx</code>.</li>
+                        </ol>
+                        <p class="text-xs text-slate-500 mt-4">La revista no dice cómo va el <em>osc key sync</em>: está en ON. Si alguno suena raro en el ataque, prueba a ponerlo en OFF.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. Apoya y sigue -->
+        <section id="seccion-12" class="<?php echo esc_attr( $seccion ); ?>">
+            <div class="<?php echo esc_attr( $caja ); ?>">
+                <?php $titulo( 12, 'heart', 'Si esto te sirve' ); ?>
                 <p class="text-lg mb-8 max-w-3xl <?php echo esc_attr( $texto ); ?>">Esta guía es gratis y lo seguirá siendo, igual que el ATEK303. Si quieres echar una mano, hay tres formas, y ninguna es obligatoria:</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <a href="https://www.patreon.com/animatek" target="_blank" rel="noopener" class="group rounded-2xl border border-slate-200 bg-slate-50 dark:bg-slate-800/40 dark:border-slate-700/50 p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#f96854]/60 block">

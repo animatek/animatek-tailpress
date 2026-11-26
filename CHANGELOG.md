@@ -2,6 +2,16 @@
 
 All notable changes to TailPress will be documented in this file.
 
+## [5.10.5] - 2026-11-26
+
+### Añadido — Claude
+- **FM-1 Lab: sección 11, «Cuatro sonidos de Brian Eno para tu FM-1».** Los cuatro de *Keyboard* (febrero de 1987,
+  pág. 41: Kalimba 2, Tamboura, Glide y Violin 3) en `.syx`, del vídeo `tGY9v9k4yhY`: miniatura y enlace al vídeo,
+  qué es cada sonido, qué hay en el zip (voces sueltas, banco de DX7, grupo D del FM-1 con los cuatro en 29-32 y el
+  grupo D original para volver atrás), cómo se cargan y el crédito. El zip lo subió Javier al S3 de los cursos
+  (`Preset y Recursos/Eno-DX7-syx.zip`) y no lleva léeme: la explicación va en la página. «Si esto te sirve» pasa a
+  ser la sección 12 (`#seccion-12`), y el hero y el locker dicen «12 secciones».
+
 ## [5.10.4] - 2026-11-22
 
 ### Corregido — Claude
